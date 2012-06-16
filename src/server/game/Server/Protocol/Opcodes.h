@@ -66,7 +66,7 @@ enum Opcodes
     CMSG_AUTO_DECLINE_GUILD_INVITES                  = 0x02034, // 4.3.4 Build 15595
     CMSG_AUTOBANK_ITEM                               = 0x00000, // Unknown
     CMSG_AUTOEQUIP_GROUND_ITEM                       = 0x00000, // Unknown
-    CMSG_AUTOEQUIP_ITEM                              = 0x04303, // 4.3.4 Build 15595
+    CMSG_AUTOEQUIP_ITEM                              = 0x00000, // Unknown
     CMSG_AUTOEQUIP_ITEM_SLOT                         = 0x00000, // Unknown
     CMSG_AUTOSTORE_BAG_ITEM                          = 0x00000, // Unknown
     CMSG_AUTOSTORE_BANK_ITEM                         = 0x00000, // Unknown
