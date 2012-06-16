@@ -275,15 +275,15 @@ enum Opcodes
     CMSG_MESSAGECHAT_CHANNEL                         = 0x01D44, // 4.3.4 Build 15595
     CMSG_MESSAGECHAT_DND                             = 0x00000, // Unknown
     CMSG_MESSAGECHAT_EMOTE                           = 0x02E24, // 4.3.4 Build 15595
-    CMSG_MESSAGECHAT_GUILD                           = 0x00000, // Unknown
-    CMSG_MESSAGECHAT_OFFICER                         = 0x00000, // Unknown
+    CMSG_MESSAGECHAT_GUILD                           = 0x03956, // 4.3.4 Build 15595
+    CMSG_MESSAGECHAT_OFFICER                         = 0x01946, // 4.3.4 Build 15595
     CMSG_MESSAGECHAT_PARTY                           = 0x00000, // Unknown
     CMSG_MESSAGECHAT_PARTY_LEADER                    = 0x00000, // Unknown
     CMSG_MESSAGECHAT_RAID                            = 0x00000, // Unknown
     CMSG_MESSAGECHAT_RAID_LEADER                     = 0x00000, // Unknown
     CMSG_MESSAGECHAT_RAID_WARNING                    = 0x00000, // Unknown
     CMSG_MESSAGECHAT_SAY                             = 0x01154, // 4.3.4 Build 15595
-    CMSG_MESSAGECHAT_WHISPER                         = 0x00000, // Unknown
+    CMSG_MESSAGECHAT_WHISPER                         = 0x00D56, // 4.3.4 Build 15595
     CMSG_MESSAGECHAT_YELL                            = 0x03544, // 4.3.4 Build 15595
     CMSG_MINIGAME_MOVE                               = 0x00000, // Unknown
     CMSG_MOUNTSPECIAL_ANIM                           = 0x00000, // Unknown
@@ -432,7 +432,7 @@ enum Opcodes
     CMSG_STORE_LOOT_IN_SLOT                          = 0x00000, // Unknown
     CMSG_SUMMON_RESPONSE                             = 0x00000, // Unknown
     CMSG_SUSPEND_TOKEN                               = 0x00000, // Unknown
-    CMSG_SWAP_INV_ITEM                               = 0x00000, // Unknown
+    CMSG_SWAP_INV_ITEM                               = 0x04304, // 4.3.4 Build 15595
     CMSG_SWAP_ITEM                                   = 0x00000, // Unknown
     CMSG_TAXICLEARALLNODES                           = 0x00000, // Unknown
     CMSG_TAXIENABLEALLNODES                          = 0x00000, // Unknown
