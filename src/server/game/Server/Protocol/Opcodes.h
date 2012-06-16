@@ -466,7 +466,7 @@ enum Opcodes
     CMSG_WORLD_STATE_UI_TIMER_UPDATE                 = 0x04605, // 4.3.4 Build 15595
     CMSG_WORLD_TELEPORT                              = 0x03330, // 4.3.4 Build 15595
     CMSG_WRAP_ITEM                                   = 0x00000, // Unknown
-    CMSG_ZONEUPDATE                                  = 0x00000, // Unknown
+    CMSG_ZONEUPDATE                                  = 0x04F37, // 4.3.4 Build 15595
     MSG_AUCTION_HELLO                                = 0x00000, // Unknown
     MSG_BATTLEGROUND_PLAYER_POSITIONS                = 0x00000, // Unknown
     MSG_CHANNEL_START                                = 0x00000, // Unknown
@@ -975,7 +975,7 @@ enum Opcodes
     SMSG_REAL_GROUP_UPDATE                           = 0x00000, // Unknown
     SMSG_REALM_SPLIT                                 = 0x02714, // 4.3.4 Build 15595
     SMSG_RECEIVED_MAIL                               = 0x00000, // Unknown
-    SMSG_REDIRECT_CLIENT                             = 0x00000, // Unknown
+    SMSG_REDIRECT_CLIENT                             = 0x00942, // 4.3.4 Build 15595
     SMSG_REFER_A_FRIEND_FAILURE                      = 0x00000, // Unknown
     SMSG_REMOVED_SPELL                               = 0x00000, // Unknown
     SMSG_REPORT_PVP_AFK_RESULT                       = 0x00000, // Unknown
@@ -1049,7 +1049,7 @@ enum Opcodes
     SMSG_TRADE_STATUS_EXTENDED                       = 0x00000, // Unknown
     SMSG_TRAINER_BUY_RESULT                          = 0x00000, // Unknown
     SMSG_TRAINER_BUY_SUCCEEDED                       = 0x00000, // Unknown
-    SMSG_TRAINER_LIST                                = 0x0BBE0, // 4.3.4 Build 15595
+    SMSG_TRAINER_LIST                                = 0x04414, // 4.3.4 Build 15595
     SMSG_TRANSFER_ABORTED                            = 0x00000, // Unknown
     SMSG_TRANSFER_PENDING                            = 0x00000, // Unknown
     SMSG_TRIGGER_CINEMATIC                           = 0x06C27, // 4.3.4 Build 15595
