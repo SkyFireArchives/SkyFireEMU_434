@@ -33,7 +33,6 @@ enum Opcodes
     UNKNOWN_OPCODE                                   = NUM_OPCODE_HANDLERS,
     NULL_OPCODE                                      = 0,
 
-
     CMSG_ACCEPT_LEVEL_GRANT                          = 0x00205, // 4.3.4 Build 15595
     CMSG_ACCEPT_TRADE                                = 0x00000, // Unknown
     CMSG_ACTIVATETAXI                                = 0x00000, // Unknown
@@ -218,7 +217,7 @@ enum Opcodes
     CMSG_GUILD_LEAVE                                 = 0x00000, // Unknown
     CMSG_GUILD_MOTD                                  = 0x00000, // Unknown
     CMSG_GUILD_PROMOTE                               = 0x00000, // Unknown
-    CMSG_GUILD_QUERY                                 = 0x00000, // Unknown
+    CMSG_GUILD_QUERY                                 = 0x04426, // 4.3.4 Build 15595
     CMSG_GUILD_RANK                                  = 0x00000, // Unknown
     CMSG_GUILD_REMOVE                                = 0x00000, // Unknown
     CMSG_GUILD_ROSTER                                = 0x00000, // Unknown
@@ -255,7 +254,7 @@ enum Opcodes
     CMSG_LOOT                                        = 0x00127, // 4.3.4 Build 15595
     CMSG_LOOT_METHOD                                 = 0x00000, // Unknown
     CMSG_LOOT_MONEY                                  = 0x06227, // 4.3.4 Build 15595
-    CMSG_LOOT_RELEASE                                = 0x04106, // 4.3.4 Build 15595
+    CMSG_LOOT_RELEASE                                = 0x02007, // 4.3.4 Build 15595
     CMSG_LOOT_ROLL                                   = 0x00000, // Unknown
     CMSG_MAIL_CREATE_TEXT_ITEM                       = 0x00B14, // 4.3.4 Build 15595
     CMSG_MAIL_DELETE                                 = 0x00000, // Unknown
@@ -338,7 +337,7 @@ enum Opcodes
     CMSG_PETITION_SIGN                               = 0x00E04, // 4.3.4 Build 15595
     CMSG_PING                                        = 0x0444D, // 4.3.4 Build 15595
     CMSG_PLAY_DANCE                                  = 0x00000, // Unknown
-    CMSG_PLAYED_TIME                                 = 0x00000, // Unknown
+    CMSG_PLAYED_TIME                                 = 0x00804, // 4.3.4 Build 15595
     CMSG_PLAYER_DIFFICULTY_CHANGE                    = 0x00000, // Unknown
     CMSG_PLAYER_LOGIN                                = 0x005B1, // 4.3.4 Build 15595
     CMSG_PLAYER_LOGOUT                               = 0x00000, // Unknown
@@ -361,7 +360,7 @@ enum Opcodes
     CMSG_QUESTGIVER_QUERY_QUEST                      = 0x00000, // Unknown
     CMSG_QUESTGIVER_QUEST_AUTOLAUNCH                 = 0x00000, // Unknown
     CMSG_QUESTGIVER_REQUEST_REWARD                   = 0x00000, // Unknown
-    CMSG_QUESTGIVER_STATUS_MULTIPLE_QUERY            = 0x00000, // Unknown
+    CMSG_QUESTGIVER_STATUS_MULTIPLE_QUERY            = 0x06305, // 4.3.4 Build 15595
     CMSG_QUESTGIVER_STATUS_QUERY                     = 0x04407, // 4.3.4 Build 15595
     CMSG_QUESTLOG_REMOVE_QUEST                       = 0x00000, // Unknown
     CMSG_QUESTLOG_SWAP_QUEST                         = 0x00000, // Unknown
@@ -378,7 +377,7 @@ enum Opcodes
     CMSG_REQUEST_ACCOUNT_DATA                        = 0x06505, // 4.3.4 Build 15595
     CMSG_REQUEST_CATEGORY_COOLDOWNS                  = 0x00000, // Unknown
     CMSG_REQUEST_CEMETERY_LIST                       = 0x00000, // Unknown
-    CMSG_REQUEST_HOTFIX                              = 0x00000, // Unknown
+    CMSG_REQUEST_HOTFIX                              = 0x02401, // 4.3.4 Build 15595
     CMSG_REQUEST_PARTY_MEMBER_STATS                  = 0x00000, // Unknown
     CMSG_REQUEST_PET_INFO                            = 0x04924, // 4.3.4 Build 15595
     CMSG_REQUEST_RAID_INFO                           = 0x02F26, // 4.3.4 Build 15595
@@ -607,7 +606,7 @@ enum Opcodes
     SMSG_BUY_BANK_SLOT_RESULT                        = 0x00000, // Unknown
     SMSG_BUY_FAILED                                  = 0x00000, // Unknown
     SMSG_BUY_ITEM                                    = 0x00F26, // 4.3.4 Build 15595
-    SMSG_CALENDAR_COMMAND_RESULT                     = 0x00000, // Unknown
+    SMSG_CALENDAR_COMMAND_RESULT                     = 0x06F36, // 4.3.4 Build 15595
     SMSG_CALENDAR_SEND_CALENDAR                      = 0x00000, // Unknown
     SMSG_CALENDAR_SEND_NUM_PENDING                   = 0x00000, // Unknown
     SMSG_CAMERA_SHAKE                                = 0x00000, // Unknown
@@ -716,7 +715,7 @@ enum Opcodes
     SMSG_GROUP_DESTROYED                             = 0x00000, // Unknown
     SMSG_GROUP_INVITE                                = 0x00000, // Unknown
     SMSG_GROUP_JOINED_BATTLEGROUND                   = 0x00000, // Unknown
-    SMSG_GROUP_LIST                                  = 0x00000, // Unknown
+    SMSG_GROUP_LIST                                  = 0x04C24, // 4.3.4 Build 15595
     SMSG_GROUP_SET_LEADER                            = 0x00000, // Unknown
     SMSG_GROUP_UNINVITE                              = 0x00000, // Unknown
     SMSG_GUILD_ACHIEVEMENT_DATA                      = 0x00000, // Unknown
@@ -729,7 +728,7 @@ enum Opcodes
     SMSG_GUILD_INVITE                                = 0x00000, // Unknown
     SMSG_GUILD_MAX_DAILY_XP                          = 0x00000, // Unknown
     SMSG_GUILD_NEWS_UPDATE                           = 0x00000, // Unknown
-    SMSG_GUILD_QUERY_RESPONSE                        = 0x00000, // Unknown
+    SMSG_GUILD_QUERY_RESPONSE                        = 0x00E06, // 4.3.4 Build 15595
     SMSG_GUILD_RANK                                  = 0x00000, // Unknown
     SMSG_GUILD_RANKS_UPDATE                          = 0x00000, // Unknown
     SMSG_GUILD_REWARDS_LIST                          = 0x00000, // Unknown
@@ -755,10 +754,10 @@ enum Opcodes
     SMSG_INSTANCE_SAVE_CREATED                       = 0x00000, // Unknown
     SMSG_INVALID_PROMOTION_CODE                      = 0x00000, // Unknown
     SMSG_INVALIDATE_DANCE                            = 0x00000, // Unknown
-    SMSG_INVALIDATE_PLAYER                           = 0x00000, // Unknown
+    SMSG_INVALIDATE_PLAYER                           = 0x06325, // 4.3.4 Build 15595
     SMSG_INVENTORY_CHANGE_FAILURE                    = 0x00000, // Unknown
     SMSG_ITEM_COOLDOWN                               = 0x00000, // Unknown
-    SMSG_ITEM_ENCHANT_TIME_UPDATE                    = 0x00000, // Unknown
+    SMSG_ITEM_ENCHANT_TIME_UPDATE                    = 0x00F27, // 4.3.4 Build 15595
     SMSG_ITEM_NAME_QUERY_RESPONSE                    = 0x00000, // Unknown
     SMSG_ITEM_PUSH_RESULT                            = 0x00000, // Unknown
     SMSG_ITEM_REFUND_INFO_RESPONSE                   = 0x00000, // Unknown
@@ -788,7 +787,7 @@ enum Opcodes
     SMSG_LFG_UPDATE_PLAYER                           = 0x00000, // Unknown
     SMSG_LFG_UPDATE_SEARCH                           = 0x00000, // Unknown
     SMSG_LIST_INVENTORY                              = 0x07CB0, // 4.3.4 Build 15595
-    SMSG_LOG_XPGAIN                                  = 0x00000, // Unknown
+    SMSG_LOG_XPGAIN                                  = 0x04514, // 4.3.4 Build 15595
     SMSG_LOGIN_SETTIMESPEED                          = 0x04D15, // 4.3.4 Build 15595
     SMSG_LOGIN_VERIFY_WORLD                          = 0x02005, // 4.3.4 Build 15595
     SMSG_LOGOUT_CANCEL_ACK                           = 0x00000, // Unknown
@@ -815,7 +814,7 @@ enum Opcodes
     SMSG_MESSAGECHAT                                 = 0x02026, // Unknown
     SMSG_MIRRORIMAGE_DATA                            = 0x00000, // Unknown
     SMSG_MODIFY_COOLDOWN                             = 0x00000, // Unknown
-    SMSG_MONSTER_MOVE                                = 0x00000, // Unknown
+    SMSG_MONSTER_MOVE                                = 0x00000, // 4.3.4 Build 15595 -- 0x06E17 -- DISABLED ! causes much shit ATM
     SMSG_MONSTER_MOVE_TRANSPORT                      = 0x00000, // Unknown
     SMSG_MOTD                                        = 0x00A35, // 4.3.4 Build 15595
     SMSG_MOUNTRESULT                                 = 0x00000, // Unknown
@@ -928,7 +927,7 @@ enum Opcodes
     SMSG_PLAY_SPELL_IMPACT                           = 0x00000, // Unknown
     SMSG_PLAY_SPELL_VISUAL                           = 0x00000, // Unknown
     SMSG_PLAY_TIME_WARNING                           = 0x00000, // Unknown
-    SMSG_PLAYED_TIME                                 = 0x00000, // Unknown
+    SMSG_PLAYED_TIME                                 = 0x06037, // 4.3.4 Build 15595
     SMSG_PLAYER_DIFFICULTY_CHANGE                    = 0x00000, // Unknown
     SMSG_PLAYER_MOVE                                 = 0x00000, // Unknown
     SMSG_PLAYER_SKINNED                              = 0x00000, // Unknown
@@ -957,8 +956,8 @@ enum Opcodes
     SMSG_QUESTGIVER_QUEST_INVALID                    = 0x00000, // Unknown
     SMSG_QUESTGIVER_QUEST_LIST                       = 0x00000, // Unknown
     SMSG_QUESTGIVER_REQUEST_ITEMS                    = 0x00000, // Unknown
-    SMSG_QUESTGIVER_STATUS                           = 0x00000, // Unknown
-    SMSG_QUESTGIVER_STATUS_MULTIPLE                  = 0x00000, // Unknown
+    SMSG_QUESTGIVER_STATUS                           = 0x02115, // 4.3.4 Build 15595
+    SMSG_QUESTGIVER_STATUS_MULTIPLE                  = 0x04F25, // 4.3.4 Build 15595
     SMSG_QUESTLOG_FULL                               = 0x00000, // Unknown
     SMSG_QUESTUPDATE_ADD_ITEM                        = 0x00000, // Unknown
     SMSG_QUESTUPDATE_ADD_KILL                        = 0x00D27, // 4.3.4 Build 15595
@@ -1013,15 +1012,15 @@ enum Opcodes
     SMSG_SPELL_START                                 = 0x06415, // 4.3.4 Build 15595
     SMSG_SPELL_UPDATE_CHAIN_TARGETS                  = 0x00000, // Unknown
     SMSG_SPELLBREAKLOG                               = 0x00000, // Unknown
-    SMSG_SPELLDAMAGESHIELD                           = 0x00000, // Unknown
+    SMSG_SPELLDAMAGESHIELD                           = 0x02927, // 4.3.4 Build 15595
     SMSG_SPELLDISPELLOG                              = 0x00000, // Unknown
     SMSG_SPELLENERGIZELOG                            = 0x00414, // 4.3.4 Build 15595
     SMSG_SPELLHEALLOG                                = 0x02816, // 4.3.4 Build 15595
     SMSG_SPELLINSTAKILLLOG                           = 0x00000, // Unknown
     SMSG_SPELLLOGEXECUTE                             = 0x00626, // 4.3.4 Build 15595
     SMSG_SPELLLOGMISS                                = 0x00625, // 4.3.4 Build 15595
-    SMSG_SPELLNONMELEEDAMAGELOG                      = 0x04315, // Unknown
-    SMSG_SPELLORDAMAGE_IMMUNE                        = 0x00000, // Unknown
+    SMSG_SPELLNONMELEEDAMAGELOG                      = 0x04315, // 4.3.4 Build 15595
+    SMSG_SPELLORDAMAGE_IMMUNE                        = 0x04507, // 4.3.4 Build 15595
     SMSG_SPELLSTEALLOG                               = 0x00000, // Unknown
     SMSG_SPIRIT_HEALER_CONFIRM                       = 0x00000, // Unknown
     SMSG_STABLE_RESULT                               = 0x00000, // Unknown
@@ -1036,7 +1035,7 @@ enum Opcodes
     SMSG_TALENTS_ERROR                               = 0x00000, // Unknown
     SMSG_TALENTS_INFO                                = 0x06F26, // 4.3.4 Build 15595
     SMSG_TALENTS_INVOLUNTARILY_RESET                 = 0x00000, // Unknown
-    SMSG_TAXINODE_STATUS                             = 0x00000, // Unknown
+    SMSG_TAXINODE_STATUS                             = 0x02936, // 4.3.4 Build 15595
     SMSG_TEXT_EMOTE                                  = 0x00B05, // 4.3.4 Build 15595
     SMSG_THREAT_CLEAR                                = 0x00000, // Unknown
     SMSG_THREAT_REMOVE                               = 0x00000, // Unknown

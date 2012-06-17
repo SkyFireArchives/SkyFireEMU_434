@@ -1737,7 +1737,7 @@ void WorldSession::HandleInstanceLockResponse(WorldPacket& recvPacket)
 }
 
 void WorldSession::HandleRequestHotfix(WorldPacket& recvPacket)
-{
+{/*
     uint32 type, count;
     recvPacket >> type >> count;
 
@@ -1778,5 +1778,5 @@ void WorldSession::HandleRequestHotfix(WorldPacket& recvPacket)
     }
 
     delete[] guidBytes;
-    delete[] mask;
+    delete[] mask;*/
 }
