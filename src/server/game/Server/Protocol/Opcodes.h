@@ -66,7 +66,7 @@ enum Opcodes
     CMSG_AUTO_DECLINE_GUILD_INVITES                  = 0x02034, // 4.3.4 Build 15595
     CMSG_AUTOBANK_ITEM                               = 0x00000, // Unknown
     CMSG_AUTOEQUIP_GROUND_ITEM                       = 0x00000, // Unknown
-    CMSG_AUTOEQUIP_ITEM                              = 0x00000, // Unknown
+    CMSG_AUTOEQUIP_ITEM                              = 0x04304, // 4.3.4 Build 15595
     CMSG_AUTOEQUIP_ITEM_SLOT                         = 0x00000, // Unknown
     CMSG_AUTOSTORE_BAG_ITEM                          = 0x00000, // Unknown
     CMSG_AUTOSTORE_BANK_ITEM                         = 0x00000, // Unknown
@@ -394,7 +394,7 @@ enum Opcodes
     CMSG_SEARCH_LFG_JOIN                             = 0x00000, // Unknown
     CMSG_SEARCH_LFG_LEAVE                            = 0x00000, // Unknown
     CMSG_SELF_RES                                    = 0x06115, // 4.3.4 Build 15595
-    CMSG_SELL_ITEM                                   = 0x00000, // Unknown
+    CMSG_SELL_ITEM                                   = 0x04E15, // 4.3.4 Build 15595
     CMSG_SERVERTIME                                  = 0x00000, // Unknown
     CMSG_SET_ACTION_BUTTON                           = 0x06F06, // 4.3.4 Build 15595
     CMSG_SET_ACTIONBAR_TOGGLES                       = 0x02506, // 4.3.4 Build 15595
@@ -419,7 +419,7 @@ enum Opcodes
     CMSG_SET_TRADE_ITEM                              = 0x00000, // Unknown
     CMSG_SET_WATCHED_FACTION                         = 0x00000, // Unknown
     CMSG_SETDEATHBINDPOINT                           = 0x00000, // Unknown
-    CMSG_SETSHEATHED                                 = 0x00000, // Unknown
+    CMSG_SETSHEATHED                                 = 0x04326, // 4.3.4 Build 15595
     CMSG_SHOWING_CLOAK                               = 0x04135, // 4.3.4 Build 15595
     CMSG_SHOWING_HELM                                = 0x00735, // 4.3.4 Build 15595
     CMSG_SOCKET_GEMS                                 = 0x00000, // Unknown
@@ -432,8 +432,8 @@ enum Opcodes
     CMSG_STORE_LOOT_IN_SLOT                          = 0x00000, // Unknown
     CMSG_SUMMON_RESPONSE                             = 0x00000, // Unknown
     CMSG_SUSPEND_TOKEN                               = 0x00000, // Unknown
-    CMSG_SWAP_INV_ITEM                               = 0x04304, // 4.3.4 Build 15595
-    CMSG_SWAP_ITEM                                   = 0x00000, // Unknown
+    CMSG_SWAP_INV_ITEM                               = 0x02614, // 4.3.4 Build 15595
+    CMSG_SWAP_ITEM                                   = 0x06326, // 4.3.4 Build 15595
     CMSG_TAXICLEARALLNODES                           = 0x00000, // Unknown
     CMSG_TAXIENABLEALLNODES                          = 0x00000, // Unknown
     CMSG_TAXINODE_STATUS_QUERY                       = 0x02F25, // 4.3.4 Build 15595
@@ -986,7 +986,7 @@ enum Opcodes
     SMSG_RESURRECT_REQUEST                           = 0x00000, // Unknown
     SMSG_RESYNC_RUNES                                = 0x00000, // Unknown
     SMSG_RWHOIS                                      = 0x00000, // Unknown
-    SMSG_SELL_ITEM                                   = 0x00000, // Unknown
+    SMSG_SELL_ITEM                                   = 0x06105, // 4.3.4 Build 15595
     SMSG_SEND_MAIL_RESULT                            = 0x00000, // Unknown
     SMSG_SEND_UNLEARN_SPELLS                         = 0x04E25, // 4.3.4 Build 15595
     SMSG_SERVER_FIRST_ACHIEVEMENT                    = 0x00000, // Unknown
