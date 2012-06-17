@@ -17,32 +17,53 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WDTFILE_H
-#define WDTFILE_H
+#ifndef MODEL_H
+#define MODEL_H
 
-#include "mpq_libmpq04.h"
-#include "wmo.h"
-#include <string>
-#include "stdlib.h"
+#include "loadlib/loadlib.h"
+#include "vec3d.h"
+#include "modelheaders.h"
+#include <vector>
 
-class ADTFile;
+class Model;
+class WMOInstance;
+class MPQFile;
 
-class WDTFile
+Vec3D fixCoordSystem(Vec3D v);
+
+class Model
 {
 public:
-    WDTFile(char* file_name, char* file_name1);
-    ~WDTFile(void);
-    bool init(char *map_id, unsigned int mapID);
+    ModelHeader header;
+    uint32 offsBB_vertices, offsBB_indices;
+    Vec3D *BB_vertices, *vertices;
+    uint16 *BB_indices, *indices;
+    size_t nIndices;
 
-    string* gWmoInstansName;
-    int gnWMO, nMaps;
+    bool open();
+    bool ConvertToVMAPModel(const char* outfilename);
+    bool ok;
 
-    ADTFile* GetMap(int x, int z);
+    Model(std::string &filename);
+    ~Model();
 
 private:
-    MPQFile WDT;
-    bool maps[64][64];
-    string filename;
+    std::string filename;
+    char outfilename;
+};
+
+class ModelInstance
+{
+public:
+    Model *model;
+
+    uint32 id;
+    Vec3D pos, rot;
+    unsigned int d1, scale;
+    float w, sc;
+
+    ModelInstance() {}
+    ModelInstance(MPQFile &f, const char* ModelInstName, uint32 mapID, uint32 tileX, uint32 tileY, FILE *dirfile);
 };
 
 #endif

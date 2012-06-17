@@ -1,4 +1,3 @@
-# Copyright (C) 2005-2011 MaNGOS <http://www.getmangos.com/>
 # Copyright (C) 2008-2011 Trinity <http://www.trinitycore.org/>
 # Copyright (C) 2010-2012 Project SkyFire <http://www.projectskyfire.org/>
 #
@@ -11,5 +10,5 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 add_subdirectory(map_extractor)
-add_subdirectory(vmap3_assembler)
-add_subdirectory(vmap3_extractor)
+add_subdirectory(vmap4_assembler)
+add_subdirectory(vmap4_extractor)

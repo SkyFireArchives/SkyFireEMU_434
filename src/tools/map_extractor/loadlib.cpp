@@ -24,9 +24,9 @@
 
 FileLoader::FileLoader()
 {
-    data = 0;
+    data       = 0;
     data_size = 0;
-    version = 0;
+    version   = 0;
 }
 
 FileLoader::~FileLoader()
@@ -38,15 +38,18 @@ bool FileLoader::loadFile(HANDLE mpq, char* filename, bool log)
 {
     free();
     HANDLE file;
+    
     if (!SFileOpenFileEx(mpq, filename, SFILE_OPEN_PATCHED_FILE, &file))
     {
         if (log)
             printf("No such file %s\n", filename);
+        
         return false;
     }
 
     data_size = SFileGetFileSize(file, NULL);
     data = new uint8[data_size];
+    
     if (data)
     {
         SFileReadFile(file, data, data_size, NULL/*bytesRead*/, NULL);
@@ -69,15 +72,17 @@ bool FileLoader::prepareLoadedData()
     version = (file_MVER *) data;
     if (version->fcc != 'MVER')
         return false;
+    
     if (version->ver != FILE_FORMAT_VERSION)
         return false;
+    
     return true;
 }
 
 void FileLoader::free()
 {
     if (data) delete[] data;
-    data = 0;
+    data       = 0;
     data_size = 0;
-    version = 0;
+    version   = 0;
 }

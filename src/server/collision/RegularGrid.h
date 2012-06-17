@@ -20,7 +20,6 @@
 #ifndef _REGULAR_GRID_H
 #define _REGULAR_GRID_H
 
-
 #include <G3D/Ray.h>
 #include <G3D/AABox.h>
 #include <G3D/Table.h>
@@ -97,12 +96,10 @@ public:
 
     bool contains(const T& value) const { return memberTable.containsKey(&value); }
     int size() const { return memberTable.size(); }
-
     struct Cell
     {
         int x, y;
         bool operator == (const Cell& c2) const { return x == c2.x && y == c2.y;}
-
         static Cell ComputeCell(float fx, float fy)
         {
             Cell c = {fx * (1.f/CELL_SIZE) + (CELL_NUMBER/2), fy * (1.f/CELL_SIZE) + (CELL_NUMBER/2)};
@@ -111,7 +108,6 @@ public:
 
         bool isValid() const { return x >= 0 && x < CELL_NUMBER && y >= 0 && y < CELL_NUMBER;}
     };
-
 
     Node& getGridFor(float fx, float fy)
     {

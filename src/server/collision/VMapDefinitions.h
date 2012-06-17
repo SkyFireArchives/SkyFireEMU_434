@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
  * Copyright (C) 2011-2012 Project SkyFire <http://www.projectskyfire.org/>
+ * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
  * Copyright (C) 2005-2012 MaNGOS <http://getmangos.com/>
  *
  * This program is free software; you can redistribute it and/or modify it
@@ -25,9 +25,9 @@
 
 namespace VMAP
 {
-    const char VMAP_MAGIC[] = "VMAP_4.0";
-    const char RAW_VMAP_MAGIC[] = "VMAP004";                // used in extracted vmap files with raw data
-    const char GAMEOBJECT_MODELS[] = "temp_gameobject_models";
+    const char VMAP_MAGIC[] = "VMAP_4.1";
+    const char RAW_VMAP_MAGIC[] = "VMAP041";                // used in extracted vmap files with raw data
+    const char GAMEOBJECT_MODELS[] = "GameObjectModels.dtree";
 
     // defined in TileAssembler.cpp currently...
     bool readChunk(FILE* rf, char *dest, const char *compare, uint32 len);

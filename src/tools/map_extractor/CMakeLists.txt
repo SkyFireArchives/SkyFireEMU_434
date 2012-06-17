@@ -1,5 +1,5 @@
-# Copyright (C) 2005-2009 MaNGOS project <http://getmangos.com/>
-# Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
+# Copyright (C) 2008-2011 Trinity <http://www.trinitycore.org/>
+# Copyright (C) 2010-2012 Project SkyFire <http://www.projectskyfire.org/>
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -30,8 +30,8 @@ target_link_libraries(mapextractor
 
 add_dependencies(mapextractor storm)
 
-if( UNIX )
+if(UNIX)
   install(TARGETS mapextractor DESTINATION bin)
-elseif( WIN32 )
+elseif(WIN32)
   install(TARGETS mapextractor DESTINATION "${CMAKE_INSTALL_PREFIX}") 
 endif()

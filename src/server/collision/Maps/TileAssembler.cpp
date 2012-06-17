@@ -336,7 +336,7 @@ namespace VMAP
 
     void TileAssembler::exportGameobjectModels()
     {
-        FILE* model_list = fopen((iSrcDir + "/" + GAMEOBJECT_MODELS).c_str(), "rb");
+        FILE* model_list = fopen((iSrcDir + "/" + "temp_gameobject_models").c_str(), "rb");
         FILE* model_list_copy = fopen((iDestDir + "/" + GAMEOBJECT_MODELS).c_str(), "wb");
         if (!model_list || !model_list_copy)
             return;
@@ -405,7 +405,6 @@ namespace VMAP
 
         READ_OR_RETURN(&mogpflags, sizeof(uint32));
         READ_OR_RETURN(&GroupWMOID, sizeof(uint32));
-
 
         Vector3 vec1, vec2;
         READ_OR_RETURN(&vec1, sizeof(Vector3));
@@ -479,7 +478,6 @@ namespace VMAP
 
         return true;
     }
-
 
     GroupModel_Raw::~GroupModel_Raw()
     {

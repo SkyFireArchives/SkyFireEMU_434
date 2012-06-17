@@ -1,4 +1,3 @@
-# Copyright (C) 2005-2011 MaNGOS <http://www.getmangos.com/>
 # Copyright (C) 2008-2011 Trinity <http://www.trinitycore.org/>
 # Copyright (C) 2010-2012 Project SkyFire <http://www.projectskyfire.org/>
 #
@@ -18,32 +17,30 @@ add_definitions("-DIOMAP_DEBUG")
 # build setup currently only supports libmpq 0.4.x
 add_definitions("-DUSE_LIBMPQ04")
 add_definitions("-Wall")
-add_definitions("-ggdb")
-add_definitions("-O3")
 
-if ( UNIX )
+if(UNIX)
   include_directories(
     ${CMAKE_SOURCE_DIR}/dep/libmpq
   )
-elseif ( WIN32 )
+elseif(WIN32)
   include_directories(
     ${CMAKE_SOURCE_DIR}/dep/libmpq
     ${CMAKE_SOURCE_DIR}/dep/libmpq/win
   )
-endif ()
+endif()
 
-add_executable(vmap3extractor ${sources})
+add_executable(vmap4extractor ${sources})
 
-target_link_libraries(vmap3extractor
+target_link_libraries(vmap4extractor
   ${BZIP2_LIBRARIES}
   ${ZLIB_LIBRARIES}
   mpq
 )
 
-add_dependencies(vmap3extractor mpq)
+add_dependencies(vmap4extractor mpq)
 
-if ( UNIX )
-  install(TARGETS vmap3extractor DESTINATION bin)
-elseif ( WIN32 )
-  install(TARGETS vmap3extractor DESTINATION "${CMAKE_INSTALL_PREFIX}")
-endif ()
+if(UNIX)
+  install(TARGETS vmap4extractor DESTINATION bin)
+elseif(WIN32)
+  install(TARGETS vmap4extractor DESTINATION "${CMAKE_INSTALL_PREFIX}")
+endif()

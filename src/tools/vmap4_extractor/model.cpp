@@ -25,10 +25,7 @@
 #include <algorithm>
 #include <cstdio>
 
-Model::Model(std::string &filename) : filename(filename)
-{
-}
-
+Model::Model(std::string &filename) : filename(filename), vertices(0), indices(0) {}
 bool Model::open()
 {
     MPQFile f(filename.c_str());
@@ -38,10 +35,11 @@ bool Model::open()
     if (!ok)
     {
         f.close();
-        printf("Error loading model %s\n", filename.c_str());
+        // Do not show this error on console to avoid confusion, the extractor can continue working even if some models fail to load           
+        //printf("Error loading model %s\n", filename.c_str());
         return false;
     }
-
+    
     memcpy(&header, f.getBuffer(), sizeof(ModelHeader));
     if (header.nBoundingTriangles > 0)
     {
@@ -49,7 +47,7 @@ bool Model::open()
         f.seekRelative(header.ofsBoundingVertices);
         vertices = new Vec3D[header.nBoundingVertices];
         f.read(vertices, header.nBoundingVertices*12);
-        for (uint32 i=0; i<header.nBoundingVertices; i++)
+        for (uint32 i = 0; i < header.nBoundingVertices; i++)
         {
             vertices[i] = fixCoordSystem(vertices[i]);
         }
@@ -61,37 +59,42 @@ bool Model::open()
     }
     else
     {
-        //printf("not included %s\n", filename.c_str());
         f.close();
         return false;
     }
     return true;
 }
 
-bool Model::ConvertToVMAPModel(char * outfilename)
+bool Model::ConvertToVMAPModel(const char* outfilename)
 {
     int N[12] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    FILE * output=fopen(outfilename, "wb");
+    FILE * output = fopen(outfilename, "wb");
+    
     if (!output)
     {
         printf("Can't create the output file '%s'\n", outfilename);
         return false;
     }
-    fwrite("VMAP003", 8, 1, output);
+    
+    fwrite(szRawVMAPMagic, 8, 1, output);
+    
     uint32 nVertices = 0;
     nVertices = header.nBoundingVertices;
     fwrite(&nVertices, sizeof(int), 1, output);
+    
     uint32 nofgroups = 1;
     fwrite(&nofgroups, sizeof(uint32), 1, output);
-    fwrite(N, 4*3, 1, output);// rootwmoid, flags, groupid
-    fwrite(N, sizeof(float), 3*2, output);//bbox, only needed for WMO currently
-    fwrite(N, 4, 1, output);// liquidflags
+    fwrite(N, 4*3, 1, output);                 // rootwmoid, flags, groupid
+    fwrite(N, sizeof(float), 3*2, output);     // bbox, only needed for WMO currently
+    fwrite(N, 4, 1, output);                   // liquidflags
     fwrite("GRP ", 4, 1, output);
+    
     uint32 branches = 1;
     int wsize;
     wsize = sizeof(branches) + sizeof(uint32) * branches;
     fwrite(&wsize, sizeof(int), 1, output);
     fwrite(&branches, sizeof(branches), 1, output);
+    
     uint32 nIndexes = 0;
     nIndexes = header.nBoundingTriangles;
     fwrite(&nIndexes, sizeof(uint32), 1, output);
@@ -99,14 +102,17 @@ bool Model::ConvertToVMAPModel(char * outfilename)
     wsize = sizeof(uint32) + sizeof(unsigned short) * nIndexes;
     fwrite(&wsize, sizeof(int), 1, output);
     fwrite(&nIndexes, sizeof(uint32), 1, output);
+    
     if (nIndexes >0)
     {
         fwrite(indices, sizeof(unsigned short), nIndexes, output);
     }
+    
     fwrite("VERT", 4, 1, output);
     wsize = sizeof(int) + sizeof(float) * 3 * nVertices;
     fwrite(&wsize, sizeof(int), 1, output);
     fwrite(&nVertices, sizeof(int), 1, output);
+    
     if (nVertices >0)
     {
         for (uint32 vpos=0; vpos <nVertices; ++vpos)
@@ -118,18 +124,15 @@ bool Model::ConvertToVMAPModel(char * outfilename)
         fwrite(vertices, sizeof(float)*3, nVertices, output);
     }
 
-    delete[] vertices;
-    delete[] indices;
+    delete[]vertices;
+    delete[]indices;
 
     fclose(output);
 
     return true;
 }
 
-Model::~Model()
-{
-}
-
+Model::~Model() {}
 Vec3D fixCoordSystem(Vec3D v)
 {
     return Vec3D(v.x, v.z, -v.y);
@@ -140,7 +143,7 @@ Vec3D fixCoordSystem2(Vec3D v)
     return Vec3D(v.x, v.z, v.y);
 }
 
-ModelInstance::ModelInstance(MPQFile &f, const char* ModelInstName, uint32 mapID, uint32 tileX, uint32 tileY, FILE *pDirfile)
+ModelInstance::ModelInstance(MPQFile &f, const char* ModelInstName, uint32 mapID, uint32 tileX, uint32 tileY, FILE *dirfile)
 {
     float ff[3];
     f.read(&id, 4);
@@ -149,6 +152,7 @@ ModelInstance::ModelInstance(MPQFile &f, const char* ModelInstName, uint32 mapID
     f.read(ff, 12);
     rot = Vec3D(ff[0], ff[1], ff[2]);
     f.read(&scale, 4);
+    
     // scale factor - divide by 1024. blizzard devs must be on crack, why not just use a float?
     sc = scale / 1024.0f;
 
@@ -159,11 +163,10 @@ ModelInstance::ModelInstance(MPQFile &f, const char* ModelInstName, uint32 mapID
 
     if (!input)
     {
-        //printf("ModelInstance::ModelInstance couldn't open %s\n", tempname);
         return;
     }
 
-    fseek(input, 8, SEEK_SET); // get the correct no of vertices
+    fseek(input, 8, SEEK_SET);      // get the correct no of vertices
     int nVertices;
     fread(&nVertices, sizeof (int), 1, input);
     fclose(input);
@@ -171,36 +174,21 @@ ModelInstance::ModelInstance(MPQFile &f, const char* ModelInstName, uint32 mapID
     if (nVertices == 0)
         return;
 
-    uint16 adtId = 0;// not used for models
+    uint16 adtId = 0;              // not used for models
     uint32 flags = MOD_M2;
+    
     if (tileX == 65 && tileY == 65) flags |= MOD_WORLDSPAWN;
-    //write mapID, tileX, tileY, Flags, ID, Pos, Rot, Scale, name
-    fwrite(&mapID, sizeof(uint32), 1, pDirfile);
-    fwrite(&tileX, sizeof(uint32), 1, pDirfile);
-    fwrite(&tileY, sizeof(uint32), 1, pDirfile);
-    fwrite(&flags, sizeof(uint32), 1, pDirfile);
-    fwrite(&adtId, sizeof(uint16), 1, pDirfile);
-    fwrite(&id, sizeof(uint32), 1, pDirfile);
-    fwrite(&pos, sizeof(float), 3, pDirfile);
-    fwrite(&rot, sizeof(float), 3, pDirfile);
-    fwrite(&sc, sizeof(float), 1, pDirfile);
-    uint32 nlen=strlen(ModelInstName);
-    fwrite(&nlen, sizeof(uint32), 1, pDirfile);
-    fwrite(ModelInstName, sizeof(char), nlen, pDirfile);
-
-    /* int realx1 = (int) ((float) pos.x / 533.333333f);
-    int realy1 = (int) ((float) pos.z / 533.333333f);
-    int realx2 = (int) ((float) pos.x / 533.333333f);
-    int realy2 = (int) ((float) pos.z / 533.333333f);
-
-    fprintf(pDirfile, "%s/%s %f, %f, %f_%f, %f, %f %f %d %d %d, %d %d\n",
-        MapName,
-        ModelInstName,
-        (float) pos.x, (float) pos.y, (float) pos.z,
-        (float) rot.x, (float) rot.y, (float) rot.z,
-        sc,
-        nVertices,
-        realx1, realy1,
-        realx2, realy2
-        ); */
+    
+    fwrite(&mapID, sizeof(uint32), 1, dirfile);
+    fwrite(&tileX, sizeof(uint32), 1, dirfile);
+    fwrite(&tileY, sizeof(uint32), 1, dirfile);
+    fwrite(&flags, sizeof(uint32), 1, dirfile);
+    fwrite(&adtId, sizeof(uint16), 1, dirfile);
+    fwrite(&id,       sizeof(uint32), 1, dirfile);
+    fwrite(&pos,   sizeof(float),  3, dirfile);
+    fwrite(&rot,   sizeof(float),  3, dirfile);
+    fwrite(&sc,    sizeof(float),  1, dirfile);
+    uint32 nlen = strlen(ModelInstName);
+    fwrite(&nlen,  sizeof(uint32), 1, dirfile);
+    fwrite(ModelInstName, sizeof(char), nlen, dirfile);
 }

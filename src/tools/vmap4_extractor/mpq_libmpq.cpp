@@ -27,18 +27,21 @@ MPQArchive::MPQArchive(const char* filename)
 {
     int result = libmpq__archive_open(&mpq_a, filename, -1);
     printf("Opening %s\n", filename);
-    if (result) {
-        switch (result) {
+    
+    if (result) 
+    {
+        switch (result) 
+        {
             case LIBMPQ_ERROR_OPEN :
                 printf("Error opening archive '%s': Does file really exist?\n", filename);
                 break;
-            case LIBMPQ_ERROR_FORMAT :            /* bad file format */
+            case LIBMPQ_ERROR_FORMAT :               /* bad file format */
                 printf("Error opening archive '%s': Bad file format\n", filename);
                 break;
-            case LIBMPQ_ERROR_SEEK :         /* seeking in file failed */
+            case LIBMPQ_ERROR_SEEK :                  /* seeking in file failed */
                 printf("Error opening archive '%s': Seeking in file failed\n", filename);
                 break;
-            case LIBMPQ_ERROR_READ :              /* Read error in archive */
+            case LIBMPQ_ERROR_READ :                  /* Read error in archive */
                 printf("Error opening archive '%s': Read error in archive\n", filename);
                 break;
             case LIBMPQ_ERROR_MALLOC :               /* maybe not enough memory? :) */
@@ -55,17 +58,12 @@ MPQArchive::MPQArchive(const char* filename)
 
 void MPQArchive::close()
 {
-    //gOpenArchives.erase(erase(&mpq_a);
     libmpq__archive_close(mpq_a);
 }
 
-MPQFile::MPQFile(const char* filename):
-    eof(false),
-    buffer(0),
-    pointer(0),
-    size(0)
+MPQFile::MPQFile(const char* filename): eof(false), buffer(0), pointer(0), size(0)
 {
-    for (ArchiveSet::iterator i=gOpenArchives.begin(); i!=gOpenArchives.end();++i)
+    for (ArchiveSet::iterator i = gOpenArchives.begin(); i != gOpenArchives.end(); ++i)
     {
         mpq_archive *mpq_a = (*i)->mpq_a;
 
@@ -75,7 +73,8 @@ MPQFile::MPQFile(const char* filename):
         libmpq__file_unpacked_size(mpq_a, filenum, &size);
 
         // HACK: in patch.mpq some files don't want to open and give 1 for filesize
-        if (size<=1) {
+        if (size <= 1) 
+        {
             // printf("info: file %s has size %d; considered dummy file.\n", filename, size);
             eof = true;
             buffer = 0;
@@ -97,15 +96,14 @@ size_t MPQFile::read(void* dest, size_t bytes)
     if (eof) return 0;
 
     size_t rpos = pointer + bytes;
-    if (rpos > size) {
+    if (rpos > size) 
+    {
         bytes = size - pointer;
         eof = true;
     }
 
     memcpy(dest, &(buffer[pointer]), bytes);
-
     pointer = rpos;
-
     return bytes;
 }
 
@@ -123,7 +121,7 @@ void MPQFile::seekRelative(int offset)
 
 void MPQFile::close()
 {
-    if (buffer) delete[] buffer;
+    if (buffer) delete[]buffer;
     buffer = 0;
     eof = true;
 }

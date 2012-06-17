@@ -22,27 +22,27 @@
 #define TILESIZE (533.33333f)
 #define CHUNKSIZE ((TILESIZE) / 16.0f)
 
+#include "loadlib/loadlib.h"
+#include "vec3d.h"
 #include <string>
 #include <set>
-#include "vec3d.h"
-#include "loadlib/loadlib.h"
 
 // MOPY flags
-#define WMO_MATERIAL_NOCAMCOLLIDE    0x01
-#define WMO_MATERIAL_DETAIL          0x02
-#define WMO_MATERIAL_NO_COLLISION    0x04
-#define WMO_MATERIAL_HINT            0x08
-#define WMO_MATERIAL_RENDER          0x10
-#define WMO_MATERIAL_COLLIDE_HIT     0x20
-#define WMO_MATERIAL_WALL_SURFACE    0x40
+#define WMO_MATERIAL_NOCAMCOLLIDE     0x01
+#define WMO_MATERIAL_DETAIL           0x02
+#define WMO_MATERIAL_NO_COLLISION     0x04
+#define WMO_MATERIAL_HINT             0x08
+#define WMO_MATERIAL_RENDER           0x10
+#define WMO_MATERIAL_COLLIDE_HIT      0x20
+#define WMO_MATERIAL_WALL_SURFACE     0x40
+
 
 class WMOInstance;
 class WMOManager;
 class MPQFile;
 
 /* for whatever reason a certain company just can't stick to one coordinate system... */
-static inline Vec3D fixCoords(const Vec3D &v){ return Vec3D(v.z, v.x, v.y); }
-
+static inline Vec3D fixCoords(const Vec3D &v) { return Vec3D(v.z, v.x, v.y); }
 class WMORoot
 {
 public:
@@ -92,9 +92,9 @@ public:
 
     int mopy_size, moba_size;
     int LiquEx_size;
-    unsigned int nVertices; // number when loaded
-    int nTriangles; // number when loaded
-    char *MOPY;
+    unsigned int nVertices;  // number when loaded
+    int nTriangles;          // number when loaded
+    char* MOPY;
     uint16 *MOVI;
     uint16 *MoviEx;
     float *MOVT;
@@ -102,14 +102,14 @@ public:
     int *MobaEx;
     WMOLiquidHeader *hlq;
     WMOLiquidVert *LiquEx;
-    char *LiquBytes;
+    char* LiquBytes;
     uint32 liquflags;
 
     WMOGroup(std::string &filename);
     ~WMOGroup();
 
     bool open();
-    int ConvertToVMAPGroupWmo(FILE *output, WMORoot *rootWMO, bool pPreciseVectorData);
+    int ConvertToVMAPGroupWmo(FILE *output, WMORoot *rootWMO, bool preciseVectorData);
 
 private:
     std::string filename;
@@ -129,7 +129,7 @@ public:
     uint32 indx, id, d2, d3;
     int doodadset;
 
-    WMOInstance(MPQFile &f, const char* WmoInstName, uint32 mapID, uint32 tileX, uint32 tileY, FILE *pDirfile);
+    WMOInstance(MPQFile &f, const char* WmoInstName, uint32 mapID, uint32 tileX, uint32 tileY, FILE *dirfile);
 
     static void reset();
 };

@@ -25,7 +25,6 @@
 #include "G3D/Set.h"
 #include "BoundingIntervalHierarchy.h"
 
-
 template<class T, class BoundsFunc = BoundsTrait<T> >
 class BIHWrap
 {
@@ -36,7 +35,6 @@ class BIHWrap
         RayCallback& _callback;
 
         MDLCallback(RayCallback& callback, const T* const* objects_array ) : objects(objects_array), _callback(callback) {}
-
         bool operator() (const Ray& ray, uint32 Idx, float& MaxDist, bool /*stopAtFirst*/)
         {
             if (const T* obj = objects[Idx])
@@ -61,7 +59,6 @@ class BIHWrap
 
 public:
     BIHWrap() : unbalanced_times(0) {}
-
     void insert(const T& obj)
     {
         ++unbalanced_times;

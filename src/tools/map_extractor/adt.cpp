@@ -24,7 +24,6 @@
 // Helper
 int holetab_h[4] = {0x1111, 0x2222, 0x4444, 0x8888};
 int holetab_v[4] = {0x000F, 0x00F0, 0x0F00, 0xF000};
-
 bool isHole(int holes, int i, int j)
 {
     int testi = i / 2;
@@ -70,7 +69,8 @@ bool ADT_file::prepareLoadedData()
     // funny offsets calculations because there is no mapping for them and they have variable lengths
     uint8* ptr = (uint8*)a_grid + a_grid->size + 8;
     uint32 mcnk_count = 0;
-    memset(cells, 0, ADT_CELLS_PER_GRID * ADT_CELLS_PER_GRID * sizeof(adt_MCNK*));
+    
+    memset(cells, 0, ADT_CELLS_PER_GRID * ADT_CELLS_PER_GRID * sizeof(adt_MCNK*));   
     while (ptr < GetData() + GetDataSize())
     {
         uint32 header = *(uint32*)ptr;
@@ -96,7 +96,7 @@ bool adt_MHDR::prepareLoadedData()
     if (fcc != 'MHDR')
         return false;
 
-    if (size!=sizeof(adt_MHDR)-8)
+    if (size != sizeof(adt_MHDR)-8)
         return false;
 
     // Check and prepare MCIN
@@ -116,9 +116,9 @@ bool adt_MCIN::prepareLoadedData()
         return false;
 
     // Check cells data
-    for (int i=0; i<ADT_CELLS_PER_GRID;i++)
-        for (int j=0; j<ADT_CELLS_PER_GRID;j++)
-            if (cells[i][j].offsMCNK && !getMCNK(i,j)->prepareLoadedData())
+    for (int i = 0; i < ADT_CELLS_PER_GRID; i++)
+        for (int j = 0; j < ADT_CELLS_PER_GRID; j++)
+            if (cells[i][j].offsMCNK && !getMCNK(i, j)->prepareLoadedData())
                 return false;
 
     return true;
@@ -128,10 +128,6 @@ bool adt_MH2O::prepareLoadedData()
 {
     if (fcc != 'MH2O')
         return false;
-
-    // Check liquid data
-//    for (int i=0; i<ADT_CELLS_PER_GRID;i++)
-//        for (int j=0; j<ADT_CELLS_PER_GRID;j++)
 
     return true;
 }

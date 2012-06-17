@@ -21,11 +21,7 @@
 
 #include "dbcfile.h"
 
-DBCFile::DBCFile(HANDLE file) :
-    _file(file), _data(NULL), _stringTable(NULL)
-{
-}
-
+DBCFile::DBCFile(HANDLE file) : _file(file), _data(NULL), _stringTable(NULL) {}
 bool DBCFile::open()
 {
     char header[4];
@@ -33,6 +29,7 @@ bool DBCFile::open()
 
     DWORD readBytes = 0;
     SFileReadFile(_file, header, 4, &readBytes, NULL);
+    
     if (readBytes != 4)                                         // Number of records
         return false;
 
@@ -55,10 +52,11 @@ bool DBCFile::open()
     if (readBytes != 4)                                         // String size
         return false;
 
-    _recordSize = es;
+    _recordSize  = es;
     _recordCount = na;
-    _fieldCount = nb;
-    _stringSize = ss;
+    _fieldCount  = nb;
+    _stringSize  = ss;
+    
     if (_fieldCount * 4 != _recordSize)
         return false;
 
@@ -67,6 +65,7 @@ bool DBCFile::open()
 
     size_t data_size = _recordSize * _recordCount + _stringSize;
     SFileReadFile(_file, _data, data_size, &readBytes, NULL);
+    
     if (readBytes != data_size)
         return false;
 
@@ -75,7 +74,7 @@ bool DBCFile::open()
 
 DBCFile::~DBCFile()
 {
-    delete [] _data;
+    delete[] _data;
 }
 
 DBCFile::Record DBCFile::getRecord(size_t id)
@@ -87,9 +86,9 @@ DBCFile::Record DBCFile::getRecord(size_t id)
 size_t DBCFile::getMaxId()
 {
     assert(_data);
-
     size_t maxId = 0;
-    for(size_t i = 0; i < getRecordCount(); ++i)
+    
+    for (size_t i = 0; i < getRecordCount(); ++i)
         if (maxId < getRecord(i).getUInt(0))
             maxId = getRecord(i).getUInt(0);
 
@@ -107,4 +106,3 @@ DBCFile::Iterator DBCFile::end()
     assert(_data);
     return Iterator(*this, _stringTable);
 }
-

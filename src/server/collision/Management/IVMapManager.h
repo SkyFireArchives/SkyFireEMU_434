@@ -31,7 +31,6 @@ This is the minimum interface to the VMapMamager.
 
 namespace VMAP
 {
-
     enum VMAP_LOAD_RESULT
     {
         VMAP_LOAD_RESULT_ERROR,
@@ -51,9 +50,7 @@ namespace VMAP
 
         public:
             IVMapManager() : iEnableLineOfSightCalc(true), iEnableHeightCalc(true) {}
-
             virtual ~IVMapManager(void) {}
-
             virtual int loadMap(const char* pBasePath, unsigned int pMapId, int x, int y) = 0;
 
             virtual bool existsMap(const char* pBasePath, unsigned int pMapId, int x, int y) = 0;
@@ -83,11 +80,9 @@ namespace VMAP
             It is enabled by default. If it is enabled in mid game the maps have to loaded manualy
             */
             void setEnableHeightCalc(bool pVal) { iEnableHeightCalc = pVal; }
-
             bool isLineOfSightCalcEnabled() const { return(iEnableLineOfSightCalc); }
             bool isHeightCalcEnabled() const { return(iEnableHeightCalc); }
             bool isMapLoadingEnabled() const { return(iEnableLineOfSightCalc || iEnableHeightCalc  ); }
-
             virtual std::string getDirFileName(unsigned int pMapId, int x, int y) const =0;
             /**
             Query world model area info.
@@ -96,6 +91,5 @@ namespace VMAP
             virtual bool getAreaInfo(unsigned int pMapId, float x, float y, float &z, uint32 &flags, int32 &adtId, int32 &rootId, int32 &groupId) const=0;
             virtual bool GetLiquidLevel(uint32 pMapId, float x, float y, float z, uint8 ReqLiquidType, float &level, float &floor, uint32 &type) const=0;
     };
-
 }
 #endif

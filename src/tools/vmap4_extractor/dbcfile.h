@@ -86,19 +86,19 @@ public:
             assert(ofs < file.recordSize);
             return *reinterpret_cast<unsigned char*>(offset+ofs);
         }
-        const char *getString(size_t field) const
+        const char* getString(size_t field) const
         {
             assert(field < file.fieldCount);
             size_t stringOffset = getUInt(field);
             assert(stringOffset < file.stringSize);
-            //char * tmp = (char*)file.stringTable + stringOffset;
-            //unsigned char * tmp2 = file.stringTable + stringOffset;
+            //char* tmp = (char*)file.stringTable + stringOffset;
+            //unsigned char* tmp2 = file.stringTable + stringOffset;
             return reinterpret_cast<char*>(file.stringTable + stringOffset);
         }
     private:
-        Record(DBCFile &file, unsigned char *offset): file(file), offset(offset) {}
+        Record(DBCFile &file, unsigned char* offset): file(file), offset(offset) {}
         DBCFile &file;
-        unsigned char *offset;
+        unsigned char* offset;
 
         friend class DBCFile;
         friend class Iterator;
@@ -108,7 +108,7 @@ public:
     class Iterator
     {
     public:
-        Iterator(DBCFile &file, unsigned char *offset):
+        Iterator(DBCFile &file, unsigned char* offset):
             record(file, offset) {}
         /// Advance (prefix only)
         Iterator & operator++() {
@@ -142,15 +142,14 @@ public:
     /// Trivial
     size_t getRecordCount() const { return recordCount;}
     size_t getFieldCount() const { return fieldCount; }
-
 private:
     std::string filename;
     size_t recordSize;
     size_t recordCount;
     size_t fieldCount;
     size_t stringSize;
-    unsigned char *data;
-    unsigned char *stringTable;
+    unsigned char* data;
+    unsigned char* stringTable;
 };
 
 #endif
