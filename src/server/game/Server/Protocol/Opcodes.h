@@ -364,7 +364,7 @@ enum Opcodes
     CMSG_QUESTGIVER_STATUS_QUERY                     = 0x04407, // 4.3.4 Build 15595
     CMSG_QUESTLOG_REMOVE_QUEST                       = 0x00000, // Unknown
     CMSG_QUESTLOG_SWAP_QUEST                         = 0x00000, // Unknown
-    CMSG_RANDOMIZE_CHAR_NAME                         = 0x00000, // Unknown
+    CMSG_RANDOMIZE_CHAR_NAME                         = 0x02413, // 4.3.4 Build 15595
     CMSG_READ_ITEM                                   = 0x00000, // Unknown
     CMSG_READY_FOR_ACCOUNT_DATA_TIMES                = 0x02B16, // 4.3.4 Build 15595
     CMSG_REALM_SPLIT                                 = 0x02906, // 4.3.4 Build 15595
@@ -534,7 +534,7 @@ enum Opcodes
     MSG_RAID_TARGET_UPDATE                           = 0x00000, // Unknown
     MSG_RANDOM_ROLL                                  = 0x00905, // 4.3.4 Build 15595
     MSG_SAVE_GUILD_EMBLEM                            = 0x02404, // 4.3.4 Build 15595
-    MSG_SET_DUNGEON_DIFFICULTY                       = 0x00000, // Unknown
+    MSG_SET_DUNGEON_DIFFICULTY                       = 0x04925, // 4.3.4 Build 15595
     MSG_SET_RAID_DIFFICULTY                          = 0x00614, // 4.3.4 Build 15595
     MSG_TABARDVENDOR_ACTIVATE                        = 0x06926, // 4.3.4 Build 15595
     MSG_TALENT_WIPE_CONFIRM                          = 0x00000, // Unknown
@@ -686,7 +686,7 @@ enum Opcodes
     SMSG_FISH_NOT_HOOKED                             = 0x00000, // Unknown
     SMSG_FLIGHT_SPLINE_SYNC                          = 0x00924, // 4.3.4 Build 15595
     SMSG_FORCE_DISPLAY_UPDATE                        = 0x00000, // Unknown
-    SMSG_FORCE_SEND_QUEUED_PACKETS                   = 0x00000, // Unknown
+    SMSG_FORCE_SEND_QUEUED_PACKETS                   = 0x00140, // 4.3.4 Build 15595
     SMSG_FORCEACTIONSHOW                             = 0x00000, // Unknown
     SMSG_FORCED_DEATH_UPDATE                         = 0x00000, // Unknown
     SMSG_FRIEND_STATUS                               = 0x00000, // Unknown
@@ -968,7 +968,7 @@ enum Opcodes
     SMSG_RAID_GROUP_ONLY                             = 0x00000, // Unknown
     SMSG_RAID_INSTANCE_INFO                          = 0x06626, // 4.3.4 Build 15595
     SMSG_RAID_INSTANCE_MESSAGE                       = 0x00000, // Unknown
-    SMSG_RANDOMIZE_CHAR_NAME                         = 0x00000, // Unknown
+    SMSG_RANDOMIZE_CHAR_NAME                         = 0x038B1, // 4.3.4 Build 15595
     SMSG_READ_ITEM_FAILED                            = 0x00000, // Unknown
     SMSG_READ_ITEM_OK                                = 0x00000, // Unknown
     SMSG_REAL_GROUP_UPDATE                           = 0x00000, // Unknown
@@ -1082,6 +1082,7 @@ enum Opcodes
     SMSG_WORLD_STATE_UI_TIMER_UPDATE                 = 0x04A14, // 4.3.4 Build 15595
     SMSG_ZONE_UNDER_ATTACK                           = 0x00000, // Unknown
     SMSG_GMRESPONSE_DB_ERROR                         = 0x00000, // Unknown
+    CMSG_RESET_FACTION_CHEAT                         = 0x04469, // 4.3.4 Build 15595
 };
 
 extern void InitOpcodeTable();
