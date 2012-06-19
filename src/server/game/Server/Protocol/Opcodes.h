@@ -1083,7 +1083,6 @@ enum Opcodes
     SMSG_WORLD_STATE_UI_TIMER_UPDATE                 = 0x04A14, // 4.3.4 Build 15595
     SMSG_ZONE_UNDER_ATTACK                           = 0x00000, // Unknown
     SMSG_GMRESPONSE_DB_ERROR                         = 0x00000, // Unknown
-    CMSG_RESET_FACTION_CHEAT                         = 0x04469, // 4.3.4 Build 15595
 };
 
 extern void InitOpcodeTable();
