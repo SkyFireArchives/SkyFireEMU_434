@@ -386,6 +386,7 @@ enum Opcodes
     CMSG_REQUEST_VEHICLE_NEXT_SEAT                   = 0x00000, // Unknown
     CMSG_REQUEST_VEHICLE_PREV_SEAT                   = 0x00000, // Unknown
     CMSG_REQUEST_VEHICLE_SWITCH_SEAT                 = 0x00000, // Unknown
+    CMSG_RESET_FACTION_CHEAT                         = 0x04469, // 4.3.4 Build 15595
     CMSG_RESET_INSTANCES                             = 0x06E14, // 4.3.4 Build 15595
     CMSG_RESURRECT_RESPONSE                          = 0x06827, // 4.3.4 Build 15595
     CMSG_RETURN_TO_GRAVEYARD                         = 0x00000, // Unknown
@@ -676,7 +677,7 @@ enum Opcodes
     SMSG_ENABLE_BARBER_SHOP                          = 0x00000, // Unknown
     SMSG_ENCHANTMENTLOG                              = 0x00000, // Unknown
     SMSG_ENVIRONMENTALDAMAGELOG                      = 0x00000, // Unknown
-    SMSG_EQUIPMENT_SET_LIST                          = 0x02E04, // Unknown
+    SMSG_EQUIPMENT_SET_LIST                          = 0x02E04, // 4.3.4 Build 15595
     SMSG_EQUIPMENT_SET_SAVED                         = 0x00000, // Unknown
     SMSG_EQUIPMENT_SET_USE_RESULT                    = 0x00000, // Unknown
     SMSG_EXPECTED_SPAM_RECORDS                       = 0x00000, // Unknown
@@ -811,7 +812,7 @@ enum Opcodes
     SMSG_MEETINGSTONE_IN_PROGRESS                    = 0x00000, // Unknown
     SMSG_MEETINGSTONE_MEMBER_ADDED                   = 0x00000, // Unknown
     SMSG_MEETINGSTONE_SETQUEUE                       = 0x00000, // Unknown
-    SMSG_MESSAGECHAT                                 = 0x02026, // Unknown
+    SMSG_MESSAGECHAT                                 = 0x02026, // 4.3.4 Build 15595
     SMSG_MIRRORIMAGE_DATA                            = 0x00000, // Unknown
     SMSG_MODIFY_COOLDOWN                             = 0x00000, // Unknown
     SMSG_MONSTER_MOVE                                = 0x00000, // 4.3.4 Build 15595 -- 0x06E17 -- DISABLED ! causes much shit ATM
@@ -908,7 +909,7 @@ enum Opcodes
     SMSG_PET_DISMISS_SOUND                           = 0x00000, // Unknown
     SMSG_PET_GUIDS                                   = 0x02D26, // 4.3.4 Build 15595
     SMSG_PET_LEARNED_SPELL                           = 0x00000, // Unknown
-    SMSG_PET_MODE                                    = 0x00000, // Unknown
+    SMSG_PET_MODE                                    = 0x02235, // 4.3.4 Build 15595
     SMSG_PET_NAME_INVALID                            = 0x00000, // Unknown
     SMSG_PET_NAME_QUERY_RESPONSE                     = 0x00000, // Unknown
     SMSG_PET_REMOVED_SPELL                           = 0x00000, // Unknown
@@ -951,7 +952,7 @@ enum Opcodes
     SMSG_QUEST_QUERY_RESPONSE                        = 0x06936, // 4.3.4 Build 15595
     SMSG_QUESTGIVER_OFFER_REWARD                     = 0x02427, // 4.3.4 Build 15595
     SMSG_QUESTGIVER_QUEST_COMPLETE                   = 0x00000, // Unknown
-    SMSG_QUESTGIVER_QUEST_DETAILS                    = 0x00000, // Unknown
+    SMSG_QUESTGIVER_QUEST_DETAILS                    = 0x02425, // 4.3.4 Build 15595
     SMSG_QUESTGIVER_QUEST_FAILED                     = 0x00000, // Unknown
     SMSG_QUESTGIVER_QUEST_INVALID                    = 0x00000, // Unknown
     SMSG_QUESTGIVER_QUEST_LIST                       = 0x00000, // Unknown
@@ -1082,7 +1083,6 @@ enum Opcodes
     SMSG_WORLD_STATE_UI_TIMER_UPDATE                 = 0x04A14, // 4.3.4 Build 15595
     SMSG_ZONE_UNDER_ATTACK                           = 0x00000, // Unknown
     SMSG_GMRESPONSE_DB_ERROR                         = 0x00000, // Unknown
-    CMSG_RESET_FACTION_CHEAT                         = 0x04469, // 4.3.4 Build 15595
 };
 
 extern void InitOpcodeTable();
