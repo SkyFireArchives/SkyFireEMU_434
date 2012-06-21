@@ -73,7 +73,7 @@ enum Opcodes
     CMSG_AUTOSTORE_LOOT_ITEM                         = 0x00E34, // 4.3.4 Build 15595
     CMSG_BANKER_ACTIVATE                             = 0x00000, // Unknown
     CMSG_BATTLEFIELD_JOIN                            = 0x00000, // Unknown
-    CMSG_BATTLEFIELD_LIST                            = 0x00000, // Unknown
+    CMSG_BATTLEFIELD_LIST                            = 0x03814, // 4.3.4 Build 15595
     CMSG_BATTLEFIELD_REQUEST_SCORE_DATA              = 0x00000, // Unknown
     CMSG_BATTLEFIELD_STATUS                          = 0x02500, // 4.3.4 Build 15595
     CMSG_BATTLEMASTER_JOIN_ARENA                     = 0x00000, // Unknown
@@ -376,8 +376,8 @@ enum Opcodes
     CMSG_REPOP_REQUEST                               = 0x00000, // Unknown
     CMSG_REPORT_PVP_AFK                              = 0x00000, // Unknown
     CMSG_REQUEST_ACCOUNT_DATA                        = 0x06505, // 4.3.4 Build 15595
-    CMSG_REQUEST_CATEGORY_COOLDOWNS                  = 0x00000, // Unknown
-    CMSG_REQUEST_CEMETERY_LIST                       = 0x00000, // Unknown
+    CMSG_REQUEST_CATEGORY_COOLDOWNS                  = 0x07102, // 4.3.4 Build 15595
+    CMSG_REQUEST_CEMETERY_LIST                       = 0x0720A, // 4.3.4 Build 15595
     CMSG_REQUEST_HOTFIX                              = 0x02401, // 4.3.4 Build 15595
     CMSG_REQUEST_PARTY_MEMBER_STATS                  = 0x00000, // Unknown
     CMSG_REQUEST_PET_INFO                            = 0x04924, // 4.3.4 Build 15595
@@ -769,7 +769,7 @@ enum Opcodes
     SMSG_JOINED_BATTLEGROUND_QUEUE                   = 0x00000, // Unknown
     SMSG_KICK_REASON                                 = 0x00000, // Unknown
     SMSG_LEARNED_DANCE_MOVES                         = 0x00E05, // 4.3.4 Build 15595
-    SMSG_LEARNED_SPELL                               = 0x00000, // Unknown
+    SMSG_LEARNED_SPELL                               = 0x058A2, // 4.3.4 Build 15595
     SMSG_LEVELUP_INFO                                = 0x00000, // Unknown
     SMSG_LFG_BOOT_PLAYER                             = 0x00000, // Unknown
     SMSG_LFG_DISABLED                                = 0x00000, // Unknown
@@ -816,8 +816,8 @@ enum Opcodes
     SMSG_MESSAGECHAT                                 = 0x02026, // 4.3.4 Build 15595
     SMSG_MIRRORIMAGE_DATA                            = 0x00000, // Unknown
     SMSG_MODIFY_COOLDOWN                             = 0x00000, // Unknown
-    SMSG_MONSTER_MOVE                                = 0x00000, // 4.3.4 Build 15595 -- 0x06E17 -- DISABLED ! causes much shit ATM
-    SMSG_MONSTER_MOVE_TRANSPORT                      = 0x00000, // Unknown
+    SMSG_MONSTER_MOVE                                = 0x06E17, // 4.3.4 Build 15595
+    SMSG_MONSTER_MOVE_TRANSPORT                      = 0x02004, // 4.3.4 Build 15595
     SMSG_MOTD                                        = 0x00A35, // 4.3.4 Build 15595
     SMSG_MOUNTRESULT                                 = 0x00000, // Unknown
     SMSG_MOUNTSPECIAL_ANIM                           = 0x00000, // Unknown
@@ -980,7 +980,7 @@ enum Opcodes
     SMSG_REFER_A_FRIEND_FAILURE                      = 0x00000, // Unknown
     SMSG_REMOVED_SPELL                               = 0x04804, // 4.3.4 Build 15595
     SMSG_REPORT_PVP_AFK_RESULT                       = 0x00000, // Unknown
-    SMSG_REQUEST_CEMETERY_LIST_RESPONSE              = 0x00000, // Unknown
+    SMSG_REQUEST_CEMETERY_LIST_RESPONSE              = 0x030A7, // 4.3.4 Build 15595
     SMSG_RESET_FAILED_NOTIFY                         = 0x00000, // Unknown
     SMSG_RESISTLOG                                   = 0x00000, // Unknown
     SMSG_RESPOND_INSPECT_ACHIEVEMENTS                = 0x00000, // Unknown
