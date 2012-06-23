@@ -1088,6 +1088,7 @@ void InitOpcodes()
      //DEFINE_OPCODE_HANDLER(SMSG_VOICESESSION_FULL,                       STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_ServerSide               );
      DEFINE_OPCODE_HANDLER(MSG_GUILD_PERMISSIONS,                        STATUS_LOGGEDIN, PROCESS_THREADUNSAFE, &WorldSession::HandleGuildPermissions          );
      DEFINE_OPCODE_HANDLER(MSG_GUILD_BANK_MONEY_WITHDRAWN,               STATUS_LOGGEDIN, PROCESS_THREADUNSAFE, &WorldSession::HandleGuildBankMoneyWithdrawn   );
+     DEFINE_OPCODE_HANDLER(MSG_GUILD_BANK_REM_MONEY_WITHDRAW_QUERY,      STATUS_LOGGEDIN, PROCESS_THREADUNSAFE, &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(MSG_GUILD_EVENT_LOG_QUERY,                    STATUS_LOGGEDIN, PROCESS_THREADUNSAFE, &WorldSession::HandleGuildEventLogQueryOpcode  );
      //DEFINE_OPCODE_HANDLER(CMSG_MAELSTROM_RENAME_GUILD,                  STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(CMSG_GET_MIRRORIMAGE_DATA,                    STATUS_LOGGEDIN, PROCESS_THREADUNSAFE, &WorldSession::HandleMirrorImageDataRequest    );
@@ -1391,6 +1392,7 @@ void InitOpcodes()
      DEFINE_OPCODE_HANDLER(CMSG_REGISTER_ADDON_PREFIXES,                 STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(SMSG_SUSPEND_COMMS,                           STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(SMSG_LOAD_CUF_PROFILES,                       STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
+     DEFINE_OPCODE_HANDLER(CMSG_DUNGEON_FINDER_GET_SYSTEM_INFO,          STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
 
 #undef DEFINE_OPCODE_HANDLER
 };

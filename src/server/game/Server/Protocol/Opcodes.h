@@ -155,6 +155,7 @@ enum Opcodes
     CMSG_DESTROY_ITEMS                               = 0x04A27, // 4.3.4 Build 15595
     CMSG_DUEL_ACCEPTED                               = 0x00000, // Unknown
     CMSG_DUEL_CANCELLED                              = 0x00000, // Unknown
+    CMSG_DUNGEON_FINDER_GET_SYSTEM_INFO              = 0x00412, // 4.3.4 Build 15595
     CMSG_EJECT_PASSENGER                             = 0x00000, // Unknown
     CMSG_EMOTE                                       = 0x04C26, // 4.3.4 Build 15595
     CMSG_ENABLE_NAGLE                                = 0x04449, // 4.3.4 Build 15595
@@ -478,6 +479,7 @@ enum Opcodes
     MSG_GM_SUMMON                                    = 0x00000, // Unknown
     MSG_GUILD_BANK_LOG_QUERY                         = 0x00000, // Unknown
     MSG_GUILD_BANK_MONEY_WITHDRAWN                   = 0x00000, // Unknown
+    MSG_GUILD_BANK_REM_MONEY_WITHDRAW_QUERY          = 0x01225, // 4.3.4 Build 15595
     MSG_GUILD_EVENT_LOG_QUERY                        = 0x00000, // Unknown
     MSG_GUILD_PERMISSIONS                            = 0x00000, // Unknown
     MSG_INSPECT_ARENA_TEAMS                          = 0x00000, // Unknown
