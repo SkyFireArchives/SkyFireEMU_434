@@ -53,7 +53,7 @@ enum Opcodes
     CMSG_ARENA_TEAM_QUERY                            = 0x00000, // Unknown
     CMSG_ARENA_TEAM_REMOVE                           = 0x02F05, // 4.3.4 Build 15595
     CMSG_ARENA_TEAM_ROSTER                           = 0x00000, // Unknown
-    CMSG_ATTACKSTOP                                  = 0x00000, // Unknown
+    CMSG_ATTACKSTOP                                  = 0x00934, // 4.3.4 Build 15595
     CMSG_ATTACKSWING                                 = 0x00926, // 4.3.4 Build 15595
     CMSG_AUCTION_LIST_BIDDER_ITEMS                   = 0x00000, // Unknown
     CMSG_AUCTION_LIST_ITEMS                          = 0x00324, // 4.3.4 Build 15595
@@ -300,6 +300,7 @@ enum Opcodes
     MSG_MOVE_FORCE_SWIM_SPEED_CHANGE_ACK             = 0x00000, // Unknown
     MSG_MOVE_FORCE_TURN_RATE_CHANGE_ACK              = 0x00000, // Unknown
     MSG_MOVE_FORCE_WALK_SPEED_CHANGE_ACK             = 0x00000, // Unknown
+    MSG_START_MOVE_FORWARD                           = 0x07814, // 4.3.4 Build 15595
     MSG_MOVE_GRAVITY_DISABLE_ACK                     = 0x00000, // Unknown
     MSG_MOVE_GRAVITY_ENABLE_ACK                      = 0x00000, // Unknown
     MSG_MOVE_HOVER_ACK                               = 0x00000, // Unknown
@@ -430,8 +431,9 @@ enum Opcodes
     CMSG_SPIRIT_HEALER_ACTIVATE                      = 0x02E26, // 4.3.4 Build 15595
     CMSG_SPLIT_ITEM                                  = 0x00000, // Unknown
     CMSG_STANDSTATECHANGE                            = 0x00535, // 4.3.4 Build 15595
-    CMSG_START_QUEST                                 = 0x00000, // Unknown
+    CMSG_START_QUEST                                 = 0x00000, // Unknown   
     CMSG_STOP_DANCE                                  = 0x00000, // Unknown
+    CMSG_STOP_MOVE                                   = 0x0320A, // 4.3.4 Build 15595
     CMSG_STORE_LOOT_IN_SLOT                          = 0x00000, // Unknown
     CMSG_SUMMON_RESPONSE                             = 0x00000, // Unknown
     CMSG_SUSPEND_TOKEN                               = 0x0046D, // 4.3.4 Build 15595
@@ -444,7 +446,7 @@ enum Opcodes
     CMSG_TAXISHOWNODES                               = 0x00000, // Unknown
     CMSG_TELEPORT_TO_UNIT                            = 0x00000, // Unknown
     CMSG_TEXT_EMOTE                                  = 0x02E24, // 4.3.4 Build 15595
-    CMSG_TIME_SYNC_RESP                              = 0x03B0C, // 4.3.4 Build 15595
+    CMSG_TIME_SYNC_RESPONSE                          = 0x03B0C, // 4.3.4 Build 15595
     CMSG_TOGGLE_PVP                                  = 0x06815, // 4.3.4 Build 15595
     CMSG_TOTEM_DESTROYED                             = 0x00000, // Unknown
     CMSG_TRAINER_BUY_SPELL                           = 0x04415, // 4.3.4 Build 15595
@@ -500,7 +502,7 @@ enum Opcodes
     MSG_MOVE_SET_TURN_RATE_CHEAT                     = 0x00000, // Unknown
     MSG_MOVE_SET_WALK_SPEED_CHEAT                    = 0x00000, // Unknown
     MSG_MOVE_REQUEST_STATUS				     		 = 0x03914, // 4.3.4 Build 15595
-	MSG_MOVE_HEARTBEAT                               = 0x0380A, // 4.3.4 Build 15595
+	MSG_MOVE_HEARTBEAT                               = 0x0380A, // 4.3.4 Build 15595 (??(ClientToServer: 14612 (0x3914) Number: 83818))
     MSG_MOVE_JUMP                                    = 0x07A06, // 4.3.4 Build 15595
 	MSG_MOVE_START_ASCEND                            = 0x0390A, // 4.3.4 Build 15595
     MSG_MOVE_START_BACKWARD                          = 0x0330A, // 4.3.4 Build 15595
@@ -569,7 +571,7 @@ enum Opcodes
     SMSG_ATTACKSTOP                                  = 0x00934, // 4.3.4 Build 15595
     SMSG_ATTACKSWING_BADFACING                       = 0x00B36, // 4.3.4 Build 15595
     SMSG_ATTACKSWING_CANT_ATTACK                     = 0x00016, // 4.3.4 Build 15595
-    SMSG_ATTACKSWING_DEADTARGET                      = 0x00000, // Unknown
+    SMSG_ATTACKSWING_DEADTARGET                      = 0x00416, // 4.3.4 Build 15595
     SMSG_ATTACKSWING_NOTINRANGE                      = 0x00000, // Unknown
     SMSG_AUCTION_BIDDER_LIST_RESULT                  = 0x00000, // Unknown
     SMSG_AUCTION_BIDDER_NOTIFICATION                 = 0x00000, // Unknown
@@ -594,6 +596,7 @@ enum Opcodes
     SMSG_BATTLEFIELD_MGR_QUEUE_INVITE                = 0x00000, // Unknown
     SMSG_BATTLEFIELD_MGR_QUEUE_REQUEST_RESPONSE      = 0x00000, // Unknown
     SMSG_BATTLEFIELD_MGR_STATE_CHANGE                = 0x00000, // Unknown
+    SMSG_BATTLEFIELD_PLAYER_POSITIONS                = 0x058B4, // 4.3.4 Build 15595
     SMSG_BATTLEFIELD_PORT_DENIED                     = 0x00000, // Unknown
     SMSG_BATTLEFIELD_STATUS                          = 0x07202, // 4.3.4 Build 15595
     SMSG_BATTLEFIELD_STATUS1                         = 0x00000, // Unknown
@@ -879,7 +882,7 @@ enum Opcodes
     MSG_MOVE_SPLINE_STOP_SWIM                        = 0x00000, // Unknown
     MSG_MOVE_SPLINE_UNROOT                           = 0x00000, // Unknown
     MSG_MOVE_SPLINE_UNSET_FLYING                     = 0x00000, // Unknown
-    MSG_MOVE_SPLINE_UNSET_HOVER                      = 0x00000, // Unknown
+    MSG_MOVE_SPLINE_UNSET_HOVER                      = 0x00000, // Unknown   
     MSG_MOVE_TELEPORT                                = 0x00000, // Unknown
     MSG_MOVE_UNROOT                                  = 0x00000, // Unknown
     MSG_MOVE_UNSET_CAN_FLY                           = 0x00000, // Unknown
@@ -906,7 +909,7 @@ enum Opcodes
     SMSG_PARTY_MEMBER_STATS_FULL                     = 0x00000, // Unknown
     SMSG_PARTYKILLLOG                                = 0x00000, // Unknown
     SMSG_PAUSE_MIRROR_TIMER                          = 0x00000, // Unknown
-    SMSG_PERIODICAURALOG                             = 0x00000, // Unknown
+    SMSG_PERIODICAURALOG                             = 0x00416, // 4.3.4 Build 15595
     SMSG_PET_ACTION_FEEDBACK                         = 0x00000, // Unknown
     SMSG_PET_ACTION_SOUND                            = 0x00000, // Unknown
     SMSG_PET_CAST_FAILED                             = 0x00000, // Unknown
@@ -934,7 +937,7 @@ enum Opcodes
     SMSG_PLAY_TIME_WARNING                           = 0x00000, // Unknown
     SMSG_PLAYED_TIME                                 = 0x06037, // 4.3.4 Build 15595
     SMSG_PLAYER_DIFFICULTY_CHANGE                    = 0x00000, // Unknown
-    SMSG_PLAYER_MOVE                                 = 0x00000, // Unknown
+    SMSG_PLAYER_MOVE                                 = 0x079A2, // 4.3.4 Build 15595
     SMSG_PLAYER_SKINNED                              = 0x00000, // Unknown
     SMSG_PLAYER_VEHICLE_DATA                         = 0x00000, // Unknown
     SMSG_PLAYER_UNK_DEAD_ALIVE                       = 0x00000, // Unknown
@@ -974,6 +977,7 @@ enum Opcodes
     SMSG_RAID_INSTANCE_INFO                          = 0x06626, // 4.3.4 Build 15595
     SMSG_RAID_INSTANCE_MESSAGE                       = 0x00000, // Unknown
     SMSG_RANDOMIZE_CHAR_NAME                         = 0x038B1, // 4.3.4 Build 15595
+    SMSG_RATED_BATTLEFIELD_INFO                      = 0x05CB2, // 4.3.4 Build 15595 (needs handled)
     SMSG_READ_ITEM_FAILED                            = 0x00000, // Unknown
     SMSG_READ_ITEM_OK                                = 0x00000, // Unknown
     SMSG_REAL_GROUP_UPDATE                           = 0x00000, // Unknown

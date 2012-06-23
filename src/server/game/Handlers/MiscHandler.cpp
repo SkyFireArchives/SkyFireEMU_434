@@ -1465,7 +1465,7 @@ void WorldSession::HandleSetTitleOpcode(WorldPacket & recv_data)
 
 void WorldSession::HandleTimeSyncResp(WorldPacket & recv_data)
 {
-    sLog->outDebug(LOG_FILTER_NETWORKIO, "CMSG_TIME_SYNC_RESP");
+    sLog->outDebug(LOG_FILTER_NETWORKIO, "CMSG_TIME_SYNC_RESPONSE");
 
     uint32 counter, clientTicks;
     recv_data  >> counter >> clientTicks;
