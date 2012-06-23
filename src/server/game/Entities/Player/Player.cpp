@@ -2043,7 +2043,7 @@ uint8 Player::GetChatTag() const
 
 void Player::SendTeleportPacket(Position &oldPos)
 {
-    WorldPacket data(SMSG_MOVE_TELEPORT, 38);
+    WorldPacket data(MSG_MOVE_TELEPORT, 38);
 
     uint64 guid = GetGUID();
     uint8* bytes = (uint8*)&guid;
@@ -2080,7 +2080,7 @@ void Player::SendTeleportPacket(Position &oldPos)
 
 void Player::SendSetFlyPacket(bool apply)
 {
-    WorldPacket data(apply ? SMSG_MOVE_SET_CAN_FLY : SMSG_MOVE_UNSET_CAN_FLY, 12);
+    WorldPacket data(apply ? MSG_MOVE_SET_CAN_FLY : MSG_MOVE_UNSET_CAN_FLY, 12);
     uint64 guid = GetGUID();
     uint8* bytes = (uint8*)&guid;
     if (apply)
@@ -2230,9 +2230,9 @@ bool Player::TeleportTo(uint32 mapid, float x, float y, float z, float orientati
         SetFallInformation(0, z);
 
         // code for finish transfer called in WorldSession::HandleMovementOpcodes()
-        // at client packet CMSG_MOVE_TELEPORT_ACK
+        // at client packet MSG_MOVE_TELEPORT_ACK
         SetSemaphoreTeleportNear(true);
-        // near teleport, triggering send CMSG_MOVE_TELEPORT_ACK from client at landing
+        // near teleport, triggering send MSG_MOVE_TELEPORT_ACK from client at landing
         if (!GetSession()->PlayerLogout())
         {
             Position oldPos;
@@ -5091,10 +5091,10 @@ void Player::SetMovement(PlayerMovementType pType)
     WorldPacket data;
     switch (pType)
     {
-        case MOVE_ROOT:       data.Initialize(SMSG_MOVE_ROOT,   GetPackGUID().size()+4); break;
-        case MOVE_UNROOT:     data.Initialize(SMSG_MOVE_UNROOT, GetPackGUID().size()+4); break;
-        case MOVE_WATER_WALK: data.Initialize(SMSG_MOVE_SPLINE_SET_WATER_WALK,   GetPackGUID().size()+4); break;
-        case MOVE_LAND_WALK:  data.Initialize(SMSG_MOVE_SPLINE_SET_LAND_WALK,    GetPackGUID().size()+4); break;
+        case MOVE_ROOT:       data.Initialize(MSG_MOVE_ROOT,   GetPackGUID().size()+4); break;
+        case MOVE_UNROOT:     data.Initialize(MSG_MOVE_UNROOT, GetPackGUID().size()+4); break;
+        case MOVE_WATER_WALK: data.Initialize(MSG_MOVE_SPLINE_SET_WATER_WALK,   GetPackGUID().size()+4); break;
+        case MOVE_LAND_WALK:  data.Initialize(MSG_MOVE_SPLINE_SET_LAND_WALK,    GetPackGUID().size()+4); break;
         default:
             sLog->outError("Player::SetMovement: Unsupported move type (%d), data not sent to client.", pType);
             return;
@@ -21933,7 +21933,7 @@ void Player::SendInitialPacketsAfterAddToMap()
     // manual send package (have code in HandleEffect(this, AURA_EFFECT_HANDLE_SEND_FOR_CLIENT, true); that must not be re-applied.
     if (HasAuraType(SPELL_AURA_MOD_ROOT))
     {
-        WorldPacket data2(SMSG_MOVE_ROOT, 10);
+        WorldPacket data2(MSG_MOVE_ROOT, 10);
         data2.append(GetPackGUID());
         data2 << (uint32)2;
         SendMessageToSet(&data2, true);

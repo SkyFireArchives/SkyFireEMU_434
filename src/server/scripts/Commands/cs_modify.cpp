@@ -960,14 +960,14 @@ public:
         target->SetUInt32Value(UNIT_FIELD_FLAGS, UNIT_FLAG_PVP);
         target->Mount(mId);
 
-        WorldPacket data(SMSG_MOVE_SET_RUN_SPEED, (8+4+1+4));
+        WorldPacket data(MSG_MOVE_SET_RUN_SPEED, (8+4+1+4));
         data.append(target->GetPackGUID());
         data << (uint32)0;
         data << (uint8)0;                                       //new 2.1.0
         data << float(speed);
         target->SendMessageToSet(&data, true);
 
-        data.Initialize(SMSG_MOVE_SET_SWIM_SPEED, (8+4+4));
+        data.Initialize(MSG_MOVE_SET_SWIM_SPEED, (8+4+4));
         data.append(target->GetPackGUID());
         data << (uint32)0;
         data << float(speed);
@@ -1399,7 +1399,7 @@ public:
             uint64 guid = target->GetGUID();
             uint8* bytes = (uint8*)&guid;
 
-            data.Initialize(SMSG_MOVE_SPLINE_ENABLE_COLLISION, 1 + 8);
+            data.Initialize(MSG_MOVE_SPLINE_ENABLE_COLLISION, 1 + 8);
             data.WriteByteMask(bytes[7]);
             data.WriteByteMask(bytes[5]);
             data.WriteByteMask(bytes[4]);
@@ -1430,7 +1430,7 @@ public:
             uint64 guid = target->GetGUID();
             uint8* bytes = (uint8*)&guid;
 
-            data.Initialize(SMSG_MOVE_SPLINE_DISABLE_COLLISION, 1 + 8);
+            data.Initialize(MSG_MOVE_SPLINE_DISABLE_COLLISION, 1 + 8);
             data.WriteByteMask(bytes[4]);
             data.WriteByteMask(bytes[7]);
             data.WriteByteMask(bytes[5]);

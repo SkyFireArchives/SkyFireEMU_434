@@ -2939,9 +2939,9 @@ void AuraEffect::HandleAuraWaterWalk(AuraApplication const* aurApp, uint8 mode, 
 
     WorldPacket data;
     if (apply)
-        data.Initialize(SMSG_MOVE_SPLINE_SET_WATER_WALK, 8+4);
+        data.Initialize(MSG_MOVE_SPLINE_SET_WATER_WALK, 8+4);
     else
-        data.Initialize(SMSG_MOVE_SPLINE_SET_LAND_WALK, 8+4);
+        data.Initialize(MSG_MOVE_SPLINE_SET_LAND_WALK, 8+4);
     data.append(target->GetPackGUID());
     data << uint32(0);
     target->SendMessageToSet(&data, true);
@@ -2963,9 +2963,9 @@ void AuraEffect::HandleAuraFeatherFall(AuraApplication const* aurApp, uint8 mode
 
     WorldPacket data;
     if (apply)
-        data.Initialize(SMSG_MOVE_SPLINE_SET_FEATHER_FALL, 8+4);
+        data.Initialize(MSG_MOVE_SPLINE_SET_FEATHER_FALL, 8+4);
     else
-        data.Initialize(SMSG_MOVE_SPLINE_SET_NORMAL_FALL, 8+4);
+        data.Initialize(MSG_MOVE_SPLINE_SET_NORMAL_FALL, 8+4);
     data.append(target->GetPackGUID());
     data << uint32(0);
     target->SendMessageToSet(&data, true);
@@ -2991,9 +2991,9 @@ void AuraEffect::HandleAuraHover(AuraApplication const* aurApp, uint8 mode, bool
 
     WorldPacket data;
     if (apply)
-        data.Initialize(SMSG_MOVE_SPLINE_SET_HOVER, 8+4);
+        data.Initialize(MSG_MOVE_SPLINE_SET_HOVER, 8+4);
     else
-        data.Initialize(SMSG_MOVE_SPLINE_UNSET_HOVER, 8+4);
+        data.Initialize(MSG_MOVE_SPLINE_UNSET_HOVER, 8+4);
     data.append(target->GetPackGUID());
     data << uint32(0);
     target->SendMessageToSet(&data, true);

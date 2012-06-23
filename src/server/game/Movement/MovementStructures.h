@@ -1210,37 +1210,37 @@ MovementStatusElements* GetMovementStatusElementsSequence(Opcodes opcode)
 {
     switch(opcode)
     {
-	case CMSG_MOVE_UPDATE_MOUSE://done
+	case MSG_MOVE_UPDATE_MOUSE://done
         return MovementUpdateMouseSequence;
     //case SMSG_PLAYER_MOVE://done
     //    return PlayerMoveSequence;
     //case MSG_MOVE_FALL_LAND://done
     //    return MovementFallLandSequence;
-    case CMSG_MOVE_HEARTBEAT://done
+    case MSG_MOVE_HEARTBEAT://done
         return MovementHeartBeatSequence;
-    case CMSG_MOVE_JUMP://done
+    case MSG_MOVE_JUMP://done
         return MovementJumpSequence;
     //case MSG_MOVE_SET_FACING://done
     //    return MovementSetFacingSequence;
     //case MSG_MOVE_SET_PITCH://done*/
     //    return MovementSetPitchSequence;
-    case CMSG_MOVE_START_BACKWARD://done
+    case MSG_MOVE_START_BACKWARD://done
         return MovementStartBackwardSequence;
-    case CMSG_MOVE_START_FORWARD://done
+    case MSG_MOVE_START_FORWARD://done
         return MovementStartForwardSequence;
-    case CMSG_MOVE_START_STRAFE_LEFT://done
+    case MSG_MOVE_START_STRAFE_LEFT://done
         return MovementStartStrafeLeftSequence;
-    case CMSG_MOVE_START_STRAFE_RIGHT://done
+    case MSG_MOVE_START_STRAFE_RIGHT://done
         return MovementStartStrafeRightSequence;
-    case CMSG_MOVE_START_TURN_LEFT://done
+    case MSG_MOVE_START_TURN_LEFT://done
         return MovementStartTurnLeftSequence;
-    case CMSG_MOVE_START_TURN_RIGHT://done
+    case MSG_MOVE_START_TURN_RIGHT://done
         return MovementStartTurnRightSequence;
-    case CMSG_MOVE_STOP://done
+    case MSG_MOVE_STOP://done
         return MovementStopSequence;
-    case CMSG_MOVE_STOP_STRAFE://done
+    case MSG_MOVE_STOP_STRAFE://done
         return MovementStopStrafeSequence;
-    case CMSG_MOVE_STOP_TURN://done
+    case MSG_MOVE_STOP_TURN://done
         return MovementStopTurnSequence;
     /*case MSG_MOVE_START_ASCEND://done
         return MovementStartAscendSequence;
@@ -1248,13 +1248,13 @@ MovementStatusElements* GetMovementStatusElementsSequence(Opcodes opcode)
         return MovementStartDescendSequence;
     case MSG_MOVE_START_SWIM://done
         return MovementStartSwimSequence;
-    case CMSG_MOVE_STOP_ASCEND://done
+    case MSG_MOVE_STOP_ASCEND://done
         return MovementStopAscendSequence;*/
-	case CMSG_MOVE_SET_RUN_MODE:
+	case MSG_MOVE_SET_RUN_MODE:
 		return MovementSetRunModeSequence;
-	case CMSG_MOVE_SET_WALK_MODE:
+	case MSG_MOVE_SET_WALK_MODE:
 		return MovementSetWalkModeSequence;
-	case CMSG_MOVE_REQUEST_STATUS:
+	case MSG_MOVE_REQUEST_STATUS:
 		return MovementRequestStatusSequence;
 	default:
         break;

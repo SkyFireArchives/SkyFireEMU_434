@@ -198,7 +198,7 @@ void WorldSession::HandleActivateTaxiExpressOpcode (WorldPacket & recv_data)
 
 void WorldSession::HandleMoveSplineDoneOpcode(WorldPacket& recv_data)
 {
-    sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: Received CMSG_MOVE_SPLINE_DONE");
+    sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: Received MSG_MOVE_SPLINE_DONE");
 
     uint64 guid; // used only for proper packet read
     recv_data.readPackGUID(guid);

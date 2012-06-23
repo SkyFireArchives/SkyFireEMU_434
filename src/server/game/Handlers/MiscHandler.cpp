@@ -407,7 +407,7 @@ void WorldSession::HandleLogoutRequestOpcode(WorldPacket & /*recv_data*/)
     {
         GetPlayer()->SetStandState(UNIT_STAND_STATE_SIT);
 
-        WorldPacket data(SMSG_MOVE_ROOT, (8+4));    // guess size
+        WorldPacket data(MSG_MOVE_ROOT, (8+4));    // guess size
         data.append(GetPlayer()->GetPackGUID());
         data << (uint32)2;
         SendPacket(&data);
@@ -439,7 +439,7 @@ void WorldSession::HandleLogoutCancelOpcode(WorldPacket & /*recv_data*/)
     if (GetPlayer()->CanFreeMove())
     {
         //!we can move again
-        data.Initialize(SMSG_MOVE_UNROOT, 8);       // guess size
+        data.Initialize(MSG_MOVE_UNROOT, 8);       // guess size
         data.append(GetPlayer()->GetPackGUID());
         data << uint32(0);
         SendPacket(&data);
@@ -1085,7 +1085,7 @@ void WorldSession::HandleNextCinematicCamera(WorldPacket & /*recv_data*/)
 
 void WorldSession::HandleMoveTimeSkippedOpcode(WorldPacket & recv_data)
 {
-    sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: Received CMSG_MOVE_TIME_SKIPPED");
+    sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: Received MSG_MOVE_TIME_SKIPPED");
 
     BitStream mask = recv_data.ReadBitStream(8);
 
@@ -1111,7 +1111,7 @@ void WorldSession::HandleMoveTimeSkippedOpcode(WorldPacket & recv_data)
         uint32 time_skipped;
         recv_data >> guid;
         recv_data >> time_skipped;
-        sLog->outDebug(LOG_FILTER_PACKETIO, "WORLD: CMSG_MOVE_TIME_SKIPPED");
+        sLog->outDebug(LOG_FILTER_PACKETIO, "WORLD: MSG_MOVE_TIME_SKIPPED");
 
         /// TODO
         must be need use in Trinity
@@ -1123,7 +1123,7 @@ void WorldSession::HandleMoveTimeSkippedOpcode(WorldPacket & recv_data)
 
 void WorldSession::HandleFeatherFallAck(WorldPacket &recv_data)
 {
-    sLog->outStaticDebug("WORLD: CMSG_MOVE_FEATHER_FALL_ACK");
+    sLog->outStaticDebug("WORLD: MSG_MOVE_FEATHER_FALL_ACK");
 
     // no used
     recv_data.rfinish();                       // prevent warnings spam
@@ -1634,7 +1634,7 @@ void WorldSession::HandleCancelMountAuraOpcode(WorldPacket & /*recv_data*/)
 void WorldSession::HandleMoveSetCanFlyAckOpcode(WorldPacket & recv_data)
 {
     // fly mode on/off
-    sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: CMSG_MOVE_SET_CAN_FLY_ACK");
+    sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: MSG_MOVE_SET_CAN_FLY_ACK");
 
     uint64 guid;                                            // guid - unused
     recv_data.readPackGUID(guid);

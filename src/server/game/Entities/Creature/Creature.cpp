@@ -2417,7 +2417,7 @@ void Creature::SetWalk(bool enable)
         AddUnitMovementFlag(MOVEMENTFLAG_WALKING);
     else
         RemoveUnitMovementFlag(MOVEMENTFLAG_WALKING);
-    WorldPacket data(enable ? SMSG_MOVE_SPLINE_SET_WALK_MODE : SMSG_MOVE_SPLINE_SET_RUN_MODE, 9);
+    WorldPacket data(enable ? MSG_MOVE_SPLINE_SET_WALK_MODE : MSG_MOVE_SPLINE_SET_RUN_MODE, 9);
     data.append(GetPackGUID());
     SendMessageToSet(&data, true);
 }
@@ -2428,7 +2428,7 @@ void Creature::SetLevitate(bool enable)
         AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
     else
         RemoveUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
-    WorldPacket data(enable ? SMSG_MOVE_SPLINE_DISABLE_GRAVITY : SMSG_MOVE_SPLINE_ENABLE_GRAVITY, 9);
+    WorldPacket data(enable ? MSG_MOVE_SPLINE_DISABLE_GRAVITY : MSG_MOVE_SPLINE_ENABLE_GRAVITY, 9);
     data.append(GetPackGUID());
     SendMessageToSet(&data, true);
 }
