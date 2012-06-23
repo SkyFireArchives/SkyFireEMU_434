@@ -399,7 +399,7 @@ enum Opcodes
     CMSG_SERVERTIME                                  = 0x00000, // Unknown
     CMSG_SET_ACTION_BUTTON                           = 0x06F06, // 4.3.4 Build 15595
     CMSG_SET_ACTIONBAR_TOGGLES                       = 0x02506, // 4.3.4 Build 15595
-    CMSG_SET_ACTIVE_MOVER                            = 0x00000, // Unknown
+    CMSG_SET_ACTIVE_MOVER                            = 0x03314, // 4.3.4 Build 15595
     CMSG_SET_ACTIVE_VOICE_CHANNEL                    = 0x04305, // 4.3.4 Build 15595
     CMSG_SET_ALLOW_LOW_LEVEL_RAID1                   = 0x04435, // 4.3.4 Build 15595
     CMSG_SET_ALLOW_LOW_LEVEL_RAID2                   = 0x00536, // 4.3.4 Build 15595
@@ -1084,6 +1084,8 @@ enum Opcodes
     SMSG_WORLD_STATE_UI_TIMER_UPDATE                 = 0x04A14, // 4.3.4 Build 15595
     SMSG_ZONE_UNDER_ATTACK                           = 0x00000, // Unknown
     SMSG_GMRESPONSE_DB_ERROR                         = 0x00000, // Unknown
+    SMSG_SUSPEND_COMMS                               = 0x04140, // 4.3.4 Build 15595
+    SMSG_LOAD_CUF_PROFILES                           = 0x050B1, // 4.3.4 Build 15595
 };
 
 extern void InitOpcodeTable();

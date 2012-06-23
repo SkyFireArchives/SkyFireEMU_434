@@ -1389,6 +1389,8 @@ void InitOpcodes()
      DEFINE_OPCODE_HANDLER(CMSG_BATTLEFIELD_REQUEST_SCORE_DATA,          STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     ); 
      DEFINE_OPCODE_HANDLER(SMSG_MEETINGSTONE_SETQUEUE,                   STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_ServerSide               );
      DEFINE_OPCODE_HANDLER(CMSG_REGISTER_ADDON_PREFIXES,                 STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
+     DEFINE_OPCODE_HANDLER(SMSG_SUSPEND_COMMS,                           STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
+     DEFINE_OPCODE_HANDLER(SMSG_LOAD_CUF_PROFILES,                       STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
 
 #undef DEFINE_OPCODE_HANDLER
 };
