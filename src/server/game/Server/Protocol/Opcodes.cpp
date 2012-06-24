@@ -1393,6 +1393,7 @@ void InitOpcodes()
      DEFINE_OPCODE_HANDLER(SMSG_SUSPEND_COMMS,                           STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(SMSG_LOAD_CUF_PROFILES,                       STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(CMSG_DUNGEON_FINDER_GET_SYSTEM_INFO,          STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
+     DEFINE_OPCODE_HANDLER(SMSG_ALL_GUILD_ACHIEVEMENTS,                  STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
 
 #undef DEFINE_OPCODE_HANDLER
 };
