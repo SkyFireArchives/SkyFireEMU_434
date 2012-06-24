@@ -582,13 +582,13 @@ enum Opcodes
     SMSG_AUCTION_OWNER_NOTIFICATION                  = 0x00000, // Unknown
     SMSG_AUCTION_REMOVED_NOTIFICATION                = 0x00000, // Unknown
     SMSG_AURA_UPDATE                                 = 0x04707, // 4.3.4 Build 15595
-    SMSG_AURA_UPDATE_ALL                             = 0x04114, // 4.3.4 Build 15595
+    SMSG_AURA_UPDATE_ALL                             = 0x06916, // 4.3.4 Build 15595
     SMSG_AURACASTLOG                                 = 0x00000, // Unknown
     SMSG_AUTH_CHALLENGE                              = 0x04542, // 4.3.4 Build 15595
     SMSG_AUTH_RESPONSE                               = 0x05DB6, // 4.3.4 Build 15595
     SMSG_AVAILABLE_VOICE_CHANNEL                     = 0x00000, // Unknown
-    SMSG_BARBER_SHOP_RESULT                          = 0x00000, // Unknown
-    SMSG_BATTLEFIELD_LIST                            = 0x00000, // Unknown
+    SMSG_BARBER_SHOP_RESULT                          = 0x06125, // 4.3.4 Build 15595
+    SMSG_BATTLEFIELD_LIST                            = 0x071B5, // 4.3.4 Build 15595
     SMSG_BATTLEFIELD_MGR_EJECT_PENDING               = 0x00000, // Unknown
     SMSG_BATTLEFIELD_MGR_EJECTED                     = 0x00000, // Unknown
     SMSG_BATTLEFIELD_MGR_ENTERED                     = 0x00000, // Unknown
