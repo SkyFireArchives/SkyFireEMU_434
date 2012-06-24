@@ -40,6 +40,7 @@ enum Opcodes
     CMSG_ADD_FRIEND                                  = 0x06C29, // 4.3.4 Build 15595
     CMSG_ADD_IGNORE                                  = 0x00000, // Unknown
     CMSG_ADD_VOICE_IGNORE                            = 0x00F06, // 4.3.4 Build 15595
+    CMSG_ADDON_REGISTERED_PREFIXES                   = 0x00954, // 4.3.4 Build 15595
     CMSG_ALTER_APPEARANCE                            = 0x00000, // Unknown
     CMSG_AREA_SPIRIT_HEALER_QUERY                    = 0x04907, // 4.3.4 Build 15595
     CMSG_AREA_SPIRIT_HEALER_QUEUE                    = 0x00000, // Unknown
@@ -204,6 +205,7 @@ enum Opcodes
     CMSG_GUILD_BANK_DEPOSIT_MONEY                    = 0x00000, // Unknown
     CMSG_GUILD_BANK_NOTE                             = 0x00000, // Unknown
     CMSG_GUILD_BANK_QUERY_TAB                        = 0x00000, // Unknown
+    CMSG_GUILD_BANK_REM_MONEY_WITHDRAW_QUERY         = 0x01225, // 4.3.4 Build 15595
     CMSG_GUILD_BANK_SWAP_ITEMS                       = 0x02315, // 4.3.4 Build 15595
     CMSG_GUILD_BANK_UPDATE_TAB                       = 0x00000, // Unknown
     CMSG_GUILD_BANK_WITHDRAW_MONEY                   = 0x00000, // Unknown
@@ -731,7 +733,7 @@ enum Opcodes
     SMSG_GUILD_CANCEL                                = 0x00000, // Unknown
     SMSG_GUILD_COMMAND_RESULT                        = 0x00000, // Unknown
     SMSG_GUILD_DECLINE                               = 0x00000, // Unknown
-    SMSG_GUILD_EVENT                                 = 0x00000, // Unknown
+    SMSG_GUILD_EVENT                                 = 0x00705, // 4.3.4 Build 15595
     SMSG_GUILD_INFO                                  = 0x00000, // Unknown
     SMSG_GUILD_INVITE                                = 0x00000, // Unknown
     SMSG_GUILD_MAX_DAILY_XP                          = 0x00000, // Unknown
