@@ -605,6 +605,7 @@ enum Opcodes
     SMSG_BATTLEFIELD_STATUS2                         = 0x00000, // Unknown
     SMSG_BATTLEFIELD_STATUS3                         = 0x00000, // Unknown
     SMSG_BATTLEFIELD_STATUS4                         = 0x00000, // Unknown
+    SMSG_BATTLEFIELD_STATUS_QUEUED                   = 0x035A1, // 4.3.4 Build1559
     SMSG_BATTLEGROUND_INFO_THROTTLED                 = 0x00000, // Unknown
     SMSG_BATTLEGROUND_PLAYER_JOINED                  = 0x00000, // Unknown
     SMSG_BATTLEGROUND_PLAYER_LEFT                    = 0x00000, // Unknown
@@ -684,7 +685,7 @@ enum Opcodes
     SMSG_ECHO_PARTY_SQUELCH                          = 0x00000, // Unknown
     SMSG_EMOTE                                       = 0x00A34, // 4.3.4 Build 15595
     SMSG_ENABLE_BARBER_SHOP                          = 0x00000, // Unknown
-    SMSG_ENCHANTMENTLOG                              = 0x00000, // Unknown
+    SMSG_ENCHANTMENTLOG                              = 0x06035, // 4.3.4 Build 15595
     SMSG_ENVIRONMENTALDAMAGELOG                      = 0x00000, // Unknown
     SMSG_EQUIPMENT_SET_LIST                          = 0x02E04, // 4.3.4 Build 15595
     SMSG_EQUIPMENT_SET_SAVED                         = 0x00000, // Unknown
@@ -953,6 +954,7 @@ enum Opcodes
     SMSG_PROPOSE_LEVEL_GRANT                         = 0x00000, // Unknown
     SMSG_PUREMOUNT_CANCELLED_OBSOLETE                = 0x00000, // Unknown
     SMSG_PVP_CREDIT                                  = 0x00000, // Unknown
+    SMSG_PVP_LOG_DATA                                = 0x054A3, // 4.3.4 Build 15595
     SMSG_QUERY_QUESTS_COMPLETED_RESPONSE             = 0x00000, // Unknown
     SMSG_QUERY_TIME_RESPONSE                         = 0x02124, // 4.3.4 Build 15595
     SMSG_QUEST_CONFIRM_ACCEPT                        = 0x00000, // Unknown
