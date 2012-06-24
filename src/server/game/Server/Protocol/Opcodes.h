@@ -221,7 +221,7 @@ enum Opcodes
     CMSG_GUILD_QUERY                                 = 0x04426, // 4.3.4 Build 15595
     CMSG_GUILD_RANK                                  = 0x00000, // Unknown
     CMSG_GUILD_REMOVE                                = 0x00000, // Unknown
-    CMSG_GUILD_ROSTER                                = 0x00000, // Unknown
+    CMSG_GUILD_ROSTER                                = 0x01026, // 4.3.4 Build 15595
     CMSG_GUILD_SET_ACHIEVEMENT_TRACKING              = 0x01027, // 4.3.4 Build 15595
     CMSG_GUILD_SET_NOTE                              = 0x00000, // Unknown
     CMSG_GUILDFINDER_JOIN                            = 0x00000, // Unknown
@@ -502,7 +502,7 @@ enum Opcodes
     MSG_MOVE_SET_TURN_RATE_CHEAT                     = 0x00000, // Unknown
     MSG_MOVE_SET_WALK_SPEED_CHEAT                    = 0x00000, // Unknown
     MSG_MOVE_REQUEST_STATUS				     		 = 0x03914, // 4.3.4 Build 15595
-	MSG_MOVE_HEARTBEAT                               = 0x0380A, // 4.3.4 Build 15595 (??(ClientToServer: 14612 (0x3914) Number: 83818))
+    MSG_MOVE_HEARTBEAT                               = 0x0380A, // 4.3.4 Build 15595 (??(ClientToServer: 14612 (0x3914) Number: 83818))
     MSG_MOVE_JUMP                                    = 0x07A06, // 4.3.4 Build 15595
 	MSG_MOVE_START_ASCEND                            = 0x0390A, // 4.3.4 Build 15595
     MSG_MOVE_START_BACKWARD                          = 0x0330A, // 4.3.4 Build 15595
@@ -667,7 +667,7 @@ enum Opcodes
     SMSG_DB_REPLY                                    = 0x038A4, // 4.3.4 Build 15595
     SMSG_DEATH_RELEASE_LOC                           = 0x00000, // Unknown
     SMSG_DEFENSE_MESSAGE                             = 0x00314, // 4.3.4 Build 15595
-    SMSG_DESTROY_OBJECT                              = 0x00000, // Unknown
+    SMSG_DESTROY_OBJECT                              = 0x04724, // 4.3.4 Build 15595
     SMSG_DESTRUCTIBLE_BUILDING_DAMAGE                = 0x00000, // Unknown
     SMSG_DISMOUNT                                    = 0x00000, // Unknown
     SMSG_DISMOUNTRESULT                              = 0x00000, // Unknown
@@ -737,10 +737,10 @@ enum Opcodes
     SMSG_GUILD_MAX_DAILY_XP                          = 0x00000, // Unknown
     SMSG_GUILD_NEWS_UPDATE                           = 0x00000, // Unknown
     SMSG_GUILD_QUERY_RESPONSE                        = 0x00E06, // 4.3.4 Build 15595
-    SMSG_GUILD_RANK                                  = 0x00000, // Unknown
+    SMSG_GUILD_RANK                                  = 0x030B4, // 4.3.4 Build 15595
     SMSG_GUILD_RANKS_UPDATE                          = 0x00000, // Unknown
     SMSG_GUILD_REWARDS_LIST                          = 0x00000, // Unknown
-    SMSG_GUILD_ROSTER                                = 0x00000, // Unknown
+    SMSG_GUILD_ROSTER                                = 0x03DA3, // 4.3.4 Build 15595
     SMSG_GUILD_SET_NOTE                              = 0x00000, // Unknown
     SMSG_GUILD_TRADESKILL_UPDATE                     = 0x00000, // Unknown
     SMSG_GUILD_UPDATE_ROSTER                         = 0x00000, // Unknown
@@ -815,6 +815,7 @@ enum Opcodes
     SMSG_LOOT_SLOT_CHANGED                           = 0x00000, // Unknown
     SMSG_LOOT_START_ROLL                             = 0x00000, // Unknown
     SMSG_MAIL_LIST_RESULT                            = 0x00000, // Unknown
+    SMSG_MAIL_COMMAND_RESULT                         = 0x04927, // 4.3.4 Build 15595
     SMSG_MEETINGSTONE_COMPLETE                       = 0x00000, // Unknown
     SMSG_MEETINGSTONE_IN_PROGRESS                    = 0x00000, // Unknown
     SMSG_MEETINGSTONE_MEMBER_ADDED                   = 0x00000, // Unknown
@@ -918,7 +919,7 @@ enum Opcodes
     SMSG_PET_LEARNED_SPELL                           = 0x00000, // Unknown
     SMSG_PET_MODE                                    = 0x02235, // 4.3.4 Build 15595
     SMSG_PET_NAME_INVALID                            = 0x00000, // Unknown
-    SMSG_PET_NAME_QUERY_RESPONSE                     = 0x00000, // Unknown
+    SMSG_PET_NAME_QUERY_RESPONSE                     = 0x04C37, // 4.3.4 Build 15595
     SMSG_PET_REMOVED_SPELL                           = 0x00000, // Unknown
     SMSG_PET_SPELLS                                  = 0x04114, // 4.3.4 Build 15595
     SMSG_PET_TAME_FAILURE                            = 0x00000, // Unknown
