@@ -294,10 +294,10 @@ enum Opcodes
     MSG_MOVE_ENABLE_SWIM_TO_FLY_TRANS_ACK            = 0x00000, // Unknown
     MSG_MOVE_FEATHER_FALL_ACK                        = 0x00000, // Unknown
     MSG_MOVE_FORCE_FLIGHT_BACK_SPEED_CHANGE_ACK      = 0x00000, // Unknown
-    MSG_MOVE_FORCE_FLIGHT_SPEED_CHANGE_ACK           = 0x00000, // Unknown
+    MSG_MOVE_FORCE_FLIGHT_SPEED_CHANGE_ACK           = 0x07314, // 4.3.4 Build 15595
     MSG_MOVE_FORCE_PITCH_RATE_CHANGE_ACK             = 0x00000, // Unknown
     MSG_MOVE_FORCE_RUN_BACK_SPEED_CHANGE_ACK         = 0x00000, // Unknown
-    MSG_MOVE_FORCE_RUN_SPEED_CHANGE_ACK              = 0x00000, // Unknown
+    MSG_MOVE_FORCE_RUN_SPEED_CHANGE_ACK              = 0x07818, // 4.3.4 Build 15595
     MSG_MOVE_FORCE_SWIM_BACK_SPEED_CHANGE_ACK        = 0x00000, // Unknown
     MSG_MOVE_FORCE_SWIM_SPEED_CHANGE_ACK             = 0x00000, // Unknown
     MSG_MOVE_FORCE_TURN_RATE_CHANGE_ACK              = 0x00000, // Unknown
@@ -308,7 +308,7 @@ enum Opcodes
     MSG_MOVE_HOVER_ACK                               = 0x00000, // Unknown
     MSG_MOVE_KNOCK_BACK_ACK                          = 0x05CB4, // 4.3.4 Build 15595
     MSG_MOVE_SET_CAN_FLY_ACK                         = 0x0790C, // 4.3.4 Build 15595
-    MSG_MOVE_SET_COLLISION_HEIGHT_ACK                = 0x00000, // Unknown
+    MSG_MOVE_SET_COLLISION_HEIGHT_ACK                = 0x07114, // 4.3.4 Build 15595
     MSG_MOVE_SET_RELATIVE_POSITION                   = 0x00000, // Unknown
     MSG_MOVE_SET_VEHICLE_REC_ID_ACK                  = 0x00000, // Unknown
     MSG_MOVE_TELEPORT_ACK                            = 0x00000, // Unknown
@@ -834,7 +834,7 @@ enum Opcodes
     MSG_MOVE_DISABLE_TRANSITION_BETWEEN_SWIM_AND_FLY = 0x00000, // Unknown
     MSG_MOVE_ENABLE_COLLISION                        = 0x00000, // Unknown
     MSG_MOVE_ENABLE_GRAVITY                          = 0x00000, // Unknown
-    MSG_MOVE_ENABLE_TRANSITION_BETWEEN_SWIM_AND_FLY  = 0x00000, // Unknown
+    MSG_MOVE_ENABLE_TRANSITION_BETWEEN_SWIM_AND_FLY  = 0x03014, // 4.3.4 Build 15595
     MSG_MOVE_KNOCK_BACK                              = 0x00000, // Unknown
     MSG_MOVE_ROOT                                    = 0x00000, // Unknown
     MSG_MOVE_SET_ACTIVE_MOVER                        = 0x00000, // Unknown
