@@ -293,7 +293,10 @@ enum Opcodes
     MSG_MOVE_CHARM_TELEPORT_CHEAT                    = 0x00000, // Unknown
     MSG_MOVE_ENABLE_SWIM_TO_FLY_TRANS_ACK            = 0x00000, // Unknown
     MSG_MOVE_FEATHER_FALL_ACK                        = 0x00000, // Unknown
-    MSG_MOVE_FORCE_PITCH_RATE_CHANGE_ACK             = 0x00000, // Unknown    MSG_MOVE_FORCE_RUN_BACK_SPEED_CHANGE_ACK         = 0x00000, // Unknown
+    MSG_MOVE_FORCE_FLIGHT_BACK_SPEED_CHANGE_ACK      = 0x00000, // Unknown
+    MSG_MOVE_FORCE_FLIGHT_SPEED_CHANGE_ACK           = 0x07314, // 4.3.4 Build 15595
+    MSG_MOVE_FORCE_PITCH_RATE_CHANGE_ACK             = 0x00000, // Unknown    
+    MSG_MOVE_FORCE_RUN_BACK_SPEED_CHANGE_ACK         = 0x00000, // Unknown
     MSG_MOVE_FORCE_RUN_SPEED_CHANGE_ACK              = 0x07818, // 4.3.4 Build 15595
     MSG_MOVE_FORCE_SWIM_BACK_SPEED_CHANGE_ACK        = 0x00000, // Unknown
     MSG_MOVE_FORCE_SWIM_SPEED_CHANGE_ACK             = 0x00000, // Unknown
