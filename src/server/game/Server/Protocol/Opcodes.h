@@ -839,7 +839,7 @@ enum Opcodes
     MSG_MOVE_ENABLE_TRANSITION_BETWEEN_SWIM_AND_FLY  = 0x00000, // Unknown
     MSG_MOVE_KNOCK_BACK                              = 0x00000, // Unknown
     MSG_MOVE_ROOT                                    = 0x07DA0, // 4.3.4 Build 15595
-    MSG_MOVE_SET_ACTIVE_MOVER                        = 0x00000, // Unknown
+    MSG_MOVE_SET_ACTIVE_MOVER                        = 0x011B3, // 4.3.4 Build 15595
     MSG_MOVE_SET_CAN_FLY                             = 0x0720E, // 4.3.4 Build 15595
     MSG_MOVE_SET_COLLISION_HEIGHT                    = 0x07114, // 4.3.4 Build 15595
     MSG_MOVE_SET_COMPOUND_STATE                      = 0x075A0, // 4.3.4 Build 15595
