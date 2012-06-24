@@ -508,8 +508,8 @@ enum Opcodes
     MSG_MOVE_START_BACKWARD                          = 0x0330A, // 4.3.4 Build 15595
     MSG_MOVE_START_DESCEND                           = 0x03800, // 4.3.4 Build 15595
     MSG_MOVE_START_FORWARD                           = 0x07814, // 4.3.4 Build 15595
-    MSG_MOVE_START_PITCH_DOWN                        = 0x00000, // Unknown
-    MSG_MOVE_START_PITCH_UP                          = 0x00000, // Unknown
+    MSG_MOVE_START_PITCH_DOWN                        = 0x03908, // 4.3.4 Build 15595
+    MSG_MOVE_START_PITCH_UP                          = 0x03304, // 4.3.4 Build 15595
     MSG_MOVE_START_STRAFE_LEFT                       = 0x03A16, // 4.3.4 Build 15595
     MSG_MOVE_START_STRAFE_RIGHT                      = 0x03A02, // 4.3.4 Build 15595
 	MSG_MOVE_STOP_STRAFE                             = 0x03002, // 4.3.4 Build 15595
@@ -521,7 +521,7 @@ enum Opcodes
     MSG_MOVE_STOP_ASCEND                             = 0x07B00, // 4.3.4 Build 15595
     MSG_MOVE_STOP_PITCH                              = 0x07312, // 4.3.4 Build 15595
     MSG_MOVE_STOP_SWIM                               = 0x03802, // 4.3.4 Build 15595
-    MSG_MOVE_TOGGLE_COLLISION_CHEAT                  = 0x00000, // Unknown
+    MSG_MOVE_TOGGLE_COLLISION_CHEAT                  = 0x07B04, // 4.3.4 Build 15595
     MSG_MOVE_TOGGLE_FALL_LOGGING                     = 0x00000, // Unknown
     MSG_MOVE_TOGGLE_LOGGING                          = 0x00000, // Unknown
 	MSG_MOVE_UPDATE_MOUSE							 = 0x07914, // 4.3.4 Build 15595
@@ -531,7 +531,7 @@ enum Opcodes
     MSG_PARTY_ASSIGNMENT                             = 0x00000, // Unknown
     MSG_PETITION_DECLINE                             = 0x031E0, // 4.3.4 Build 15595
     MSG_PETITION_RENAME                              = 0x04005, // 4.3.4 Build 15595
-    MSG_PVP_LOG_DATA                                 = 0x00000, // Unknown
+    MSG_PVP_LOG_DATA                                 = 0x05CB2, // 4.3.4 Build 15595
     MSG_QUERY_GUILD_BANK_TEXT                        = 0x00000, // Unknown
     MSG_QUERY_NEXT_MAIL_TIME                         = 0x00F04, // 4.3.4 Build 15595
     MSG_QUEST_PUSH_RESULT                            = 0x00000, // Unknown
@@ -582,13 +582,13 @@ enum Opcodes
     SMSG_AUCTION_OWNER_NOTIFICATION                  = 0x00000, // Unknown
     SMSG_AUCTION_REMOVED_NOTIFICATION                = 0x00000, // Unknown
     SMSG_AURA_UPDATE                                 = 0x04707, // 4.3.4 Build 15595
-    SMSG_AURA_UPDATE_ALL                             = 0x04114, // 4.3.4 Build 15595
+    SMSG_AURA_UPDATE_ALL                             = 0x06916, // 4.3.4 Build 15595
     SMSG_AURACASTLOG                                 = 0x00000, // Unknown
     SMSG_AUTH_CHALLENGE                              = 0x04542, // 4.3.4 Build 15595
     SMSG_AUTH_RESPONSE                               = 0x05DB6, // 4.3.4 Build 15595
     SMSG_AVAILABLE_VOICE_CHANNEL                     = 0x00000, // Unknown
-    SMSG_BARBER_SHOP_RESULT                          = 0x00000, // Unknown
-    SMSG_BATTLEFIELD_LIST                            = 0x00000, // Unknown
+    SMSG_BARBER_SHOP_RESULT                          = 0x06125, // 4.3.4 Build 15595
+    SMSG_BATTLEFIELD_LIST                            = 0x071B5, // 4.3.4 Build 15595
     SMSG_BATTLEFIELD_MGR_EJECT_PENDING               = 0x00000, // Unknown
     SMSG_BATTLEFIELD_MGR_EJECTED                     = 0x00000, // Unknown
     SMSG_BATTLEFIELD_MGR_ENTERED                     = 0x00000, // Unknown
@@ -1090,7 +1090,7 @@ enum Opcodes
     SMSG_WHOIS                                       = 0x00000, // Unknown
     SMSG_WHO										 = 0x06907, // 4.3.4 Build 15595
     SMSG_WORLD_STATE_UI_TIMER_UPDATE                 = 0x04A14, // 4.3.4 Build 15595
-    SMSG_ZONE_UNDER_ATTACK                           = 0x00000, // Unknown
+    SMSG_ZONE_UNDER_ATTACK                           = 0x00A06, // 4.3.4 Build 15595
     SMSG_GMRESPONSE_DB_ERROR                         = 0x00000, // Unknown
     SMSG_SUSPEND_COMMS                               = 0x04140, // 4.3.4 Build 15595
     SMSG_LOAD_CUF_PROFILES                           = 0x050B1, // 4.3.4 Build 15595
