@@ -295,7 +295,7 @@ enum Opcodes
     MSG_MOVE_FEATHER_FALL_ACK                        = 0x00000, // Unknown
     MSG_MOVE_FORCE_FLIGHT_BACK_SPEED_CHANGE_ACK      = 0x00000, // Unknown
     MSG_MOVE_FORCE_FLIGHT_SPEED_CHANGE_ACK           = 0x07314, // 4.3.4 Build 15595
-    MSG_MOVE_FORCE_PITCH_RATE_CHANGE_ACK             = 0x00000, // Unknown    
+    MSG_MOVE_FORCE_PITCH_RATE_CHANGE_ACK             = 0x00000, // Unknown
     MSG_MOVE_FORCE_RUN_BACK_SPEED_CHANGE_ACK         = 0x00000, // Unknown
     MSG_MOVE_FORCE_RUN_SPEED_CHANGE_ACK              = 0x07818, // 4.3.4 Build 15595
     MSG_MOVE_FORCE_SWIM_BACK_SPEED_CHANGE_ACK        = 0x00000, // Unknown
@@ -433,7 +433,7 @@ enum Opcodes
     CMSG_SPIRIT_HEALER_ACTIVATE                      = 0x02E26, // 4.3.4 Build 15595
     CMSG_SPLIT_ITEM                                  = 0x00000, // Unknown
     CMSG_STANDSTATECHANGE                            = 0x00535, // 4.3.4 Build 15595
-    CMSG_START_QUEST                                 = 0x00000, // Unknown   
+    CMSG_START_QUEST                                 = 0x00000, // Unknown
     CMSG_STOP_DANCE                                  = 0x04637, // 4.3.4 Build 15595
     CMSG_STOP_MOVE                                   = 0x0320A, // 4.3.4 Build 15595
     CMSG_STORE_LOOT_IN_SLOT                          = 0x00000, // Unknown
@@ -887,7 +887,7 @@ enum Opcodes
     MSG_MOVE_SPLINE_STOP_SWIM                        = 0x00000, // Unknown
     MSG_MOVE_SPLINE_UNROOT                           = 0x00000, // Unknown
     MSG_MOVE_SPLINE_UNSET_FLYING                     = 0x00000, // Unknown
-    MSG_MOVE_SPLINE_UNSET_HOVER                      = 0x00000, // Unknown   
+    MSG_MOVE_SPLINE_UNSET_HOVER                      = 0x00000, // Unknown
     MSG_MOVE_TELEPORT                                = 0x00000, // Unknown
     MSG_MOVE_UNROOT                                  = 0x00000, // Unknown
     MSG_MOVE_UNSET_CAN_FLY                           = 0x00000, // Unknown
@@ -1017,6 +1017,7 @@ enum Opcodes
     SMSG_SET_PLAYER_DECLINED_NAMES_RESULT            = 0x00000, // Unknown
     SMSG_SET_PROFICIENCY                             = 0x06207, // 4.3.4 Build 15595
     SMSG_SET_PROJECTILE_POSITION                     = 0x00000, // Unknown
+    SMSG_SETUP_RESEARCH_HISTORY                      = 0x010B6, // 4.3.4 Build 15595
     SMSG_SHOW_BANK                                   = 0x00000, // Unknown
     SMSG_SHOWTAXINODES                               = 0x00000, // Unknown
     SMSG_SPELL_COOLDOWN                              = 0x04B16, // 4.3.4 Build 15595
