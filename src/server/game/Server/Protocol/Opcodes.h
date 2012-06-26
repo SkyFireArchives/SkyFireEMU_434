@@ -361,7 +361,7 @@ enum Opcodes
     CMSG_QUESTGIVER_CANCEL                           = 0x00000, // Unknown
     CMSG_QUESTGIVER_CHOOSE_REWARD                    = 0x02125, // 4.3.4 Build 15595
     CMSG_QUESTGIVER_COMPLETE_QUEST                   = 0x07302, // 4.3.4 Build 15595
-    CMSG_QUESTGIVER_HELLO                            = 0x00000, // Unknown
+    CMSG_QUESTGIVER_HELLO                            = 0x00D17, // 4.3.4 Build 15595
     CMSG_QUESTGIVER_QUERY_QUEST                      = 0x00000, // Unknown
     CMSG_QUESTGIVER_QUEST_AUTOLAUNCH                 = 0x00000, // Unknown
     CMSG_QUESTGIVER_REQUEST_REWARD                   = 0x00000, // Unknown
@@ -1059,7 +1059,7 @@ enum Opcodes
     SMSG_TITLE_EARNED                                = 0x02426, // 4.3.4 Build 15595
     SMSG_TOGGLE_XP_GAIN                              = 0x00000, // Unknown
     SMSG_TOTEM_CREATED                               = 0x00000, // Unknown
-    SMSG_TRADE_STATUS                                = 0x00000, // Unknown
+    SMSG_TRADE_STATUS                                = 0x05CA3, // 4.3.4 Build 15595
     SMSG_TRADE_STATUS_EXTENDED                       = 0x00000, // Unknown
     SMSG_TRAINER_BUY_RESULT                          = 0x00000, // Unknown
     SMSG_TRAINER_BUY_SUCCEEDED                       = 0x06A05, // 4.3.4 Build 15595
