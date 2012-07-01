@@ -1108,6 +1108,7 @@ enum Opcodes
     SMSG_CATEGORY_COOLDOWN                           = 0x071B6, // 4.3.4 Build 15595
     CMSG_QUERY_BATTLEFIELD_STATE                     = 0x07202, // 4.3.4 Build 15595
     SMSG_GUILD_PERMISSIONS_QUERY_RESULTS             = 0x034A3, // 4.3.4 Build 15595
+    CMSG_OBJECT_UPDATE_FAILED                        = 0X03808, // 4.3.4 Build 15595
 };
 
 extern void InitOpcodeTable();
