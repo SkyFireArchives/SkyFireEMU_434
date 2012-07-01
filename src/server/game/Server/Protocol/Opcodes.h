@@ -54,7 +54,7 @@ enum Opcodes
     CMSG_ARENA_TEAM_QUERY                            = 0x00000, // Unknown
     CMSG_ARENA_TEAM_REMOVE                           = 0x02F05, // 4.3.4 Build 15595
     CMSG_ARENA_TEAM_ROSTER                           = 0x00000, // Unknown
-    CMSG_ATTACKSTOP                                  = 0x00934, // 4.3.4 Build 15595
+    CMSG_ATTACKSTOP                                  = 0x04106, // 4.3.4 Build 15595
     CMSG_ATTACKSWING                                 = 0x00926, // 4.3.4 Build 15595
     CMSG_AUCTION_LIST_BIDDER_ITEMS                   = 0x00000, // Unknown
     CMSG_AUCTION_LIST_ITEMS                          = 0x00324, // 4.3.4 Build 15595
@@ -205,7 +205,7 @@ enum Opcodes
     CMSG_GUILD_BANK_DEPOSIT_MONEY                    = 0x00000, // Unknown
     CMSG_GUILD_BANK_NOTE                             = 0x00000, // Unknown
     CMSG_GUILD_BANK_QUERY_TAB                        = 0x00000, // Unknown
-    CMSG_GUILD_BANK_REM_MONEY_WITHDRAW_QUERY         = 0x01225, // 4.3.4 Build 15595
+    CMSG_GUILD_BANK_REM_MONEY_WITHDRAW_QUERY         = 0x05DB4, // 4.3.4 Build 15595
     CMSG_GUILD_BANK_SWAP_ITEMS                       = 0x02315, // 4.3.4 Build 15595
     CMSG_GUILD_BANK_UPDATE_TAB                       = 0x00000, // Unknown
     CMSG_GUILD_BANK_WITHDRAW_MONEY                   = 0x00000, // Unknown
@@ -465,7 +465,7 @@ enum Opcodes
     CMSG_UPDATE_PROJECTILE_POSITION                  = 0x00000, // Unknown
     CMSG_USE_ITEM                                    = 0x00000, // Unknown
     CMSG_VIOLENCE_LEVEL                              = 0x07816, // 4.3.4 Build 15595
-    CMSG_VOICE_SESSION_ENABLE                        = 0x00000, // Unknown
+    CMSG_VOICE_SESSION_ENABLE                        = 0x02314, // 4.3.4 Build 15595
     CMSG_WARDEN_DATA                                 = 0x025A2, // 4.3.4 Build 15595
     CMSG_WHO                                         = 0x06C15, // 4.3.4 Build 15595
     CMSG_WHOIS                                       = 0x06B05, // 4.3.4 Build 15595
@@ -486,7 +486,7 @@ enum Opcodes
     MSG_GUILD_BANK_MONEY_WITHDRAWN                   = 0x00000, // Unknown
     MSG_GUILD_BANK_REM_MONEY_WITHDRAW_QUERY          = 0x01225, // 4.3.4 Build 15595
     MSG_GUILD_EVENT_LOG_QUERY                        = 0x00000, // Unknown
-    MSG_GUILD_PERMISSIONS                            = 0x00000, // Unknown
+    MSG_GUILD_PERMISSIONS                            = 0x03022, // 4.3.4 Build 15595
     MSG_INSPECT_ARENA_TEAMS                          = 0x02704, // 4.3.4 Build 15595
     MSG_LIST_STABLED_PETS                            = 0x00834, // 4.3.4 Build 15595
     MSG_MINIMAP_PING                                 = 0x06635, // 4.3.4 Build 15595
@@ -600,7 +600,7 @@ enum Opcodes
     SMSG_BATTLEFIELD_MGR_STATE_CHANGE                = 0x035B4, // 4.3.4 Build 15595
     SMSG_BATTLEFIELD_PLAYER_POSITIONS                = 0x058B4, // 4.3.4 Build 15595
     SMSG_BATTLEFIELD_PORT_DENIED                     = 0x00000, // Unknown
-    SMSG_BATTLEFIELD_STATUS                          = 0x07202, // 4.3.4 Build 15595
+    SMSG_BATTLEFIELD_STATUS                          = 0x00000, // Unknown
     SMSG_BATTLEFIELD_STATUS1                         = 0x00000, // Unknown
     SMSG_BATTLEFIELD_STATUS2                         = 0x074A4, // 4.3.4 Build 15595
     SMSG_BATTLEFIELD_STATUS3                         = 0x059A0, // 4.3.4 Build 15595
@@ -806,7 +806,7 @@ enum Opcodes
     SMSG_LOGOUT_COMPLETE                             = 0x02137, // Unknown
     SMSG_LOGOUT_RESPONSE                             = 0x00524, // 4.3.4 Build 15595
     SMSG_LOOT_ALL_PASSED                             = 0x06237, // 4.3.4 Build 15595
-    SMSG_LOOT_CLEAR_MONEY                            = 0x00000, // Unknown
+    SMSG_LOOT_CLEAR_MONEY                            = 0x00E15, // 4.3.4 Build 15595
     SMSG_LOOT_ITEM_NOTIFY                            = 0x06D15, // 4.3.4 Build 15595
     SMSG_LOOT_LIST                                   = 0x00000, // Unknown
     SMSG_LOOT_MASTER_LIST                            = 0x00000, // Unknown
@@ -938,7 +938,7 @@ enum Opcodes
     SMSG_PLAY_OBJECT_SOUND                           = 0x00000, // Unknown
     SMSG_PLAY_SOUND                                  = 0x02134, // 4.3.4 Build 15595
     SMSG_PLAY_SPELL_IMPACT                           = 0x00000, // Unknown
-    SMSG_PLAY_SPELL_VISUAL                           = 0x00000, // Unknown
+    SMSG_PLAY_SPELL_VISUAL                           = 0x055A5, // 4.3.4 Build 15595
     SMSG_PLAY_TIME_WARNING                           = 0x04814, // 4.3.4 Build 15595
     SMSG_PLAYED_TIME                                 = 0x06037, // 4.3.4 Build 15595
     SMSG_PLAYER_DIFFICULTY_CHANGE                    = 0x02217, // 4.3.4 Build 15595
@@ -1101,6 +1101,13 @@ enum Opcodes
     SMSG_SUSPEND_COMMS                               = 0x04140, // 4.3.4 Build 15595
     SMSG_LOAD_CUF_PROFILES                           = 0x050B1, // 4.3.4 Build 15595
     SMSG_ALL_GUILD_ACHIEVEMENTS                      = 0x054B7, // 4.3.4 Build 15595
+    SMSG_GUILD_REPUTATION_WEEKLY_CAP                 = 0x030B7, // 4.3.4 Build 15595
+    SMSG_GUILD_MEMBER_DAILY_RESET                    = 0x010A5, // 4.3.4 Build 15595
+    CMSG_REQUERST_GUILD_PARTY_STATE                  = 0x03900, // 4.3.4 Build 15595
+    SMSG_COMPLETION_NPC_RESPONCE                     = 0x075A1, // 4.3.4 Build 15595
+    SMSG_CATEGORY_COOLDOWN                           = 0x071B6, // 4.3.4 Build 15595
+    CMSG_QUERY_BATTLEFIELD_STATE                     = 0x07202, // 4.3.4 Build 15595
+    SMSG_GUILD_PERMISSIONS_QUERY_RESULTS             = 0x034A3, // 4.3.4 Build 15595
 };
 
 extern void InitOpcodeTable();
