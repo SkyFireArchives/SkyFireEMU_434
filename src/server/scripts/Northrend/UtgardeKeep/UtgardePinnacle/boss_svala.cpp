@@ -161,7 +161,7 @@ public:
             if (Phase > INTRO)
             {
                 me->SetFlying(true);
-                me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                me->AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
             }
 
             if (Phase > NORMAL)
@@ -183,7 +183,7 @@ public:
             if (Phase > INTRO)
             {
                 me->SetFlying(false);
-                me->RemoveUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                me->RemoveUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                 me->SetOrientation(1.58f);
                 me->SendMovementFlagUpdate();
             }
@@ -326,7 +326,7 @@ public:
                         case 2:
                             arthas->CastSpell(me, SPELL_TRANSFORMING_CHANNEL, false);
                             me->SetFlying(true);
-                            me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                            me->AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                             pos.Relocate(me);
                             pos.m_positionZ += 8.0f;
                             me->GetMotionMaster()->MoveTakeoff(0, pos, 3.30078125f);
@@ -383,7 +383,7 @@ public:
                             break;
                         case 8:
                             me->SetFlying(false);
-                            me->RemoveUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                            me->RemoveUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                             me->SendMovementFlagUpdate();
                             pos.Relocate(me);
                             pos.m_positionX = me->GetHomePosition().GetPositionX();
@@ -414,10 +414,10 @@ public:
                 if (!UpdateVictim())
                     return;
 
-                if (me->IsWithinMeleeRange(me->getVictim()) && me->HasUnitMovementFlag(MOVEMENTFLAG_LEVITATING))
+                if (me->IsWithinMeleeRange(me->getVictim()) && me->HasUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY))
                 {
                     me->SetFlying(false);
-                    me->RemoveUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                    me->RemoveUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                     me->SendMovementFlagUpdate();
                 }
 
@@ -451,7 +451,7 @@ public:
 
                             SetCombatMovement(false);
                             me->SetFlying(true);
-                            me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                            me->AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
 
                             Phase = SACRIFICING;
                             sacrePhase = 0;

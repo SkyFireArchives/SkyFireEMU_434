@@ -784,8 +784,8 @@ class npc_simon_bunny : public CreatureScript
                 me->SetFloatValue(OBJECT_FIELD_SCALE_X, large ? 2 : 1);
 
                 std::list<WorldObject*> ClusterList;
-                Trinity::AllWorldObjectsInRange objects(me, searchDistance);
-                Trinity::WorldObjectListSearcher<Trinity::AllWorldObjectsInRange> searcher(me, ClusterList, objects);
+                Skyfire::AllWorldObjectsInRange objects(me, searchDistance);
+                Skyfire::WorldObjectListSearcher<Skyfire::AllWorldObjectsInRange> searcher(me, ClusterList, objects);
                 me->VisitNearbyObject(searchDistance, searcher);
 
                 for (std::list<WorldObject*>::const_iterator i = ClusterList.begin(); i != ClusterList.end(); ++i)

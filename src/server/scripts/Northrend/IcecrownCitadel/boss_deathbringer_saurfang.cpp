@@ -583,7 +583,7 @@ class npc_high_overlord_saurfang_icc : public CreatureScript
                             return;
 
                         GetCreatureListWithEntryInGrid(_guardList, me, NPC_SE_KOR_KRON_REAVER, 20.0f);
-                        _guardList.sort(Trinity::ObjectDistanceOrderPred(me));
+                        _guardList.sort(Skyfire::ObjectDistanceOrderPred(me));
                         uint32 x = 1;
                         for (std::list<Creature*>::iterator itr = _guardList.begin(); itr != _guardList.end(); ++x, ++itr)
                             (*itr)->AI()->SetData(0, x);
@@ -605,7 +605,7 @@ class npc_high_overlord_saurfang_icc : public CreatureScript
                         _events.ScheduleEvent(EVENT_OUTRO_HORDE_3, 18000);   // say
                         _events.ScheduleEvent(EVENT_OUTRO_HORDE_4, 24000);   // cast
                         _events.ScheduleEvent(EVENT_OUTRO_HORDE_5, 30000);   // move
-                        me->RemoveUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                        me->RemoveUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                         me->SendMovementFlagUpdate();
                         me->Relocate(me->GetPositionX(), me->GetPositionY(), 539.2917f);
                         me->MonsterMoveWithSpeed(me->GetPositionX(), me->GetPositionY(), 539.2917f, 0.0f);
@@ -629,7 +629,7 @@ class npc_high_overlord_saurfang_icc : public CreatureScript
             {
                 if (spell->Id == SPELL_GRIP_OF_AGONY)
                 {
-                    me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                    me->AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                     me->GetMotionMaster()->MovePoint(POINT_CHOKE, chokePos[0]);
                 }
             }
@@ -795,7 +795,7 @@ class npc_muradin_bronzebeard_icc : public CreatureScript
 
                         _events.SetPhase(PHASE_INTRO_A);
                         GetCreatureListWithEntryInGrid(_guardList, me, NPC_SE_SKYBREAKER_MARINE, 20.0f);
-                        _guardList.sort(Trinity::ObjectDistanceOrderPred(me));
+                        _guardList.sort(Skyfire::ObjectDistanceOrderPred(me));
                         uint32 x = 1;
                         for (std::list<Creature*>::iterator itr = _guardList.begin(); itr != _guardList.end(); ++x, ++itr)
                             (*itr)->AI()->SetData(0, x);
@@ -812,7 +812,7 @@ class npc_muradin_bronzebeard_icc : public CreatureScript
                     {
                         me->RemoveAurasDueToSpell(SPELL_GRIP_OF_AGONY);
                         Talk(SAY_OUTRO_ALLIANCE_1);
-                        me->RemoveUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                        me->RemoveUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                         me->SendMovementFlagUpdate();
                         me->Relocate(me->GetPositionX(), me->GetPositionY(), 539.2917f);
                         me->MonsterMoveWithSpeed(me->GetPositionX(), me->GetPositionY(), 539.2917f, 0.0f);
@@ -832,7 +832,7 @@ class npc_muradin_bronzebeard_icc : public CreatureScript
             {
                 if (spell->Id == SPELL_GRIP_OF_AGONY)
                 {
-                    me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                    me->AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                     me->GetMotionMaster()->MovePoint(POINT_CHOKE, chokePos[0]);
                 }
             }
@@ -934,7 +934,7 @@ class npc_saurfang_event : public CreatureScript
             {
                 if (spell->Id == SPELL_GRIP_OF_AGONY)
                 {
-                    me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                    me->AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                     me->GetMotionMaster()->MovePoint(POINT_CHOKE, chokePos[_index]);
                 }
             }
@@ -1178,7 +1178,7 @@ class spell_deathbringer_blood_nova_targeting : public SpellScriptLoader
                 // select one random target, with preference of ranged targets
                 uint32 targetsAtRange = 0;
                 uint32 const minTargets = uint32(GetCaster()->GetMap()->GetSpawnMode() & 1 ? 10 : 4);
-                unitList.sort(Trinity::ObjectDistanceOrderPred(GetCaster(), false));
+                unitList.sort(Skyfire::ObjectDistanceOrderPred(GetCaster(), false));
 
                 // get target count at range
                 for (std::list<Unit*>::iterator itr = unitList.begin(); itr != unitList.end(); ++itr, ++targetsAtRange)
