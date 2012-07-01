@@ -241,7 +241,7 @@ public:
                     // Also needs an exception in spell system.
                     unit->CastSpell(unit, SPELL_GRAVITY_LAPSE_FLY, true, 0, 0, me->GetGUID());
                     // Use packet hack
-                    WorldPacket data(SMSG_MOVE_SET_CAN_FLY, 12);
+                    WorldPacket data(MSG_MOVE_SET_CAN_FLY, 12);
                     data.append(unit->GetPackGUID());
                     data << uint32(0);
                     unit->SendMessageToSet(&data, true);
@@ -260,7 +260,7 @@ public:
                     unit->RemoveAurasDueToSpell(SPELL_GRAVITY_LAPSE_FLY);
                     unit->RemoveAurasDueToSpell(SPELL_GRAVITY_LAPSE_DOT);
 
-                    WorldPacket data(SMSG_MOVE_UNSET_CAN_FLY, 12);
+                    WorldPacket data(MSG_MOVE_UNSET_CAN_FLY, 12);
                     data.append(unit->GetPackGUID());
                     data << uint32(0);
                     unit->SendMessageToSet(&data, true);
@@ -495,7 +495,7 @@ public:
         void Reset()
         {
             me->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_SELECTABLE + UNIT_FLAG_NON_ATTACKABLE);
-            me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+            me->AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
             DoCast(me, SPELL_PHOENIX_BURN, true);
             BurnTimer = 2000;
             Death_Timer = 3000;
@@ -649,7 +649,7 @@ public:
             ChangeTargetTimer = urand(6000, 12000);
 
             me->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_SELECTABLE);
-            me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+            me->AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
             me->setFaction(14);
             DoCast(me, SPELL_ARCANE_SPHERE_PASSIVE, true);
         }

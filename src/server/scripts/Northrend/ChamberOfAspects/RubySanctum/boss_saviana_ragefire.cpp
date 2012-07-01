@@ -106,7 +106,7 @@ class boss_saviana_ragefire : public CreatureScript
                         break;
                     case POINT_LAND:
                         me->SetFlying(false);
-                        me->RemoveUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                        me->RemoveUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                         me->SetReactState(REACT_AGGRESSIVE);
                         if (me->GetMotionMaster()->GetCurrentMovementGeneratorType() == POINT_MOTION_TYPE)
                             me->GetMotionMaster()->MovementExpired();
@@ -121,7 +121,7 @@ class boss_saviana_ragefire : public CreatureScript
             {
                 _JustReachedHome();
                 me->SetFlying(false);
-                me->RemoveUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                me->RemoveUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
             }
 
             void KilledUnit(Unit* victim)
@@ -147,7 +147,7 @@ class boss_saviana_ragefire : public CreatureScript
                         case EVENT_FLIGHT:
                         {
                             me->SetFlying(true);
-                            me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                            me->AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                             me->SetReactState(REACT_PASSIVE);
                             me->GetMotionMaster()->MovePoint(POINT_FLIGHT, SavianaRagefireFlyPos);
                             events.ScheduleEvent(EVENT_FLIGHT, 50000);
@@ -206,7 +206,7 @@ class spell_saviana_conflagration_init : public SpellScriptLoader
                 unitList.remove_if (ConflagrationTargetSelector());
                 uint8 maxSize = uint8(GetCaster()->GetMap()->GetSpawnMode() & 1 ? 6 : 3);
                 if (unitList.size() > maxSize)
-                    Trinity::RandomResizeList(unitList, maxSize);
+                    Skyfire::RandomResizeList(unitList, maxSize);
             }
 
             void HandleDummy(SpellEffIndex effIndex)

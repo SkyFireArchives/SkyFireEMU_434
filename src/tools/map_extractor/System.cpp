@@ -35,6 +35,10 @@
 #include <sys/stat.h>
 #endif
 
+#ifndef  ERROR_PATH_NOT_FOUND
+    #define  ERROR_PATH_NOT_FOUND 3
+#endif
+
 #if defined( __GNUC__ )
     #define _open   open
     #define _close close
@@ -1080,7 +1084,7 @@ void ExtractDBCFiles(int l, bool basicLocale)
             }
 
             filename = foundFile.cFileName;
-            filename = outputPath + filename.substr(filename.rfind('\\'));
+            filename = outputPath + filename.substr(filename.rfind('\\') + 1);
             
             if (ExtractFile(dbcFile, filename.c_str()))
                 ++count;
@@ -1126,7 +1130,7 @@ void ExtractDB2Files(int l, bool basicLocale)
             }
 
             filename = foundFile.cFileName;
-            filename = outputPath + filename.substr(filename.rfind('\\'));
+            filename = outputPath + filename.substr(filename.rfind('\\') + 1);
             
             if (ExtractFile(dbcFile, filename.c_str()))
                 ++count;

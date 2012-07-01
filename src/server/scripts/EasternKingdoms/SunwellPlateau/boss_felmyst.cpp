@@ -137,7 +137,7 @@ public:
 
             uiFlightCount = 0;
 
-            me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+            me->AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
             me->SetFloatValue(UNIT_FIELD_BOUNDINGRADIUS, 10);
             me->SetFloatValue(UNIT_FIELD_COMBATREACH, 10);
 
@@ -254,7 +254,7 @@ public:
                 events.ScheduleEvent(EVENT_FLIGHT, 60000);
                 break;
             case PHASE_FLIGHT:
-                me->SetUnitMovementFlags(MOVEMENTFLAG_LEVITATING);
+                me->SetUnitMovementFlags(MOVEMENTFLAG_DISABLE_GRAVITY);
                 events.ScheduleEvent(EVENT_FLIGHT_SEQUENCE, 1000);
                 uiFlightCount = 0;
                 uiBreathCount = 0;
@@ -391,7 +391,7 @@ public:
                 }
                 break;
             case 10:
-                me->RemoveUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                me->RemoveUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                 me->HandleEmoteCommand(EMOTE_ONESHOT_LAND);
                 EnterPhase(PHASE_GROUND);
                 AttackStart(SelectTarget(SELECT_TARGET_TOPAGGRO));
@@ -484,13 +484,13 @@ public:
             float x, y, z;
             me->GetPosition(x, y, z);
 
-            CellCoord pair(Trinity::ComputeCellCoord(x, y));
+            CellCoord pair(Skyfire::ComputeCellCoord(x, y));
             Cell cell(pair);
             cell.SetNoCreate();
 
-            Trinity::AllCreaturesOfEntryInRange check(me, entry, 100);
-            Trinity::CreatureListSearcher<Trinity::AllCreaturesOfEntryInRange> searcher(me, templist, check);
-            TypeContainerVisitor<Trinity::CreatureListSearcher<Trinity::AllCreaturesOfEntryInRange>, GridTypeMapContainer> cSearcher(searcher);
+            Skyfire::AllCreaturesOfEntryInRange check(me, entry, 100);
+            Skyfire::CreatureListSearcher<Skyfire::AllCreaturesOfEntryInRange> searcher(me, templist, check);
+            TypeContainerVisitor<Skyfire::CreatureListSearcher<Skyfire::AllCreaturesOfEntryInRange>, GridTypeMapContainer> cSearcher(searcher);
             cell.Visit(pair, cSearcher, *(me->GetMap()), *me, me->GetGridActivationRange());
 
             for (std::list<Creature*>::const_iterator i = templist.begin(); i != templist.end(); ++i)
