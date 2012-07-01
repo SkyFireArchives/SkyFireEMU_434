@@ -411,9 +411,9 @@ MovementStatusElements MovementStartForwardSequence[] = {
 //4.3.4
 MovementStatusElements MovementStartStrafeLeftSequence[] = {
     MSEPositionZ,
-    MSEPositionX,
+	MSEPositionX,
 	MSEPositionY,
-    MSEhasUnknownBit0,
+	MSEhasUnknownBit0,
     MSEhasGuidBit5,
     MSEhasUnknownBit1,
     MSEhasGuidBit6,
@@ -481,10 +481,10 @@ MovementStatusElements MovementStartStrafeLeftSequence[] = {
 };
 //4.3.4
 MovementStatusElements MovementStartStrafeRightSequence[] = {
-    MSEPositionY,
-    MSEPositionX,
+	MSEPositionY,
+	MSEPositionX,
 	MSEPositionZ,
-    MSEhasUnknownBit0,
+	MSEhasUnknownBit0,
     MSEhasGuidBit1,
     MSEhasPositionOBit,
     MSEhasGuidBit4,
@@ -552,10 +552,10 @@ MovementStatusElements MovementStartStrafeRightSequence[] = {
 };
 //4.3.4
 MovementStatusElements MovementStartTurnLeftSequence[] = {
-    MSEPositionY,
-    MSEPositionX,
-    MSEPositionZ,
-    MSEhas149_Bit,
+	MSEPositionY,
+	MSEPositionX,
+	MSEPositionZ,
+	MSEhas149_Bit,
     MSEhasGuidBit1,
     MSEhasPositionOBit,
     MSEhas148_Bit,
@@ -623,10 +623,10 @@ MovementStatusElements MovementStartTurnLeftSequence[] = {
 };
 //4.3.4
 MovementStatusElements MovementStartTurnRightSequence[] = {
-    MSEPositionX,
-    MSEPositionZ,
+	MSEPositionX,
+	MSEPositionZ,
 	MSEPositionY,
-    MSEhasGuidBit3,
+	MSEhasGuidBit3,
     MSEhasGuidBit5,
     MSEhasFlagsBit,
     MSEhas148_Bit,
@@ -694,10 +694,10 @@ MovementStatusElements MovementStartTurnRightSequence[] = {
 };
 //4.3.4
 MovementStatusElements MovementStopSequence[] = {
-    MSEPositionX,
-    MSEPositionY,
-    MSEPositionZ,
-    MSEhasGuidBit3,
+	MSEPositionX,
+	MSEPositionY,
+	MSEPositionZ,
+	MSEhasGuidBit3,
     MSEhasGuidBit6,
     MSEhasUnknownBit3,
     MSEhas148_Bit,
@@ -765,10 +765,10 @@ MovementStatusElements MovementStopSequence[] = {
 };
 //4.3.4
 MovementStatusElements MovementStopStrafeSequence[] = {
-    MSEPositionY,
-    MSEPositionZ,
+	MSEPositionY,
+	MSEPositionZ,
 	MSEPositionX,
-    MSEhasUnknownBit0,
+	MSEhasUnknownBit0,
     MSEhasLivingTimeBit,
     MSEhasGuidBit2,
     MSEhasInterPolatedTurningBit,
@@ -836,10 +836,10 @@ MovementStatusElements MovementStopStrafeSequence[] = {
 };
 //4.3.4
 MovementStatusElements MovementStopTurnSequence[] = {
-    MSEPositionX,
-    MSEPositionZ,
+	MSEPositionX,
+	MSEPositionZ,
 	MSEPositionY,
-    MSEhasGuidBit5,
+	MSEhasGuidBit5,
     MSEhasGuidBit4,
     MSEhasInterPolatedTurningBit,
     MSEhas149_Bit,
@@ -919,10 +919,10 @@ MovementStatusElements MovementStartSwimSequence[] = {
 };
 //4.3.4
 MovementStatusElements MovementUpdateMouseSequence[] = {
-    MSEPositionX,
-    MSEPositionY,
-    MSEPositionZ,
-    MSEhasGuidBit6,
+	MSEPositionX,
+	MSEPositionY,
+	MSEPositionZ,
+	MSEhasGuidBit6,
     MSEhasTransportDataBit,
     MSEhasGuidBit4,
     MSEhas148_Bit,
@@ -994,7 +994,7 @@ MovementStatusElements MovementStopAscendSequence[] = {
 };
 //4.3.4
 MovementStatusElements MovementSetWalkModeSequence[] = {
-    MSEPositionY,
+	MSEPositionY,
     MSEPositionX,
     MSEPositionZ,
     MSEhasGuidBit6,
