@@ -199,7 +199,7 @@ class boss_sindragosa : public CreatureScript
                 if (instance->GetData(DATA_SINDRAGOSA_FROSTWYRMS) != 255)
                 {
                     me->SetFlying(true);
-                    me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                    me->AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                 }
             }
 
@@ -229,7 +229,7 @@ class boss_sindragosa : public CreatureScript
                 BossAI::JustReachedHome();
                 instance->SetBossState(DATA_SINDRAGOSA, FAIL);
                 me->SetFlying(false);
-                me->RemoveUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                me->RemoveUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
             }
 
             void KilledUnit(Unit* victim)
@@ -276,7 +276,7 @@ class boss_sindragosa : public CreatureScript
                     case POINT_FROSTWYRM_LAND:
                         me->setActive(false);
                         me->SetFlying(false);
-                        me->RemoveUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                        me->RemoveUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                         me->SetHomePosition(SindragosaLandPos);
                         me->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NON_ATTACKABLE);
                         me->SetSpeed(MOVE_FLIGHT, 2.0f);
@@ -293,7 +293,7 @@ class boss_sindragosa : public CreatureScript
                         break;
                     case POINT_LAND:
                         me->SetFlying(false);
-                        me->RemoveUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                        me->RemoveUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                         me->SetReactState(REACT_DEFENSIVE);
                         if (me->GetMotionMaster()->GetCurrentMovementGeneratorType() == POINT_MOTION_TYPE)
                             me->GetMotionMaster()->MovementExpired();
@@ -426,7 +426,7 @@ class boss_sindragosa : public CreatureScript
                             _isInAirPhase = true;
                             Talk(SAY_AIR_PHASE);
                             me->SetFlying(true);
-                            me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                            me->AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                             me->SetReactState(REACT_PASSIVE);
                             Position pos;
                             pos.Relocate(me);
@@ -618,7 +618,7 @@ class npc_spinestalker : public CreatureScript
                 if (_instance->GetData(DATA_SPINESTALKER) != 255)
                 {
                     me->SetFlying(true);
-                    me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                    me->AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                 }
             }
 
@@ -661,7 +661,7 @@ class npc_spinestalker : public CreatureScript
 
                 me->setActive(false);
                 me->SetFlying(false);
-                me->RemoveUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                me->RemoveUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                 me->SetHomePosition(SpinestalkerLandPos);
                 me->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NON_ATTACKABLE);
             }
@@ -743,7 +743,7 @@ class npc_rimefang : public CreatureScript
                 if (_instance->GetData(DATA_RIMEFANG) != 255)
                 {
                     me->SetFlying(true);
-                    me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                    me->AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                 }
             }
 
@@ -786,7 +786,7 @@ class npc_rimefang : public CreatureScript
 
                 me->setActive(false);
                 me->SetFlying(false);
-                me->RemoveUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                me->RemoveUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                 me->SetHomePosition(RimefangLandPos);
                 me->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_IMMUNE_TO_PC);
             }
@@ -1049,7 +1049,7 @@ class spell_sindragosa_unchained_magic : public SpellScriptLoader
                 unitList.remove_if (UnchainedMagicTargetSelector());
                 uint32 maxSize = uint32(GetCaster()->GetMap()->GetSpawnMode() & 1 ? 5 : 2);
                 if (unitList.size() > maxSize)
-                    Trinity::RandomResizeList(unitList, maxSize);
+                    Skyfire::RandomResizeList(unitList, maxSize);
             }
 
             void Register()

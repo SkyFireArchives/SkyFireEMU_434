@@ -499,7 +499,7 @@ class boss_the_lich_king : public CreatureScript
             {
                 _JustDied();
                 DoCastAOE(SPELL_PLAY_MOVIE, false);
-                me->RemoveUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                me->RemoveUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                 me->RemoveByteFlag(UNIT_FIELD_BYTES_1, 3, 0x03);
                 me->GetMotionMaster()->MoveFall();
             }
@@ -533,7 +533,7 @@ class boss_the_lich_king : public CreatureScript
 
                 // Reset The Frozen Throne gameobjects
                 FrozenThroneResetWorker reset;
-                Trinity::GameObjectWorker<FrozenThroneResetWorker> worker(me, reset);
+                Skyfire::GameObjectWorker<FrozenThroneResetWorker> worker(me, reset);
                 me->VisitNearbyGridObject(333.0f, worker);
 
                 // Reset any light override
@@ -1013,7 +1013,7 @@ class boss_the_lich_king : public CreatureScript
                                 GetCreatureListWithEntryInGrid(triggers, terenas, NPC_WORLD_TRIGGER_INFINITE_AOI, 100.0f);
                                 if (!triggers.empty())
                                 {
-                                    triggers.sort(Trinity::ObjectDistanceOrderPred(terenas, true));
+                                    triggers.sort(Skyfire::ObjectDistanceOrderPred(terenas, true));
                                     Unit* spawner = triggers.front();
                                     spawner->CastSpell(spawner, SPELL_SUMMON_SPIRIT_BOMB_1, true);  // summons bombs randomly
                                     spawner->CastSpell(spawner, SPELL_SUMMON_SPIRIT_BOMB_2, true);  // summons bombs on players
@@ -1072,7 +1072,7 @@ class boss_the_lich_king : public CreatureScript
                             DoCastAOE(SPELL_SOUL_BARRAGE);
                             sCreatureTextMgr->SendSound(me, SOUND_PAIN, CHAT_MSG_MONSTER_YELL, 0, TEXT_RANGE_NORMAL, TEAM_OTHER, false);
                             // set flight
-                            me->AddUnitMovementFlag(MOVEMENTFLAG_LEVITATING);
+                            me->AddUnitMovementFlag(MOVEMENTFLAG_DISABLE_GRAVITY);
                             me->SetByteFlag(UNIT_FIELD_BYTES_1, 3, 0x03);
                             me->GetMotionMaster()->MovePoint(POINT_LK_OUTRO_2, OutroFlying);
                             break;
@@ -1530,7 +1530,7 @@ class npc_valkyr_shadowguard : public CreatureScript
                                 if (triggers.empty())
                                     return;
 
-                                triggers.sort(Trinity::ObjectDistanceOrderPred(me));
+                                triggers.sort(Skyfire::ObjectDistanceOrderPred(me));
                                 DoCast(target, SPELL_VALKYR_CARRY);
                                 _dropPoint.Relocate(triggers.front());
                                 _events.ScheduleEvent(EVENT_MOVE_TO_DROP_POS, 1500);
@@ -2128,7 +2128,7 @@ class spell_the_lich_king_necrotic_plague_jump : public SpellScriptLoader
 
             void SelectTarget(std::list<Unit*>& targets)
             {
-                targets.sort(Trinity::ObjectDistanceOrderPred(GetCaster()));
+                targets.sort(Skyfire::ObjectDistanceOrderPred(GetCaster()));
                 if (targets.size() < 2)
                     return;
 
@@ -2546,7 +2546,7 @@ class spell_the_lich_king_valkyr_target_search : public SpellScriptLoader
                 if (unitList.empty())
                     return;
 
-                unitList.remove_if(Trinity::UnitAuraCheck(true, GetSpellInfo()->Id));
+                unitList.remove_if(Skyfire::UnitAuraCheck(true, GetSpellInfo()->Id));
                 if (unitList.empty())
                     return;
 
