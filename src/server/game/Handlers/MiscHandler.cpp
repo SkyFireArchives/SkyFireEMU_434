@@ -1270,28 +1270,40 @@ void WorldSession::HandleWorldTeleportOpcode(WorldPacket& recv_data)
     // Received opcode CMSG_WORLD_TELEPORT
     // Time is ***, map=469, x=452.000000, y=6454.000000, z=2536.000000, orient=3.141593
 
-    uint32 time;
     uint32 mapid;
     float PositionX;
     float PositionY;
     float PositionZ;
     float Orientation;
 
-    recv_data >> time;                                      // time in m.sec.
     recv_data >> mapid;
     recv_data >> PositionX;
     recv_data >> PositionY;
-    recv_data >> PositionZ;
-    recv_data >> Orientation;                               // o (3.141593 = 180 degrees)
+    recv_data >> Orientation;
+    
+    BitStream mask = recv_data.ReadBitStream(8);
+    ByteBuffer bytes(8, true);
 
-    //sLog->outDebug("Received opcode CMSG_WORLD_TELEPORT");
+    if (mask[6]) bytes[1] = recv_data.ReadUInt8() ^ 1;
+    if (mask[1]) bytes[0] = recv_data.ReadUInt8() ^ 1;
+    if (mask[7]) bytes[2] = recv_data.ReadUInt8() ^ 1;
+    if (mask[5]) bytes[7] = recv_data.ReadUInt8() ^ 1;
+    if (mask[3]) bytes[4] = recv_data.ReadUInt8() ^ 1;
+    if (mask[2]) bytes[5] = recv_data.ReadUInt8() ^ 1;
+    if (mask[0]) bytes[6] = recv_data.ReadUInt8() ^ 1;
+    if (mask[4]) bytes[3] = recv_data.ReadUInt8() ^ 1;
+
+    uint64 playerGuid = BitConverter::ToUInt64(bytes);
+
+    sLog->outDebug(LOG_FILTER_NETWORKIO, "Received opcode CMSG_WORLD_TELEPORT");
+    
     if (GetPlayer()->isInFlight())
     {
         sLog->outDebug(LOG_FILTER_NETWORKIO, "Player '%s' (GUID: %u) in flight, ignore worldport command.", GetPlayer()->GetName(), GetPlayer()->GetGUIDLow());
         return;
     }
 
-    sLog->outStaticDebug("Time %u sec, map=%u, x=%f, y=%f, z=%f, orient=%f", time/1000, mapid, PositionX, PositionY, PositionZ, Orientation);
+    sLog->outStaticDebug("map=%u, x=%f, y=%f, z=%f, orient=%f", mapid, PositionX, PositionY, PositionZ, Orientation);
 
     if (AccountMgr::IsAdminAccount(GetSecurity()))
         GetPlayer()->TeleportTo(mapid, PositionX, PositionY, PositionZ, Orientation);

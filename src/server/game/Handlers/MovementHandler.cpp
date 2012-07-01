@@ -193,21 +193,21 @@ void WorldSession::HandleMoveWorldportAckOpcode()
 void WorldSession::HandleMoveTeleportAck(WorldPacket& recv_data)
 {
     sLog->outDebug(LOG_FILTER_NETWORKIO, "MSG_MOVE_TELEPORT_ACK");
-
-    BitStream mask = recv_data.ReadBitStream(8);
     
     uint32 flags, time;
     recv_data >> flags >> time;
 
+    BitStream mask = recv_data.ReadBitStream(8);
     ByteBuffer bytes(8, true);
-    recv_data.ReadXorByte(mask[6], bytes[1]);
-    recv_data.ReadXorByte(mask[0], bytes[3]);
-    recv_data.ReadXorByte(mask[1], bytes[2]);
-    recv_data.ReadXorByte(mask[7], bytes[0]);
-    recv_data.ReadXorByte(mask[5], bytes[6]);
-    recv_data.ReadXorByte(mask[3], bytes[4]);
-    recv_data.ReadXorByte(mask[2], bytes[7]);
-    recv_data.ReadXorByte(mask[4], bytes[5]);
+
+    if (mask[7]) bytes[4] = recv_data.ReadUInt8() ^ 1;
+    if (mask[6]) bytes[2] = recv_data.ReadUInt8() ^ 1;
+    if (mask[5]) bytes[7] = recv_data.ReadUInt8() ^ 1;
+    if (mask[3]) bytes[6] = recv_data.ReadUInt8() ^ 1;
+    if (mask[0]) bytes[5] = recv_data.ReadUInt8() ^ 1;
+    if (mask[2]) bytes[1] = recv_data.ReadUInt8() ^ 1;
+    if (mask[4]) bytes[3] = recv_data.ReadUInt8() ^ 1;
+    if (mask[1]) bytes[0] = recv_data.ReadUInt8() ^ 1;
 
     uint64 guid = BitConverter::ToUInt64(bytes);
 
@@ -431,7 +431,7 @@ void WorldSession::HandleForceSpeedChangeAck(WorldPacket &recv_data)
 
     switch (opcode)
     {
-       /* case MSG_MOVE_FORCE_WALK_SPEED_CHANGE_ACK:          move_type = MOVE_WALK;          force_move_type = MOVE_WALK;        break;
+        case MSG_MOVE_FORCE_WALK_SPEED_CHANGE_ACK:          move_type = MOVE_WALK;          force_move_type = MOVE_WALK;        break;
         case MSG_MOVE_FORCE_RUN_SPEED_CHANGE_ACK:           move_type = MOVE_RUN;           force_move_type = MOVE_RUN;         break;
         case MSG_MOVE_FORCE_RUN_BACK_SPEED_CHANGE_ACK:      move_type = MOVE_RUN_BACK;      force_move_type = MOVE_RUN_BACK;    break;
         case MSG_MOVE_FORCE_SWIM_SPEED_CHANGE_ACK:          move_type = MOVE_SWIM;          force_move_type = MOVE_SWIM;        break;
@@ -439,7 +439,7 @@ void WorldSession::HandleForceSpeedChangeAck(WorldPacket &recv_data)
         case MSG_MOVE_FORCE_TURN_RATE_CHANGE_ACK:           move_type = MOVE_TURN_RATE;     force_move_type = MOVE_TURN_RATE;   break;
         case MSG_MOVE_FORCE_FLIGHT_SPEED_CHANGE_ACK:        move_type = MOVE_FLIGHT;        force_move_type = MOVE_FLIGHT;      break;
         case MSG_MOVE_FORCE_FLIGHT_BACK_SPEED_CHANGE_ACK:   move_type = MOVE_FLIGHT_BACK;   force_move_type = MOVE_FLIGHT_BACK; break;
-        case MSG_MOVE_FORCE_PITCH_RATE_CHANGE_ACK:          move_type = MOVE_PITCH_RATE;    force_move_type = MOVE_PITCH_RATE;  break;*/
+        case MSG_MOVE_FORCE_PITCH_RATE_CHANGE_ACK:          move_type = MOVE_PITCH_RATE;    force_move_type = MOVE_PITCH_RATE;  break;
         default:
             sLog->outError("WorldSession::HandleForceSpeedChangeAck: Unknown move type opcode: %u", opcode);
             return;
