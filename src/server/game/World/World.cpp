@@ -1770,8 +1770,8 @@ void World::SetInitialWorldSettings()
     sLog->outString("Initializing Opcodes...");
     InitOpcodes();
 
-    sLog->outString("Loading hotfix info...");
-    sObjectMgr->LoadHotfixData();
+    //sLog->outString("Loading hotfix info...");
+    //sObjectMgr->LoadHotfixData();
 
     uint32 startupDuration = GetMSTimeDiffToNow(startupBegin);
     sLog->outString();

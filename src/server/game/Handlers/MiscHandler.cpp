@@ -1093,14 +1093,14 @@ void WorldSession::HandleMoveTimeSkippedOpcode(WorldPacket & recv_data)
     recv_data >> time;
 
     ByteBuffer bytes(8, true);
-    recv_data.ReadXorByte(mask[0], bytes[1]);
-    recv_data.ReadXorByte(mask[1], bytes[4]);
+    recv_data.ReadXorByte(mask[3], bytes[7]);
+    recv_data.ReadXorByte(mask[1], bytes[1]);
     recv_data.ReadXorByte(mask[7], bytes[2]);
-    recv_data.ReadXorByte(mask[5], bytes[5]);
-    recv_data.ReadXorByte(mask[3], bytes[0]);
-    recv_data.ReadXorByte(mask[6], bytes[7]);
-    recv_data.ReadXorByte(mask[2], bytes[6]);
-    recv_data.ReadXorByte(mask[4], bytes[3]);
+    recv_data.ReadXorByte(mask[6], bytes[4]);
+    recv_data.ReadXorByte(mask[2], bytes[3]);
+    recv_data.ReadXorByte(mask[4], bytes[6]);
+    recv_data.ReadXorByte(mask[5], bytes[0]);
+    recv_data.ReadXorByte(mask[0], bytes[5]);
 
     uint64 guid = BitConverter::ToUInt64(bytes);
 

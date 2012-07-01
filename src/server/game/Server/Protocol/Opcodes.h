@@ -180,7 +180,7 @@ enum Opcodes
     CMSG_GM_SET_SECURITY_GROUP                       = 0x00000, // Unknown
     CMSG_GMRESPONSE_RESOLVE                          = 0x00000, // Unknown
     CMSG_GMSURVEY_SUBMIT                             = 0x00000, // Unknown
-    CMSG_GMTICKET_CREATE                             = 0x00000, // Unknown
+    CMSG_GMTICKET_CREATE                             = 0x00137, // 4.3.4 Build 15595
     CMSG_GMTICKET_DELETETICKET                       = 0x00000, // Unknown
     CMSG_GMTICKET_GETTICKET                          = 0x00000, // Unknown
     CMSG_GMTICKET_SYSTEMSTATUS                       = 0x00000, // Unknown
@@ -267,24 +267,24 @@ enum Opcodes
     CMSG_MAIL_TAKE_ITEM                              = 0x02B06, // 4.3.4 Build 15595
     CMSG_MAIL_TAKE_MONEY                             = 0x04034, // 4.3.4 Build 15595
     CMSG_MEETINGSTONE_INFO                           = 0x00000, // Unknown
-    CMSG_MESSAGECHAT_ADDON_BATTLEGROUND              = 0x00000, // Unknown
-    CMSG_MESSAGECHAT_ADDON_GUILD                     = 0x00000, // Unknown
-    CMSG_MESSAGECHAT_ADDON_PARTY                     = 0x00000, // Unknown
-    CMSG_MESSAGECHAT_ADDON_RAID                      = 0x00000, // Unknown
-    CMSG_MESSAGECHAT_ADDON_WHISPER                   = 0x00000, // Unknown
-    CMSG_MESSAGECHAT_AFK                             = 0x00000, // Unknown
-    CMSG_MESSAGECHAT_BATTLEGROUND                    = 0x00000, // Unknown
+    CMSG_MESSAGECHAT_ADDON_BATTLEGROUND              = 0x00D46, // 4.3.4 Build 15595
+    CMSG_MESSAGECHAT_ADDON_GUILD                     = 0x00544, // 4.3.4 Build 15595
+    CMSG_MESSAGECHAT_ADDON_PARTY                     = 0x00546, // 4.3.4 Build 15595
+    CMSG_MESSAGECHAT_ADDON_RAID                      = 0x01D56, // 4.3.4 Build 15595
+    CMSG_MESSAGECHAT_ADDON_WHISPER                   = 0x02146, // 4.3.4 Build 15595
+    CMSG_MESSAGECHAT_AFK                             = 0x00D44, // 4.3.4 Build 15595
+    CMSG_MESSAGECHAT_BATTLEGROUND                    = 0x02156, // 4.3.4 Build 15595
     CMSG_MESSAGECHAT_BATTLEGROUND_LEADER             = 0x00000, // Unknown
     CMSG_MESSAGECHAT_CHANNEL                         = 0x01D44, // 4.3.4 Build 15595
-    CMSG_MESSAGECHAT_DND                             = 0x00000, // Unknown
+    CMSG_MESSAGECHAT_DND                             = 0x02946, // 4.3.4 Build 15595
     CMSG_MESSAGECHAT_EMOTE                           = 0x02E24, // 4.3.4 Build 15595
     CMSG_MESSAGECHAT_GUILD                           = 0x03956, // 4.3.4 Build 15595
     CMSG_MESSAGECHAT_OFFICER                         = 0x01946, // 4.3.4 Build 15595
-    CMSG_MESSAGECHAT_PARTY                           = 0x00000, // Unknown
+    CMSG_MESSAGECHAT_PARTY                           = 0x01D46, // 4.3.4 Build 15595
     CMSG_MESSAGECHAT_PARTY_LEADER                    = 0x00000, // Unknown
-    CMSG_MESSAGECHAT_RAID                            = 0x00000, // Unknown
+    CMSG_MESSAGECHAT_RAID                            = 0x02D44, // 4.3.4 Build 15595
     CMSG_MESSAGECHAT_RAID_LEADER                     = 0x00000, // Unknown
-    CMSG_MESSAGECHAT_RAID_WARNING                    = 0x00000, // Unknown
+    CMSG_MESSAGECHAT_RAID_WARNING                    = 0x00944, // 4.3.4 Build 15595
     CMSG_MESSAGECHAT_SAY                             = 0x01154, // 4.3.4 Build 15595
     CMSG_MESSAGECHAT_WHISPER                         = 0x00D56, // 4.3.4 Build 15595
     CMSG_MESSAGECHAT_YELL                            = 0x03544, // 4.3.4 Build 15595
@@ -889,7 +889,7 @@ enum Opcodes
     MSG_MOVE_SPLINE_UNSET_FLYING                     = 0x00000, // Unknown
     MSG_MOVE_SPLINE_UNSET_HOVER                      = 0x00000, // Unknown
     MSG_MOVE_TELEPORT                                = 0x00000, // Unknown
-    MSG_MOVE_UNROOT                                  = 0x00000, // Unknown
+    MSG_MOVE_UNROOT                                  = 0x07DB4, // 4.3.4 Build 15595
     MSG_MOVE_UNSET_CAN_FLY                           = 0x00000, // Unknown
     MSG_MOVE_UNSET_HOVERING                          = 0x00000, // Unknown
     MSG_MOVE_UNSET_WALK_IN_AIR                       = 0x00000, // Unknown
@@ -1108,6 +1108,7 @@ enum Opcodes
     SMSG_CATEGORY_COOLDOWN                           = 0x071B6, // 4.3.4 Build 15595
     CMSG_QUERY_BATTLEFIELD_STATE                     = 0x07202, // 4.3.4 Build 15595
     SMSG_GUILD_PERMISSIONS_QUERY_RESULTS             = 0x034A3, // 4.3.4 Build 15595
+    CMSG_OBJECT_UPDATE_FAILED                        = 0X03808, // 4.3.4 Build 15595
 };
 
 extern void InitOpcodeTable();

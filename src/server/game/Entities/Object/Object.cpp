@@ -67,19 +67,17 @@ uint32 GuidHigh2TypeId(uint32 guid_hi)
     return NUM_CLIENT_OBJECT_TYPES;                         // unknown
 }
 
-Object::Object() : m_PackGUID(sizeof(uint64)+1)
+Object::Object()
 {
     m_objectTypeId      = TYPEID_OBJECT;
     m_objectType        = TYPEMASK_OBJECT;
 
-    m_uint32Values      = NULL;
-    _changedFields      = NULL;
+    m_uint32Values      = 0;
+    _changedFields      = 0;
     m_valuesCount       = 0;
 
     m_inWorld           = false;
     m_objectUpdated     = false;
-
-    m_PackGUID.appendPackGUID(0);
 }
 
 WorldObject::~WorldObject()
@@ -133,23 +131,10 @@ void Object::_InitValues()
 void Object::_Create(uint32 guidlow, uint32 entry, HighGuid guidhigh)
 {
     if (!m_uint32Values) _InitValues();
-		uint64 guid = MAKE_NEW_GUID(guidlow, entry, guidhigh);
-    
-	SetUInt64Value(OBJECT_FIELD_GUID, guid);
-    uint32 type = 0;
-    switch (m_objectType)
-    {
-        //case TYPEID_ITEM:       type = 3; break;
-        //case TYPEID_CONTAINER:  type = 7; break;   //+4
-        //case TYPEID_UNIT:       type = 9; break;   //+2
-        //case TYPEID_PLAYER:     type = 25; break;  //+16
-        //case TYPEID_GAMEOBJECT: type = 33; break;  //+8
-        case TYPEID_DYNAMICOBJECT: type = 65; break;  //+32
-        //case TYPEID_CORPSE:     type = 129; break;  //+64
-        default: type = m_objectType; break;
-    }
-    SetUInt32Value(OBJECT_FIELD_TYPE, type);
-    m_PackGUID.wpos(0);
+    uint64 guid = MAKE_NEW_GUID(guidlow, entry, guidhigh);
+
+    SetUInt64Value(OBJECT_FIELD_GUID, guid);
+    SetUInt32Value(OBJECT_FIELD_TYPE, m_objectType);
     m_PackGUID.appendPackGUID(guid);
 }
 
@@ -339,7 +324,10 @@ void Object::_BuildMovementUpdate(ByteBuffer * data, uint16 flags) const
         uint8 GuidMask2[] = { 7, 3, 2, 5, 4, 6, 0, 1 };
 
         data->WriteBit(!(unit->m_movementInfo.GetMovementFlags())); //hasMovementFLags
-		data->WriteBit(!(1)); //Has Orientation flags & UPDATEFLAG_HAS_ORIENTATION
+        if (unit->GetTypeId() == TYPEID_UNIT)
+            data->WriteBit(false);
+        else
+            data->WriteBit(true);
         data->WriteGuidMask(Guid2, GuidMask2, 3, 0);
 
         if(unit->m_movementInfo.GetMovementFlags())
@@ -509,7 +497,7 @@ void Object::_BuildMovementUpdate(ByteBuffer * data, uint16 flags) const
         data->WriteGuidBytes(Guid3, GuidBytes3, 1, 7);
         *data << ((Unit*)this)->GetSpeed(MOVE_TURN_RATE); //Turn Speed
 
-        //if (flags & UPDATEFLAG_HAS_ORIENTATION)
+        if (unit->GetTypeId() == TYPEID_UNIT)
             *data << ((Unit*)this)->GetOrientation();
 
         *data << ((Unit*)this)->GetSpeed(MOVE_RUN);//Run Speed
