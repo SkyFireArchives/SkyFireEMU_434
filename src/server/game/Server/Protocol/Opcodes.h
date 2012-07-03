@@ -80,11 +80,11 @@ enum Opcodes
     CMSG_BATTLEFIELD_REQUEST_SCORE_DATA              = 0x00000, // Unknown
     CMSG_BATTLEFIELD_STATUS                          = 0x02500, // 4.3.4 Build 15595
     CMSG_BATTLEMASTER_JOIN_ARENA                     = 0x00000, // Unknown
-    CMSG_BEGIN_TRADE                                 = 0x00000, // Unknown
+    CMSG_BEGIN_TRADE                                 = 0x0721E, // 4.3.4 Build 15595
     CMSG_BINDER_ACTIVATE                             = 0x04006, // 4.3.4 Build 15595
     CMSG_BOT_DETECTED2                               = 0x00000, // Unknown
     CMSG_BUG                                         = 0x04035, // 4.3.4 Build 15595
-    CMSG_BUSY_TRADE                                  = 0x00000, // Unknown
+    CMSG_BUSY_TRADE                                  = 0x0331C, // 4.3.4 Build 15595
     CMSG_BUY_BANK_SLOT                               = 0x00425, // 4.3.4 Build 15595
     CMSG_BUY_ITEM                                    = 0x00736, // 4.3.4 Build 15595
     CMSG_BUYBACK_ITEM                                = 0x06C17, // 4.3.4 Build 15595
@@ -135,7 +135,7 @@ enum Opcodes
     CMSG_CHAR_RACE_CHANGE                            = 0x00D24, // 4.3.4 Build 15595
     CMSG_CHAR_RENAME                                 = 0x02327, // 4.3.4 Build 15595
     CMSG_CLEAR_CHANNEL_WATCH                         = 0x02604, // 4.3.4 Build 15595
-    CMSG_CLEAR_TRADE_ITEM                            = 0x00000, // Unknown
+    CMSG_CLEAR_TRADE_ITEM                            = 0x07B0C, // 4.3.4 Build 15595
     CMSG_COMMENTATOR_ENABLE                          = 0x00B07, // 4.3.4 Build 15595
     CMSG_COMMENTATOR_ENTER_INSTANCE                  = 0x04105, // 4.3.4 Build 15595
     CMSG_COMMENTATOR_EXIT_INSTANCE                   = 0x06136, // 4.3.4 Build 15595
@@ -230,8 +230,8 @@ enum Opcodes
     CMSG_GUILD_SET_NOTE                              = 0x00000, // Unknown
     CMSG_GUILDFINDER_JOIN                            = 0x00000, // Unknown
     CMSG_HEARTH_AND_RESURRECT                        = 0x04B34, // 4.3.4 Build 15595
-    CMSG_IGNORE_TRADE                                = 0x00000, // Unknown
-    CMSG_INITIATE_TRADE                              = 0x00000, // Unknown
+    CMSG_IGNORE_TRADE                                = 0x07112, // 4.3.4 Build 15595
+    CMSG_INITIATE_TRADE                              = 0x07916, // 4.3.4 Build 15595
     CMSG_INSPECT                                     = 0x00927, // 4.3.4 Build 15595
     CMSG_INSTANCE_LOCK_WARNING_RESPONSE              = 0x06234, // 4.3.4 Build 15595
     CMSG_ITEM_REFUND                                 = 0x06134, // 4.3.4 Build 15595
@@ -400,8 +400,8 @@ enum Opcodes
     CMSG_SET_SKILL_CHEAT                             = 0x00000, // Unknown
     CMSG_SET_TAXI_BENCHMARK_MODE                     = 0x04314, // 4.3.4 Build 15595
     CMSG_SET_TITLE                                   = 0x02117, // 4.3.4 Build 15595
-    CMSG_SET_TRADE_GOLD                              = 0x00000, // Unknown
-    CMSG_SET_TRADE_ITEM                              = 0x00000, // Unknown
+    CMSG_SET_TRADE_GOLD                              = 0x03008, // 4.3.4 Build 15595
+    CMSG_SET_TRADE_ITEM                              = 0x07B0C, // 4.3.4 Build 15595
     CMSG_SET_WATCHED_FACTION                         = 0x00000, // Unknown
     CMSG_SETDEATHBINDPOINT                           = 0x00000, // Unknown
     CMSG_SETSHEATHED                                 = 0x04326, // 4.3.4 Build 15595
@@ -437,7 +437,7 @@ enum Opcodes
     CMSG_TUTORIAL_CLEAR                              = 0x00000, // Unknown
     CMSG_TUTORIAL_FLAG                               = 0x00000, // Unknown
     CMSG_TUTORIAL_RESET                              = 0x00000, // Unknown
-    CMSG_UNACCEPT_TRADE                              = 0x00000, // Unknown
+    CMSG_UNACCEPT_TRADE                              = 0x0391A, // 4.3.4 Build 15595
     CMSG_UNLEARN_SKILL                               = 0x00000, // Unknown
     CMSG_UNREGISTER_ALL_ADDON_PREFIXES               = 0x03D54, // 4.3.4 Build 15595
     CMSG_UPDATE_ACCOUNT_DATA                         = 0x04736, // 4.3.4 Build 15595
