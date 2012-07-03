@@ -2043,39 +2043,11 @@ uint8 Player::GetChatTag() const
 
 void Player::SendTeleportPacket(Position &oldPos)
 {
-    WorldPacket data(MSG_MOVE_TELEPORT, 38);
-
-    uint64 guid = GetGUID();
-    uint8* bytes = (uint8*)&guid;
-
-    data.WriteBit(GetTransGUID());
-    data.WriteBit(bytes[0]);
-    data.WriteBit(bytes[2]);
-    data.WriteBit(bytes[6]);
-    data.WriteBit(bytes[7]);
-    data.WriteBit(bytes[4]);
-    data.WriteBit(bytes[5]);
-    data.WriteBit(bytes[3]);
-    data.WriteBit(bytes[1]);
-    data.WriteBit(0); //unk byte's bit
-    data << GetPositionX();
-    data << GetPositionY();
-    data << GetPositionZ();
-    data.WriteByteSeq(bytes[5]);
-    data.WriteByteSeq(bytes[4]);
-    if (GetTransGUID()) data << GetTransGUID();
-    data.WriteByteSeq(bytes[2]);
-    data.WriteByteSeq(bytes[7]);
-    data << uint32(0); //unk int
-    data.WriteByteSeq(bytes[1]);
-    data.WriteByteSeq(bytes[0]);
-    data.WriteByteSeq(bytes[6]);
-    data.WriteByteSeq(bytes[3]);
-    // unk byte, only if bit is set
-    data << GetOrientation();
-
+    WorldPacket data2(MSG_MOVE_TELEPORT, 41);
+    data2.append(GetPackGUID());
+    BuildMovementPacket(&data2);
     Relocate(&oldPos);
-    SendDirectMessage(&data);
+    SendMessageToSet(&data2, false);
 }
 
 void Player::SendSetFlyPacket(bool apply)

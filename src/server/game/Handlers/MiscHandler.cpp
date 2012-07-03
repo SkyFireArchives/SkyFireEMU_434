@@ -1278,6 +1278,7 @@ void WorldSession::HandleWorldTeleportOpcode(WorldPacket& recv_data)
 
     recv_data >> mapid;
     recv_data >> PositionX;
+    recv_data >> PositionZ;
     recv_data >> PositionY;
     recv_data >> Orientation;
     
