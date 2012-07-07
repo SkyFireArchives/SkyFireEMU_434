@@ -628,7 +628,6 @@ enum Opcodes
     SMSG_ADD_RUNE_POWER                              = 0x00000, // Unknown
     SMSG_AI_REACTION                                 = 0x00637, // 4.3.4 Build 15595
     SMSG_ALL_ACHIEVEMENT_DATA                        = 0x058B1, // 4.3.4 Build 15595
-    SMSG_ALL_GUILD_ACHIEVEMENTS                      = 0x054B7, // 4.3.4 Build 15595
     SMSG_AREA_SPIRIT_HEALER_TIME                     = 0x00000, // Unknown
     SMSG_AREA_TRIGGER_MESSAGE                        = 0x00000, // Unknown
     SMSG_ARENA_ERROR                                 = 0x02D17, // 4.3.4 Build 15595
