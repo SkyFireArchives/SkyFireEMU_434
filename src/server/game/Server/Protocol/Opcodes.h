@@ -312,6 +312,7 @@ enum Opcodes
     CMSG_PET_CANCEL_AURA                             = 0x00000, // Unknown
     CMSG_PET_CAST_SPELL                              = 0x06337, // 4.3.4 Build 15595
     CMSG_PET_LEARN_TALENT                            = 0x00000, // Unknown
+    CMSG_PET_NAME_CACHE                              = 0x06F24, // 4.3.4 Build 15595
     CMSG_PET_NAME_QUERY                              = 0x00000, // Unknown
     CMSG_PET_RENAME                                  = 0x00000, // Unknown
     CMSG_PET_SET_ACTION                              = 0x00000, // Unknown
@@ -448,7 +449,7 @@ enum Opcodes
     CMSG_WARDEN_DATA                                 = 0x025A2, // 4.3.4 Build 15595
     CMSG_WHO                                         = 0x06C15, // 4.3.4 Build 15595
     CMSG_WHOIS                                       = 0x06B05, // 4.3.4 Build 15595
-    CMSG_WORLD_PORT_RESPONSE                         = 0x00000, // Unknown
+    CMSG_WORLD_PORT_RESPONSE                         = 0x02411, // 4.3.4 Build 15595
     CMSG_WORLD_STATE_UI_TIMER_UPDATE                 = 0x04605, // 4.3.4 Build 15595
     CMSG_WORLD_TELEPORT                              = 0x03330, // 4.3.4 Build 15595
     CMSG_WRAP_ITEM                                   = 0x00000, // Unknown
@@ -502,7 +503,7 @@ enum Opcodes
     MSG_MOVE_SET_ALL_SPEED_CHEAT                     = 0x00000, // Unknown
     MSG_MOVE_SET_CAN_FLY                             = 0x0720E, // 4.3.4 Build 15595
     MSG_MOVE_SET_CAN_FLY_ACK                         = 0x0790C, // 4.3.4 Build 15595
-    MSG_MOVE_SET_COLLISION_HEIGHT                    = 0x07114, // 4.3.4 Build 15595
+    MSG_MOVE_SET_COLLISION_HEIGHT                    = 0x059A3, // 4.3.4 Build 15595
     MSG_MOVE_SET_COLLISION_HEIGHT_ACK                = 0x07114, // 4.3.4 Build 15595
     MSG_MOVE_SET_COMPOUND_STATE                      = 0x075A0, // 4.3.4 Build 15595
     MSG_MOVE_SET_FACING                              = 0x07914, // 4.3.4 Build 15595
@@ -594,8 +595,10 @@ enum Opcodes
     MSG_MOVE_UNSET_CAN_FLY                           = 0x00000, // Unknown
     MSG_MOVE_UNSET_HOVERING                          = 0x00000, // Unknown
     MSG_MOVE_UNSET_WALK_IN_AIR                       = 0x00000, // Unknown
+    MSG_MOVE_UPDATE_FLIGHT_SPEED                     = 0x030B1, // 4.3.4 Build 15595
     MSG_MOVE_UPDATE_KNOCK_BACK                       = 0x00000, // Unknown
     MSG_MOVE_UPDATE_MOUSE                            = 0x00000, // Unknown
+    MSG_MOVE_UPDATE_RUN_SPEED                        = 0X014A6, // 4.3.4 Build 15595
     MSG_MOVE_UPDATE_TELEPORT                         = 0x050B2, // 4.3.4 Build 15595
     MSG_MOVE_WATER_WALK_ACK                          = 0x00000, // Unknown
     MSG_NOTIFY_PARTY_SQUELCH                         = 0x00000, // Unknown
@@ -681,7 +684,7 @@ enum Opcodes
     SMSG_BATTLEGROUND_PLAYER_JOINED                  = 0x00000, // Unknown
     SMSG_BATTLEGROUND_PLAYER_LEFT                    = 0x00000, // Unknown
     SMSG_BATTLEGROUND_PLAYER_POSITIONS               = 0x00000, // Unknown
-    SMSG_BINDER_CONFIRM                              = 0x00000, // Unknown
+    SMSG_BINDER_CONFIRM                              = 0x02835, // 4.3.4 Build 15595
     SMSG_BINDPOINTUPDATE                             = 0x00527, // 4.3.4 Build 15595
     SMSG_BINDZONEREPLY                               = 0x00000, // Unknown
     SMSG_BREAK_TARGET                                = 0x00000, // Unknown
@@ -765,6 +768,7 @@ enum Opcodes
     SMSG_EQUIPMENT_SET_USE_RESULT                    = 0x00000, // Unknown
     SMSG_EXPECTED_SPAM_RECORDS                       = 0x04D36, // 4.3.4 Build 15595
     SMSG_EXPLORATION_EXPERIENCE                      = 0x06716, // 4.3.4 Build 15595
+    SMSG_FAILED_PLAYER_CONDITION                     = 0x019A4, // 4.3.4 Build 15595
     SMSG_FEATURE_SYSTEM_STATUS                       = 0x03DB7, // 4.3.4 Build 15595
     SMSG_FISH_ESCAPED                                = 0x00000, // Unknown
     SMSG_FISH_NOT_HOOKED                             = 0x00000, // Unknown
@@ -808,6 +812,7 @@ enum Opcodes
     SMSG_GUILD_BANK_LIST                             = 0x00000, // Unknown
     SMSG_GUILD_CANCEL                                = 0x00000, // Unknown
     SMSG_GUILD_COMMAND_RESULT                        = 0x07DB3, // 4.3.4 Build 15595
+    SMSG_GUILD_CRITERIA_UPDATE                       = 0x014B4, // 4.3.4 Build 15595
     SMSG_GUILD_DECLINE                               = 0x02C07, // 4.3.4 Build 15595
     SMSG_GUILD_EVENT                                 = 0x00705, // 4.3.4 Build 15595
     SMSG_GUILD_INFO                                  = 0x00000, // Unknown
@@ -816,6 +821,7 @@ enum Opcodes
     SMSG_GUILD_MAX_DAILY_XP                          = 0x079B5, // 4.3.4 Build 15595
     SMSG_GUILD_MEMBER_DAILY_RESET                    = 0x010A5, // 4.3.4 Build 15595
     SMSG_GUILD_NEWS_UPDATE                           = 0x00000, // Unknown
+    SMSG_GUILD_PARTY_STATE                           = 0x050A6, // 4.3.4 Build 15595
     SMSG_GUILD_PERMISSIONS_QUERY_RESULTS             = 0x034A3, // 4.3.4 Build 15595
     SMSG_GUILD_QUERY_RESPONSE                        = 0x00E06, // 4.3.4 Build 15595
     SMSG_GUILD_RANK                                  = 0x030B4, // 4.3.4 Build 15595
@@ -1081,7 +1087,7 @@ enum Opcodes
     SMSG_TRAINER_BUY_SUCCEEDED                       = 0x06A05, // 4.3.4 Build 15595
     SMSG_TRAINER_LIST                                = 0x04414, // 4.3.4 Build 15595
     SMSG_TRANSFER_ABORTED                            = 0x00537, // 4.3.4 Build 15595
-    SMSG_TRANSFER_PENDING                            = 0x00000, // Unknown
+    SMSG_TRANSFER_PENDING                            = 0x018A6, // 4.3.4 Build 15595
     SMSG_TRIGGER_CINEMATIC                           = 0x06C27, // 4.3.4 Build 15595
     SMSG_TRIGGER_MOVIE                               = 0x00000, // Unknown
     SMSG_TURN_IN_PETITION_RESULTS                    = 0x00000, // Unknown
@@ -1108,8 +1114,10 @@ enum Opcodes
     SMSG_VOICE_SET_TALKER_MUTED                      = 0x06E35, // 4.3.4 Build 15595
     SMSG_WARDEN_DATA                                 = 0x031A0, // 4.3.4 Build 15595
     SMSG_WEATHER                                     = 0x06917, // 4.3.4 Build 15595
+    SMSG_WEEKLY_SPELL_USAGE                          = 0x039B7, // 4.3.4 Build 15595
     SMSG_WHO                                         = 0x06907, // 4.3.4 Build 15595
     SMSG_WHOIS                                       = 0x06917, // 4.3.4 Build 15595
+    SMSG_WORLD_SERVER_INFO                           = 0x009B1, // 4.3.4 Build 15595
     SMSG_WORLD_STATE_UI_TIMER_UPDATE                 = 0x04A14, // 4.3.4 Build 15595
     SMSG_ZONE_UNDER_ATTACK                           = 0x00A06, // 4.3.4 Build 15595
 };
