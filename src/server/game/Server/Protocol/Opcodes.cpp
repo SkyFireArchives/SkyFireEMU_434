@@ -1410,6 +1410,9 @@ void InitOpcodes()
      DEFINE_OPCODE_HANDLER(SMSG_FAILED_PLAYER_CONDITION,                 STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(SMSG_GUILD_CRITERIA_UPDATE,                   STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(SMSG_WEEKLY_SPELL_USAGE,                      STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
+     DEFINE_OPCODE_HANDLER(SMSG_PET_ADDED,                               STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
+     DEFINE_OPCODE_HANDLER(SMSG_SAVE_CUF_PROFILES,                       STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
+     DEFINE_OPCODE_HANDLER(MSG_GET_CALENDAR,                             STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
 
 #undef DEFINE_OPCODE_HANDLER
 };

@@ -203,7 +203,7 @@ enum Opcodes
     CMSG_GROUP_UNINVITE                              = 0x00000, // Unknown
     CMSG_GROUP_UNINVITE_GUID                         = 0x00000, // Unknown
     CMSG_GUILDFINDER_JOIN                            = 0x00000, // Unknown
-    CMSG_GUILD_ACCEPT                                = 0x00000, // Unknown
+    CMSG_GUILD_ACCEPT                                = 0x02014, // 4.3.4 Build 15595
     CMSG_GUILD_BANKER_ACTIVATE                       = 0x02E37, // 4.3.4 Build 15595
     CMSG_GUILD_BANK_BUY_TAB                          = 0x00000, // Unknown
     CMSG_GUILD_BANK_DEPOSIT_MONEY                    = 0x00000, // Unknown
@@ -460,6 +460,7 @@ enum Opcodes
     MSG_CHANNEL_START                                = 0x00000, // Unknown
     MSG_CHANNEL_UPDATE                               = 0x00000, // Unknown
     MSG_CORPSE_QUERY                                 = 0x00000, // Unknown
+    MSG_GET_CALENDAR                                 = 0x02814, // 4.3.4 Build 15595
     MSG_GM_BIND_OTHER                                = 0x00000, // Unknown
     MSG_GM_SHOWLABEL                                 = 0x00000, // Unknown
     MSG_GM_SUMMON                                    = 0x00000, // Unknown
@@ -832,7 +833,7 @@ enum Opcodes
     SMSG_GUILD_SET_NOTE                              = 0x00000, // Unknown
     SMSG_GUILD_TRADESKILL_UPDATE                     = 0x00000, // Unknown
     SMSG_GUILD_UPDATE_ROSTER                         = 0x018B0, // 4.3.4 Build 15595
-    SMSG_GUILD_XP_UPDATE                             = 0x00000, // Unknown
+    SMSG_GUILD_XP_UPDATE                             = 0x014A1, // 4.3.4 Build 15595
     SMSG_HIGHEST_THREAT_UPDATE                       = 0x00000, // Unknown
     SMSG_HOTFIX_INFO                                 = 0x019B5, // 4.3.4 Build 15595
     SMSG_INITIALIZE_FACTIONS                         = 0x04634, // 4.3.4 Build 15595
@@ -942,6 +943,7 @@ enum Opcodes
     SMSG_PETITION_SIGN_RESULTS                       = 0x00000, // Unknown
     SMSG_PET_ACTION_FEEDBACK                         = 0x00807, // 4.3.4 Build 15595
     SMSG_PET_ACTION_SOUND                            = 0x04324, // 4.3.4 Build 15595
+    SMSG_PET_ADDED                                   = 0x03CA5, // 4.3.4 Build 15595
     SMSG_PET_CAST_FAILED                             = 0x00000, // Unknown
     SMSG_PET_DISMISS_SOUND                           = 0x00000, // Unknown
     SMSG_PET_GUIDS                                   = 0x02D26, // 4.3.4 Build 15595
@@ -1008,7 +1010,7 @@ enum Opcodes
     SMSG_READ_ITEM_OK                                = 0x00000, // Unknown
     SMSG_REALM_SPLIT                                 = 0x02714, // 4.3.4 Build 15595
     SMSG_REAL_GROUP_UPDATE                           = 0x00F34, // 4.3.4 Build 15595
-    SMSG_RECEIVED_MAIL                               = 0x04927, // 4.3.4 Build 15595
+    SMSG_RECEIVED_MAIL                               = 0x02924, // 4.3.4 Build 15595
     SMSG_REDIRECT_CLIENT                             = 0x00942, // 4.3.4 Build 15595
     SMSG_REFER_A_FRIEND_FAILURE                      = 0x00000, // Unknown
     SMSG_REMOVED_SPELL                               = 0x04804, // 4.3.4 Build 15595
@@ -1020,6 +1022,7 @@ enum Opcodes
     SMSG_RESURRECT_REQUEST                           = 0x00000, // Unknown
     SMSG_RESYNC_RUNES                                = 0x00000, // Unknown
     SMSG_RWHOIS                                      = 0x02437, // 4.3.4 Build 15595
+    SMSG_SAVE_CUF_PROFILES                           = 0x0730E, // 4.3.4 Build 15595
     SMSG_SELL_ITEM                                   = 0x06105, // 4.3.4 Build 15595
     SMSG_SEND_MAIL_RESULT                            = 0x04927, // 4.3.4 Build 15595
     SMSG_SEND_UNLEARN_SPELLS                         = 0x04E25, // 4.3.4 Build 15595
@@ -1029,7 +1032,7 @@ enum Opcodes
     SMSG_SETUP_RESEARCH_HISTORY                      = 0x010B6, // 4.3.4 Build 15595
     SMSG_SET_FACTION_ATWAR                           = 0x04216, // 4.3.4 Build 15595
     SMSG_SET_FACTION_STANDING                        = 0x00126, // 4.3.4 Build 15595
-    SMSG_SET_FACTION_VISIBLE                         = 0x06737, // 4.3.4 Build 15595
+    SMSG_SET_FACTION_VISIBLE                         = 0x02525, // 4.3.4 Build 15595
     SMSG_SET_FLAT_SPELL_MODIFIER                     = 0x00224, // 4.3.4 Build 15595
     SMSG_SET_FORCED_REACTIONS                        = 0x04615, // 4.3.4 Build 15595
     SMSG_SET_PCT_SPELL_MODIFIER                      = 0x02834, // 4.3.4 Build 15595
