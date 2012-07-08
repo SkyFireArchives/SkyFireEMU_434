@@ -625,7 +625,7 @@ enum Opcodes
     // SMSG
     SMSG_ACCOUNT_DATA_TIMES                          = 0x04B05, // 4.3.4 Build 15595
     SMSG_ACHIEVEMENT_DELETED                         = 0x00000, // Unknown
-    SMSG_ACHIEVEMENT_EARNED                          = 0x00000, // Unknown
+    SMSG_ACHIEVEMENT_EARNED                          = 0x04405, // 4.3.4 Build 15595
     SMSG_ACTION_BUTTONS                              = 0x038B5, // 4.3.4 Build 15595
     SMSG_ACTIVATETAXIREPLY                           = 0x00000, // Unknown
     SMSG_ADDON_INFO                                  = 0x02C14, // 4.3.4 Build 15595
