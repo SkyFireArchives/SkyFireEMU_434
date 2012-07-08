@@ -721,7 +721,7 @@ enum Opcodes
     SMSG_COMMENTATOR_PLAYER_INFO                     = 0x00000, // Unknown
     SMSG_COMMENTATOR_STATE_CHANGED                   = 0x00000, // Unknown
     SMSG_COMPLAIN_RESULT                             = 0x00000, // Unknown
-    SMSG_COMPLETION_NPC_RESPONCE                     = 0x075A1, // 4.3.4 Build 15595
+    SMSG_COMPLETION_NPC_RESPONSE                     = 0x075A1, // 4.3.4 Build 15595
     SMSG_COMPRESSED_ACHIEVEMENT_DATA                 = 0x00000, // Unknown
     SMSG_COMPRESSED_CHAR_ENUM                        = 0x00000, // Unknown
     SMSG_COMPRESSED_GUILD_ROSTER                     = 0x00000, // Unknown
@@ -730,7 +730,7 @@ enum Opcodes
     SMSG_CONTACT_LIST                                = 0x06017, // 4.3.4 Build 15595
     SMSG_CONVERT_RUNE                                = 0x00000, // Unknown
     SMSG_COOLDOWN_CHEAT                              = 0x00000, // Unknown
-    SMSG_COOLDOWN_EVENT                              = 0x00000, // Unknown
+    SMSG_COOLDOWN_EVENT                              = 0x04F26, // 4.3.4 Build 15595
     SMSG_CORPSE_MAP_POSITION_QUERY_RESPONSE          = 0x00000, // Unknown
     SMSG_CORPSE_NOT_IN_INSTANCE                      = 0x00000, // Unknown
     SMSG_CORPSE_RECLAIM_DELAY                        = 0x00D34, // 4.3.4 Build 15595
@@ -827,7 +827,7 @@ enum Opcodes
     SMSG_GUILD_SET_NOTE                              = 0x00000, // Unknown
     SMSG_GUILD_TRADESKILL_UPDATE                     = 0x00000, // Unknown
     SMSG_GUILD_UPDATE_ROSTER                         = 0x018B0, // 4.3.4 Build 15595
-    SMSG_GUILD_XP_UPDATE                             = 0x00000, // Unknown
+    SMSG_GUILD_XP_UPDATE                             = 0x014A1, // 4.3.4 Build 15595
     SMSG_HIGHEST_THREAT_UPDATE                       = 0x00000, // Unknown
     SMSG_HOTFIX_INFO                                 = 0x019B5, // 4.3.4 Build 15595
     SMSG_INITIALIZE_FACTIONS                         = 0x04634, // 4.3.4 Build 15595
