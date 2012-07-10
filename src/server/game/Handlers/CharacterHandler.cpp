@@ -210,176 +210,42 @@ struct charEnumInfo
 
 void WorldSession::HandleCharEnum(PreparedQueryResult result)
 {
-    WorldPacket data(SMSG_CHAR_ENUM, 270);
+    uint32 charCount = 0;
+    ByteBuffer bitBuffer;
+    ByteBuffer dataBuffer;
 
-	data.WriteBits(0, 23);
-    data.WriteBit(1);
-    data.WriteBits(result ? (*result).GetRowCount() : 0 , 17);
-
-	std::vector<charEnumInfo> charInfoList;
-    charInfoList.resize(result ? (*result).GetRowCount() : 0);
-	
-	_allowedCharsToLogin.clear();
-
+    bitBuffer.WriteBits(0, 23);
+    bitBuffer.WriteBit(1);
     if (result)
     {
-        typedef std::pair<uint32, uint64> Guids;
-        std::vector<Guids> guidsVect;
-        ByteBuffer buffer;
         _allowedCharsToLogin.clear();
-		int charCount = 0;
+
+        charCount = uint32(result->GetRowCount());
+        bitBuffer.reserve(24 * charCount / 8);
+        dataBuffer.reserve(charCount * 381);
+
+        bitBuffer.WriteBits(charCount, 17);
+
         do
         {
-            uint32 GuidLow = (*result)[0].GetUInt32();
-            uint64 GuildGuid = (*result)[13].GetUInt32();//TODO: store as uin64
+            uint32 guidLow = (*result)[0].GetUInt32();
 
-			charEnumInfo charInfo = charEnumInfo();
-            charInfo.nameLenghts =  (*result)[1].GetString().size();
-            charInfo.firstLogin = (*result)[15].GetUInt32() & AT_LOGIN_FIRST ? true : false;
-            charInfoList[charCount] = charInfo;
-            charCount++;
+            sLog->outDetail("Loading char guid %u from account %u.", guidLow, GetAccountId());
 
-            guidsVect.push_back(std::make_pair(GuidLow, GuildGuid));
+            Player::BuildEnumData(result, &dataBuffer, &bitBuffer);
 
-            sLog->outDetail("Loading char guid %u from account %u.", GuidLow, GetAccountId());
+            _allowedCharsToLogin.insert(guidLow);
+        } while (result->NextRow());
 
-            if (!Player::BuildEnumData(result, &buffer))
-            {
-                sLog->outError("Building enum data for SMSG_CHAR_ENUM has failed, aborting");
-                return;
-            }
-            _allowedCharsToLogin.insert(GuidLow);
-        }
-
-        while (result->NextRow());
-		
-		int counter = 0;
-		for (std::vector<Guids>::iterator itr = guidsVect.begin(); itr != guidsVect.end(); ++itr)
-        {
-            uint32 GuidLow = (*itr).first;
-            uint64 GuildGuid = (*itr).second;
-
-			uint64 newGUID = MAKE_NEW_GUID(GuidLow,0,HIGHGUID_PLAYER);
-	
-			uint8 Guid0 = uint8(newGUID);
-			uint8 Guid1 = uint8(newGUID >> 8);
-			uint8 Guid2 = uint8(newGUID >> 16);
-			uint8 Guid3 = uint8(newGUID >> 24);
-			uint8 Guid6 = uint8(newGUID >> 48);
-			uint8 Guid7 = uint8(newGUID >> 56);
-
-            for (uint8 i = 0; i < 21; ++i)
-            {
-                switch(i)
-                {
-				case 0:
-                    data.WriteBit(Guid7 ? 1 : 0); break;
-                    break;
-				case 7:
-                    data.WriteBits(charInfoList[counter].nameLenghts, 4); //max character name lenghts 12
-                    break;
-                   
-				case 9: //9+3
-                    data.WriteBit(Guid3 ? 1 : 0); break;
-                    break;
-				case 13: //9+3
-                    data.WriteBit(Guid1 ? 1 : 0); break;
-					break;
-                    
-				case 16://9+3
-                    data.WriteBit(charInfoList[counter].firstLogin ? 1 : 0);
-                    break;
-				
-			
-                case 17://9+3
-                    data.WriteBit(Guid0 ? 1 : 0); break;
-                    break; 
-				case 18: //9+3
-                    data.WriteBit(Guid2 ? 1 : 0); break;
-                    break; 
-				case 19: //9+3
-                    data.WriteBit(Guid6 ? 1 : 0); break;
-                    break; 
-					
-					
-					//case 14:
-                    //    data.writeBit(1);//unk
-                    //    break;
-                   /* case 0: data.WriteBit(Guid0 ? 1 : 0); break;
-                    case 6: data.WriteBit(Guid1 ? 1 : 0); break;
-                    case 7: data.WriteBit(Guid2 ? 1 : 0); break;
-                    case 8: data.WriteBit(Guid3 ? 1 : 0); break;
-                    */
-					/*case 15:
-                        if(uint8(GuildGuid))
-                            data.writeBit(1);
-                        break;
-                    case 4:
-                        if(uint8(GuildGuid >> 8))
-                            data.writeBit(1);
-                        break;
-                    case 13:
-                        if(uint8(GuildGuid >> 16))
-                            data.writeBit(1);
-                        break;
-                    case 2:
-                        if(uint8(GuildGuid >> 24))
-                            data.writeBit(1);
-                        break;*/
-                    /*case 0:
-                        if(uint8(GuildGuid >> 32))
-                            data.writeBit(1);
-                        break;
-                    case 0:
-                        if(uint8(GuildGuid >> 40))
-                            data.writeBit(1);
-                        break;*/
-                    /*case 5:
-                        if(uint8(GuildGuid >> 48))
-                            data.writeBit(1);
-                        break;
-                    case 3:
-                        if(uint8(GuildGuid >> 56))
-                            data.writeBit(1);
-                        break;*/
-                    default:
-                        data.WriteBit(0);
-                        break;
-                }
-            }
-			counter++;
-        }
-       for (uint8 y = 0; y < 7; y ++)
-		{
-			
-			
-                data.WriteBit(0);
-                break;
-			
-			
-		}
-        data.FlushBits();
-		
-		data.append(buffer);
-    } 
-	else
-    {
-         
-		for (uint8 y =0; y < 7; y ++)
-		{
-			switch(y)
-			{
-			case 0:
-				data.WriteBit(1);
-				break;
-			default:
-                data.WriteBit(0);
-                break;
-			}
-			
-		}
-		data.FlushBits();
+        bitBuffer.FlushBits();
     }
+    else
+        bitBuffer.WriteBits(0, 17);
+
+    WorldPacket data(SMSG_CHAR_ENUM, 7 + bitBuffer.size() + dataBuffer.size());
+    data.append(bitBuffer);
+    if (charCount)
+        data.append(dataBuffer);
 
     SendPacket(&data);
 }
