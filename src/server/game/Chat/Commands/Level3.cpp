@@ -3299,25 +3299,27 @@ bool ChatHandler::HandleBanListCharacterCommand(const char *args)
 
 bool ChatHandler::HandleBanListAccountCommand(const char *args)
 {
-    PreparedStatement* stmt = LoginDatabase.GetPreparedStatement(LOGIN_DEL_OLD_BANS);
+    PreparedStatement* stmt = LoginDatabase.GetPreparedStatement(LOGIN_DEL_EXPIRED_IP_BANS);
     LoginDatabase.Execute(stmt);
 
     char* cFilter = strtok((char*)args, " ");
     std::string filter = cFilter ? cFilter : "";
-    LoginDatabase.EscapeString(filter);
 
-    QueryResult result;
+    PreparedQueryResult result;
 
     if (filter.empty())
     {
-        result = LoginDatabase.Query("SELECT account.id, username FROM account, account_banned"
-            " WHERE account.id = account_banned.id AND active = 1 GROUP BY account.id");
+        PreparedStatement* stmt = LoginDatabase.GetPreparedStatement(LOGIN_SEL_ACCOUNT_BANNED_ALL);
+
+        result = LoginDatabase.Query(stmt);
     }
     else
     {
-        result = LoginDatabase.PQuery("SELECT account.id, username FROM account, account_banned"
-            " WHERE account.id = account_banned.id AND active = 1 AND username "_LIKE_" "_CONCAT3_("'%%'", "'%s'", "'%%'")" GROUP BY account.id",
-            filter.c_str());
+        PreparedStatement* stmt = LoginDatabase.GetPreparedStatement(LOGIN_SEL_ACCOUNT_BANNED_BY_USERNAME);
+
+        stmt->setString(0, filter);
+
+        result = LoginDatabase.Query(stmt);
     }
 
     if (!result)
@@ -3329,7 +3331,7 @@ bool ChatHandler::HandleBanListAccountCommand(const char *args)
     return HandleBanListHelper(result);
 }
 
-bool ChatHandler::HandleBanListHelper(QueryResult result)
+bool ChatHandler::HandleBanListHelper(PreparedQueryResult result)
 {
     PSendSysMessage(LANG_BANLIST_MATCHINGACCOUNT);
 
@@ -3359,7 +3361,7 @@ bool ChatHandler::HandleBanListHelper(QueryResult result)
         {
             SendSysMessage("-------------------------------------------------------------------------------");
             Field* fields = result->Fetch();
-            uint32 account_id = fields[0].GetUInt32 ();
+            uint32 account_id = fields[0].GetUInt32();
 
             std::string account_name;
 
@@ -3405,26 +3407,28 @@ bool ChatHandler::HandleBanListHelper(QueryResult result)
 
 bool ChatHandler::HandleBanListIPCommand(const char *args)
 {
-    PreparedStatement* stmt = LoginDatabase.GetPreparedStatement(LOGIN_DEL_OLD_IP_BANS);
+    PreparedStatement* stmt = LoginDatabase.GetPreparedStatement(LOGIN_DEL_EXPIRED_IP_BANS);
     LoginDatabase.Execute(stmt);
 
     char* cFilter = strtok((char*)args, " ");
     std::string filter = cFilter ? cFilter : "";
     LoginDatabase.EscapeString(filter);
 
-    QueryResult result;
+    PreparedQueryResult result;
 
     if (filter.empty())
     {
-        result = LoginDatabase.Query ("SELECT ip, bandate, unbandate, bannedby, banreason FROM ip_banned"
-            " WHERE (bandate=unbandate OR unbandate>UNIX_TIMESTAMP())"
-            " ORDER BY unbandate");
+        PreparedStatement* stmt = LoginDatabase.GetPreparedStatement(LOGIN_SEL_IP_BANNED_ALL);
+
+        result = LoginDatabase.Query(stmt);
     }
     else
     {
-        result = LoginDatabase.PQuery("SELECT ip, bandate, unbandate, bannedby, banreason FROM ip_banned"
-            " WHERE (bandate=unbandate OR unbandate>UNIX_TIMESTAMP()) AND ip "_LIKE_" "_CONCAT3_("'%%'", "'%s'", "'%%'")
-            " ORDER BY unbandate", filter.c_str());
+        PreparedStatement* stmt = LoginDatabase.GetPreparedStatement(LOGIN_SEL_IP_BANNED_BY_IP);
+
+        stmt->setString(0, filter);
+
+        result = LoginDatabase.Query(stmt);
     }
 
     if (!result)

@@ -355,7 +355,7 @@ void Object::_BuildMovementUpdate(ByteBuffer * data, uint16 flags) const
         }
 
         data->WriteGuidMask(Guid2, GuidMask2, 1, 4);
-
+/*
         if (player && player->isInFlight()) //Has Spline Data
         {
             data->WriteBit(isSplineEnabled); //bit 216
@@ -363,7 +363,7 @@ void Object::_BuildMovementUpdate(ByteBuffer * data, uint16 flags) const
             if (isSplineEnabled)
                 Movement::PacketBuilder::WriteBytes(*unit->movespline, *data);
         }
-
+*/
         data->WriteGuidMask(Guid2, GuidMask2, 1, 5);
 
         if(interPolatedTurning)// Has Fall Data
@@ -431,7 +431,7 @@ void Object::_BuildMovementUpdate(ByteBuffer * data, uint16 flags) const
             if (jumping)
             {
                 *data << (float)((Unit*)this)->m_movementInfo.j_cosAngle;
-                *data << (float)((Unit*)this)->m_movementInfo.j_velocity;
+                *data << (float)((Unit*)this)->m_movementInfo.j_xyspeed;
                 *data << (float)((Unit*)this)->m_movementInfo.j_sinAngle;                
             }
 
@@ -443,13 +443,13 @@ void Object::_BuildMovementUpdate(ByteBuffer * data, uint16 flags) const
 
         if (((Unit*)this)->m_movementInfo.GetMovementFlags() & MOVEMENTFLAG_SPLINE_ENABLED)
             *data << unit->m_movementInfo.splineElevation;
-
+/*
         if (player && player->isInFlight())
         {
             if (isSplineEnabled)
                 Movement::PacketBuilder::WriteData(*unit->movespline, *data);
         }
-
+*/
         *data << ((Unit*)this)->GetPositionZ();
         data->WriteGuidBytes(Guid3, GuidBytes3, 1, 1);
 
@@ -1289,7 +1289,7 @@ void MovementInfo::OutDebug()
 
     sLog->outString("fallTime: %u", fallTime);
     if (flags & MOVEMENTFLAG_DISABLE_GRAVITY)
-        sLog->outString("j_zspeed: %f j_sinAngle: %f j_cosAngle: %f j_velocity: %f", j_zspeed, j_sinAngle, j_cosAngle, j_velocity);
+        sLog->outString("j_zspeed: %f j_sinAngle: %f j_cosAngle: %f j_xyspeed: %f", j_zspeed, j_sinAngle, j_cosAngle, j_xyspeed);
 
     if (flags & MOVEMENTFLAG_SPLINE_ELEVATION)
         sLog->outString("splineElevation: %f", splineElevation);

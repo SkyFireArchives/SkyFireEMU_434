@@ -17664,7 +17664,7 @@ void Unit::BuildMovementPacket(ByteBuffer *data) const
         {
             *data << (float)m_movementInfo.j_sinAngle;
             *data << (float)m_movementInfo.j_cosAngle;
-            *data << (float)m_movementInfo.j_velocity;
+            *data << (float)m_movementInfo.j_xyspeed;
         }
     }
 

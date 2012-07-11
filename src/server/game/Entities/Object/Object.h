@@ -479,7 +479,7 @@ struct MovementInfo
     // falling
     uint32 fallTime;
     // jumping
-    float j_zspeed, j_sinAngle, j_cosAngle, j_velocity; //j_xyspped = velocity
+    float j_zspeed, j_sinAngle, j_cosAngle, j_xyspeed;
     // spline
     float splineElevation;
 
@@ -491,21 +491,23 @@ struct MovementInfo
         flags2 = 0;
         time = t_time = t_time2 = t_time3 = fallTime = 0;
         splineElevation = 0;
-        pitch = j_zspeed = j_sinAngle = j_cosAngle = j_velocity = 0.0f;
+        pitch = j_zspeed = j_sinAngle = j_cosAngle = j_xyspeed = 0.0f;
         t_guid = 0;
         t_pos.Relocate(0, 0, 0, 0);
         t_seat = -1;
     }
 
-    uint32 GetMovementFlags() { return flags; }
+    uint32 GetMovementFlags() const { return flags; }
     void SetMovementFlags(uint32 flag) { flags = flag; }
     void AddMovementFlag(uint32 flag) { flags |= flag; }
     void RemoveMovementFlag(uint32 flag) { flags &= ~flag; }
     bool HasMovementFlag(uint32 flag) const { return flags & flag; }
 
-    uint16 GetExtraMovementFlags() { return flags2; }
+    uint16 GetExtraMovementFlags() const { return flags2; }
     void AddExtraMovementFlag(uint16 flag) { flags2 |= flag; }
     bool HasExtraMovementFlag(uint16 flag) const { return flags2 & flag; }
+
+    void SetFallTime(uint32 time) { fallTime = time; }
 
     void OutDebug();
 };

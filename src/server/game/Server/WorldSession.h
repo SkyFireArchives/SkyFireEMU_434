@@ -914,6 +914,7 @@ class WorldSession
         void HandleEnterPlayerVehicle(WorldPacket& data);
         void HandleUpdateProjectilePosition(WorldPacket& recvPacket);
         void HandleRequestHotfix(WorldPacket& recvPacket);
+        int32 HandleEnableNagleAlgorithm();
 
     private:
         void InitializeQueryCallbackParameters();

@@ -49,7 +49,7 @@
 bool MapSessionFilter::Process(WorldPacket* packet)
 {
     Opcodes opcode = DropHighBytes(packet->GetOpcode());
-    const OpcodeHandler* opHandle = opcodeTable[opcode];
+    OpcodeHandler const* opHandle = opcodeTable[opcode];
 
     //let's check if our opcode can be really processed in Map::Update()
     if (opHandle->packetProcessing == PROCESS_INPLACE)
@@ -72,7 +72,7 @@ bool MapSessionFilter::Process(WorldPacket* packet)
 bool WorldSessionFilter::Process(WorldPacket* packet)
 {
     Opcodes opcode = DropHighBytes(packet->GetOpcode());
-    const OpcodeHandler* opHandle = opcodeTable[opcode];
+    OpcodeHandler const* opHandle = opcodeTable[opcode];
     //check if packet handler is supposed to be safe
     if (opHandle->packetProcessing == PROCESS_INPLACE)
         return true;
@@ -124,8 +124,8 @@ WorldSession::~WorldSession()
     /// - If have unclosed socket, close it
     if (m_Socket)
     {
-        m_Socket->CloseSocket ();
-        m_Socket->RemoveReference ();
+        m_Socket->CloseSocket();
+        m_Socket->RemoveReference();
         m_Socket = NULL;
     }
 
@@ -140,7 +140,7 @@ WorldSession::~WorldSession()
     LoginDatabase.PExecute("UPDATE account SET online = 0 WHERE id = %u;", GetAccountId());     // One-time query
 }
 
-void WorldSession::SizeError(WorldPacket const &packet, uint32 size) const
+void WorldSession::SizeError(WorldPacket const& packet, uint32 size) const
 {
     sLog->outError("Client (account %u) send packet %s (%u) with size " SIZEFMTD " but expected %u (attempt to crash server?), skipped",
         GetAccountId(), LookupOpcodeName(packet.GetOpcode()), packet.GetOpcode(), packet.size(), size);
@@ -166,13 +166,13 @@ void WorldSession::SendPacket(WorldPacket const* packet)
 
     if (packet->GetOpcode() == NULL_OPCODE || packet->GetOpcode() == UNKNOWN_OPCODE)
     {
-        //sLog->outError("Prevented sending of %s", packet->GetOpcode() == NULL_OPCODE ? "NULL_OPCODE" : "UNKNOWN_OPCODE");
+        sLog->outError("Prevented sending of %s", packet->GetOpcode() == NULL_OPCODE ? "NULL_OPCODE" : "UNKNOWN_OPCODE");
         //ACE_Stack_Trace trace;
         //sLog->outError("%s", trace.c_str());
         return;
     }
 
-#ifdef SKYFIRE_DEBUG
+#ifdef TRINITY_DEBUG
     // Code for network use statistic
     static uint64 sendPacketCount = 0;
     static uint64 sendPacketBytes = 0;
@@ -204,10 +204,10 @@ void WorldSession::SendPacket(WorldPacket const* packet)
         sendLastPacketCount = 1;
         sendLastPacketBytes = packet->wpos();               // wpos is real written size
     }
-#endif                                                      // !SKYFIRE_DEBUG
+#endif                                                      // !TRINITY_DEBUG
 
-    if (m_Socket->SendPacket (*packet) == -1)
-        m_Socket->CloseSocket ();
+    if (m_Socket->SendPacket(*packet) == -1)
+        m_Socket->CloseSocket();
 }
 
 /// Add an incoming packet to the queue
@@ -219,7 +219,7 @@ void WorldSession::QueuePacket(WorldPacket* new_packet)
 /// Logging helper for unexpected opcodes
 void WorldSession::LogUnexpectedOpcode(WorldPacket* packet, const char* status, const char *reason)
 {
-    sLog->outError("SESSION (account: %u, guidlow: %u, char: %s): received unexpected opcode %s (0x%.4X, status: %s) %s",
+    sLog->outDebug(LOG_FILTER_NETWORKIO, "SESSION (account: %u, guidlow: %u, char: %s): received unexpected opcode %s (0x%.4X, status: %s) %s",
         GetAccountId(), m_GUIDLow, _player ? _player->GetName() : "<none>",
         LookupOpcodeName(packet->GetOpcode()), packet->GetOpcode(), status, reason);
 }
@@ -227,7 +227,7 @@ void WorldSession::LogUnexpectedOpcode(WorldPacket* packet, const char* status, 
 /// Logging helper for unexpected opcodes
 void WorldSession::LogUnprocessedTail(WorldPacket* packet)
 {
-    sLog->outError("SESSION: opcode %s (0x%.4X) have unprocessed tail data (read stop at %u from %u)",
+    sLog->outDebug(LOG_FILTER_NETWORKIO, "SESSION: opcode %s (0x%.4X) have unprocessed tail data (read stop at %u from %u)",
         LookupOpcodeName(packet->GetOpcode()), packet->GetOpcode(), uint32(packet->rpos()), uint32(packet->wpos()));
     packet->print_storage();
 }
@@ -256,102 +256,102 @@ bool WorldSession::Update(uint32 diff, PacketFilter& updater)
     //! loop caused by re-enqueueing the same packets over and over again, we stop updating this session
     //! and continue updating others. The re-enqueued packets will be handled in the next Update call for this session.
     while (m_Socket && !m_Socket->IsClosed() &&
-            !_recvQueue.empty() && _recvQueue.peek(true) != firstDelayedPacket &&
-            _recvQueue.next(packet, updater))
+        !_recvQueue.empty() && _recvQueue.peek(true) != firstDelayedPacket &&
+        _recvQueue.next(packet, updater))
     {
         const OpcodeHandler* opHandle = opcodeTable[packet->GetOpcode()];
         try
         {
             switch (opHandle->status)
             {
-                case STATUS_LOGGEDIN:
-                    if (!_player)
+            case STATUS_LOGGEDIN:
+                if (!_player)
+                {
+                    // skip STATUS_LOGGEDIN opcode unexpected errors if player logout sometime ago - this can be network lag delayed packets
+                    //! If player didn't log out a while ago, it means packets are being sent while the server does not recognize
+                    //! the client to be in world yet. We will re-add the packets to the bottom of the queue and process them later.
+                    if (!m_playerRecentlyLogout)
                     {
-                        // skip STATUS_LOGGEDIN opcode unexpected errors if player logout sometime ago - this can be network lag delayed packets
-                        //! If player didn't log out a while ago, it means packets are being sent while the server does not recognize
-                        //! the client to be in world yet. We will re-add the packets to the bottom of the queue and process them later.
-                        if (!m_playerRecentlyLogout)
-                        {
-                            //! Prevent infinite loop
-                            if (!firstDelayedPacket)
-                                firstDelayedPacket = packet;
-                            //! Because checking a bool is faster than reallocating memory
-                            deletePacket = false;
-                            QueuePacket(packet);
-                            //! Log
-                            sLog->outDebug(LOG_FILTER_NETWORKIO, "Re-enqueueing packet with opcode %s (0x%.4X) with with status STATUS_LOGGEDIN. "
-                                "Player is currently not in world yet.", opHandle->name, packet->GetOpcode());
-                        }
+                        //! Prevent infinite loop
+                        if (!firstDelayedPacket)
+                            firstDelayedPacket = packet;
+                        //! Because checking a bool is faster than reallocating memory
+                        deletePacket = false;
+                        QueuePacket(packet);
+                        //! Log
+                        sLog->outDebug(LOG_FILTER_NETWORKIO, "Re-enqueueing packet with opcode %s (0x%.4X) with with status STATUS_LOGGEDIN. "
+                            "Player is currently not in world yet.", opHandle->name, packet->GetOpcode());
                     }
-                    else if (_player->IsInWorld())
-                    {
-                        sScriptMgr->OnPacketReceive(m_Socket, WorldPacket(*packet));
-                        (this->*opHandle->handler)(*packet);
-                        if (sLog->IsOutDebug() && packet->rpos() < packet->wpos())
-                            LogUnprocessedTail(packet);
-                    }
-                    // lag can cause STATUS_LOGGEDIN opcodes to arrive after the player started a transfer
-                    break;
-                case STATUS_LOGGEDIN_OR_RECENTLY_LOGGOUT:
-                    if (!_player && !m_playerRecentlyLogout)
-                        LogUnexpectedOpcode(packet, "STATUS_LOGGEDIN_OR_RECENTLY_LOGGOUT",
-                            "the player has not logged in yet and not recently logout");
-                    else
-                    {
-                        // not expected _player or must checked in packet hanlder
-                        sScriptMgr->OnPacketReceive(m_Socket, WorldPacket(*packet));
-                        (this->*opHandle->handler)(*packet);
-                        if (sLog->IsOutDebug() && packet->rpos() < packet->wpos())
-                            LogUnprocessedTail(packet);
-                    }
-                    break;
-                case STATUS_TRANSFER:
-                    if (!_player)
-                        LogUnexpectedOpcode(packet, "STATUS_TRANSFER", "the player has not logged in yet");
-                    else if (_player->IsInWorld())
-                        LogUnexpectedOpcode(packet, "STATUS_TRANSFER", "the player is still in world");
-                    else
-                    {
-                        sScriptMgr->OnPacketReceive(m_Socket, WorldPacket(*packet));
-                        (this->*opHandle->handler)(*packet);
-                        if (sLog->IsOutDebug() && packet->rpos() < packet->wpos())
-                            LogUnprocessedTail(packet);
-                    }
-                    break;
-                case STATUS_AUTHED:
-                    // prevent cheating with skip queue wait
-                    if (m_inQueue)
-                    {
-                        LogUnexpectedOpcode(packet, "STATUS_AUTHED", "the player not pass queue yet");
-                        break;
-                    }
-
-                    // single from authed time opcodes send in to after logout time
-                    // and before other STATUS_LOGGEDIN_OR_RECENTLY_LOGGOUT opcodes.
-                    if (packet->GetOpcode() != CMSG_SET_ACTIVE_VOICE_CHANNEL)
-                        m_playerRecentlyLogout = false;
-
+                }
+                else if (_player->IsInWorld())
+                {
                     sScriptMgr->OnPacketReceive(m_Socket, WorldPacket(*packet));
                     (this->*opHandle->handler)(*packet);
                     if (sLog->IsOutDebug() && packet->rpos() < packet->wpos())
                         LogUnprocessedTail(packet);
+                }
+                // lag can cause STATUS_LOGGEDIN opcodes to arrive after the player started a transfer
+                break;
+            case STATUS_LOGGEDIN_OR_RECENTLY_LOGGOUT:
+                if (!_player && !m_playerRecentlyLogout && !m_playerLogout) // There's a short delay between _player = null and m_playerRecentlyLogout = true during logout
+                    LogUnexpectedOpcode(packet, "STATUS_LOGGEDIN_OR_RECENTLY_LOGGOUT",
+                    "the player has not logged in yet and not recently logout");
+                else
+                {
+                    // not expected _player or must checked in packet hanlder
+                    sScriptMgr->OnPacketReceive(m_Socket, WorldPacket(*packet));
+                    (this->*opHandle->handler)(*packet);
+                    if (sLog->IsOutDebug() && packet->rpos() < packet->wpos())
+                        LogUnprocessedTail(packet);
+                }
+                break;
+            case STATUS_TRANSFER:
+                if (!_player)
+                    LogUnexpectedOpcode(packet, "STATUS_TRANSFER", "the player has not logged in yet");
+                else if (_player->IsInWorld())
+                    LogUnexpectedOpcode(packet, "STATUS_TRANSFER", "the player is still in world");
+                else
+                {
+                    sScriptMgr->OnPacketReceive(m_Socket, WorldPacket(*packet));
+                    (this->*opHandle->handler)(*packet);
+                    if (sLog->IsOutDebug() && packet->rpos() < packet->wpos())
+                        LogUnprocessedTail(packet);
+                }
+                break;
+            case STATUS_AUTHED:
+                // prevent cheating with skip queue wait
+                if (m_inQueue)
+                {
+                    LogUnexpectedOpcode(packet, "STATUS_AUTHED", "the player not pass queue yet");
                     break;
-                case STATUS_NEVER:
-                    sLog->outError("SESSION (account: %u, guidlow: %u, char: %s): received not allowed opcode %s (0x%.4X)",
-                        GetAccountId(), m_GUIDLow, _player ? _player->GetName() : "<none>",
-                        LookupOpcodeName(packet->GetOpcode()), packet->GetOpcode());
-                    break;
-                case STATUS_UNHANDLED:
-                    sLog->outDebug(LOG_FILTER_NETWORKIO, "SESSION (account: %u, guidlow: %u, char: %s): received not handled opcode %s (0x%.4X)",
-                        GetAccountId(), m_GUIDLow, _player ? _player->GetName() : "<none>",
-                        LookupOpcodeName(packet->GetOpcode()), packet->GetOpcode());
-                    break;
+                }
+
+                // some auth opcodes can be recieved before STATUS_LOGGEDIN_OR_RECENTLY_LOGGOUT opcodes
+                // however when we recieve CMSG_CHAR_ENUM we are surely no longer during the logout process.
+                if (packet->GetOpcode() == CMSG_CHAR_ENUM)
+                    m_playerRecentlyLogout = false;
+
+                sScriptMgr->OnPacketReceive(m_Socket, WorldPacket(*packet));
+                (this->*opHandle->handler)(*packet);
+                if (sLog->IsOutDebug() && packet->rpos() < packet->wpos())
+                    LogUnprocessedTail(packet);
+                break;
+            case STATUS_NEVER:
+                sLog->outError("SESSION (account: %u, guidlow: %u, char: %s): received not allowed opcode %s (0x%.4X)",
+                    GetAccountId(), m_GUIDLow, _player ? _player->GetName() : "<none>",
+                    LookupOpcodeName(packet->GetOpcode()), packet->GetOpcode());
+                break;
+            case STATUS_UNHANDLED:
+                sLog->outDebug(LOG_FILTER_NETWORKIO, "SESSION (account: %u, guidlow: %u, char: %s): received not handled opcode %s (0x%.4X)",
+                    GetAccountId(), m_GUIDLow, _player ? _player->GetName() : "<none>",
+                    LookupOpcodeName(packet->GetOpcode()), packet->GetOpcode());
+                break;
             }
         }
         catch(ByteBufferException &)
         {
             sLog->outError("WorldSession::Update ByteBufferException occured while parsing a packet (opcode: %u) from client %s, accountid=%i. Skipped packet.",
-                    packet->GetOpcode(), GetRemoteAddress().c_str(), GetAccountId());
+                packet->GetOpcode(), GetRemoteAddress().c_str(), GetAccountId());
             if (sLog->IsOutDebug())
             {
                 sLog->outDebug(LOG_FILTER_NETWORKIO, "Dumping error causing packet:");
@@ -406,7 +406,7 @@ void WorldSession::LogoutPlayer(bool Save)
 
     if (_player)
     {
-        if (uint64 lguid = GetPlayer()->GetLootGUID())
+        if (uint64 lguid = _player->GetLootGUID())
             DoLootRelease(lguid);
 
         ///- If the player just died before logging out, make him appear as a ghost
@@ -520,44 +520,41 @@ void WorldSession::LogoutPlayer(bool Save)
         if (_player->GetGroup() && !_player->GetGroup()->isRaidGroup() && m_Socket)
             _player->RemoveFromGroup();
 
-        ///- Send update to group and reset stored max enchanting level
+        //! Send update to group and reset stored max enchanting level
         if (_player->GetGroup())
         {
             _player->GetGroup()->SendUpdate();
             _player->GetGroup()->ResetMaxEnchantingLevel();
         }
 
-        ///- Broadcast a logout message to the player's friends
+        //! Broadcast a logout message to the player's friends
         sSocialMgr->SendFriendStatus(_player, FRIEND_OFFLINE, _player->GetGUIDLow(), true);
-        sSocialMgr->RemovePlayerSocial (_player->GetGUIDLow ());
+        sSocialMgr->RemovePlayerSocial(_player->GetGUIDLow());
 
-        // Call script hook before deletion
-        sScriptMgr->OnPlayerLogout(GetPlayer());
+        //! Call script hook before deletion
+        sScriptMgr->OnPlayerLogout(_player);
 
-        ///- Remove the player from the world
+        //! Remove the player from the world
         // the player may not be in the world when logging out
         // e.g if he got disconnected during a transfer to another map
         // calls to GetMap in this case may cause crashes
         _player->CleanupsBeforeDelete();
-        sLog->outChar("Account: %d (IP: %s) Logout Character:[%s] (GUID: %u)", GetAccountId(), GetRemoteAddress().c_str(), _player->GetName(), _player->GetGUIDLow());
+        sLog->outChar("Account: %d (IP: %s) Logout Character:[%s] (GUID: %u) Level: %d", GetAccountId(), GetRemoteAddress().c_str(), _player->GetName(), _player->GetGUIDLow(), _player->getLevel());
         if (Map* _map = _player->FindMap())
             _map->RemovePlayerFromMap(_player, true);
-        SetPlayer(NULL);                                    // deleted in Remove call
 
-        ///- Send the 'logout complete' packet to the client
+        SetPlayer(NULL); //! Pointer already deleted during RemovePlayerFromMap
+
+        //! Send the 'logout complete' packet to the client
+        //! Client will respond by sending 3x CMSG_CANCEL_TRADE, which we currently dont handle
         WorldPacket data(SMSG_LOGOUT_COMPLETE, 0);
         SendPacket(&data);
-
-        ///- Since each account can only have one online character at any given time, ensure all characters for active account are marked as offline
-        //No SQL injection as AccountId is uint32
-
-        PreparedStatement* stmt = CharacterDatabase.GetPreparedStatement(CHAR_UPD_ACCOUNT_ONLINE);
-
-        stmt->setUInt32(0, GetAccountId());
-
-        CharacterDatabase.Execute(stmt);
-
         sLog->outDebug(LOG_FILTER_NETWORKIO, "SESSION: Sent SMSG_LOGOUT_COMPLETE Message");
+
+        //! Since each account can only have one online character at any given time, ensure all characters for active account are marked as offline
+        PreparedStatement* stmt = CharacterDatabase.GetPreparedStatement(CHAR_UPD_ACCOUNT_ONLINE);
+        stmt->setUInt32(0, GetAccountId());
+        CharacterDatabase.Execute(stmt);
     }
 
     m_playerLogout = false;
@@ -638,15 +635,19 @@ void WorldSession::SendAuthWaitQue(uint32 position)
     if (position == 0)
     {
         WorldPacket packet(SMSG_AUTH_RESPONSE, 1);
+        packet.WriteBit(0); // has queue info
+        packet.WriteBit(0); // has account info
         packet << uint8(AUTH_OK);
         SendPacket(&packet);
     }
     else
     {
         WorldPacket packet(SMSG_AUTH_RESPONSE, 6);
+        packet.WriteBit(1); // has queue info
+        packet.WriteBit(0); // unk queue bool
+        packet.WriteBit(0); // has account info
         packet << uint8(AUTH_WAIT_QUEUE);
         packet << uint32(position);
-        packet << uint8(0);                                 // unk
         SendPacket(&packet);
     }
 }
@@ -774,6 +775,7 @@ void WorldSession::ReadAddonsInfo(WorldPacket &data)
 {
     if (data.rpos() + 4 > data.size())
         return;
+
     uint32 size;
     data >> size;
 
@@ -793,7 +795,7 @@ void WorldSession::ReadAddonsInfo(WorldPacket &data)
     ByteBuffer addonInfo;
     addonInfo.resize(size);
 
-    if (uncompress(const_cast<uint8 *>(addonInfo.contents()), &uSize, const_cast<uint8 *>(data.contents() + pos), data.size() - pos) == Z_OK)
+    if (uncompress(const_cast<uint8*>(addonInfo.contents()), &uSize, const_cast<uint8*>(data.contents() + pos), data.size() - pos) == Z_OK)
     {
         uint32 addonsCount;
         addonInfo >> addonsCount;                         // addons count
