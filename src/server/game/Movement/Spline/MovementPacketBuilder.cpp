@@ -54,7 +54,7 @@ namespace Movement
 
         data << uint8(0);
         
-		data << move_spline.spline.getPoint(move_spline.spline.first()); //Monster Curent Pozition
+        data << move_spline.spline.getPoint(move_spline.spline.first()); //Monster Curent Pozition
        
 
         switch(splineflags & MoveSplineFlag::Mask_Final_Facing)
@@ -79,7 +79,7 @@ namespace Movement
         // add fake Enter_Cycle flag - needed for client-side cyclic movement (client will erase first spline vertex after first cycle done)
         splineflags.entercycle = move_spline.isCyclic();
        
-		data << uint32(splineflags & ~MoveSplineFlag::Mask_No_Monster_Move); //Write SplineFlag
+        data << uint32(splineflags & ~MoveSplineFlag::Mask_No_Monster_Move); //Write SplineFlag
 
         if (splineflags.animation)
         {
@@ -87,15 +87,15 @@ namespace Movement
             data << move_spline.effect_start_time;
         }
 
-		 data << move_spline.GetId(); //TicketCount
+         data << move_spline.GetId(); //TicketCount
 
-		 if (splineflags.fixedorientation)
+         if (splineflags.fixedorientation)
         {
             data << move_spline.vertical_acceleration;
             data << move_spline.effect_start_time;
         }
 
-		data << move_spline.Duration(); //Waypoint Count
+        data << move_spline.Duration(); //Waypoint Count
     }
 
     void WriteLinearPath(const Spline<int32>& spline, ByteBuffer& data)
@@ -150,12 +150,12 @@ namespace Movement
             WriteLinearPath(spline, data);
     }
 
-	void PacketBuilder::WriteBytes(const MoveSpline& move_spline, ByteBuffer& data)
-	 {
-		uint32 nodes = move_spline.getPath().size();
-		
-		//SlineType
-		/*switch (hasSplineType)
+    void PacketBuilder::WriteBytes(const MoveSpline& move_spline, ByteBuffer& data)
+     {
+        uint32 nodes = move_spline.getPath().size();
+        
+        //SlineType
+        /*switch (hasSplineType)
                         {
                             case 0:
                                 splineType = SplineType.FacingAngle;
@@ -170,29 +170,29 @@ namespace Movement
                                 splineType = SplineType.Normal;
                                 break;
                         }
-		*/
-		data.WriteBits(0, 2); //SPLINEMODE_LINEAR = 0
-		data.WriteBit(false);
-		data.WriteBits(nodes, 22);
-		
-		data.WriteBits(3, 2);
-		
-		MoveSplineFlag splineflags = move_spline.splineflags;
-		
-		if (splineflags.walkmode)
-		{
-		
-			uint8 guidMask[] = {  4, 3, 7, 2, 6, 1, 0, 5 };
-			data.WriteGuidMask(move_spline.facing.target, guidMask, 8);
-		}
-	 }
+        */
+        data.WriteBits(0, 2); //SPLINEMODE_LINEAR = 0
+        data.WriteBit(false);
+        data.WriteBits(nodes, 22);
+        
+        data.WriteBits(3, 2);
+        
+        MoveSplineFlag splineflags = move_spline.splineflags;
+        
+        if (splineflags.walkmode)
+        {
+        
+            uint8 guidMask[] = {  4, 3, 7, 2, 6, 1, 0, 5 };
+            data.WriteGuidMask(move_spline.facing.target, guidMask, 8);
+        }
+     }
 
-	 void PacketBuilder::WriteData(const MoveSpline& move_spline, ByteBuffer& data)
+     void PacketBuilder::WriteData(const MoveSpline& move_spline, ByteBuffer& data)
     {
         MoveSplineFlag splineFlags = move_spline.splineflags;
         uint32 nodes = move_spline.getPath().size();
 
-		data << move_spline.timePassed();
+        data << move_spline.timePassed();
 
       
         if (splineFlags.walkmode)
@@ -201,7 +201,7 @@ namespace Movement
             data.WriteGuidBytes(move_spline.facing.target, guidBytes, 8, 0);
         }
 
-		for (uint32 i = 0; i < nodes; i++)
+        for (uint32 i = 0; i < nodes; i++)
         {
             data << move_spline.getPath()[0].x;
             data << move_spline.getPath()[0].z;
@@ -221,11 +221,11 @@ namespace Movement
         if (splineFlags.FixedOrientation)
             data << move_spline.facing.angle;
 
-		data << float(1.f);
+        data << float(1.f);
 
-		data << move_spline.FinalDestination().z;
+        data << move_spline.FinalDestination().z;
         data << move_spline.FinalDestination().x;
-		data << move_spline.FinalDestination().y;
+        data << move_spline.FinalDestination().y;
         data << move_spline.GetId();
         
     }

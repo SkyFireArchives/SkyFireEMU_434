@@ -183,7 +183,7 @@ void Object::BuildCreateUpdateBlockForPlayer(UpdateData* data, Player* target) c
         flags |= UPDATEFLAG_HAS_SELF;
 
     //if (flags & UPDATEFLAG_HAS_STATIONARY_POSITION)
-	//{
+    //{
         // UPDATETYPE_CREATE_OBJECT2 dynamic objects, corpses...
    if (isType(TYPEMASK_DYNAMICOBJECT) || isType(TYPEMASK_CORPSE) || isType(TYPEMASK_PLAYER))
         updatetype = UPDATETYPE_CREATE_OBJECT2;
@@ -279,35 +279,35 @@ void Object::DestroyForPlayer(Player* target, bool anim) const
 void Object::_BuildMovementUpdate(ByteBuffer * data, uint16 flags) const
 {
 
-	 //4.3.4 -15595
-	
-	uint64 mGuid = uint64(((Unit*)this)->GetGUID());
-	//uint8 mType = (((Unit*)this)->GetTypeId());
-	//uint64 mGuid = MAKE_NEW_GUID(0,0,HIGHGUID_PLAYER);
-	//uint8 mGuidMask[] = { 1, 4, 2, 0, 3 };
+     //4.3.4 -15595
+    
+    uint64 mGuid = uint64(((Unit*)this)->GetGUID());
+    //uint8 mType = (((Unit*)this)->GetTypeId());
+    //uint64 mGuid = MAKE_NEW_GUID(0,0,HIGHGUID_PLAYER);
+    //uint8 mGuidMask[] = { 1, 4, 2, 0, 3 };
 
     data->WriteBit(0); //3
-	data->WriteBit(0); //4
-	data->WriteBit(flags & UPDATEFLAG_HAS_GO_ROTATION);//Game Objec rotation
-	data->WriteBit(flags & UPDATEFLAG_HAS_ANIMKITS); //anim kits
-	data->WriteBit(flags & UPDATEFLAG_HAS_ATTACKING_TARGET); //hasAttackingTarget
-	data->WriteBit(flags & UPDATEFLAG_HAS_SELF);//0 //Exclude Player write bit
-	data->WriteBit(flags & UPDATEFLAG_HAS_VEHICLE); //hasVehicleData
-	data->WriteBit(flags & UPDATEFLAG_HAS_LIVING); //living
-	data->WriteBits(0, 24); //unkLoopCounter 
- 	data->WriteBit(0);//1
-	data->WriteBit(flags & UPDATEFLAG_HAS_GO_POSITION); // Game Object Position
-	data->WriteBit(flags & UPDATEFLAG_HAS_STATIONARY_POSITION);  //Stacitonar Position
+    data->WriteBit(0); //4
+    data->WriteBit(flags & UPDATEFLAG_HAS_GO_ROTATION);//Game Objec rotation
+    data->WriteBit(flags & UPDATEFLAG_HAS_ANIMKITS); //anim kits
+    data->WriteBit(flags & UPDATEFLAG_HAS_ATTACKING_TARGET); //hasAttackingTarget
+    data->WriteBit(flags & UPDATEFLAG_HAS_SELF);//0 //Exclude Player write bit
+    data->WriteBit(flags & UPDATEFLAG_HAS_VEHICLE); //hasVehicleData
+    data->WriteBit(flags & UPDATEFLAG_HAS_LIVING); //living
+    data->WriteBits(0, 24); //unkLoopCounter 
+    data->WriteBit(0);//1
+    data->WriteBit(flags & UPDATEFLAG_HAS_GO_POSITION); // Game Object Position
+    data->WriteBit(flags & UPDATEFLAG_HAS_STATIONARY_POSITION);  //Stacitonar Position
     data->WriteBit(0); //unkHasBit_456
-	data->WriteBit(0);//2
-	data->WriteBit(flags & UPDATEFLAG_HAS_GO_TRANSPORT_TIME); //unkHasBit1_408
-	bool hasLivingTime = false; //always write time the flags & UPDATEFLAG_HAS_LIVING
-	
+    data->WriteBit(0);//2
+    data->WriteBit(flags & UPDATEFLAG_HAS_GO_TRANSPORT_TIME); //unkHasBit1_408
+    bool hasLivingTime = false; //always write time the flags & UPDATEFLAG_HAS_LIVING
+    
 
-	//data->WriteBit(flags & UPDATEFLAG_HAS_GO_TRANSPORT_TIME); 
+    //data->WriteBit(flags & UPDATEFLAG_HAS_GO_TRANSPORT_TIME); 
    //data->WriteBit(flags & UPDATEFLAG_HAS_SELF); //0
 
-	 if (flags & UPDATEFLAG_HAS_LIVING)
+     if (flags & UPDATEFLAG_HAS_LIVING)
     {
         Unit* unit = ((Unit*)this);
         Player *player = ((Player*)unit);
@@ -320,7 +320,7 @@ void Object::_BuildMovementUpdate(ByteBuffer * data, uint16 flags) const
         bool jumping = ((Unit*)this)->m_movementInfo.GetMovementFlags() & MOVEMENTFLAG_FALLING;
 
         //uint64 Guid2 = uint64(((Player*)this)->GetGUID());
-		uint64 Guid2 = mGuid;
+        uint64 Guid2 = mGuid;
         uint8 GuidMask2[] = { 7, 3, 2, 5, 4, 6, 0, 1 };
 
         data->WriteBit(!(unit->m_movementInfo.GetMovementFlags())); //hasMovementFLags
@@ -378,15 +378,15 @@ void Object::_BuildMovementUpdate(ByteBuffer * data, uint16 flags) const
     }
 
    if(flags & UPDATEFLAG_HAS_GO_POSITION)
-	{
-		uint64 GOGuid = uint64(((Unit*)this)->GetGUID());
+    {
+        uint64 GOGuid = uint64(((Unit*)this)->GetGUID());
         uint8 GOGuidMask[] = { 5, 0, 3, 6, 1, 4, 2, 7 };
-		 data->WriteGuidMask(GOGuid, GOGuidMask, 1, 0);
-		 data->WriteBit(0);// Has goTrasportTime3
-		 data->WriteGuidMask(GOGuid, GOGuidMask, 6, 1);
-		 data->WriteBit(0);// Has goTrasportTime2
-		 data->WriteGuidMask(GOGuid, GOGuidMask, 1, 6);
-	}
+         data->WriteGuidMask(GOGuid, GOGuidMask, 1, 0);
+         data->WriteBit(0);// Has goTrasportTime3
+         data->WriteGuidMask(GOGuid, GOGuidMask, 6, 1);
+         data->WriteBit(0);// Has goTrasportTime2
+         data->WriteGuidMask(GOGuid, GOGuidMask, 1, 6);
+    }
 
 
     if(flags & UPDATEFLAG_HAS_ATTACKING_TARGET)
@@ -406,7 +406,7 @@ void Object::_BuildMovementUpdate(ByteBuffer * data, uint16 flags) const
     }
 
     data->FlushBits();
-	//Start Write data
+    //Start Write data
     if (flags & UPDATEFLAG_HAS_LIVING)
     {
         const Player* player = ((Player*)this);
@@ -517,29 +517,29 @@ void Object::_BuildMovementUpdate(ByteBuffer * data, uint16 flags) const
 
     if (flags & UPDATEFLAG_HAS_GO_POSITION)
     {	uint64 goGuid = (((GameObject*)this)->GetGUID());
-		uint8 GOGuidBytes[] = { 0, 5, 3, 4, 6, 1, 2, 7 };
-		data->WriteGuidBytes(goGuid, GOGuidBytes, 2, 0);
-		//data << unit32(0);  //GO Transport Time 3
-		data->WriteGuidBytes(goGuid, GOGuidBytes, 1, 2);
-		*data << (((GameObject*)this)->GetPositionX());
-		data->WriteGuidBytes(goGuid, GOGuidBytes, 3, 3);
-		*data << uint32(0);  //GO Transport Time
-		*data << (((GameObject*)this)->GetPositionY());
-		data->WriteGuidBytes(goGuid, GOGuidBytes, 2, 6);
-		*data << (((GameObject*)this)->GetPositionZ());
-		data->WriteBit(0);  //GO Transport Seat
-		*data << (((GameObject*)this)->GetOrientation());
-		//data << unit32(0);  //GO Transport Time 2
+        uint8 GOGuidBytes[] = { 0, 5, 3, 4, 6, 1, 2, 7 };
+        data->WriteGuidBytes(goGuid, GOGuidBytes, 2, 0);
+        //data << unit32(0);  //GO Transport Time 3
+        data->WriteGuidBytes(goGuid, GOGuidBytes, 1, 2);
+        *data << (((GameObject*)this)->GetPositionX());
+        data->WriteGuidBytes(goGuid, GOGuidBytes, 3, 3);
+        *data << uint32(0);  //GO Transport Time
+        *data << (((GameObject*)this)->GetPositionY());
+        data->WriteGuidBytes(goGuid, GOGuidBytes, 2, 6);
+        *data << (((GameObject*)this)->GetPositionZ());
+        data->WriteBit(0);  //GO Transport Seat
+        *data << (((GameObject*)this)->GetOrientation());
+        //data << unit32(0);  //GO Transport Time 2
     }
 
     if(flags & UPDATEFLAG_HAS_GO_ROTATION)
         *data << int64(((GameObject*)this)->GetRotation());
 
-	/*if(Bit456)
-	{
-		4*float +1 byte +12*float
-	}
-	*/
+    /*if(Bit456)
+    {
+        4*float +1 byte +12*float
+    }
+    */
     if(flags & UPDATEFLAG_HAS_STATIONARY_POSITION)
     {
         *data << ((WorldObject*)this)->GetOrientation();

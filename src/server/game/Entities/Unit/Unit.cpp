@@ -4853,16 +4853,16 @@ void Unit::SendAttackStateUpdate(CalcDamageInfo* damageInfo)
     {
         data << uint32(0);
         for (int i = 0; i < 8; ++i)
-		{
-			data << float(0);
-		}
+        {
+            data << float(0);
+        }
          for (int i = 0; i < 5; ++i)
-		 {
-			data << float(0);
-			data << float(0);
-		 }
+         {
+            data << float(0);
+            data << float(0);
+         }
 
-		
+        
         data << uint32(0);
     }
 

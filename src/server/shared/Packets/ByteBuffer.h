@@ -132,13 +132,13 @@ class ByteBuffer
             _bitpos = 8;
         }
 
-		void SetBitPoz()
-		{
-			if (_bitpos < 7)
-				{
-					_bitpos = 7;
-				}
-		}
+        void SetBitPoz()
+        {
+            if (_bitpos < 7)
+                {
+                    _bitpos = 7;
+                }
+        }
 
         bool WriteBit(uint32 bit)
         {
@@ -227,7 +227,7 @@ class ByteBuffer
                 append<uint8>(b ^ 1);
         }
 
-		 void WriteGuidMask(uint64 guid, uint8* maskOrder, uint8 maskCount, uint8 maskPos = 0)
+         void WriteGuidMask(uint64 guid, uint8* maskOrder, uint8 maskCount, uint8 maskPos = 0)
         {
             uint8* guidByte = ((uint8*)&guid);
 

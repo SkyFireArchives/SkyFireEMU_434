@@ -33,8 +33,8 @@ namespace Movement
 
         static void WriteMonsterMove(const MoveSpline& mov, WorldPacket& data);
         static void WriteCreate(const MoveSpline& mov, ByteBuffer& data);
-		static void WriteData(const MoveSpline& move_spline, ByteBuffer& data);
-		static void WriteBytes(const MoveSpline& move_spline, ByteBuffer& data);
+        static void WriteData(const MoveSpline& move_spline, ByteBuffer& data);
+        static void WriteBytes(const MoveSpline& move_spline, ByteBuffer& data);
     };
 }
 #endif // SKYFIRESERVER_PACKET_BUILDER_H
