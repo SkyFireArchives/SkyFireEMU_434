@@ -64,9 +64,9 @@ struct ItemSparseEntry
     uint32     Quality;                                      // 1
     uint32     Flags;                                        // 2
     uint32     Flags2;                                       // 3
-	//float    Flags3                                        // add in 4.3.0
-    //uint32   Flags4                                        // add in 4.3.0
-    uint32     MaxDurability;                                // 111// add in 4.3.0
+    float      Unk430_1;
+    float      Unk430_2;
+    uint32     BuyCount;
     uint32     BuyPrice;                                     // 4
     uint32     SellPrice;                                    // 5
     uint32     InventoryType;                                // 6
