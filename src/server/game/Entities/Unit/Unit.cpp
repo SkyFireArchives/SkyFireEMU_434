@@ -17515,7 +17515,7 @@ void Unit::ExitVehicle(Position const* exitPosition)
     //! to specify exit coordinates and either store those per passenger, or we need to
     //! init spline movement based on those coordinates in unapply handlers, and
     //! relocate exiting passengers based on Unit::moveSpline data. Either way,
-    //! Coming Soon™
+    //! Coming Soon
 }
 
 void Unit::_ExitVehicle(Position const* exitPosition)
@@ -17741,6 +17741,7 @@ void Unit::SendThreatListUpdate()
         sLog->outDebug(LOG_FILTER_UNITS, "WORLD: Send SMSG_THREAT_UPDATE Message");
         WorldPacket data(SMSG_THREAT_UPDATE, 8 + count * 8);
         data.append(GetPackGUID());
+        data.append(GetPackGUID()); // ATM unknown
         data << uint32(count);
         std::list<HostileReference*>& tlist = getThreatManager().getThreatList();
         for (std::list<HostileReference*>::const_iterator itr = tlist.begin(); itr != tlist.end(); ++itr)
