@@ -1415,7 +1415,5 @@ void InitOpcodes()
      DEFINE_OPCODE_HANDLER(SMSG_SAVE_CUF_PROFILES,                       STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(MSG_GET_CALENDAR,                             STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(CMSG_SET_CHARACTER_POSITION,                  STATUS_AUTHED,   PROCESS_INPLACE,       &WorldSession::HandleCharSetPosition           );
-     DEFINE_OPCODE_HANDLER(CMSG_VIOLENCE_LEVEL,                          STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
-
 #undef DEFINE_OPCODE_HANDLER
 };
