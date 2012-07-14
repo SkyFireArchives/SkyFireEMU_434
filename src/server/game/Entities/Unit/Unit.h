@@ -746,23 +746,23 @@ enum MovementFlags
 };
 enum MovementFlags2
 {
-    MOVEMENTFLAG2_NONE                                        = 0x00000000,
+    MOVEMENTFLAG2_NONE                                      = 0x00000000,
     MOVEMENTFLAG2_PREVENT_STRAFE                            = 0x00000001,
-    MOVEMENTFLAG2_PREVENT_JUMPING                            = 0x00000002,
-    MOVEMENTFLAG2_DISABL_ECOLLISION                            = 0x00000004,        // Overrides various clientside checks
+    MOVEMENTFLAG2_PREVENT_JUMPING                           = 0x00000002,
+    MOVEMENTFLAG2_DISABL_ECOLLISION                         = 0x00000004,        // Overrides various clientside checks
     MOVEMENTFLAG2_FULL_SPEED_TURNING                        = 0x00000008,
-    MOVEMENTFLAG2_FULL_SPEED_PITCHING                        = 0x00000010,
-    MOVEMENTFLAG2_ALWAYS_ALLOW_PITCHING                        = 0x00000020,
+    MOVEMENTFLAG2_FULL_SPEED_PITCHING                       = 0x00000010,
+    MOVEMENTFLAG2_ALWAYS_ALLOW_PITCHING                     = 0x00000020,
     MOVEMENTFLAG2_IS_VEHICLE_EXIT_VOLUNTARY                 = 0x00000040,
-    MOVEMENTFLAG2_IS_JUMP_SPLINE_IN_AIR                        = 0x00000080,
-    MOVEMENTFLAG2_IS_ANIMTIER_IN_TRANS                        = 0x00000100,
-    MOVEMENTFLAG2_PREVENT_CHANGE_PITCH                        = 0x00000200,
-    MOVEMENTFLAG2_INTERPOLATED_MOVEMENT                        = 0x00000400,
-    MOVEMENTFLAG2_INTERPOLATED_TURNING                        = 0x00000800,
-    MOVEMENTFLAG2_INTERPOLATED_PITCHING                        = 0x00001000,
+    MOVEMENTFLAG2_IS_JUMP_SPLINE_IN_AIR                     = 0x00000080,
+    MOVEMENTFLAG2_IS_ANIMTIER_IN_TRANS                      = 0x00000100,
+    MOVEMENTFLAG2_PREVENT_CHANGE_PITCH                      = 0x00000200,
+    MOVEMENTFLAG2_INTERPOLATED_MOVEMENT                     = 0x00000400,
+    MOVEMENTFLAG2_INTERPOLATED_TURNING                      = 0x00000800,
+    MOVEMENTFLAG2_INTERPOLATED_PITCHING                     = 0x00001000,
     MOVEMENTFLAG2_VEHICLE_PASSENGER_IS_TRANSITION_ALLOWED   = 0x00002000,
     MOVEMENTFLAG2_CAN_TRANSITION_BETWEEN_SWIM_AND_FLY       = 0x00004000,
-    MOVEMENTFLAG2_UNK1                                        = 0x00008000,
+    MOVEMENTFLAG2_UNK1                                      = 0x00008000,
 };
 
 enum SplineFlags
@@ -775,10 +775,10 @@ enum SplineFlags
 
 enum SplineType
 {
-    SPLINETYPE_NORMAL            = 0,
+    SPLINETYPE_NORMAL              = 0,
     SPLINETYPE_STOP                = 1,
-    SPLINETYPE_FACING_SPOT        = 2,
-    SPLINETYPE_FACING_TARGET    = 3,
+    SPLINETYPE_FACING_SPOT         = 2,
+    SPLINETYPE_FACING_TARGET       = 3,
     SPLINETYPE_FACING_ANGLE        = 4,
 };
 

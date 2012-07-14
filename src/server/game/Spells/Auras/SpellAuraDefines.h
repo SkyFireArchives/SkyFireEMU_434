@@ -401,8 +401,8 @@ enum AuraType
     SPELL_AURA_MOD_VENDOR_ITEMS_PRICES                      = 337,  // NYI
     SPELL_AURA_MOD_DURABILITY_LOSS                          = 338,
     SPELL_AURA_INCREASE_SKILL_GAIN_CHANCE                   = 339,  // NYI
-    SPELL_AURA_340                                          = 340,
-    SPELL_AURA_341                                          = 341,  // cooldown decrease
+    SPELL_AURA_MOD_HP_GAINED_FROM_RESURRECTION              = 340,  // NYI
+    SPELL_AURA_MOD_CATEGORY_COOLDOWN_FLAT                   = 341,  // cooldown decrease
     SPELL_AURA_MOD_TIME_BETWEEN_ATTACKS                     = 342,  // (attack speed) NYI
     SPELL_AURA_343                                          = 343,
     SPELL_AURA_MOD_AUTOATTACK_DAMAGE                        = 344,
@@ -412,8 +412,8 @@ enum AuraType
     SPELL_AURA_DEPOSIT_BONUS_MONEY_IN_GUILD_BANK_ON_LOOT    = 348,  // NYI
     SPELL_AURA_MOD_CURRENCY_GAIN                            = 349,  // NYI
     SPELL_AURA_MOD_GATHERING_ITEMS_GAINED_PERCENT           = 350,  // NYI
-    SPELL_AURA_351                                          = 351,
-    SPELL_AURA_352                                          = 352,
+    SPELL_AURA_MOD_CURRENCY_CATEGORY_GAIN_PCT               = 351,  // NYI
+    SPELL_AURA_ENABLE_WORGEN_FORM_SWITCH                    = 352,  // NYI
     SPELL_AURA_MOD_CAMOUFLAGE                               = 353,  // NYI
     SPELL_AURA_354                                          = 354,
     SPELL_AURA_355                                          = 355,

@@ -763,12 +763,12 @@ enum TeleportToOptions
 /// Type of environmental damages
 enum EnviromentalDamage
 {
-    DAMAGE_EXHAUSTED = 0,
-    DAMAGE_DROWNING  = 1,
-    DAMAGE_FALL      = 2,
-    DAMAGE_LAVA      = 3,
-    DAMAGE_SLIME     = 4,
-    DAMAGE_FIRE      = 5,
+    DAMAGE_EXHAUSTED    = 0,
+    DAMAGE_DROWNING     = 1,
+    DAMAGE_FALL         = 2,
+    DAMAGE_LAVA         = 3,
+    DAMAGE_SLIME        = 4,
+    DAMAGE_FIRE         = 5,
     DAMAGE_FALL_TO_VOID = 6                                 // custom case for fall without durability loss
 };
 
@@ -780,7 +780,7 @@ enum PlayerChatTag
     CHAT_TAG_GM         = 0x04,
     CHAT_TAG_UNK        = 0x08,
     CHAT_TAG_DEV        = 0x10,
-    CHAT_TAG_UNK1        = 0x40,
+    CHAT_TAG_UNK1       = 0x40,
     CHAT_TAG_COM        = 0x80, // Commentator
 };
 
