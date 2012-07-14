@@ -2003,3 +2003,9 @@ void WorldSession::HandleRandomizeCharNameOpcode(WorldPacket& recv_data)
     data << *GetRandomCharacterName(race, gender);
     SendPacket(&data);
 }
+
+void WorldSession::HandleCharSetPosition(WorldPacket& recv_data)
+{
+    sLog->outString("Character Set Position size: %u", recv_data.size());
+    recv_data.hexlike();
+}
