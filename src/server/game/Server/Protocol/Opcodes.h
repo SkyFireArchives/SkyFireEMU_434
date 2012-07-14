@@ -43,7 +43,7 @@ enum Opcodes
     CMSG_ADD_FRIEND                                  = 0x06527, // 4.3.4 Build 15595
     CMSG_ADD_IGNORE                                  = 0x04726, // 4.3.4 Build 15595
     CMSG_ADD_VOICE_IGNORE                            = 0x00F06, // 4.3.4 Build 15595
-    CMSG_ALTER_APPEARANCE                            = 0x00000, // Unknown
+    CMSG_ALTER_APPEARANCE                            = 0x00914, // 4.3.4 Build 15595
     CMSG_AREATRIGGER                                 = 0x00937, // 4.3.4 Build 15595
     CMSG_AREA_SPIRIT_HEALER_QUERY                    = 0x04907, // 4.3.4 Build 15595
     CMSG_AREA_SPIRIT_HEALER_QUEUE                    = 0x00000, // Unknown
@@ -783,7 +783,7 @@ enum Opcodes
     SMSG_FORCE_SEND_QUEUED_PACKETS                   = 0x00140, // 4.3.4 Build 15595
     SMSG_FRIEND_STATUS                               = 0x00717, // 4.3.4 Build 15595
     SMSG_GAMEOBJECT_CUSTOM_ANIM                      = 0x00000, // Unknown
-    SMSG_GAMEOBJECT_DESPAWN_ANIM                     = 0x00000, // Unknown
+    SMSG_GAMEOBJECT_DESPAWN_ANIM                     = 0x06735, // 4.3.4 Build 15595
     SMSG_GAMEOBJECT_PAGETEXT                         = 0x00000, // Unknown
     SMSG_GAMEOBJECT_QUERY_RESPONSE                   = 0x00915, // 4.3.4 Build 15595
     SMSG_GAMEOBJECT_RESET_STATE                      = 0x00000, // Unknown
@@ -799,7 +799,7 @@ enum Opcodes
     SMSG_GMTICKET_SYSTEMSTATUS                       = 0x00000, // Unknown
     SMSG_GMTICKET_UPDATETEXT                         = 0x00000, // Unknown
     SMSG_GM_MESSAGECHAT                              = 0x06434, // 4.3.4 Build 15595
-    SMSG_GODMODE                                     = 0x00000, // Unknown
+    SMSG_GODMODE                                     = 0x00405, // 4.3.4 Build 15595
     SMSG_GOSSIP_COMPLETE                             = 0x00806, // 4.3.4 Build 15595
     SMSG_GOSSIP_MESSAGE                              = 0x02035, // 4.3.4 Build 15595
     SMSG_GOSSIP_POI                                  = 0x04316, // 4.3.4 Build 15595
@@ -976,19 +976,19 @@ enum Opcodes
     SMSG_PONG                                        = 0x04D42, // 4.3.4 Build 15595
     SMSG_POWER_UPDATE                                = 0x04A07, // 4.3.4 Build 15595
     SMSG_PRE_RESURRECT                               = 0x06C36, // 4.3.4 Build 15595
-    SMSG_PROCRESIST                                  = 0x00000, // Unknown
+    SMSG_PROCRESIST                                  = 0x00426, // 4.3.4 Build 15595
     SMSG_PROPOSE_LEVEL_GRANT                         = 0x00000, // Unknown
     SMSG_PUREMOUNT_CANCELLED_OBSOLETE                = 0x00000, // Unknown
     SMSG_PVP_CREDIT                                  = 0x00000, // Unknown
     SMSG_PVP_LOG_DATA                                = 0x054A3, // 4.3.4 Build 15595
-    SMSG_QUERY_QUESTS_COMPLETED_RESPONSE             = 0x00000, // Unknown
+    SMSG_QUERY_QUESTS_COMPLETED_RESPONSE             = 0x06314, // 4.3.4 Build 15595
     SMSG_QUERY_TIME_RESPONSE                         = 0x02124, // 4.3.4 Build 15595
     SMSG_QUESTGIVER_OFFER_REWARD                     = 0x02427, // 4.3.4 Build 15595
     SMSG_QUESTGIVER_QUEST_COMPLETE                   = 0x055A4, // 4.3.4 Build 15595
     SMSG_QUESTGIVER_QUEST_DETAILS                    = 0x02425, // 4.3.4 Build 15595
     SMSG_QUESTGIVER_QUEST_FAILED                     = 0x04236, // 4.3.4 Build 15595
     SMSG_QUESTGIVER_QUEST_INVALID                    = 0x00000, // Unknown
-    SMSG_QUESTGIVER_QUEST_LIST                       = 0x00000, // Unknown
+    SMSG_QUESTGIVER_QUEST_LIST                       = 0x00134, // 4.3.4 Build 15595
     SMSG_QUESTGIVER_REQUEST_ITEMS                    = 0x00000, // Unknown
     SMSG_QUESTGIVER_STATUS                           = 0x02115, // 4.3.4 Build 15595
     SMSG_QUESTGIVER_STATUS_MULTIPLE                  = 0x04F25, // 4.3.4 Build 15595
@@ -1004,7 +1004,7 @@ enum Opcodes
     SMSG_QUEST_NPC_QUERY_RESPONSE                    = 0x00000, // Unknown
     SMSG_QUEST_POI_QUERY_RESPONSE                    = 0x06304, // 4.3.4 Build 15595
     SMSG_QUEST_QUERY_RESPONSE                        = 0x06936, // 4.3.4 Build 15595
-    SMSG_RAID_GROUP_ONLY                             = 0x00000, // Unknown
+    SMSG_RAID_GROUP_ONLY                             = 0x00837, // 4.3.4 Build 15595
     SMSG_RAID_INSTANCE_INFO                          = 0x06626, // 4.3.4 Build 15595
     SMSG_RAID_INSTANCE_MESSAGE                       = 0x06E15, // 4.3.4 Build 15595
     SMSG_RANDOMIZE_CHAR_NAME                         = 0x038B1, // 4.3.4 Build 15595
@@ -1021,7 +1021,7 @@ enum Opcodes
     SMSG_REQUEST_CEMETERY_LIST_RESPONSE              = 0x030A7, // 4.3.4 Build 15595
     SMSG_RESET_FAILED_NOTIFY                         = 0x00000, // Unknown
     SMSG_RESISTLOG                                   = 0x00000, // Unknown
-    SMSG_RESPOND_INSPECT_ACHIEVEMENTS                = 0x00000, // Unknown
+    SMSG_RESPOND_INSPECT_ACHIEVEMENTS                = 0x015B0, // Unknown
     SMSG_RESURRECT_REQUEST                           = 0x00000, // Unknown
     SMSG_RESYNC_RUNES                                = 0x00000, // Unknown
     SMSG_RWHOIS                                      = 0x02437, // 4.3.4 Build 15595
@@ -1058,7 +1058,7 @@ enum Opcodes
     SMSG_SPELLORDAMAGE_IMMUNE                        = 0x04507, // 4.3.4 Build 15595
     SMSG_SPELLSTEALLOG                               = 0x00000, // Unknown
     SMSG_SPELL_COOLDOWN                              = 0x04B16, // 4.3.4 Build 15595
-    SMSG_SPELL_DELAYED                               = 0x00000, // Unknown
+    SMSG_SPELL_DELAYED                               = 0x00715, // 4.3.4 Build 15595
     SMSG_SPELL_FAILED_OTHER                          = 0x00000, // Unknown
     SMSG_SPELL_FAILURE                               = 0x00000, // Unknown
     SMSG_SPELL_GO                                    = 0x06E16, // 4.3.4 Build 15595
