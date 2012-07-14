@@ -1021,7 +1021,7 @@ enum Opcodes
     SMSG_REQUEST_CEMETERY_LIST_RESPONSE              = 0x030A7, // 4.3.4 Build 15595
     SMSG_RESET_FAILED_NOTIFY                         = 0x00000, // Unknown
     SMSG_RESISTLOG                                   = 0x00000, // Unknown
-    SMSG_RESPOND_INSPECT_ACHIEVEMENTS                = 0x015B0, // Unknown
+    SMSG_RESPOND_INSPECT_ACHIEVEMENTS                = 0x015B0, // 4.3.4 Build 15595
     SMSG_RESURRECT_REQUEST                           = 0x00000, // Unknown
     SMSG_RESYNC_RUNES                                = 0x00000, // Unknown
     SMSG_RWHOIS                                      = 0x02437, // 4.3.4 Build 15595
