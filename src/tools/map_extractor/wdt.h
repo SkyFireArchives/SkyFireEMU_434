@@ -75,7 +75,7 @@ public:
     {
         uint32 flag;
         uint32 data1;
-    } 
+    }
     adt_list[64][64];
 
     bool prepareLoadedData();
@@ -88,7 +88,7 @@ public:
 
     WDT_file();
     ~WDT_file();
-    
+
     void free();
     wdt_MPHD *mphd;
     wdt_MAIN *main;

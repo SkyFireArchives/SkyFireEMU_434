@@ -778,10 +778,10 @@ enum PlayerChatTag
     CHAT_TAG_AFK        = 0x01,
     CHAT_TAG_DND        = 0x02,
     CHAT_TAG_GM         = 0x04,
-	CHAT_TAG_UNK		= 0x08,
+    CHAT_TAG_UNK        = 0x08,
     CHAT_TAG_DEV        = 0x10,
-	CHAT_TAG_UNK1		= 0x40,
-	CHAT_TAG_COM        = 0x80, // Commentator
+    CHAT_TAG_UNK1        = 0x40,
+    CHAT_TAG_COM        = 0x80, // Commentator
 };
 
 enum PlayedTimeIndex

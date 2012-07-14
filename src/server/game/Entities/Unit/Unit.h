@@ -667,7 +667,7 @@ enum NPCFlags
 enum MovementFlags
 {
 
-	MOVEMENTFLAG_NONE               = 0x00000000,
+    MOVEMENTFLAG_NONE               = 0x00000000,
     MOVEMENTFLAG_FORWARD            = 0x00000001,
     MOVEMENTFLAG_BACKWARD           = 0x00000002,
     MOVEMENTFLAG_STRAFE_LEFT        = 0x00000004,
@@ -677,8 +677,8 @@ enum MovementFlags
     MOVEMENTFLAG_PITCH_UP           = 0x00000040,
     MOVEMENTFLAG_PITCH_DOWN         = 0x00000080,
     MOVEMENTFLAG_WALKING            = 0x00000100,               // Walking
-	MOVEMENTFLAG_ONTRANSPORT        = 0x40000200,
-	MOVEMENTFLAG_DISABLE_GRAVITY	= 0x00000400,
+    MOVEMENTFLAG_ONTRANSPORT        = 0x40000200,
+    MOVEMENTFLAG_DISABLE_GRAVITY    = 0x00000400,
     MOVEMENTFLAG_ROOT               = 0x00000800,
     MOVEMENTFLAG_FALLING            = 0x00001000,
     MOVEMENTFLAG_FALLINGFAR         = 0x00002000,
@@ -695,13 +695,13 @@ enum MovementFlags
     MOVEMENTFLAG_CAN_FLY            = 0x01000000,               // can fly in 3.3?
     MOVEMENTFLAG_FLYING             = 0x02000000,               // Actual flying mode
     MOVEMENTFLAG_SPLINE_ELEVATION   = 0x04000000,               // used for flight paths
-	MOVEMENTFLAG_SPLINE_ENABLED     = 0x08000000,               // used for flight paths
+    MOVEMENTFLAG_SPLINE_ENABLED     = 0x08000000,               // used for flight paths
     MOVEMENTFLAG_WATERWALKING       = 0x10000000,               // prevent unit from falling through water
     MOVEMENTFLAG_SAFE_FALL          = 0x20000000,               // active rogue safe fall spell (passive)
     MOVEMENTFLAG_HOVER              = 0x40000000,
-	MOPEMENTFLAG_LOCALDIRTY			= 0x80000000,
+    MOPEMENTFLAG_LOCALDIRTY            = 0x80000000,
 
-   
+
    /* MOVEMENTFLAG_NONE                  = 0x00000000,
     MOVEMENTFLAG_FORWARD               = 0x00000001,
     MOVEMENTFLAG_BACKWARD              = 0x00000002,
@@ -734,7 +734,7 @@ enum MovementFlags
     MOVEMENTFLAG_WATERWALKING          = 0x10000000,               // prevent unit from falling through water
     MOVEMENTFLAG_FALLING_SLOW          = 0x20000000,               // active rogue safe fall spell (passive)
     MOVEMENTFLAG_HOVER                 = 0x40000000,               // hover, cannot jump
-	*/
+    */
     // TODO: Check if PITCH_UP and PITCH_DOWN really belong here..
     MOVEMENTFLAG_MASK_MOVING =
         MOVEMENTFLAG_FORWARD | MOVEMENTFLAG_BACKWARD | MOVEMENTFLAG_STRAFE_LEFT | MOVEMENTFLAG_STRAFE_RIGHT |
@@ -746,23 +746,23 @@ enum MovementFlags
 };
 enum MovementFlags2
 {
-    MOVEMENTFLAG2_NONE										= 0x00000000,
-    MOVEMENTFLAG2_PREVENT_STRAFE							= 0x00000001,
-    MOVEMENTFLAG2_PREVENT_JUMPING							= 0x00000002,
-    MOVEMENTFLAG2_DISABL_ECOLLISION							= 0x00000004,        // Overrides various clientside checks
-    MOVEMENTFLAG2_FULL_SPEED_TURNING						= 0x00000008,
-    MOVEMENTFLAG2_FULL_SPEED_PITCHING						= 0x00000010,
-    MOVEMENTFLAG2_ALWAYS_ALLOW_PITCHING						= 0x00000020,
+    MOVEMENTFLAG2_NONE                                        = 0x00000000,
+    MOVEMENTFLAG2_PREVENT_STRAFE                            = 0x00000001,
+    MOVEMENTFLAG2_PREVENT_JUMPING                            = 0x00000002,
+    MOVEMENTFLAG2_DISABL_ECOLLISION                            = 0x00000004,        // Overrides various clientside checks
+    MOVEMENTFLAG2_FULL_SPEED_TURNING                        = 0x00000008,
+    MOVEMENTFLAG2_FULL_SPEED_PITCHING                        = 0x00000010,
+    MOVEMENTFLAG2_ALWAYS_ALLOW_PITCHING                        = 0x00000020,
     MOVEMENTFLAG2_IS_VEHICLE_EXIT_VOLUNTARY                 = 0x00000040,
-    MOVEMENTFLAG2_IS_JUMP_SPLINE_IN_AIR						= 0x00000080,
-    MOVEMENTFLAG2_IS_ANIMTIER_IN_TRANS						= 0x00000100,
-    MOVEMENTFLAG2_PREVENT_CHANGE_PITCH						= 0x00000200,
-    MOVEMENTFLAG2_INTERPOLATED_MOVEMENT						= 0x00000400,
-    MOVEMENTFLAG2_INTERPOLATED_TURNING						= 0x00000800,
-    MOVEMENTFLAG2_INTERPOLATED_PITCHING						= 0x00001000,
+    MOVEMENTFLAG2_IS_JUMP_SPLINE_IN_AIR                        = 0x00000080,
+    MOVEMENTFLAG2_IS_ANIMTIER_IN_TRANS                        = 0x00000100,
+    MOVEMENTFLAG2_PREVENT_CHANGE_PITCH                        = 0x00000200,
+    MOVEMENTFLAG2_INTERPOLATED_MOVEMENT                        = 0x00000400,
+    MOVEMENTFLAG2_INTERPOLATED_TURNING                        = 0x00000800,
+    MOVEMENTFLAG2_INTERPOLATED_PITCHING                        = 0x00001000,
     MOVEMENTFLAG2_VEHICLE_PASSENGER_IS_TRANSITION_ALLOWED   = 0x00002000,
     MOVEMENTFLAG2_CAN_TRANSITION_BETWEEN_SWIM_AND_FLY       = 0x00004000,
-    MOVEMENTFLAG2_UNK1										= 0x00008000,
+    MOVEMENTFLAG2_UNK1                                        = 0x00008000,
 };
 
 enum SplineFlags
@@ -775,11 +775,11 @@ enum SplineFlags
 
 enum SplineType
 {
-	SPLINETYPE_NORMAL			= 0,
-	SPLINETYPE_STOP				= 1,
-	SPLINETYPE_FACING_SPOT		= 2,
-    SPLINETYPE_FACING_TARGET	= 3,
-	SPLINETYPE_FACING_ANGLE		= 4,
+    SPLINETYPE_NORMAL            = 0,
+    SPLINETYPE_STOP                = 1,
+    SPLINETYPE_FACING_SPOT        = 2,
+    SPLINETYPE_FACING_TARGET    = 3,
+    SPLINETYPE_FACING_ANGLE        = 4,
 };
 
 enum UnitTypeMask

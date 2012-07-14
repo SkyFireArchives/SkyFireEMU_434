@@ -32,7 +32,7 @@ class WDTFile
 public:
     WDTFile(char* file_name, char* file_name1);
     ~WDTFile(void);
-    
+
     bool init(char* map_id, unsigned int mapID);
 
     string* gWmoInstansName;

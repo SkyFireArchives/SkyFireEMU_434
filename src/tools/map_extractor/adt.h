@@ -76,7 +76,7 @@ public:
     {
         uint32 light;
         float  height;
-    } 
+    }
     liquid[ADT_CELL_SIZE+1][ADT_CELL_SIZE+1];
     /*
      *  1 << 0  - ocean (ochen??lol)
@@ -86,7 +86,7 @@ public:
      *  1 << 7  - dark water
      *  == 0x0F - not shown liquid
      */
-    
+
     uint8 flags[ADT_CELL_SIZE][ADT_CELL_SIZE];
     uint8 data[84];
     bool  prepareLoadedData();
@@ -138,14 +138,14 @@ public:
     uint32 effectId;
 
     bool prepareLoadedData();
-    
+
     adt_MCVT *getMCVT()
     {
         if (offsMCVT)
             return (adt_MCVT *)((uint8 *)this + offsMCVT);
         return 0;
     }
-    
+
     adt_MCLQ *getMCLQ()
     {
         if (offsMCLQ)
@@ -172,11 +172,11 @@ public:
         uint32 size;
         uint32 flags;
         uint32 asyncId;
-    } 
+    }
     cells[ADT_CELLS_PER_GRID][ADT_CELLS_PER_GRID];
 
     bool prepareLoadedData();
-    
+
     // offset from begin file (used this-84)
     adt_MCNK *getMCNK(int x, int y)
     {
@@ -221,7 +221,7 @@ public:
         uint32 offsData1;
         uint32 used;
         uint32 offsData2;
-    } 
+    }
     liquid[ADT_CELLS_PER_GRID][ADT_CELLS_PER_GRID];
 
     bool prepareLoadedData();
@@ -237,10 +237,10 @@ public:
     {
         if (h->formatFlags & ADT_LIQUID_HEADER_NO_HIGHT)
             return 0;
-        
+
         if (h->offsData2b)
             return (float *)((uint8*)this + 8 + h->offsData2b);
-        
+
         return 0;
     }
 
@@ -248,11 +248,11 @@ public:
     {
         if (h->formatFlags&ADT_LIQUID_HEADER_FULL_LIGHT)
             return 0;
-        
+
         if (h->offsData2b)
         {
             if (h->formatFlags & ADT_LIQUID_HEADER_NO_HIGHT)
-                return (uint8 *)((uint8*)this + 8 + h->offsData2b);           
+                return (uint8 *)((uint8*)this + 8 + h->offsData2b);
             return (uint8 *)((uint8*)this + 8 + h->offsData2b + (h->width+1)*(h->height+1)*4);
         }
         return 0;
@@ -262,7 +262,7 @@ public:
     {
         if (!(h->formatFlags & ADT_LIQUID_HEADER_FULL_LIGHT))
             return 0;
-        
+
         if (h->offsData2b)
         {
             if (h->formatFlags & ADT_LIQUID_HEADER_NO_HIGHT)

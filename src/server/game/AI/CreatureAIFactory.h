@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
- 
+
 #ifndef SKYFIRE_CREATUREAIFACTORY_H
 #define SKYFIRE_CREATUREAIFACTORY_H
 

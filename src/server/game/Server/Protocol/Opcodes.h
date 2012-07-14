@@ -340,7 +340,7 @@ enum Opcodes
     CMSG_QUESTGIVER_HELLO                            = 0x00D17, // 4.3.4 Build 15595
     CMSG_QUESTGIVER_QUERY_QUEST                      = 0x02F14, // 4.3.4 Build 15595
     CMSG_QUESTGIVER_QUEST_AUTOLAUNCH                 = 0x00000, // Unknown
-    CMSG_QUESTGIVER_REQUEST_REWARD                   = 0x00000, // Unknown 
+    CMSG_QUESTGIVER_REQUEST_REWARD                   = 0x00000, // Unknown
     CMSG_QUESTGIVER_STATUS_MULTIPLE_QUERY            = 0x06305, // 4.3.4 Build 15595
     CMSG_QUESTGIVER_STATUS_QUERY                     = 0x04407, // 4.3.4 Build 15595
     CMSG_QUESTLOG_REMOVE_QUEST                       = 0x00D16, // 4.3.4 Build 15595
