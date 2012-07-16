@@ -345,7 +345,7 @@ enum Opcodes
     CMSG_QUESTGIVER_STATUS_QUERY                     = 0x04407, // 4.3.4 Build 15595
     CMSG_QUESTLOG_REMOVE_QUEST                       = 0x00D16, // 4.3.4 Build 15595
     CMSG_QUESTLOG_SWAP_QUEST                         = 0x00000, // Unknown
-    CMSG_QUEST_CONFIRM_ACCEPT                        = 0x00000, // Unknown
+    CMSG_QUEST_CONFIRM_ACCEPT                        = 0x06C26, // 4.3.4 Build 15595
     CMSG_QUEST_NPC_QUERY                             = 0x00000, // Unknown
     CMSG_QUEST_POI_QUERY                             = 0x04037, // 4.3.4 Build 15595
     CMSG_QUEST_QUERY                                 = 0x00D06, // 4.3.4 Build 15595
