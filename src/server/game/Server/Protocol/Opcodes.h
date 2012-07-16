@@ -333,7 +333,7 @@ enum Opcodes
     CMSG_QUERY_GUILD_XP                              = 0x00000, // Unknown
     CMSG_QUERY_QUESTS_COMPLETED                      = 0x02317, // 4.3.4 Build 15595
     CMSG_QUERY_TIME                                  = 0x00A36, // 4.3.4 Build 15595
-    CMSG_QUESTGIVER_ACCEPT_QUEST                     = 0x06C26, // 4.3.4 Build 15595
+    CMSG_QUESTGIVER_ACCEPT_QUEST                     = 0x06B37, // 4.3.4 Build 15595
     CMSG_QUESTGIVER_CANCEL                           = 0x00000, // Unknown
     CMSG_QUESTGIVER_CHOOSE_REWARD                    = 0x02125, // 4.3.4 Build 15595
     CMSG_QUESTGIVER_COMPLETE_QUEST                   = 0x00114, // 4.3.4 Build 15595
