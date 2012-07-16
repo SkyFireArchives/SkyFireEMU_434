@@ -129,7 +129,7 @@ enum Opcodes
     CMSG_CHANNEL_UNMODERATOR                         = 0x01954, // 4.3.4 Build 15595
     CMSG_CHANNEL_UNMUTE                              = 0x03554, // 4.3.4 Build 15595
     CMSG_CHAR_CREATE                                 = 0x04A36, // 4.3.4 Build 15595
-    CMSG_CHAR_CUSTOMIZE                              = 0x00000, // Unknown
+    CMSG_CHAR_CUSTOMIZE                              = 0x02C34, // 4.3.4 Build 15595
     CMSG_CHAR_DELETE                                 = 0x06425, // 4.3.4 Build 15595
     CMSG_CHAR_ENUM                                   = 0x00502, // 4.3.4 Build 15595
     CMSG_CHAR_FACTION_CHANGE                         = 0x02735, // 4.3.4 Build 15595
@@ -204,7 +204,7 @@ enum Opcodes
     CMSG_GROUP_UNINVITE                              = 0x00000, // Unknown
     CMSG_GROUP_UNINVITE_GUID                         = 0x00000, // Unknown
     CMSG_GUILDFINDER_JOIN                            = 0x00000, // Unknown
-    CMSG_GUILD_ACCEPT                                = 0x02014, // 4.3.4 Build 15595
+    CMSG_GUILD_ACCEPT                                = 0x02531, // 4.3.4 Build 15595
     CMSG_GUILD_BANKER_ACTIVATE                       = 0x02E37, // 4.3.4 Build 15595
     CMSG_GUILD_BANK_BUY_TAB                          = 0x00000, // Unknown
     CMSG_GUILD_BANK_DEPOSIT_MONEY                    = 0x00000, // Unknown
@@ -461,7 +461,7 @@ enum Opcodes
     MSG_AUCTION_HELLO                                = 0x02307, // 4.3.4 Build 15595
     MSG_BATTLEGROUND_PLAYER_POSITIONS                = 0x00000, // Unknown
     MSG_CHANNEL_START                                = 0x00A15, // 4.3.4 Build 15595
-    MSG_CHANNEL_UPDATE                               = 0x00000, // Unknown
+    MSG_CHANNEL_UPDATE                               = 0x02417, // 4.3.4 Build 15595
     MSG_CORPSE_QUERY                                 = 0x00000, // Unknown
     MSG_GET_CALENDAR                                 = 0x02814, // 4.3.4 Build 15595
     MSG_GM_BIND_OTHER                                = 0x00000, // Unknown
@@ -583,7 +583,7 @@ enum Opcodes
     MSG_MOVE_START_TURN_RIGHT                        = 0x07000, // 4.3.4 Build 15595
     MSG_MOVE_STOP                                    = 0x0320A, // 4.3.4 Build 15595
     MSG_MOVE_STOP_ASCEND                             = 0x07B00, // 4.3.4 Build 15595
-    MSG_MOVE_STOP_PITCH                              = 0x07312, // 4.3.4 Build 15595
+    MSG_MOVE_STOP_PITCH                              = 0x07216, // 4.3.4 Build 15595
     MSG_MOVE_STOP_STRAFE                             = 0x03002, // 4.3.4 Build 15595
     MSG_MOVE_STOP_SWIM                               = 0x03802, // 4.3.4 Build 15595
     MSG_MOVE_STOP_TURN                               = 0x0331E, // 4.3.4 Build 15595
@@ -706,13 +706,13 @@ enum Opcodes
     SMSG_CHANNEL_LIST                                = 0x00000, // Unknown
     SMSG_CHANNEL_MEMBER_COUNT                        = 0x06414, // 4.3.4 Build 15595
     SMSG_CHANNEL_NOTIFY                              = 0x00825, // 4.3.4 Build 15595
-    SMSG_CHARACTER_LOGIN_FAILED                      = 0x00000, // Unknown
+    SMSG_CHARACTER_LOGIN_FAILED                      = 0x04417, // 4.3.4 Build 15595
     SMSG_CHAR_CREATE                                 = 0x02D05, // 4.3.4 Build 15595
-    SMSG_CHAR_CUSTOMIZE                              = 0x00000, // Unknown
+    SMSG_CHAR_CUSTOMIZE                              = 0x04F16, // 4.3.4 Build 15595
     SMSG_CHAR_DELETE                                 = 0x00304, // 4.3.4 Build 15595
     SMSG_CHAR_ENUM                                   = 0x010B0, // 4.3.4 Build 15595
-    SMSG_CHAR_FACTION_CHANGE                         = 0x00000, // Unknown
-    SMSG_CHAR_RENAME                                 = 0x00000, // Unknown
+    SMSG_CHAR_FACTION_CHANGE                         = 0x04C06, // 4.3.4 Build 15595
+    SMSG_CHAR_RENAME                                 = 0x02024, // 4.3.4 Build 15595
     SMSG_CHAT_PLAYER_AMBIGUOUS                       = 0x00000, // Unknown
     SMSG_CHAT_PLAYER_NOT_FOUND                       = 0x00000, // Unknown
     SMSG_CHAT_RESTRICTED                             = 0x00000, // Unknown
@@ -760,7 +760,7 @@ enum Opcodes
     SMSG_DUEL_INBOUNDS                               = 0x00000, // Unknown
     SMSG_DUEL_OUTOFBOUNDS                            = 0x00000, // Unknown
     SMSG_DUEL_REQUESTED                              = 0x04504, // 4.3.4 Build 15595
-    SMSG_DUEL_WINNER                                 = 0x02527, // 4.3.4 Build 15595
+    SMSG_DUEL_WINNER                                 = 0x02D36, // 4.3.4 Build 15595
     SMSG_DURABILITY_DAMAGE_DEATH                     = 0x00000, // Unknown
     SMSG_ECHO_PARTY_SQUELCH                          = 0x06605, // 4.3.4 Build 15595
     SMSG_EMOTE                                       = 0x00A34, // 4.3.4 Build 15595
@@ -889,7 +889,7 @@ enum Opcodes
     SMSG_LOAD_CUF_PROFILES                           = 0x050B1, // 4.3.4 Build 15595
     SMSG_LOGIN_SETTIMESPEED                          = 0x04D15, // 4.3.4 Build 15595
     SMSG_LOGIN_VERIFY_WORLD                          = 0x02005, // 4.3.4 Build 15595
-    SMSG_LOGOUT_CANCEL_ACK                           = 0x00000, // Unknown
+    SMSG_LOGOUT_CANCEL_ACK                           = 0x06514, // 4.3.4 Build 15595
     SMSG_LOGOUT_COMPLETE                             = 0x02137, // 4.3.4 Build 15595
     SMSG_LOGOUT_RESPONSE                             = 0x00524, // 4.3.4 Build 15595
     SMSG_LOG_XPGAIN                                  = 0x04514, // 4.3.4 Build 15595
@@ -1040,7 +1040,7 @@ enum Opcodes
     SMSG_SET_FORCED_REACTIONS                        = 0x04615, // 4.3.4 Build 15595
     SMSG_SET_PCT_SPELL_MODIFIER                      = 0x02834, // 4.3.4 Build 15595
     SMSG_SET_PHASE_SHIFT                             = 0x070A0, // 4.3.4 Build 15595
-    SMSG_SET_PLAYER_DECLINED_NAMES_RESULT            = 0x00000, // Unknown
+    SMSG_SET_PLAYER_DECLINED_NAMES_RESULT            = 0x02B25, // 4.3.4 Build 15595
     SMSG_SET_PLAY_HOVER_ANIM                         = 0x030A6, // 4.3.4 Build 15595
     SMSG_SET_PROFICIENCY                             = 0x06207, // 4.3.4 Build 15595
     SMSG_SET_PROJECTILE_POSITION                     = 0x00000, // Unknown
