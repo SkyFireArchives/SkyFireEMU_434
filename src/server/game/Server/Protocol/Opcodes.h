@@ -56,12 +56,12 @@ enum Opcodes
     CMSG_ARENA_TEAM_LEAVE                            = 0x00E16, // 4.3.4 Build 15595
     CMSG_ARENA_TEAM_QUERY                            = 0x00000, // Unknown
     CMSG_ARENA_TEAM_REMOVE                           = 0x02F05, // 4.3.4 Build 15595
-    CMSG_ARENA_TEAM_ROSTER                           = 0x00000, // Unknown
+    CMSG_ARENA_TEAM_ROSTER                           = 0x06F37, // 4.3.4 Build 15595
     CMSG_ATTACKSTOP                                  = 0x04106, // 4.3.4 Build 15595
     CMSG_ATTACKSWING                                 = 0x00926, // 4.3.4 Build 15595
-    CMSG_AUCTION_LIST_BIDDER_ITEMS                   = 0x00000, // Unknown
+    CMSG_AUCTION_LIST_BIDDER_ITEMS                   = 0x06937, // 4.3.4 Build 15595
     CMSG_AUCTION_LIST_ITEMS                          = 0x00324, // 4.3.4 Build 15595
-    CMSG_AUCTION_LIST_OWNER_ITEMS                    = 0x00000, // Unknown
+    CMSG_AUCTION_LIST_OWNER_ITEMS                    = 0x00206, // 4.3.4 Build 15595
     CMSG_AUCTION_PLACE_BID                           = 0x02306, // 4.3.4 Build 15595
     CMSG_AUCTION_REMOVE_ITEM                         = 0x06426, // 4.3.4 Build 15595
     CMSG_AUCTION_SELL_ITEM                           = 0x04A06, // 4.3.4 Build 15595
@@ -376,7 +376,7 @@ enum Opcodes
     CMSG_RESET_FACTION_CHEAT                         = 0x04469, // 4.3.4 Build 15595
     CMSG_RESET_INSTANCES                             = 0x06E14, // 4.3.4 Build 15595
     CMSG_RESURRECT_RESPONSE                          = 0x06827, // 4.3.4 Build 15595
-    CMSG_RETURN_TO_GRAVEYARD                         = 0x00000, // Unknown
+    CMSG_RETURN_TO_GRAVEYARD                         = 0x0301E, // 4.3.4 Build 15595
     CMSG_SAVE_PLAYER                                 = 0x00000, // Unknown
     CMSG_SEARCH_LFG_JOIN                             = 0x00000, // Unknown
     CMSG_SEARCH_LFG_LEAVE                            = 0x00000, // Unknown
