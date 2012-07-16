@@ -937,7 +937,7 @@ enum Opcodes
     SMSG_PARTY_COMMAND_RESULT                        = 0x00A07, // 4.3.4 Build 15595
     SMSG_PARTY_MEMBER_STATS                          = 0x02104, // 4.3.4 Build 15595
     SMSG_PARTY_MEMBER_STATS_FULL                     = 0x00215, // 4.3.4 Build 15595
-    SMSG_PAUSE_MIRROR_TIMER                          = 0x00000, // 4.3.4 Build 15595
+    SMSG_PAUSE_MIRROR_TIMER                          = 0x00000, // Unknown
     SMSG_PERIODICAURALOG                             = 0x00416, // 4.3.4 Build 15595
     SMSG_PETGODMODE                                  = 0x00000, // Unknown
     SMSG_PETITION_QUERY_RESPONSE                     = 0x04B37, // 4.3.4 Build 15595
