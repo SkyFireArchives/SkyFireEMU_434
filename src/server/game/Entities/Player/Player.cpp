@@ -16334,24 +16334,25 @@ void Player::SendQuestReward(Quest const* quest, uint32 XP, Object* questGiver)
     sGameEventMgr->HandleQuestComplete(questId);
     WorldPacket data(SMSG_QUESTGIVER_QUEST_COMPLETE, (4+4+4+4+4));
 
-    data << uint8(0x80); // 4.x unknown flag, most common value is 0x80 (it might be a single bit)
+    data << uint32(quest->GetBonusTalents());
+    data << uint32(quest->GetRewardSkillPoints());
 
     if (getLevel() < sWorld->getIntConfig(CONFIG_MAX_PLAYER_LEVEL))
     {
-        data << uint32(XP);
         data << uint32(quest->GetRewOrReqMoney());
+        data << uint32(XP);
     }
     else // At max level, increase gold reward
     {
-        data << uint32(0);
         data << uint32(quest->GetRewOrReqMoney() + int32(quest->GetRewMoneyMaxLevel() * sWorld->getRate(RATE_DROP_MONEY)));
+        data << uint32(0);
     }
 
-    data << uint32(quest->GetRewardSkillPoints());         // 4.x bonus skill points
     data << uint32(questId);
-    data << uint32(quest->GetRewardSkillId());             // 4.x bonus skill id
+    data << uint32(quest->GetRewardSkillId());
 
-    data << uint32(quest->GetBonusTalents());              // bonus talents (not verified for 4.x)
+    data << uint8(0x80); // 4.x unknown flag, most common value is 0x80 (it might be a single bit)
+
     GetSession()->SendPacket(&data);
 
     if (quest->GetQuestCompleteScript() != 0)
