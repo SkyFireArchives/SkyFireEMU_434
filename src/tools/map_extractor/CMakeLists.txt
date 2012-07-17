@@ -30,8 +30,8 @@ target_link_libraries(mapextractor
 
 add_dependencies(mapextractor storm)
 
-if(UNIX)
+if( UNIX )
   install(TARGETS mapextractor DESTINATION bin)
-elseif(WIN32)
+elseif( WIN32 )
   install(TARGETS mapextractor DESTINATION "${CMAKE_INSTALL_PREFIX}") 
 endif()

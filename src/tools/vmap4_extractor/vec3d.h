@@ -1,22 +1,3 @@
-/*
- * Copyright (C) 2011-2012 Project SkyFire <http://www.projectskyfire.org/>
- * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
- * Copyright (C) 2005-2012 MaNGOS <http://getmangos.com/>
- *
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the
- * Free Software Foundation; either version 3 of the License, or (at your
- * option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
- * more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program. If not, see <http://www.gnu.org/licenses/>.
- */
-
 #ifndef VEC3D_H
 #define VEC3D_H
 
@@ -26,12 +7,13 @@
 class Vec3D
 {
 public:
-    float x, y, z;
+    float x,y,z;
 
     Vec3D(float x0 = 0.0f, float y0 = 0.0f, float z0 = 0.0f) : x(x0), y(y0), z(z0) {}
+
     Vec3D(const Vec3D& v) : x(v.x), y(v.y), z(v.z) {}
-    Vec3D& operator= (const Vec3D &v)
-    {
+
+    Vec3D& operator= (const Vec3D &v) {
         x = v.x;
         y = v.y;
         z = v.z;
@@ -40,13 +22,13 @@ public:
 
     Vec3D operator+ (const Vec3D &v) const
     {
-        Vec3D r(x+v.x, y+v.y, z+v.z);
+        Vec3D r(x+v.x,y+v.y,z+v.z);
         return r;
     }
 
     Vec3D operator- (const Vec3D &v) const
     {
-        Vec3D r(x-v.x, y-v.y, z-v.z);
+        Vec3D r(x-v.x,y-v.y,z-v.z);
         return r;
     }
 
@@ -57,7 +39,7 @@ public:
 
     Vec3D operator* (float d) const
     {
-        Vec3D r(x*d, y*d, z*d);
+        Vec3D r(x*d,y*d,z*d);
         return r;
     }
 
@@ -137,15 +119,17 @@ public:
     }
 };
 
+
 class Vec2D
 {
 public:
-    float x, y;
+    float x,y;
 
     Vec2D(float x0 = 0.0f, float y0 = 0.0f) : x(x0), y(y0) {}
+
     Vec2D(const Vec2D& v) : x(v.x), y(v.y) {}
-    Vec2D& operator= (const Vec2D &v)
-    {
+
+    Vec2D& operator= (const Vec2D &v) {
         x = v.x;
         y = v.y;
         return *this;
@@ -153,13 +137,13 @@ public:
 
     Vec2D operator+ (const Vec2D &v) const
     {
-        Vec2D r(x+v.x, y+v.y);
+        Vec2D r(x+v.x,y+v.y);
         return r;
     }
 
     Vec2D operator- (const Vec2D &v) const
     {
-        Vec2D r(x-v.x, y-v.y);
+        Vec2D r(x-v.x,y-v.y);
         return r;
     }
 
@@ -170,7 +154,7 @@ public:
 
     Vec2D operator* (float d) const
     {
-        Vec2D r(x*d, y*d);
+        Vec2D r(x*d,y*d);
         return r;
     }
 
@@ -222,6 +206,7 @@ public:
         r.normalize();
         return r;
     }
+
 
     friend std::istream& operator>>(std::istream& in, Vec2D& v)
     {

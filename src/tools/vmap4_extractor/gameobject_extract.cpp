@@ -1,32 +1,15 @@
-/*
- * Copyright (C) 2011-2012 Project SkyFire <http://www.projectskyfire.org/>
- * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
- *
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the
- * Free Software Foundation; either version 3 of the License, or (at your
- * option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
- * more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program. If not, see <http://www.gnu.org/licenses/>.
- */
-
 #include "model.h"
 #include "dbcfile.h"
 #include "adtfile.h"
 #include "vmapexport.h"
+
 #include <algorithm>
 #include <stdio.h>
 
 bool ExtractSingleModel(std::string& fname)
 {
-    char* name = GetPlainName((char*)fname.c_str());
-    char* ext  = GetExtension(name);
+    char * name = GetPlainName((char*)fname.c_str());
+    char * ext = GetExtension(name);
 
     // < 3.1.0 ADT MMDX section store filename.mdx filenames for corresponded .m2 file
     if (!strcmp(ext, ".mdx"))
@@ -52,11 +35,12 @@ bool ExtractSingleModel(std::string& fname)
     return mdl.ConvertToVMAPModel(output.c_str());
 }
 
+extern HANDLE LocaleMpq;
+
 void ExtractGameobjectModels()
 {
     printf("Extracting GameObject models...");
-    DBCFile dbc("DBFilesClient\\GameObjectDisplayInfo.dbc");
-    
+    DBCFile dbc(LocaleMpq, "DBFilesClient\\GameObjectDisplayInfo.dbc");
     if(!dbc.open())
     {
         printf("Fatal error: Invalid GameObjectDisplayInfo.dbc file format!\n");
@@ -77,16 +61,16 @@ void ExtractGameobjectModels()
             continue;
 
         fixnamen((char*)path.c_str(), path.size());
-        char* name = GetPlainName((char*)path.c_str());
+        char * name = GetPlainName((char*)path.c_str());
         fixname2(name, strlen(name));
 
-        char* ch_ext = GetExtension(name);
+        char * ch_ext = GetExtension(name);
         if (!ch_ext)
             continue;
 
         strToLower(ch_ext);
+
         bool result = false;
-        
         if (!strcmp(ch_ext, ".wmo"))
         {
             result = ExtractSingleWmo(path);
@@ -96,16 +80,16 @@ void ExtractGameobjectModels()
             // TODO: extract .mdl files, if needed
             continue;
         }
-        else
+        else //if (!strcmp(ch_ext, ".mdx") || !strcmp(ch_ext, ".m2"))
         {
             result = ExtractSingleModel(path);
         }
 
         if (result)
         {
-            uint32 displayId   = it->getUInt(0);
+            uint32 displayId = it->getUInt(0);
             uint32 path_length = strlen(name);
-            fwrite(&displayId,   sizeof(uint32), 1, model_list);
+            fwrite(&displayId, sizeof(uint32), 1, model_list);
             fwrite(&path_length, sizeof(uint32), 1, model_list);
             fwrite(name, sizeof(char), path_length, model_list);
         }

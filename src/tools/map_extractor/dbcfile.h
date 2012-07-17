@@ -1,28 +1,8 @@
-/*
- * Copyright (C) 2011-2012 Project SkyFire <http://www.projectskyfire.org/>
- * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
- * Copyright (C) 2005-2012 MaNGOS <http://getmangos.com/>
- *
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the
- * Free Software Foundation; either version 3 of the License, or (at your
- * option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
- * more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program. If not, see <http://www.gnu.org/licenses/>.
- */
-
 #ifndef DBCFILE_H
 #define DBCFILE_H
-
-#include "StormLib.h"
 #include <cassert>
 #include <string>
+#include "StormLib.h"
 
 class DBCFile
 {
@@ -37,8 +17,8 @@ class DBCFile
         class Exception
         {
             public:
-                Exception(const std::string &message) : message(message) {}
-                virtual ~Exception() {}
+                Exception(const std::string &message) : message(message) { }
+                virtual ~Exception() { }
                 const std::string &getMessage() { return message; }
             private:
                 std::string message;
@@ -47,7 +27,7 @@ class DBCFile
         class NotFound: public Exception
         {
             public:
-                NotFound(): Exception("Key was not found") {}
+                NotFound(): Exception("Key was not found") { }
         };
 
         // Iteration over database
@@ -73,7 +53,7 @@ class DBCFile
                     return *reinterpret_cast<int*>(offset+field*4);
                 }
 
-                const char* getString(size_t field) const
+                const char *getString(size_t field) const
                 {
                     assert(field < file._fieldCount);
                     size_t stringOffset = getUInt(field);
@@ -82,19 +62,20 @@ class DBCFile
                 }
 
             private:
-                Record(DBCFile &file, unsigned char* offset): file(file), offset(offset) {}
-                unsigned char* offset;
+                Record(DBCFile &file, unsigned char *offset): file(file), offset(offset) {}
+                unsigned char *offset;
                 DBCFile &file;
 
                 friend class DBCFile;
                 friend class DBCFile::Iterator;
         };
-
-        // Iterator that iterates over records
+        /** Iterator that iterates over records
+        */
         class Iterator
         {
             public:
-                Iterator(DBCFile &file, unsigned char* offset) : record(file, offset) {}
+                Iterator(DBCFile &file, unsigned char *offset) : record(file, offset) { }
+
                 /// Advance (prefix only)
                 Iterator & operator++()
                 {
@@ -105,13 +86,14 @@ class DBCFile
                 /// Return address of current instance
                 Record const & operator*() const { return record; }
                 const Record* operator->() const { return &record; }
+
                 /// Comparison
-                bool operator == (const Iterator &b) const
+                bool operator==(const Iterator &b) const
                 {
                     return record.offset == b.record.offset;
                 }
 
-                bool operator != (const Iterator &b) const
+                bool operator!=(const Iterator &b) const
                 {
                     return record.offset != b.record.offset;
                 }
@@ -136,7 +118,7 @@ class DBCFile
         size_t _recordCount;
         size_t _fieldCount;
         size_t _stringSize;
-        unsigned char* _data;
+        unsigned char *_data;
         unsigned char* _stringTable;
 };
 
