@@ -180,7 +180,7 @@ enum Opcodes
     CMSG_GMRESPONSE_RESOLVE                          = 0x00000, // Unknown
     CMSG_GMSURVEY_SUBMIT                             = 0x00000, // Unknown
     CMSG_GMTICKET_CREATE                             = 0x00137, // 4.3.4 Build 15595
-    CMSG_GMTICKET_DELETETICKET                       = 0x00000, // Unknown
+    CMSG_GMTICKET_DELETETICKET                       = 0x06B14, // 4.3.4 Build 15595
     CMSG_GMTICKET_GETTICKET                          = 0x00000, // Unknown
     CMSG_GMTICKET_SYSTEMSTATUS                       = 0x00000, // Unknown
     CMSG_GMTICKET_UPDATETEXT                         = 0x00636, // 4.3.4 Build 15595
@@ -262,7 +262,7 @@ enum Opcodes
     CMSG_LOOT_METHOD                                 = 0x02F24, // 4.3.4 Build 15595
     CMSG_LOOT_MONEY                                  = 0x06227, // 4.3.4 Build 15595
     CMSG_LOOT_RELEASE                                = 0x02007, // 4.3.4 Build 15595
-    CMSG_LOOT_ROLL                                   = 0x00000, // Unknown
+    CMSG_LOOT_ROLL                                   = 0x06934, // 4.3.4 Build 15595
     CMSG_MAIL_CREATE_TEXT_ITEM                       = 0x00B14, // 4.3.4 Build 15595
     CMSG_MAIL_DELETE                                 = 0x06104, // 4.3.4 Build 15595
     CMSG_MAIL_MARK_AS_READ                           = 0x00000, // Unknown
@@ -300,7 +300,7 @@ enum Opcodes
     CMSG_OBJECT_UPDATE_FAILED                        = 0x03808, // 4.3.4 Build 15595
     CMSG_OFFER_PETITION                              = 0x04817, // 4.3.4 Build 15595
     CMSG_OPENING_CINEMATIC                           = 0x00000, // Unknown
-    CMSG_OPEN_ITEM                                   = 0x00000, // Unknown
+    CMSG_OPEN_ITEM                                   = 0x06A34, // 4.3.4 Build 15595
     CMSG_OPT_OUT_OF_LOOT                             = 0x00000, // Unknown
     CMSG_PAGE_TEXT_QUERY                             = 0x00000, // Unknown
     CMSG_PETITION_BUY                                = 0x04E05, // 4.3.4 Build 15595
@@ -632,7 +632,7 @@ enum Opcodes
     SMSG_ACTION_BUTTONS                              = 0x038B5, // 4.3.4 Build 15595
     SMSG_ACTIVATETAXIREPLY                           = 0x06A37, // 4.3.4 Build 15595
     SMSG_ADDON_INFO                                  = 0x02C14, // 4.3.4 Build 15595
-    SMSG_ADD_RUNE_POWER                              = 0x00000, // Unknown
+    SMSG_ADD_RUNE_POWER                              = 0x06915, // 4.3.4 Build 15595
     SMSG_AI_REACTION                                 = 0x00637, // 4.3.4 Build 15595
     SMSG_ALL_ACHIEVEMENT_DATA                        = 0x058B1, // 4.3.4 Build 15595
     SMSG_AREA_SPIRIT_HEALER_TIME                     = 0x00734, // 4.3.4 Build 15595
@@ -784,7 +784,7 @@ enum Opcodes
     SMSG_FRIEND_STATUS                               = 0x00717, // 4.3.4 Build 15595
     SMSG_GAMEOBJECT_CUSTOM_ANIM                      = 0x04936, // 4.3.4 Build 15595
     SMSG_GAMEOBJECT_DESPAWN_ANIM                     = 0x06735, // 4.3.4 Build 15595
-    SMSG_GAMEOBJECT_PAGETEXT                         = 0x00000, // Unknown
+    SMSG_GAMEOBJECT_PAGETEXT                         = 0x02925, // 4.3.4 Build 15595
     SMSG_GAMEOBJECT_QUERY_RESPONSE                   = 0x00915, // 4.3.4 Build 15595
     SMSG_GAMEOBJECT_RESET_STATE                      = 0x00000, // Unknown
     SMSG_GAMESPEED_SET                               = 0x04E34, // 4.3.4 Build 15595
@@ -871,7 +871,7 @@ enum Opcodes
     SMSG_LFG_BOOT_PLAYER                             = 0x00000, // Unknown
     SMSG_LFG_DISABLED                                = 0x00815, // 4.3.4 Build 15595
     SMSG_LFG_JOIN_RESULT                             = 0x00000, // Unknown
-    SMSG_LFG_OFFER_CONTINUE                          = 0x00000, // Unknown
+    SMSG_LFG_OFFER_CONTINUE                          = 0x06B27, // 4.3.4 Build 15595
     SMSG_LFG_OPEN_FROM_GOSSIP                        = 0x00000, // Unknown
     SMSG_LFG_PARTY_INFO                              = 0x02325, // 4.3.4 Build 15595
     SMSG_LFG_PLAYER_INFO                             = 0x04B36, // 4.3.4 Build 15595
@@ -879,7 +879,7 @@ enum Opcodes
     SMSG_LFG_PROPOSAL_UPDATE                         = 0x00000, // Unknown
     SMSG_LFG_QUEUE_STATUS                            = 0x00000, // Unknown
     SMSG_LFG_ROLE_CHECK_UPDATE                       = 0x00336, // 4.3.4 Build 15595
-    SMSG_LFG_ROLE_CHOSEN                             = 0x00000, // Unknown
+    SMSG_LFG_ROLE_CHOSEN                             = 0x06A26, // 4.3.4 Build 15595
     SMSG_LFG_TELEPORT_DENIED                         = 0x00E14, // 4.3.4 Build 15595
     SMSG_LFG_UPDATE_LIST                             = 0x00000, // Unknown
     SMSG_LFG_UPDATE_PARTY                            = 0x00000, // Unknown
@@ -937,7 +937,7 @@ enum Opcodes
     SMSG_PARTY_COMMAND_RESULT                        = 0x00A07, // 4.3.4 Build 15595
     SMSG_PARTY_MEMBER_STATS                          = 0x02104, // 4.3.4 Build 15595
     SMSG_PARTY_MEMBER_STATS_FULL                     = 0x00215, // 4.3.4 Build 15595
-    SMSG_PAUSE_MIRROR_TIMER                          = 0x00000, // Unknown
+    SMSG_PAUSE_MIRROR_TIMER                          = 0x04015, // 4.3.4 Build 15595
     SMSG_PERIODICAURALOG                             = 0x00416, // 4.3.4 Build 15595
     SMSG_PETGODMODE                                  = 0x00000, // Unknown
     SMSG_PETITION_QUERY_RESPONSE                     = 0x04B37, // 4.3.4 Build 15595
@@ -1067,7 +1067,7 @@ enum Opcodes
     SMSG_SPIRIT_HEALER_CONFIRM                       = 0x00000, // Unknown
     SMSG_STABLE_RESULT                               = 0x02204, // 4.3.4 Build 15595
     SMSG_STANDSTATE_UPDATE                           = 0x06F04, // 4.3.4 Build 15595
-    SMSG_START_MIRROR_TIMER                          = 0x00000, // Unknown
+    SMSG_START_MIRROR_TIMER                          = 0x06824, // 4.3.4 Build 15595
     SMSG_STOP_DANCE                                  = 0x00000, // Unknown
     SMSG_STOP_MIRROR_TIMER                           = 0x00B06, // 4.3.4 Build 15595
     SMSG_SUMMON_CANCEL                               = 0x00000, // Unknown
