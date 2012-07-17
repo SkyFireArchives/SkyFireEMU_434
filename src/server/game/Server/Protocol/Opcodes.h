@@ -714,7 +714,7 @@ enum Opcodes
     SMSG_CHAR_FACTION_CHANGE                         = 0x04C06, // 4.3.4 Build 15595
     SMSG_CHAR_RENAME                                 = 0x02024, // 4.3.4 Build 15595
     SMSG_CHAT_PLAYER_AMBIGUOUS                       = 0x00000, // Unknown
-    SMSG_CHAT_PLAYER_NOT_FOUND                       = 0x00000, // Unknown
+    SMSG_CHAT_PLAYER_NOT_FOUND                       = 0x02526, // 4.3.4 Build 15595
     SMSG_CHAT_RESTRICTED                             = 0x00000, // Unknown
     SMSG_CHAT_WRONG_FACTION                          = 0x00000, // Unknown
     SMSG_CHECK_FOR_BOTS                              = 0x00000, // Unknown
@@ -769,7 +769,7 @@ enum Opcodes
     SMSG_ENVIRONMENTALDAMAGELOG                      = 0x06C05, // 4.3.4 Build 15595
     SMSG_EQUIPMENT_SET_LIST                          = 0x02E04, // 4.3.4 Build 15595
     SMSG_EQUIPMENT_SET_SAVED                         = 0x00000, // Unknown
-    SMSG_EQUIPMENT_SET_USE_RESULT                    = 0x00000, // Unknown
+    SMSG_EQUIPMENT_SET_USE_RESULT                    = 0x02424, // 4.3.4 Build 15595
     SMSG_EXPECTED_SPAM_RECORDS                       = 0x04D36, // 4.3.4 Build 15595
     SMSG_EXPLORATION_EXPERIENCE                      = 0x06716, // 4.3.4 Build 15595
     SMSG_FAILED_PLAYER_CONDITION                     = 0x019A4, // 4.3.4 Build 15595
@@ -778,7 +778,7 @@ enum Opcodes
     SMSG_FISH_NOT_HOOKED                             = 0x00A17, // 4.3.4 Build 15595
     SMSG_FLIGHT_SPLINE_SYNC                          = 0x00924, // 4.3.4 Build 15595
     SMSG_FORCEACTIONSHOW                             = 0x00000, // Unknown
-    SMSG_FORCED_DEATH_UPDATE                         = 0x00000, // Unknown
+    SMSG_FORCED_DEATH_UPDATE                         = 0x02606, // 4.3.4 Build 15595
     SMSG_FORCE_DISPLAY_UPDATE                        = 0x00000, // Unknown
     SMSG_FORCE_SEND_QUEUED_PACKETS                   = 0x00140, // 4.3.4 Build 15595
     SMSG_FRIEND_STATUS                               = 0x00717, // 4.3.4 Build 15595
@@ -907,7 +907,7 @@ enum Opcodes
     SMSG_LOOT_SLOT_CHANGED                           = 0x02935, // 4.3.4 Build 15595
     SMSG_LOOT_START_ROLL                             = 0x02227, // 4.3.4 Build 15595
     SMSG_MAIL_LIST_RESULT                            = 0x04217, // 4.3.4 Build 15595
-    SMSG_MEETINGSTONE_COMPLETE                       = 0x00000, // Unknown
+    SMSG_MEETINGSTONE_COMPLETE                       = 0x02524, // 4.3.4 Build 15595
     SMSG_MEETINGSTONE_IN_PROGRESS                    = 0x00000, // Unknown
     SMSG_MEETINGSTONE_MEMBER_ADDED                   = 0x00000, // Unknown
     SMSG_MEETINGSTONE_SETQUEUE                       = 0x00000, // Unknown
@@ -1043,7 +1043,7 @@ enum Opcodes
     SMSG_SET_PLAYER_DECLINED_NAMES_RESULT            = 0x02B25, // 4.3.4 Build 15595
     SMSG_SET_PLAY_HOVER_ANIM                         = 0x030A6, // 4.3.4 Build 15595
     SMSG_SET_PROFICIENCY                             = 0x06207, // 4.3.4 Build 15595
-    SMSG_SET_PROJECTILE_POSITION                     = 0x00000, // Unknown
+    SMSG_SET_PROJECTILE_POSITION                     = 0x02616, // 4.3.4 Build 15595
     SMSG_SHOWTAXINODES                               = 0x02A36, // 4.3.4 Build 15595
     SMSG_SHOW_BANK                                   = 0x02627, // 4.3.4 Build 15595
     SMSG_SPELLBREAKLOG                               = 0x06B17, // 4.3.4 Build 15595
@@ -1106,7 +1106,7 @@ enum Opcodes
     SMSG_UPDATE_CURRENCY_WEEK_LIMIT                  = 0x070A7, // 4.3.4 Build 15595
     SMSG_UPDATE_INSTANCE_ENCOUNTER_UNIT              = 0x00000, // Unknown
     SMSG_UPDATE_INSTANCE_OWNERSHIP                   = 0x04915, // 4.3.4 Build 15595
-    SMSG_UPDATE_ITEM_ENCHANTMENTS                    = 0x00000, // Unknown
+    SMSG_UPDATE_ITEM_ENCHANTMENTS                    = 0x06014, // 4.3.4 Build 15595
     SMSG_UPDATE_LAST_INSTANCE                        = 0x00437, // 4.3.4 Build 15595
     SMSG_UPDATE_OBJECT                               = 0x04715, // 4.3.4 Build 15595
     SMSG_UPDATE_WORLD_STATE                          = 0x04816, // 4.3.4 Build 15595
