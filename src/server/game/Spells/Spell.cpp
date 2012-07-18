@@ -3871,7 +3871,7 @@ void Spell::SendSpellStart()
     if (castFlags & CAST_FLAG_PREDICTED_POWER)				// predicted power
         data << uint32(m_caster->GetPower((Powers)m_spellInfo->PowerType));
 
-	if (castFlags & CAST_FLAG_RUNES_STATES)                   // rune cooldowns list
+    if (castFlags & CAST_FLAG_RUNES_STATES)                   // rune cooldowns list
     {
         //TODO: There is a crash caused by a spell with CAST_FLAG_RUNE_LIST casted by a creature
         //The creature is the mover of a player, so HandleCastSpellOpcode uses it as the caster
