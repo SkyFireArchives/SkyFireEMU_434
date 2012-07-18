@@ -304,9 +304,9 @@ enum Opcodes
     CMSG_OPT_OUT_OF_LOOT                             = 0x00000, // Unknown
     CMSG_PAGE_TEXT_QUERY                             = 0x00000, // Unknown
     CMSG_PETITION_BUY                                = 0x04E05, // 4.3.4 Build 15595
-    CMSG_PETITION_QUERY                              = 0x00000, // Unknown
+    CMSG_PETITION_QUERY                              = 0x04424, // 4.3.4 Build 15595
     CMSG_PETITION_SHOWLIST                           = 0x00000, // Unknown
-    CMSG_PETITION_SHOW_SIGNATURES                    = 0x00000, // Unknown
+    CMSG_PETITION_SHOW_SIGNATURES                    = 0x04F15, // 4.3.4 Build 15595
     CMSG_PETITION_SIGN                               = 0x00E04, // 4.3.4 Build 15595
     CMSG_PET_ABANDON                                 = 0x00000, // Unknown
     CMSG_PET_ACTION                                  = 0x00226, // 4.3.4 Build 15595
@@ -437,7 +437,7 @@ enum Opcodes
     CMSG_TRAINER_BUY_SPELL                           = 0x04415, // 4.3.4 Build 15595
     CMSG_TRAINER_LIST                                = 0x02336, // 4.3.4 Build 15595
     CMSG_TRIGGER_CINEMATIC_CHEAT                     = 0x00000, // Unknown
-    CMSG_TURN_IN_PETITION                            = 0x00000, // Unknown
+    CMSG_TURN_IN_PETITION                            = 0x00B27, // 4.3.4 Build 15595
     CMSG_TUTORIAL_CLEAR                              = 0x00000, // Unknown
     CMSG_TUTORIAL_FLAG                               = 0x06C26, // 4.3.4 Build 15595
     CMSG_TUTORIAL_RESET                              = 0x00000, // Unknown

@@ -348,7 +348,7 @@ void TradeData::SetSpell(uint32 spell_id, Item* castItem /*= NULL*/)
     Update(false);                                          // send spell info to caster self
 }
 
-void TradeData::SetMoney(uint32 money)
+void TradeData::SetMoney(uint64 money)
 {
     if (m_money == money)
         return;
@@ -979,7 +979,7 @@ bool Player::Create(uint32 guidlow, CharacterCreateInfo* createInfo)
 
     InitRunes();
 
-    SetUInt32Value(PLAYER_FIELD_COINAGE, sWorld->getIntConfig(CONFIG_START_PLAYER_MONEY));
+    SetUInt64Value(PLAYER_FIELD_COINAGE, sWorld->getIntConfig(CONFIG_START_PLAYER_MONEY));
     SetCurrency(CURRENCY_TYPE_HONOR_POINTS, sWorld->getIntConfig(CONFIG_START_HONOR_POINTS));
     SetCurrency(CURRENCY_TYPE_CONQUEST_POINTS, sWorld->getIntConfig(CONFIG_START_ARENA_POINTS));
 
@@ -2026,11 +2026,11 @@ uint8 Player::GetChatTag() const
 
 void Player::SendTeleportPacket(Position &oldPos)
 {
-    WorldPacket data2(MSG_MOVE_TELEPORT, 41);
-    data2.append(GetPackGUID());
-    BuildMovementPacket(&data2);
+    WorldPacket data(MSG_MOVE_TELEPORT, 41);
+    data.append(GetPackGUID());
+    BuildMovementPacket(&data);
     Relocate(&oldPos);
-    SendMessageToSet(&data2, false);
+    SendMessageToSet(&data, false);
 }
 
 void Player::SendSetFlyPacket(bool apply)
@@ -4436,7 +4436,7 @@ bool Player::ResetTalents(bool no_cost)
         return false;
     }
 
-    uint32 cost = 0;
+    uint64 cost = 0;
 
     if (!no_cost && !sWorld->getBoolConfig(CONFIG_NO_RESET_TALENT_COST))
     {
@@ -4566,6 +4566,8 @@ void Player::InitVisibleBits()
     updateVisualBits.SetBit(OBJECT_FIELD_GUID);
     updateVisualBits.SetBit(OBJECT_FIELD_TYPE);
     updateVisualBits.SetBit(OBJECT_FIELD_ENTRY);
+    updateVisualBits.SetBit(OBJECT_FIELD_DATA + 0);
+    updateVisualBits.SetBit(OBJECT_FIELD_DATA + 1);
     updateVisualBits.SetBit(OBJECT_FIELD_SCALE_X);
     updateVisualBits.SetBit(UNIT_FIELD_CHARM + 0);
     updateVisualBits.SetBit(UNIT_FIELD_CHARM + 1);
@@ -5474,9 +5476,9 @@ uint32 Player::DurabilityRepair(uint16 pos, bool cost, float discountMod, bool g
             }
 
             uint32 dmultiplier = dcost->multiplier[ItemSubClassToDurabilityMultiplierId(ditemProto->Class, ditemProto->SubClass)];
-            uint32 costs = uint32(LostDurability*dmultiplier*double(dQualitymodEntry->quality_mod));
+            uint64 costs = uint64(LostDurability * dmultiplier * double(dQualitymodEntry->quality_mod));
 
-            costs = uint32(costs * discountMod * sWorld->getRate(RATE_REPAIRCOST));
+            costs = uint64(costs * discountMod * sWorld->getRate(RATE_REPAIRCOST));
 
             if (costs == 0)                                   //fix for ITEM_QUALITY_ARTIFACT
                 costs = 1;
@@ -14314,7 +14316,7 @@ void Player::OnGossipSelect(WorldObject* source, uint32 gossipListId, uint32 men
     if (!menuItemData)
         return;
 
-    int32 cost = int32(item->BoxMoney);
+    int64 cost = int64(item->BoxMoney);
     if (!HasEnoughMoney(cost))
     {
         SendBuyError(BUY_ERR_NOT_ENOUGHT_MONEY, 0, 0, 0);
@@ -14763,7 +14765,7 @@ bool Player::CanCompleteQuest(uint32 quest_id)
 
             if (qInfo->GetRewOrReqMoney() < 0)
             {
-                if (!HasEnoughMoney(-qInfo->GetRewOrReqMoney()))
+                if (!HasEnoughMoney((int64)-qInfo->GetRewOrReqMoney()))
                     return false;
             }
 
@@ -14826,7 +14828,7 @@ bool Player::CanRewardQuest(Quest const* quest, bool msg)
     }
 
     // prevent receive reward with low money and GetRewOrReqMoney() < 0
-    if (quest->GetRewOrReqMoney() < 0 && !HasEnoughMoney(-quest->GetRewOrReqMoney()))
+    if (quest->GetRewOrReqMoney() < 0 && !HasEnoughMoney((int64)-quest->GetRewOrReqMoney()))
         return false;
 
     return true;
@@ -16145,7 +16147,7 @@ void Player::TalkedToCreature(uint32 entry, uint64 guid)
     }
 }
 
-void Player::MoneyChanged(uint32 count)
+void Player::MoneyChanged(uint64 count)
 {
     for (uint8 i = 0; i < MAX_QUEST_LOG_SIZE; ++i)
     {
@@ -16742,7 +16744,7 @@ bool Player::LoadFromDB(uint32 guid, SQLQueryHolder *holder)
     // load achievements before anything else to prevent multiple gains for the same achievement/criteria on every loading (as loading does call UpdateAchievementCriteria)
     m_achievementMgr.LoadFromDB(holder->GetPreparedResult(PLAYER_LOGIN_QUERY_LOADACHIEVEMENTS), holder->GetPreparedResult(PLAYER_LOGIN_QUERY_LOADCRITERIAPROGRESS));
 
-    uint32 money = fields[8].GetUInt32();
+    uint64 money = fields[8].GetUInt64();
     if (money > MAX_MONEY_AMOUNT)
         money = MAX_MONEY_AMOUNT;
     SetMoney(money);
@@ -17818,8 +17820,8 @@ void Player::_LoadMail()
             bool has_items = fields[6].GetBool();
             m->expire_time = time_t(fields[7].GetUInt32());
             m->deliver_time = time_t(fields[8].GetUInt32());
-            m->money = fields[9].GetUInt32();
-            m->COD = fields[10].GetUInt32();
+            m->money = fields[9].GetUInt64();
+            m->COD = fields[10].GetUInt64();
             m->checked = fields[11].GetUInt32();
             m->stationery = fields[12].GetUInt8();
             m->mailTemplateId = fields[13].GetInt16();
@@ -20911,7 +20913,7 @@ bool Player::BuyItemFromVendorSlot(uint64 vendorguid, uint32 vendorslot, uint32 
         }
     }
 
-    uint32 price = 0;
+    uint64 price = 0;
     if(crItem->IsGoldRequired(pProto) && pProto->BuyPrice > 0) //Assume price cannot be negative (do not know why it is int32)
     {
         uint32 maxCount = MAX_MONEY_AMOUNT / pProto->BuyPrice;
@@ -21720,16 +21722,16 @@ void Player::InitPrimaryProfessions()
     SetFreePrimaryProfessions(sWorld->getIntConfig(CONFIG_MAX_PRIMARY_TRADE_SKILL));
 }
 
-void Player::ModifyMoney(int32 d)
+void Player::ModifyMoney(int64 d)
 {
     sScriptMgr->OnPlayerMoneyChanged(this, d);
 
     if (d < 0)
-        SetMoney (GetMoney() > uint32(-d) ? GetMoney() + d : 0);
+        SetMoney (GetMoney() > uint64(-d) ? GetMoney() + d : 0);
     else
     {
-        uint32 newAmount = 0;
-        if (GetMoney() < uint32(MAX_MONEY_AMOUNT - d))
+        uint64 newAmount = 0;
+        if (GetMoney() < uint64(MAX_MONEY_AMOUNT - d))
             newAmount = GetMoney() + d;
         else
         {
@@ -21949,10 +21951,10 @@ void Player::SendInitialPacketsAfterAddToMap()
     // manual send package (have code in HandleEffect(this, AURA_EFFECT_HANDLE_SEND_FOR_CLIENT, true); that must not be re-applied.
     if (HasAuraType(SPELL_AURA_MOD_ROOT))
     {
-        WorldPacket data2(MSG_MOVE_ROOT, 10);
-        data2.append(GetPackGUID());
-        data2 << (uint32)2;
-        SendMessageToSet(&data2, true);
+        WorldPacket data(MSG_MOVE_ROOT, 10);
+        data.append(GetPackGUID());
+        data << uint32(2);
+        SendMessageToSet(&data, true);
     }
 
     SendAurasForTarget(this);

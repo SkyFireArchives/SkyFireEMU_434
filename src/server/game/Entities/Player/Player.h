@@ -843,7 +843,7 @@ enum PlayerDelayedOperations
 
 // Player summoning auto-decline time (in secs)
 #define MAX_PLAYER_SUMMON_DELAY                   (2*MINUTE)
-#define MAX_MONEY_AMOUNT                       (0x7FFFFFFF-1)
+#define MAX_MONEY_AMOUNT                       (9999999999)
 
 struct InstancePlayerBind
 {
@@ -1011,8 +1011,8 @@ class TradeData
         Item*  GetSpellCastItem() const;
         bool HasSpellCastItem() const { return m_spellCastItem != 0; }
 
-        uint32 GetMoney() const { return m_money; }
-        void SetMoney(uint32 money);
+        uint64 GetMoney() const { return m_money; }
+        void SetMoney(uint64 money);
 
         bool IsAccepted() const { return m_accepted; }
         void SetAccepted(bool state, bool crosssend = false);
@@ -1032,7 +1032,7 @@ class TradeData
         bool       m_accepted;                              // m_player press accept for trade list
         bool       m_acceptProccess;                        // one from player/trader press accept and this processed
 
-        uint32     m_money;                                 // m_player place money to trade
+        uint64     m_money;                                 // m_player place money to trade
 
         uint32     m_spell;                                 // m_player apply spell to non-traded slot item
         uint64     m_spellCastItem;                         // applied spell casted by item use
@@ -1528,7 +1528,7 @@ class Player : public Unit, public GridObject<Player>
         void KilledPlayerCredit();
         void CastedCreatureOrGO(uint32 entry, uint64 guid, uint32 spell_id);
         void TalkedToCreature(uint32 entry, uint64 guid);
-        void MoneyChanged(uint32 value);
+        void MoneyChanged(uint64 value);
         void ReputationChanged(FactionEntry const* factionEntry);
         void ReputationChanged2(FactionEntry const* factionEntry);
         bool HasQuestForItem(uint32 itemid) const;
@@ -1605,19 +1605,19 @@ class Player : public Unit, public GridObject<Player>
         void setRegenTimerCount(uint32 time) {m_regenTimerCount = time;}
         void setWeaponChangeTimer(uint32 time) {m_weaponChangeTimer = time;}
 
-        uint32 GetMoney() const { return GetUInt32Value (PLAYER_FIELD_COINAGE); }
-        void ModifyMoney(int32 d);
-        bool HasEnoughMoney(uint32 amount) const { return (GetMoney() >= amount); }
-        bool HasEnoughMoney(int32 amount) const
+        uint64 GetMoney() const { return GetUInt64Value (PLAYER_FIELD_COINAGE); }
+        void ModifyMoney(int64 d);
+        bool HasEnoughMoney(uint64 amount) const { return (GetMoney() >= amount); }
+        bool HasEnoughMoney(int64 amount) const
         {
             if (amount > 0)
-                return (GetMoney() >= (uint32) amount);
+                return (GetMoney() >= (uint64) amount);
             return true;
         }
 
-        void SetMoney(uint32 value)
+        void SetMoney(uint64 value)
         {
-            SetUInt32Value (PLAYER_FIELD_COINAGE, value);
+            SetUInt64Value (PLAYER_FIELD_COINAGE, value);
             MoneyChanged(value);
             UpdateAchievementCriteria(ACHIEVEMENT_CRITERIA_TYPE_HIGHEST_GOLD_VALUE_OWNED);
         }

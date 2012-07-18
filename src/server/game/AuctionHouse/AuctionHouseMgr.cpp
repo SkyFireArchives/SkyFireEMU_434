@@ -726,12 +726,12 @@ bool AuctionEntry::LoadFromDB(Field* fields)
     item_guidlow = fields[2].GetUInt32();
     item_template = fields[3].GetUInt32();
     owner = fields[4].GetUInt32();
-    buyout = fields[5].GetUInt32();
+    buyout = fields[5].GetUInt64();
     expire_time = fields[6].GetUInt32();
-    bidder = fields[7].GetUInt32();
-    bid = fields[8].GetUInt32();
-    startbid = fields[9].GetUInt32();
-    deposit = fields[10].GetUInt32();
+    bidder = fields[7].GetUInt64();
+    bid = fields[8].GetUInt64();
+    startbid = fields[9].GetUInt64();
+    deposit = fields[10].GetUInt64();
 
     CreatureData const* auctioneerData = sObjectMgr->GetCreatureData(auctioneer);
     if (!auctioneerData)

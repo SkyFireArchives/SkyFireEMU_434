@@ -412,7 +412,7 @@ void WorldSession::HandleGuildBankDepositMoney(WorldPacket & recv_data)
     uint64 GoGuid;
     recv_data >> GoGuid;
 
-    uint32 money;
+    uint64 money;
     recv_data >> money;
 
     if (GetPlayer()->GetGameObjectIfCanInteractWith(GoGuid, GAMEOBJECT_TYPE_GUILD_BANK))
@@ -428,7 +428,7 @@ void WorldSession::HandleGuildBankWithdrawMoney(WorldPacket & recv_data)
     uint64 GoGuid;
     recv_data >> GoGuid;
 
-    uint32 money;
+    uint64 money;
     recv_data >> money;
 
     if (money)
