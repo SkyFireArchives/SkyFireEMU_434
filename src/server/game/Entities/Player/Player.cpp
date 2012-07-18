@@ -2026,11 +2026,11 @@ uint8 Player::GetChatTag() const
 
 void Player::SendTeleportPacket(Position &oldPos)
 {
-    WorldPacket data2(MSG_MOVE_TELEPORT, 41);
-    data2.append(GetPackGUID());
-    BuildMovementPacket(&data2);
+    WorldPacket data(MSG_MOVE_TELEPORT, 41);
+    data.append(GetPackGUID());
+    BuildMovementPacket(&data);
     Relocate(&oldPos);
-    SendMessageToSet(&data2, false);
+    SendMessageToSet(&data, false);
 }
 
 void Player::SendSetFlyPacket(bool apply)
@@ -4552,6 +4552,8 @@ void Player::InitVisibleBits()
     updateVisualBits.SetBit(OBJECT_FIELD_GUID);
     updateVisualBits.SetBit(OBJECT_FIELD_TYPE);
     updateVisualBits.SetBit(OBJECT_FIELD_ENTRY);
+    updateVisualBits.SetBit(OBJECT_FIELD_DATA + 0);
+    updateVisualBits.SetBit(OBJECT_FIELD_DATA + 1);
     updateVisualBits.SetBit(OBJECT_FIELD_SCALE_X);
     updateVisualBits.SetBit(UNIT_FIELD_CHARM + 0);
     updateVisualBits.SetBit(UNIT_FIELD_CHARM + 1);
@@ -21935,10 +21937,10 @@ void Player::SendInitialPacketsAfterAddToMap()
     // manual send package (have code in HandleEffect(this, AURA_EFFECT_HANDLE_SEND_FOR_CLIENT, true); that must not be re-applied.
     if (HasAuraType(SPELL_AURA_MOD_ROOT))
     {
-        WorldPacket data2(MSG_MOVE_ROOT, 10);
-        data2.append(GetPackGUID());
-        data2 << (uint32)2;
-        SendMessageToSet(&data2, true);
+        WorldPacket data(MSG_MOVE_ROOT, 10);
+        data.append(GetPackGUID());
+        data << uint32(2);
+        SendMessageToSet(&data, true);
     }
 
     SendAurasForTarget(this);
