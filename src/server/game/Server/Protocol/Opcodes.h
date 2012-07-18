@@ -66,12 +66,12 @@ enum Opcodes
     CMSG_AUCTION_REMOVE_ITEM                         = 0x06426, // 4.3.4 Build 15595
     CMSG_AUCTION_SELL_ITEM                           = 0x04A06, // 4.3.4 Build 15595
     CMSG_AUTH_SESSION                                = 0x00449, // 4.3.4 Build 15595
-    CMSG_AUTOBANK_ITEM                               = 0x00000, // Unknown
+    CMSG_AUTOBANK_ITEM                               = 0x02537, // 4.3.4 Build 15595
     CMSG_AUTOEQUIP_GROUND_ITEM                       = 0x00000, // Unknown
     CMSG_AUTOEQUIP_ITEM                              = 0x04304, // 4.3.4 Build 15595
     CMSG_AUTOEQUIP_ITEM_SLOT                         = 0x00000, // Unknown
     CMSG_AUTOSTORE_BAG_ITEM                          = 0x00000, // Unknown
-    CMSG_AUTOSTORE_BANK_ITEM                         = 0x00000, // Unknown
+    CMSG_AUTOSTORE_BANK_ITEM                         = 0x00607, // 4.3.4 Build 15595
     CMSG_AUTOSTORE_GROUND_ITEM                       = 0x00000, // Unknown
     CMSG_AUTOSTORE_LOOT_ITEM                         = 0x00E34, // 4.3.4 Build 15595
     CMSG_AUTO_DECLINE_GUILD_INVITES                  = 0x02034, // 4.3.4 Build 15595
@@ -149,7 +149,7 @@ enum Opcodes
     CMSG_COMPLETE_CINEMATIC                          = 0x00A16, // 4.3.4 Build 15595
     CMSG_COMPLETE_MOVIE                              = 0x00000, // Unknown
     CMSG_CONTACT_LIST                                = 0x04534, // 4.3.4 Build 15595
-    CMSG_CORPSE_MAP_POSITION_QUERY                   = 0x00000, // Unknown
+    CMSG_CORPSE_MAP_POSITION_QUERY                   = 0x06205, // 4.3.4 Build 15595
     CMSG_CREATURE_QUERY                              = 0x02706, // 4.3.4 Build 15595
     CMSG_DANCE_QUERY                                 = 0x00000, // Unknown
     CMSG_DECLINE_CHANNEL_INVITE                      = 0x00000, // Unknown
@@ -160,7 +160,7 @@ enum Opcodes
     CMSG_DUEL_ACCEPTED                               = 0x02136, // 4.3.4 Build 15595
     CMSG_DUEL_CANCELLED                              = 0x06624, // 4.3.4 Build 15595
     CMSG_DUNGEON_FINDER_GET_SYSTEM_INFO              = 0x00412, // 4.3.4 Build 15595
-    CMSG_EJECT_PASSENGER                             = 0x00000, // Unknown
+    CMSG_EJECT_PASSENGER                             = 0x06927, // 4.3.4 Build 15595
     CMSG_EMOTE                                       = 0x04C26, // 4.3.4 Build 15595
     CMSG_ENABLE_NAGLE                                = 0x04449, // 4.3.4 Build 15595
     CMSG_EQUIPMENT_SET_DELETE                        = 0x00000, // Unknown
@@ -359,7 +359,7 @@ enum Opcodes
     CMSG_REPAIR_ITEM                                 = 0x02917, // 4.3.4 Build 15595
     CMSG_REPLACE_ACCOUNT_DATA                        = 0x00000, // Unknown
     CMSG_REPOP_REQUEST                               = 0x06B16, // 4.3.4 Build 15595
-    CMSG_REPORT_PVP_AFK                              = 0x00000, // Unknown
+    CMSG_REPORT_PVP_AFK                              = 0x06734, // 4.3.4 Build 15595
     CMSG_REQUEST_ACCOUNT_DATA                        = 0x06505, // 4.3.4 Build 15595
     CMSG_REQUEST_CATEGORY_COOLDOWNS                  = 0x07102, // 4.3.4 Build 15595
     CMSG_REQUEST_CEMETERY_LIST                       = 0x0720A, // 4.3.4 Build 15595
@@ -393,7 +393,7 @@ enum Opcodes
     CMSG_SET_ALLOW_LOW_LEVEL_RAID2                   = 0x00536, // 4.3.4 Build 15595
     CMSG_SET_CHANNEL_WATCH                           = 0x04517, // 4.3.4 Build 15595
     CMSG_SET_CHARACTER_POSITION                      = 0x00593, // 4.3.4 Build 15595
-    CMSG_SET_CONTACT_NOTES                           = 0x00000, // Unknown
+    CMSG_SET_CONTACT_NOTES                           = 0x06135, // 4.3.4 Build 15595
     CMSG_SET_FACTION_ATWAR                           = 0x00706, // 4.3.4 Build 15595
     CMSG_SET_FACTION_CHEAT                           = 0x00000, // Unknown
     CMSG_SET_FACTION_INACTIVE                        = 0x00E37, // 4.3.4 Build 15595
@@ -442,7 +442,7 @@ enum Opcodes
     CMSG_TUTORIAL_FLAG                               = 0x06C26, // 4.3.4 Build 15595
     CMSG_TUTORIAL_RESET                              = 0x00000, // Unknown
     CMSG_UNACCEPT_TRADE                              = 0x0391A, // 4.3.4 Build 15595
-    CMSG_UNLEARN_SKILL                               = 0x00000, // Unknown
+    CMSG_UNLEARN_SKILL                               = 0x06106, // 4.3.4 Build 15595
     CMSG_UNREGISTER_ALL_ADDON_PREFIXES               = 0x03D54, // 4.3.4 Build 15595
     CMSG_UPDATE_ACCOUNT_DATA                         = 0x04736, // 4.3.4 Build 15595
     CMSG_UPDATE_PROJECTILE_POSITION                  = 0x00000, // Unknown
@@ -462,7 +462,7 @@ enum Opcodes
     MSG_BATTLEGROUND_PLAYER_POSITIONS                = 0x00000, // Unknown
     MSG_CHANNEL_START                                = 0x00A15, // 4.3.4 Build 15595
     MSG_CHANNEL_UPDATE                               = 0x02417, // 4.3.4 Build 15595
-    MSG_CORPSE_QUERY                                 = 0x00000, // Unknown
+    MSG_CORPSE_QUERY                                 = 0x04336, // 4.3.4 Build 15595
     MSG_GET_CALENDAR                                 = 0x02814, // 4.3.4 Build 15595
     MSG_GM_BIND_OTHER                                = 0x00000, // Unknown
     MSG_GM_SHOWLABEL                                 = 0x00000, // Unknown
@@ -649,10 +649,10 @@ enum Opcodes
     SMSG_ATTACKERSTATEUPDATE                         = 0x00B25, // 4.3.4 Build 15595
     SMSG_ATTACKSTART                                 = 0x02D15, // 4.3.4 Build 15595
     SMSG_ATTACKSTOP                                  = 0x00934, // 4.3.4 Build 15595
-    SMSG_ATTACKSWING_BADFACING                       = 0x00B36, // 4.3.4 Build 15595
+    SMSG_ATTACKSWING_BADFACING                       = 0x06C07, // 4.3.4 Build 15595
     SMSG_ATTACKSWING_CANT_ATTACK                     = 0x00016, // 4.3.4 Build 15595
     SMSG_ATTACKSWING_DEADTARGET                      = 0x00416, // 4.3.4 Build 15595
-    SMSG_ATTACKSWING_NOTINRANGE                      = 0x00000, // Unknown
+    SMSG_ATTACKSWING_NOTINRANGE                      = 0x00B36, // 4.3.4 Build 15595
     SMSG_AUCTION_BIDDER_LIST_RESULT                  = 0x06637, // 4.3.4 Build 15595
     SMSG_AUCTION_BIDDER_NOTIFICATION                 = 0x04E27, // 4.3.4 Build 15595
     SMSG_AUCTION_COMMAND_RESULT                      = 0x04C25, // 4.3.4 Build 15595
@@ -738,7 +738,7 @@ enum Opcodes
     SMSG_COOLDOWN_CHEAT                              = 0x00627, // 4.3.4 Build 15595
     SMSG_COOLDOWN_EVENT                              = 0x04F26, // 4.3.4 Build 15595
     SMSG_CORPSE_MAP_POSITION_QUERY_RESPONSE          = 0x00000, // Unknown
-    SMSG_CORPSE_NOT_IN_INSTANCE                      = 0x00000, // Unknown
+    SMSG_CORPSE_NOT_IN_INSTANCE                      = 0x02A14, // 4.3.4 Build 15595
     SMSG_CORPSE_RECLAIM_DELAY                        = 0x00D34, // 4.3.4 Build 15595
     SMSG_CREATURE_QUERY_RESPONSE                     = 0x06024, // 4.3.4 Build 15595
     SMSG_CRITERIA_DELETED                            = 0x02915, // 4.3.4 Build 15595
@@ -853,7 +853,7 @@ enum Opcodes
     SMSG_INSTANCE_SAVE_CREATED                       = 0x00124, // 4.3.4 Build 15595
     SMSG_INVALIDATE_DANCE                            = 0x00E27, // 4.3.4 Build 15595
     SMSG_INVALIDATE_PLAYER                           = 0x06325, // 4.3.4 Build 15595
-    SMSG_INVALID_PROMOTION_CODE                      = 0x00000, // Unknown
+    SMSG_INVALID_PROMOTION_CODE                      = 0x06F25, // 4.3.4 Build 15595
     SMSG_INVENTORY_CHANGE_FAILURE                    = 0x02236, // 4.3.4 Build 15595
     SMSG_ITEM_COOLDOWN                               = 0x00000, // Unknown
     SMSG_ITEM_ENCHANT_TIME_UPDATE                    = 0x00F27, // 4.3.4 Build 15595
@@ -913,7 +913,7 @@ enum Opcodes
     SMSG_MEETINGSTONE_SETQUEUE                       = 0x00000, // Unknown
     SMSG_MESSAGECHAT                                 = 0x02026, // 4.3.4 Build 15595
     SMSG_MIRRORIMAGE_DATA                            = 0x02634, // 4.3.4 Build 15595
-    SMSG_MODIFY_COOLDOWN                             = 0x00000, // Unknown
+    SMSG_MODIFY_COOLDOWN                             = 0x06016, // 4.3.4 Build 15595
     SMSG_MONSTER_MOVE                                = 0x06E17, // 4.3.4 Build 15595
     SMSG_MONSTER_MOVE_TRANSPORT                      = 0x02004, // 4.3.4 Build 15595
     SMSG_MOTD                                        = 0x00A35, // 4.3.4 Build 15595
@@ -925,7 +925,7 @@ enum Opcodes
     SMSG_NEW_WORLD                                   = 0x031A2, // 4.3.4 Build 15595
     SMSG_NOTIFICATION                                = 0x014A0, // 4.3.4 Build 15595
     SMSG_NOTIFY_DANCE                                = 0x04904, // 4.3.4 Build 15595
-    SMSG_NOTIFY_DEST_LOC_SPELL_CAST                  = 0x00000, // Unknown
+    SMSG_NOTIFY_DEST_LOC_SPELL_CAST                  = 0x06204, // 4.3.4 Build 15595
     SMSG_NPC_TEXT_UPDATE                             = 0x04436, // 4.3.4 Build 15595
     SMSG_NPC_WONT_TALK                               = 0x00000, // Unknown
     SMSG_OFFER_PETITION_ERROR                        = 0x02716, // 4.3.4 Build 15595
@@ -977,9 +977,9 @@ enum Opcodes
     SMSG_POWER_UPDATE                                = 0x04A07, // 4.3.4 Build 15595
     SMSG_PRE_RESURRECT                               = 0x06C36, // 4.3.4 Build 15595
     SMSG_PROCRESIST                                  = 0x00426, // 4.3.4 Build 15595
-    SMSG_PROPOSE_LEVEL_GRANT                         = 0x00000, // Unknown
+    SMSG_PROPOSE_LEVEL_GRANT                         = 0x06114, // 4.3.4 Build 15595
     SMSG_PUREMOUNT_CANCELLED_OBSOLETE                = 0x00000, // Unknown
-    SMSG_PVP_CREDIT                                  = 0x00000, // Unknown
+    SMSG_PVP_CREDIT                                  = 0x06015, // 4.3.4 Build 15595
     SMSG_PVP_LOG_DATA                                = 0x054A3, // 4.3.4 Build 15595
     SMSG_QUERY_QUESTS_COMPLETED_RESPONSE             = 0x06314, // 4.3.4 Build 15595
     SMSG_QUERY_TIME_RESPONSE                         = 0x02124, // 4.3.4 Build 15595
@@ -1063,7 +1063,7 @@ enum Opcodes
     SMSG_SPELL_FAILURE                               = 0x04535, // 4.3.4 Build 15595
     SMSG_SPELL_GO                                    = 0x06E16, // 4.3.4 Build 15595
     SMSG_SPELL_START                                 = 0x06415, // 4.3.4 Build 15595
-    SMSG_SPELL_UPDATE_CHAIN_TARGETS                  = 0x00000, // Unknown
+    SMSG_SPELL_UPDATE_CHAIN_TARGETS                  = 0x06006, // 4.3.4 Build 15595
     SMSG_SPIRIT_HEALER_CONFIRM                       = 0x00000, // Unknown
     SMSG_STABLE_RESULT                               = 0x02204, // 4.3.4 Build 15595
     SMSG_STANDSTATE_UPDATE                           = 0x06F04, // 4.3.4 Build 15595
@@ -1101,7 +1101,7 @@ enum Opcodes
     SMSG_UNIT_SPELLCAST_START                        = 0x02517, // 4.3.4 Build 15595
     SMSG_UPDATE_ACCOUNT_DATA                         = 0x06837, // 4.3.4 Build 15595
     SMSG_UPDATE_ACCOUNT_DATA_COMPLETE                = 0x02015, // 4.3.4 Build 15595
-    SMSG_UPDATE_COMBO_POINTS                         = 0x00000, // Unknown
+    SMSG_UPDATE_COMBO_POINTS                         = 0x06B34, // 4.3.4 Build 15595
     SMSG_UPDATE_CURRENCY                             = 0x00000, // Unknown
     SMSG_UPDATE_CURRENCY_WEEK_LIMIT                  = 0x070A7, // 4.3.4 Build 15595
     SMSG_UPDATE_INSTANCE_ENCOUNTER_UNIT              = 0x00000, // Unknown
