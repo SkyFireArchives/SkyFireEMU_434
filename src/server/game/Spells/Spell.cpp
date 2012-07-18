@@ -3856,7 +3856,6 @@ void Spell::SendSpellStart()
 	data << uint32(m_spellInfo->Id);                        // spellId
     // Cast FLag
 	data << uint32(castFlags);                              // cast flags
-	                              // delay?
 	//////////////////////////////////////////////////////////////////////////////////////////
 	data << uint32(0);
 	//////////////////////////////////////////////////////////////////////////////////////////
@@ -3872,17 +3871,29 @@ void Spell::SendSpellStart()
     if (castFlags & CAST_FLAG_PREDICTED_POWER)				// predicted power
         data << uint32(m_caster->GetPower((Powers)m_spellInfo->PowerType));
 
-	if (castFlags & CAST_FLAG_RUNES_STATES )
-	{
-		uint8 v1 = 0;										//m_runesState;
-        uint8 v2 = 0;										//((Player*)m_caster)->GetRunesState();
-        data << uint8(v1);                                  // runes state before
-        data << uint8(v2);                                  // runes state after
-        for(uint8 i = 0; i < MAX_RUNES; ++i)
+	if (castFlags & CAST_FLAG_RUNES_STATES)                   // rune cooldowns list
+    {
+        //TODO: There is a crash caused by a spell with CAST_FLAG_RUNE_LIST casted by a creature
+        //The creature is the mover of a player, so HandleCastSpellOpcode uses it as the caster
+        if (Player* player = m_caster->ToPlayer())
         {
-            data << uint8(0);                       // some unknown byte (time?)
+            data << uint8(m_runesState);                     // runes state before
+            data << uint8(player->GetRunesState());          // runes state after
+            for (uint8 i = 0; i < MAX_RUNES; ++i)
+            {
+                // float casts ensure the division is performed on floats as we need float result
+                float baseCd = float(player->GetRuneBaseCooldown(i));
+                data << uint8((baseCd - float(player->GetRuneCooldown(i))) / baseCd * 255); // rune cooldown passed
+            }
         }
-	}
+        else
+        {
+            data << uint8(0);
+            data << uint8(0);
+            for (uint8 i = 0; i < MAX_RUNES; ++i)
+                data << uint8(0);
+        }
+    }
 
 	if (castFlags & CAST_FLAG_PROJECTILE)
 	{	
@@ -3965,7 +3976,7 @@ void Spell::SendSpellGo()
 
     if (castFlags & CAST_FLAG_RUNES_STATES)                   // rune cooldowns list
     {
-        //TODO: There is a crash caused by a spell with CAST_FLAG_RUNES_STATES casted by a creature
+        //TODO: There is a crash caused by a spell with CAST_FLAG_RUNE_LIST casted by a creature
         //The creature is the mover of a player, so HandleCastSpellOpcode uses it as the caster
         if (Player* player = m_caster->ToPlayer())
         {
@@ -3977,6 +3988,14 @@ void Spell::SendSpellGo()
                 float baseCd = float(player->GetRuneBaseCooldown(i));
                 data << uint8((baseCd - float(player->GetRuneCooldown(i))) / baseCd * 255); // rune cooldown passed
             }
+        }
+        else
+        {
+            data << uint8(0);
+            data << uint8(0);
+
+            for (uint8 i = 0; i < MAX_RUNES; ++i)
+                data << uint8(0);
         }
     }
 
