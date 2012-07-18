@@ -71,13 +71,13 @@ void WorldSession::HandleGroupInviteOpcode(WorldPacket & recv_data)
     recv_data.read_skip<uint32>();
 
     recv_data.read_skip<uint8>(); // ReadBits(10) -- not needed
-	 recv_data.read_skip<uint8>(); // ReadBits(10) -- not needed
-	 recv_data.read_skip<uint8>(); // ReadBits(not sure) -- not needed
+    recv_data.read_skip<uint8>(); // ReadBits(10) -- not needed
+    recv_data.read_skip<uint8>(); // ReadBits(not sure) -- not needed
 
-	 BitStream mask = recv_data.ReadBitStream(8);
-	 guid.bytes[2] = (bool) mask[2];
-	 guid.bytes[6] = (bool) mask[1];
-	 guid.bytes[7] = (bool) mask[0];
+    BitStream mask = recv_data.ReadBitStream(8);
+    guid.bytes[2] = (bool) mask[2];
+    guid.bytes[6] = (bool) mask[1];
+    guid.bytes[7] = (bool) mask[0];
 
     recv_data.ReadByteMask(guid.bytes[2]);
     recv_data.ReadByteMask(guid.bytes[4]);
@@ -85,8 +85,6 @@ void WorldSession::HandleGroupInviteOpcode(WorldPacket & recv_data)
     recv_data.ReadByteMask(guid.bytes[5]);
     recv_data.ReadByteMask(guid.bytes[0]);
     recv_data.ReadByteMask(guid.bytes[1]);
-
-
 
     recv_data.ReadByteSeq(guid.bytes[4]);
     recv_data.ReadByteSeq(guid.bytes[7]);
