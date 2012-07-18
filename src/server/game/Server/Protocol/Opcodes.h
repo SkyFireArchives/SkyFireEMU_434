@@ -649,10 +649,10 @@ enum Opcodes
     SMSG_ATTACKERSTATEUPDATE                         = 0x00B25, // 4.3.4 Build 15595
     SMSG_ATTACKSTART                                 = 0x02D15, // 4.3.4 Build 15595
     SMSG_ATTACKSTOP                                  = 0x00934, // 4.3.4 Build 15595
-    SMSG_ATTACKSWING_BADFACING                       = 0x06C07, // 4.3.4 Build 15595
+    SMSG_ATTACKSWING_BADFACING                       = 0x00B36, // 4.3.4 Build 15595
     SMSG_ATTACKSWING_CANT_ATTACK                     = 0x00016, // 4.3.4 Build 15595
     SMSG_ATTACKSWING_DEADTARGET                      = 0x00416, // 4.3.4 Build 15595
-    SMSG_ATTACKSWING_NOTINRANGE                      = 0x00B36, // 4.3.4 Build 15595
+    SMSG_ATTACKSWING_NOTINRANGE                      = 0x06C07, // 4.3.4 Build 15595
     SMSG_AUCTION_BIDDER_LIST_RESULT                  = 0x06637, // 4.3.4 Build 15595
     SMSG_AUCTION_BIDDER_NOTIFICATION                 = 0x04E27, // 4.3.4 Build 15595
     SMSG_AUCTION_COMMAND_RESULT                      = 0x04C25, // 4.3.4 Build 15595
