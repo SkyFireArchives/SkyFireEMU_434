@@ -180,6 +180,7 @@ enum Powers
     POWER_RAGE                          = 1,
     POWER_FOCUS                         = 2,
     POWER_ENERGY                        = 3,
+    POWER_HAPPINESS                     = 4,
     POWER_RUNE                          = 5,
     POWER_RUNIC_POWER                   = 6,
     POWER_SOULSHARD                     = 7,

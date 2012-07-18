@@ -56,12 +56,12 @@ struct AuctionEntry
     uint32 item_guidlow;
     uint32 item_template;
     uint32 owner;
-    uint32 startbid;                                        //maybe useless
-    uint32 bid;
-    uint32 buyout;
+    uint64 startbid;                                        //maybe useless
+    uint64 bid;
+    uint64 buyout;
     time_t expire_time;
     uint32 bidder;
-    uint32 deposit;                                         //deposit can be calculated only when creating auction
+    uint64 deposit;                                         // deposit can be calculated only when creating auction
     AuctionHouseEntry const* auctionHouseEntry;             // in AuctionHouse.dbc
     uint32 factionTemplateId;
 

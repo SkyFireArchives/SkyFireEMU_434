@@ -1354,7 +1354,7 @@ void WorldSession::HandleAlterAppearance(WorldPacket & recv_data)
     if (bs_skinColor && (bs_skinColor->type != 3 || bs_skinColor->race != _player->getRace() || bs_skinColor->gender != _player->getGender()))
         return;
 
-    uint32 Cost = _player->GetBarberShopCost(bs_hair->hair_id, Color, bs_facialHair->hair_id, bs_skinColor);
+    uint64 Cost = _player->GetBarberShopCost(bs_hair->hair_id, Color, bs_facialHair->hair_id, bs_skinColor);
 
     // 0 - ok
     // 1, 3 - not enough money
@@ -1373,7 +1373,7 @@ void WorldSession::HandleAlterAppearance(WorldPacket & recv_data)
         SendPacket(&data);
     }
 
-    _player->ModifyMoney(-int32(Cost));                     // it isn't free
+    _player->ModifyMoney(-int64(Cost));                     // it isn't free
     _player->GetAchievementMgr().UpdateAchievementCriteria(ACHIEVEMENT_CRITERIA_TYPE_GOLD_SPENT_AT_BARBER, Cost);
 
     _player->SetByteValue(PLAYER_BYTES, 2, uint8(bs_hair->hair_id));

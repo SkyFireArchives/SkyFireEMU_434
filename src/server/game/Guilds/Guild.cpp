@@ -1323,7 +1323,7 @@ void Guild::HandleSetEmblem(WorldSession* session, const EmblemInfo& emblemInfo)
     if (!_IsLeader(player))
         // "Only guild leaders can create emblems."
         SendSaveEmblemResult(session, ERR_GUILDEMBLEM_NOTGUILDMASTER);
-    else if (!player->HasEnoughMoney(EMBLEM_PRICE))
+    else if (!player->HasEnoughMoney((uint64)EMBLEM_PRICE))
         // "You can't afford to do that."
         SendSaveEmblemResult(session, ERR_GUILDEMBLEM_NOTENOUGHMONEY);
     else
@@ -1414,7 +1414,7 @@ void Guild::HandleBuyBankTab(WorldSession* session, uint8 tabId)
     if (tabId != _GetPurchasedTabsSize())
         return;
 
-    uint32 tabCost = _GetGuildBankTabPrice(tabId) * GOLD;
+    uint64 tabCost = _GetGuildBankTabPrice(tabId) * GOLD;
     if (!tabCost)
         return;
 
