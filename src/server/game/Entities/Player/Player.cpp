@@ -953,6 +953,7 @@ bool Player::Create(uint32 guidlow, CharacterCreateInfo* createInfo)
     SetByteValue(PLAYER_BYTES_3, 0, createInfo->Gender);
     SetByteValue(PLAYER_BYTES_3, 3, 0);                     // BattlefieldArenaFaction (0 or 1)
 
+    SetUInt64Value(OBJECT_FIELD_DATA, 0);
     SetUInt32Value(PLAYER_GUILDRANK, 0);
     SetUInt32Value(PLAYER_GUILD_TIMESTAMP, 0);
 
@@ -1823,8 +1824,10 @@ bool Player::BuildEnumData(PreparedQueryResult result, ByteBuffer* dataBuffer, B
     //    "SELECT characters.guid, characters.name, characters.race, characters.class, characters.gender, characters.playerBytes, characters.playerBytes2, characters.level, "
     //     8                9               10                     11                     12                     13                    14
     //    "characters.zone, characters.map, characters.position_x, characters.position_y, characters.position_z, guild_member.guildid, characters.playerFlags, "
-    //    15                    16                   17                     18                   19               20                     21
-    //    "characters.at_login, character_pet.entry, character_pet.modelid, character_pet.level, characters.data, character_banned.guid, character_declinedname.genitive "
+    //    15                    16                   17                     18                   19               20
+    //    "characters.at_login, character_pet.entry, character_pet.modelid, character_pet.level, characters.data, character_banned.guid, "
+    //      21                               22
+    //    "character_declinedname.genitive, characters.slot "
 
     Field* fields = result->Fetch();
     uint8 guid[8];
@@ -1832,6 +1835,7 @@ bool Player::BuildEnumData(PreparedQueryResult result, ByteBuffer* dataBuffer, B
 
     *reinterpret_cast<uint64*>(&guid[0]) = MAKE_NEW_GUID(fields[0].GetUInt32(), 0, HIGHGUID_PLAYER);
     std::string name = fields[1].GetString();
+    uint8 slot = fields[21].GetUInt8();
     uint8 plrRace = fields[2].GetUInt8();
     uint8 plrClass = fields[3].GetUInt8();
     uint8 gender = fields[4].GetUInt8();
@@ -1868,7 +1872,7 @@ bool Player::BuildEnumData(PreparedQueryResult result, ByteBuffer* dataBuffer, B
     if (fields[20].GetUInt32())
         charFlags |= CHARACTER_FLAG_LOCKED_BY_BILLING;
 
-    if (sWorld->getBoolConfig(CONFIG_DECLINED_NAMES_USED) && !fields[21].GetString().empty())
+    if (sWorld->getBoolConfig(CONFIG_DECLINED_NAMES_USED) && !fields[22].GetString().empty())
         charFlags |= CHARACTER_FLAG_DECLINED;
 
     uint32 customizationFlag = 0;
@@ -1951,7 +1955,7 @@ bool Player::BuildEnumData(PreparedQueryResult result, ByteBuffer* dataBuffer, B
 
     *dataBuffer << uint32(petFamily);                           // Pet family
     dataBuffer->WriteByteSeq(guildGuid[2]);
-    *dataBuffer << uint8(0);                                    // List order
+    *dataBuffer << uint8(slot);                                 // List order
     *dataBuffer << uint8(hairStyle);                            // Hair style
     dataBuffer->WriteByteSeq(guildGuid[3]);
     *dataBuffer << uint32(petDisplayId);                        // Pet DisplayID
@@ -24334,7 +24338,7 @@ void Player::BuildPlayerTalentsInfoData(WorldPacket* data)
 
             // find class talent tabs (all players have 3 talent tabs)
             uint32 const* talentTabIds = GetTalentTabPages(getClass());
-            
+
             for (uint8 i = 0; i < MAX_TALENT_TABS; ++i)
             {
                 uint32 talentTabId = talentTabIds[i];

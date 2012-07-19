@@ -770,11 +770,11 @@ void WorldSession::HandlePlayerLoginOpcode(WorldPacket & recv_data)
     BitStream mask = recv_data.ReadBitStream(8);
 
     ByteBuffer bytes(8, true);
-	//15595
+    //15595
     recv_data.ReadXorByte(mask[0], bytes[2]);
     recv_data.ReadXorByte(mask[7], bytes[7]);
     recv_data.ReadXorByte(mask[2], bytes[0]);
-	recv_data.ReadXorByte(mask[1], bytes[3]);
+    recv_data.ReadXorByte(mask[1], bytes[3]);
     recv_data.ReadXorByte(mask[5], bytes[5]);
     recv_data.ReadXorByte(mask[3], bytes[6]);
     recv_data.ReadXorByte(mask[6], bytes[1]);
@@ -2006,6 +2006,39 @@ void WorldSession::HandleRandomizeCharNameOpcode(WorldPacket& recv_data)
 
 void WorldSession::HandleCharSetPosition(WorldPacket& recv_data)
 {
-    sLog->outString("Character Set Position size: %u", recv_data.size());
-    recv_data.hexlike();
+    uint32 charactersCount = recv_data.ReadBits(10);
+
+    ObjectGuid guids[charactersCount];
+    uint8 positions[charactersCount];
+
+    for (uint8 i = 0; i < charactersCount; ++i)
+    {
+        recv_data.ReadByteMask(guids[i][1]);
+        recv_data.ReadByteMask(guids[i][4]);
+        recv_data.ReadByteMask(guids[i][5]);
+        recv_data.ReadByteMask(guids[i][3]);
+        recv_data.ReadByteMask(guids[i][0]);
+        recv_data.ReadByteMask(guids[i][7]);
+        recv_data.ReadByteMask(guids[i][6]);
+        recv_data.ReadByteMask(guids[i][2]);
+    }
+
+    SQLTransaction trans = CharacterDatabase.BeginTransaction();
+    for (uint8 i = 0; i < charactersCount; ++i)
+    {
+        recv_data.ReadByteSeq(guids[i][6]);
+        recv_data.ReadByteSeq(guids[i][5]);
+        recv_data.ReadByteSeq(guids[i][1]);
+        recv_data.ReadByteSeq(guids[i][4]);
+        recv_data.ReadByteSeq(guids[i][0]);
+        recv_data.ReadByteSeq(guids[i][3]);
+
+        positions[i] = recv_data.ReadUInt8() / 10;
+
+        recv_data.ReadByteSeq(guids[i][2]);
+        recv_data.ReadByteSeq(guids[i][7]);
+
+        trans->PAppend("UPDATE characters SET slot = '%u' WHERE guid = '%u'", positions[i], uint64(guids[i]));
+    }
+    CharacterDatabase.CommitTransaction(trans);
 }

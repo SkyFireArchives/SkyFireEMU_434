@@ -1128,7 +1128,7 @@ void Spell::SelectImplicitAreaTargets(SpellEffIndex effIndex, SpellImplicitTarge
                         case TYPEID_PLAYER:
                         {
                             Unit* unitTarget = (*itr)->ToUnit();
-                            if (unitTarget->isAlive() || !playerCaster->isHonorOrXPTarget(unitTarget) 
+                            if (unitTarget->isAlive() || !playerCaster->isHonorOrXPTarget(unitTarget)
                                 || ((unitTarget->GetCreatureTypeMask() & (1 << (CREATURE_TYPE_HUMANOID-1))) == 0)
                                 || (unitTarget->GetDisplayId() != unitTarget->GetNativeDisplayId()))
                                 break;
@@ -1153,7 +1153,7 @@ void Spell::SelectImplicitAreaTargets(SpellEffIndex effIndex, SpellImplicitTarge
         case 51328:
             // check if our target is not valid (spell can target ghoul or dead unit)
             if (!(m_targets.GetUnitTarget() && m_targets.GetUnitTarget()->GetDisplayId() == m_targets.GetUnitTarget()->GetNativeDisplayId() &&
-                ((m_targets.GetUnitTarget()->GetEntry() == 26125 && m_targets.GetUnitTarget()->GetOwnerGUID() == m_caster->GetGUID()) 
+                ((m_targets.GetUnitTarget()->GetEntry() == 26125 && m_targets.GetUnitTarget()->GetOwnerGUID() == m_caster->GetGUID())
                 || m_targets.GetUnitTarget()->isDead())))
             {
                 // remove existing targets
@@ -1895,7 +1895,7 @@ void Spell::SearchChainTargets(std::list<WorldObject*>& targets, uint32 chainTar
     }
 
     // chain lightning/heal spells and similar - allow to jump at larger distance and go out of los
-    bool isBouncingFar = (m_spellInfo->AttributesEx4 & SPELL_ATTR4_AREA_TARGET_CHAIN 
+    bool isBouncingFar = (m_spellInfo->AttributesEx4 & SPELL_ATTR4_AREA_TARGET_CHAIN
         || m_spellInfo->DmgClass == SPELL_DAMAGE_CLASS_NONE
         || m_spellInfo->DmgClass == SPELL_DAMAGE_CLASS_MAGIC);
 
@@ -3820,14 +3820,14 @@ void Spell::SendSpellStart()
 {
     if (!IsNeedSendToClient())
         return;
-	
-    sLog->outDebug(LOG_FILTER_SPELLS_AURAS, "Sending SMSG_SPELL_START id=%u", m_spellInfo->Id);
-   
-	/*clasflag int32 za odredjivane CLASFLAG moze biti razliciti Zavisno sta treba*/
-	uint32 castFlags;	
 
-	castFlags = CAST_FLAG_UNKNOWN_2;
-	// Start generate CastFlags
+    sLog->outDebug(LOG_FILTER_SPELLS_AURAS, "Sending SMSG_SPELL_START id=%u", m_spellInfo->Id);
+
+    /*clasflag int32 za odredjivane CLASFLAG moze biti razliciti Zavisno sta treba*/
+    uint32 castFlags;
+
+    castFlags = CAST_FLAG_UNKNOWN_2;
+    // Start generate CastFlags
     if ((IsTriggered() && !m_spellInfo->IsAutoRepeatRangedSpell()) || m_triggeredByAuraSpell)
         castFlags |= CAST_FLAG_PENDING_SPELL_CAST;
 
@@ -3838,37 +3838,37 @@ void Spell::SendSpellStart()
 
     if (m_spellInfo->RuneCostID && m_spellInfo->PowerType == POWER_RUNE)
         castFlags |= CAST_FLAG_UNKNOWN_19;
-	// Set Flas the item Projectile 
-	//if(m_CastItem->GetTypeId() == ITEM_CLASS_PROJECTILE)
-	//	castFlags |= CAST_FLAG_PROJECTILE;
-	// End generate CastFlags
+    // Set Flas the item Projectile
+    //if(m_CastItem->GetTypeId() == ITEM_CLASS_PROJECTILE)
+    //    castFlags |= CAST_FLAG_PROJECTILE;
+    // End generate CastFlags
     WorldPacket data(SMSG_SPELL_START, (50));
     // Caster
-	if (m_CastItem)
+    if (m_CastItem)
         data.append(m_CastItem->GetPackGUID());
     else
         data.append(m_caster->GetPackGUID());
-	// Caster Invoker
+    // Caster Invoker
     data.append(m_caster->GetPackGUID());
     // Cast ID
-	data << uint8(m_cast_count);                            // pending spell cast?
+    data << uint8(m_cast_count);                            // pending spell cast?
     // Spell ID
-	data << uint32(m_spellInfo->Id);                        // spellId
+    data << uint32(m_spellInfo->Id);                        // spellId
     // Cast FLag
-	data << uint32(castFlags);                              // cast flags
-	//////////////////////////////////////////////////////////////////////////////////////////
-	data << uint32(0);
-	//////////////////////////////////////////////////////////////////////////////////////////
-	// CastTime
+    data << uint32(castFlags);                              // cast flags
+    //////////////////////////////////////////////////////////////////////////////////////////
+    data << uint32(0);
+    //////////////////////////////////////////////////////////////////////////////////////////
+    // CastTime
     data << int32(m_timer);
 
     // Unk -- added in 4.3.4
     data << int32(0);
 
-	m_targets.Write(data); //PendingSpellCastData::FillTargetDat
+    m_targets.Write(data); //PendingSpellCastData::FillTargetDat
 
-	//////////////////////////////////////////////////////////////////////////////////////////
-    if (castFlags & CAST_FLAG_PREDICTED_POWER)				// predicted power
+    //////////////////////////////////////////////////////////////////////////////////////////
+    if (castFlags & CAST_FLAG_PREDICTED_POWER)                // predicted power
         data << uint32(m_caster->GetPower((Powers)m_spellInfo->PowerType));
 
     if (castFlags & CAST_FLAG_RUNES_STATES)                   // rune cooldowns list
@@ -3895,22 +3895,22 @@ void Spell::SendSpellStart()
         }
     }
 
-	if (castFlags & CAST_FLAG_PROJECTILE)
-	{	
-		data << uint32(0); // Projectile Display ID
-		data << uint32(0); // Projectile Invetory Type
-	}
+    if (castFlags & CAST_FLAG_PROJECTILE)
+    {
+        data << uint32(0); // Projectile Display ID
+        data << uint32(0); // Projectile Invetory Type
+    }
 
     if (castFlags & CAST_FLAG_IMMUNITY)
     {
         data << uint32(0);
         data << uint32(0);
-		/////////////////////////////
-		data << uint32(0);
-		data << uint8(2); // if ==2
-		data << uint64(0); //GUID
+        /////////////////////////////
+        data << uint32(0);
+        data << uint8(2); // if ==2
+        data << uint64(0); //GUID
     }
-	
+
     m_caster->SendMessageToSet(&data, true);
 }
 
@@ -3964,9 +3964,9 @@ void Spell::SendSpellGo()
     data << uint32(m_spellInfo->Id);                        // spellId
     data << uint32(castFlags);                              // cast flags
    /* Unknown 4.3.x*/
-	data << uint32(0);
-	data << uint32(getMSTime());                            // timestamp
-	
+    data << uint32(0);
+    data << uint32(getMSTime());                            // timestamp
+
     WriteSpellGoTargets(&data);
 
     m_targets.Write(data);
@@ -7226,7 +7226,7 @@ namespace Skyfire
 {
 
 WorldObjectSpellTargetCheck::WorldObjectSpellTargetCheck(Unit* caster, Unit* referer, SpellInfo const* spellInfo,
-            SpellTargetCheckTypes selectionType, ConditionList* condList) : _caster(caster), _referer(referer), _spellInfo(spellInfo), 
+            SpellTargetCheckTypes selectionType, ConditionList* condList) : _caster(caster), _referer(referer), _spellInfo(spellInfo),
     _targetSelectionType(selectionType), _condList(condList)
 {
     if (condList)
@@ -7300,7 +7300,7 @@ bool WorldObjectSpellTargetCheck::operator()(WorldObject* target)
     return sConditionMgr->IsObjectMeetToConditions(*_condSrcInfo, *_condList);
 }
 
-WorldObjectSpellNearbyTargetCheck::WorldObjectSpellNearbyTargetCheck(float range, Unit* caster, SpellInfo const* spellInfo, 
+WorldObjectSpellNearbyTargetCheck::WorldObjectSpellNearbyTargetCheck(float range, Unit* caster, SpellInfo const* spellInfo,
     SpellTargetCheckTypes selectionType, ConditionList* condList)
     : WorldObjectSpellTargetCheck(caster, caster, spellInfo, selectionType, condList), _range(range), _position(caster)
 {

@@ -311,7 +311,7 @@ void GameEventMgr::LoadFromDB()
             sLog->outString();
         }
     }
-	*/
+    */
     sLog->outString("Loading Game Event Prerequisite Data...");
     {
         uint32 oldMSTime = getMSTime();
@@ -719,7 +719,7 @@ void GameEventMgr::LoadFromDB()
             sLog->outString();
         }
     }
-	*/
+    */
     sLog->outString("Loading Game Event NPCflag Data...");
     {
         uint32 oldMSTime = getMSTime();
@@ -759,7 +759,7 @@ void GameEventMgr::LoadFromDB()
             sLog->outString();
         }
     }
-	/*
+    /*
     sLog->outString("Loading Game Event Seasonal Quest Relations...");
     {
         uint32 oldMSTime = getMSTime();
@@ -803,7 +803,7 @@ void GameEventMgr::LoadFromDB()
             sLog->outString();
         }
     }
-	*/
+    */
     sLog->outString("Loading Game Event Vendor Additions Data...");
     {
         uint32 oldMSTime = getMSTime();

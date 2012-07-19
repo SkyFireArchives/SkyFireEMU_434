@@ -280,7 +280,7 @@ void Object::_BuildMovementUpdate(ByteBuffer * data, uint16 flags) const
 {
 
      //4.3.4 -15595
-    
+
     uint64 mGuid = uint64(((Unit*)this)->GetGUID());
     //uint8 mType = (((Unit*)this)->GetTypeId());
     //uint64 mGuid = MAKE_NEW_GUID(0,0,HIGHGUID_PLAYER);
@@ -294,7 +294,7 @@ void Object::_BuildMovementUpdate(ByteBuffer * data, uint16 flags) const
     data->WriteBit(flags & UPDATEFLAG_HAS_SELF);//0 //Exclude Player write bit
     data->WriteBit(flags & UPDATEFLAG_HAS_VEHICLE); //hasVehicleData
     data->WriteBit(flags & UPDATEFLAG_HAS_LIVING); //living
-    data->WriteBits(0, 24); //unkLoopCounter 
+    data->WriteBits(0, 24); //unkLoopCounter
     data->WriteBit(0);//1
     data->WriteBit(flags & UPDATEFLAG_HAS_GO_POSITION); // Game Object Position
     data->WriteBit(flags & UPDATEFLAG_HAS_STATIONARY_POSITION);  //Stacitonar Position
@@ -302,9 +302,9 @@ void Object::_BuildMovementUpdate(ByteBuffer * data, uint16 flags) const
     data->WriteBit(0);//2
     data->WriteBit(flags & UPDATEFLAG_HAS_GO_TRANSPORT_TIME); //unkHasBit1_408
     bool hasLivingTime = false; //always write time the flags & UPDATEFLAG_HAS_LIVING
-    
 
-    //data->WriteBit(flags & UPDATEFLAG_HAS_GO_TRANSPORT_TIME); 
+
+    //data->WriteBit(flags & UPDATEFLAG_HAS_GO_TRANSPORT_TIME);
    //data->WriteBit(flags & UPDATEFLAG_HAS_SELF); //0
 
      if (flags & UPDATEFLAG_HAS_LIVING)
@@ -432,7 +432,7 @@ void Object::_BuildMovementUpdate(ByteBuffer * data, uint16 flags) const
             {
                 *data << (float)((Unit*)this)->m_movementInfo.j_cosAngle;
                 *data << (float)((Unit*)this)->m_movementInfo.j_xyspeed;
-                *data << (float)((Unit*)this)->m_movementInfo.j_sinAngle;                
+                *data << (float)((Unit*)this)->m_movementInfo.j_sinAngle;
             }
 
             *data << (uint32)((Unit*)this)->m_movementInfo.fallTime;
@@ -516,7 +516,7 @@ void Object::_BuildMovementUpdate(ByteBuffer * data, uint16 flags) const
     }
 
     if (flags & UPDATEFLAG_HAS_GO_POSITION)
-    {	uint64 goGuid = (((GameObject*)this)->GetGUID());
+    {    uint64 goGuid = (((GameObject*)this)->GetGUID());
         uint8 GOGuidBytes[] = { 0, 5, 3, 4, 6, 1, 2, 7 };
         data->WriteGuidBytes(goGuid, GOGuidBytes, 2, 0);
         //data << unit32(0);  //GO Transport Time 3

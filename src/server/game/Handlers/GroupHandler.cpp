@@ -63,7 +63,7 @@ void WorldSession::SendPartyResult(PartyOperation operation, const std::string& 
 void WorldSession::HandleGroupInviteOpcode(WorldPacket & recv_data)
 {
     sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: Received CMSG_GROUP_INVITE");
- 
+
     ObjectGuid guid;
 
     recv_data.read_skip<uint32>();      // cross-realm party related

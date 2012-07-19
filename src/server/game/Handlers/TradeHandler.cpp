@@ -528,7 +528,7 @@ void WorldSession::HandleBeginTradeOpcode(WorldPacket& recvPacket)
     BitStream mask = recvPacket.ReadBitStream(8);
 
     ByteBuffer bytes(8, true);
-    
+
     recvPacket.ReadXorByte(mask[0], bytes[5]);
     recvPacket.ReadXorByte(mask[4], bytes[2]);
     recvPacket.ReadXorByte(mask[5], bytes[3]);

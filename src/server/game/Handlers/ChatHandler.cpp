@@ -498,7 +498,7 @@ void WorldSession::HandleAddonMessagechatOpcode(WorldPacket& recvData)
 {
     Player* sender = GetPlayer();
     ChatMsg type;
-    
+
     switch (recvData.GetOpcode())
     {
         case CMSG_MESSAGECHAT_ADDON_BATTLEGROUND:
@@ -580,7 +580,7 @@ void WorldSession::HandleAddonMessagechatOpcode(WorldPacket& recvData)
         case CHAT_MSG_PARTY:
         case CHAT_MSG_RAID:
         {
-            
+
             Group* group = sender->GetGroup();
             if (!group || group->isBGGroup())
                 break;

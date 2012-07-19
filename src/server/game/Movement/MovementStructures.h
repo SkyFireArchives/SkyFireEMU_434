@@ -1805,7 +1805,7 @@ MovementStatusElements* GetMovementStatusElementsSequence(Opcodes opcode)
         case MSG_MOVE_START_PITCH_UP:
             return MovementStartPitchUpSequence;
         case MSG_MOVE_START_STRAFE_LEFT:
-            return MovementStartStrafeLeftSequence; 
+            return MovementStartStrafeLeftSequence;
         case MSG_MOVE_START_STRAFE_RIGHT:
             return MovementStartStrafeRightSequence;
         case MSG_MOVE_START_SWIM:

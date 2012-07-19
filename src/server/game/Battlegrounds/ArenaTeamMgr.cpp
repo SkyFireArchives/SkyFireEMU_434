@@ -156,7 +156,7 @@ void ArenaTeamMgr::DistributeArenaPoints()
     SQLTransaction trans = CharacterDatabase.BeginTransaction();
 
     // Cycle that gives points to all players
-	/*
+    /*
     for (std::map<uint32, uint32>::iterator playerItr = PlayerPoints.begin(); playerItr != PlayerPoints.end(); ++playerItr)
     {
         // Add points to player if online
@@ -165,7 +165,7 @@ void ArenaTeamMgr::DistributeArenaPoints()
         else    // Update database
             trans->PAppend("UPDATE characters SET arenaPoints=arenaPoints+%u WHERE guid=%u", playerItr->second, playerItr->first);
     }
-	*/
+    */
 
     CharacterDatabase.CommitTransaction(trans);
 

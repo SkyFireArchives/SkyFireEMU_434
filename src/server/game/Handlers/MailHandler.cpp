@@ -498,7 +498,7 @@ void WorldSession::HandleMailTakeMoney(WorldPacket& recv_data)
     uint64 mailbox;
     uint64 money;
     uint32 mailId;
-    
+
     recv_data >> mailbox;
     recv_data >> mailId;
     recv_data >> money;

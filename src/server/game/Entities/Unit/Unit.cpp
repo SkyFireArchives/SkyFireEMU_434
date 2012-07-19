@@ -4862,7 +4862,7 @@ void Unit::SendAttackStateUpdate(CalcDamageInfo* damageInfo)
             data << float(0);
          }
 
-        
+
         data << uint32(0);
     }
 
@@ -16819,7 +16819,7 @@ void Unit::SendPlaySpellVisual(uint32 id)
     data.WriteByteSeq(guid[7]);
     data.WriteByteSeq(guid[2]);
     data.WriteByteSeq(guid[3]);
-    data.WriteByteSeq(guid[5]);	
+    data.WriteByteSeq(guid[5]);
     SendMessageToSet(&data, false);
 }
 
@@ -17526,7 +17526,7 @@ void Unit::ExitVehicle(Position const* exitPosition)
         return;
 
     GetVehicleBase()->RemoveAurasByType(SPELL_AURA_CONTROL_VEHICLE, GetGUID());
-    //! The following call would not even be executed successfully as the 
+    //! The following call would not even be executed successfully as the
     //! SPELL_AURA_CONTROL_VEHICLE unapply handler already calls _ExitVehicle without
     //! specifying an exitposition. The subsequent call below would return on if (!m_vehicle).
     /*_ExitVehicle(exitPosition);*/

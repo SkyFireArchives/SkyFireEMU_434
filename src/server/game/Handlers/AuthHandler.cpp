@@ -24,26 +24,26 @@
 void WorldSession::SendAuthResponse(uint8 code, bool shortForm, uint32 queuePos)
 {
     WorldPacket packet(SMSG_AUTH_RESPONSE,16);
-   
-	packet.WriteBit(false); //isQueued
+
+    packet.WriteBit(false); //isQueued
     packet.WriteBit(true); //hasAccountInfo
-	
-	packet << uint32(0);                                   // BillingTimeRemaining
-	packet << uint8(Expansion());                          // 0 - normal, 1 - TBC, 2 - WOTLK, 3 - CATA; must be set in database manually for each account
+
+    packet << uint32(0);                                   // BillingTimeRemaining
+    packet << uint8(Expansion());                          // 0 - normal, 1 - TBC, 2 - WOTLK, 3 - CATA; must be set in database manually for each account
     packet << uint32(0);                                   // Unk 4.3.2
-	packet << uint8(Expansion());                          // Unknown, these two show the same
-	packet << uint32(0);                                   // BillingTimeRested
-	packet << uint8(0);                                    // BillingPlanFlags
-   
-	/*
-	
-	if (!shortForm)
+    packet << uint8(Expansion());                          // Unknown, these two show the same
+    packet << uint32(0);                                   // BillingTimeRested
+    packet << uint8(0);                                    // BillingPlanFlags
+
+    /*
+
+    if (!shortForm)
     {
         packet << uint32(queuePos);                             // Queue position
         packet << uint8(0);                                     // Unk 3.3.0
     }
-	*/
-	packet << uint8(code);
+    */
+    packet << uint8(code);
 
     SendPacket(&packet);
 }

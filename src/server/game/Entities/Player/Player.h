@@ -1891,6 +1891,11 @@ class Player : public Unit, public GridObject<Player>
             stmt->setUInt64(1, GetGUID());
             CharacterDatabase.Execute(stmt);
             m_guildId = GuildId;
+
+            if (GuildId)
+                SetUInt64Value(OBJECT_FIELD_DATA, MAKE_NEW_GUID(GuildId, 0, HIGHGUID_GUILD));
+            else
+               SetUInt64Value(OBJECT_FIELD_DATA, 0);
         }
         uint32 GetGuildId() { return m_guildId; }
         static uint32 GetGuildIdFromGuid(uint64 guid);

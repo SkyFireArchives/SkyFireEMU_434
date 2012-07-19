@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
- 
+
 #include <ace/Singleton.h>
 #include <ace/Thread_Mutex.h>
 #include <ace/Log_Msg.h>
