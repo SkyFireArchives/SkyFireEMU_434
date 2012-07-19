@@ -1266,9 +1266,9 @@ public:
         return true;
     }
 
-    bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint32 action, uint64 cost)
+    bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint32 action)
     {
-        cost = 10000000;
+        int64 cost = 10000000;
         player->PlayerTalkClass->ClearMenus();
         switch (action)
         {
@@ -1294,7 +1294,7 @@ public:
                     }
                     else
                     {
-                        player->ModifyMoney(-10000000);
+                        player->ModifyMoney(-cost);
 
                         // Cast spells that teach dual spec
                         // Both are also ImplicitTarget self and must be cast by player
