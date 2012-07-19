@@ -47,7 +47,7 @@ void WorldSession::HandleGuildQueryOpcode(WorldPacket& recvPacket)
 
     uint64 guildGuid, playerGuid;
     recvPacket >> guildGuid >> playerGuid;
-    
+
     // If guild doesn't exist or player is not part of the guild send error
     if (Guild* guild = sGuildMgr->GetGuildByGuid(guildGuid))
         if (guild->IsMember(playerGuid))
@@ -133,7 +133,7 @@ void WorldSession::HandleGuildRosterOpcode(WorldPacket& recvPacket)
     BitStream mask = recvPacket.ReadBitStream(8);
 
     ByteBuffer bytes(8, true);
-    
+
     recvPacket.ReadXorByte(mask[1], bytes[6]);
     recvPacket.ReadXorByte(mask[7], bytes[4]);
     recvPacket.ReadXorByte(mask[5], bytes[1]);

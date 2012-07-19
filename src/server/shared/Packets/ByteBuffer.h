@@ -135,9 +135,9 @@ class ByteBuffer
         void SetBitPoz()
         {
             if (_bitpos < 7)
-                {
-                    _bitpos = 7;
-                }
+            {
+                _bitpos = 7;
+            }
         }
 
         bool WriteBit(uint32 bit)

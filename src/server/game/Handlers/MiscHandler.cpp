@@ -1288,7 +1288,7 @@ void WorldSession::HandleWorldTeleportOpcode(WorldPacket& recv_data)
     recv_data >> PositionZ;
     recv_data >> PositionY;
     recv_data >> Orientation;
-    
+
     BitStream mask = recv_data.ReadBitStream(8);
     ByteBuffer bytes(8, true);
 
@@ -1304,7 +1304,7 @@ void WorldSession::HandleWorldTeleportOpcode(WorldPacket& recv_data)
     uint64 playerGuid = BitConverter::ToUInt64(bytes);
 
     sLog->outDebug(LOG_FILTER_NETWORKIO, "Received opcode CMSG_WORLD_TELEPORT");
-    
+
     if (GetPlayer()->isInFlight())
     {
         sLog->outDebug(LOG_FILTER_NETWORKIO, "Player '%s' (GUID: %u) in flight, ignore worldport command.", GetPlayer()->GetName(), GetPlayer()->GetGUIDLow());

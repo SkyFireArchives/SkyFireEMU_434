@@ -4481,9 +4481,9 @@ void ObjectMgr::LoadQuests()
 void ObjectMgr::LoadQuestLocales()
 {
     uint32 oldMSTime = getMSTime();
-	
+
     _questLocaleStore.clear();                                // need for reload case
-	
+
     QueryResult result = WorldDatabase.Query("SELECT entry, "
         "Title_loc1, Details_loc1, Objectives_loc1, OfferRewardText_loc1, RequestItemsText_loc1, EndText_loc1, CompletedText_loc1, ObjectiveText1_loc1, ObjectiveText2_loc1, ObjectiveText3_loc1, ObjectiveText4_loc1, QuestGiverTextWindow_loc1, QuestGiverTargetName_loc1, QuestTurnTextWindow_loc1, QuestTurnTargetName_loc1,"
         "Title_loc2, Details_loc2, Objectives_loc2, OfferRewardText_loc2, RequestItemsText_loc2, EndText_loc2, CompletedText_loc2, ObjectiveText1_loc2, ObjectiveText2_loc2, ObjectiveText3_loc2, ObjectiveText4_loc2, QuestGiverTextWindow_loc2, QuestGiverTargetName_loc2, QuestTurnTextWindow_loc2, QuestTurnTargetName_loc2,"
@@ -6549,7 +6549,7 @@ void ObjectMgr::LoadGameObjectTemplate()
                                              "questItem4, questItem5, questItem6, data0, data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11, data12, "
     //                                          29      30      31      32      33      34      35      36      37      38      39      40      41      42      43      44
                                              "data13, data14, data15, data16, data17, data18, data19, data20, data21, data22, data23, data24, data25, data26, data27, data28, "
-    //                                          45      46      47      48       49      
+    //                                          45      46      47      48       49
                                              "data29, data30, data31, AIName, ScriptName "
                                              "FROM gameobject_template");
 
@@ -7262,7 +7262,7 @@ void ObjectMgr::LoadNPCSpellClickSpells()
     uint32 oldMSTime = getMSTime();
 
     _spellClickInfoStore.clear();
-    //                                                0          1         2            3 
+    //                                                0          1         2            3
     QueryResult result = WorldDatabase.Query("SELECT npc_entry, spell_id, cast_flags, user_type FROM npc_spellclick_spells");
 
     if (!result)

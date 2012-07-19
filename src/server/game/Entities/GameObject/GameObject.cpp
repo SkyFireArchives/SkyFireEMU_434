@@ -198,16 +198,16 @@ bool GameObject::Create(uint32 guidlow, uint32 name_id, Map* map, uint32 phaseMa
         sLog->outErrorDb("Gameobject (GUID: %u Entry: %u) not created: non-existing GO type '%u' in `gameobject_template`. It will crash client if created.", guidlow, name_id, goinfo->type);
         return false;
     }
-	
+
     SetFloatValue(GAMEOBJECT_PARENTROTATION+0, rotation0);
     SetFloatValue(GAMEOBJECT_PARENTROTATION+1, rotation1);
-	
-	SetFloatValue(OBJECT_FIELD_SCALE_X, goinfo->size);
-	SetDisplayId(goinfo->displayId); //GAMEOBJECT_DISPLAYID
+
+    SetFloatValue(OBJECT_FIELD_SCALE_X, goinfo->size);
+    SetDisplayId(goinfo->displayId); //GAMEOBJECT_DISPLAYID
 
     UpdateRotationFields(rotation2, rotation3);          // GAMEOBJECT_PARENTROTATION_3/GAMEOBJECT_PARENTROTATION_4 cont for 0,1,2,3
 
-  
+
 
     SetUInt32Value(GAMEOBJECT_FACTION, goinfo->faction);
     SetUInt32Value(GAMEOBJECT_FLAGS, goinfo->flags);

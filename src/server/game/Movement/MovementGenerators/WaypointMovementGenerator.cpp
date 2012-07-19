@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
- 
+
 //Basic headers
 #include "WaypointMovementGenerator.h"
 //Extended headers
@@ -119,8 +119,8 @@ bool WaypointMovementGenerator<Creature>::StartMove(Creature &creature)
     init.MoveTo(node->x, node->y, node->z);
 
     //if (node->orientation != 100 && node->delay != 0)
-	//! Accepts angles such as 0.00001 and -0.00001, 0 must be ignored, default value in waypoint table
-	if (node->orientation && node->delay)
+    //! Accepts angles such as 0.00001 and -0.00001, 0 must be ignored, default value in waypoint table
+    if (node->orientation && node->delay)
         init.SetFacing(node->orientation);
 
     init.SetWalk(!node->run);
