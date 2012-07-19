@@ -696,7 +696,7 @@ enum Opcodes
     SMSG_BUY_FAILED                                  = 0x06435, // 4.3.4 Build 15595
     SMSG_BUY_ITEM                                    = 0x00F26, // 4.3.4 Build 15595
     SMSG_CALENDAR_COMMAND_RESULT                     = 0x06F36, // 4.3.4 Build 15595
-    SMSG_CALENDAR_SEND_CALENDAR                      = 0x00000, // Unknown
+    SMSG_CALENDAR_SEND_CALENDAR                      = 0x06805, // 4.3.4 Build 15595
     SMSG_CALENDAR_SEND_NUM_PENDING                   = 0x00C17, // 4.3.4 Build 15595
     SMSG_CAMERA_SHAKE                                = 0x04214, // 4.3.4 Build 15595
     SMSG_CANCEL_AUTO_REPEAT                          = 0x06436, // 4.3.4 Build 15595
@@ -1126,6 +1126,9 @@ enum Opcodes
     SMSG_WORLD_SERVER_INFO                           = 0x009B1, // 4.3.4 Build 15595
     SMSG_WORLD_STATE_UI_TIMER_UPDATE                 = 0x04A14, // 4.3.4 Build 15595
     SMSG_ZONE_UNDER_ATTACK                           = 0x00A06, // 4.3.4 Build 15595
+    SMSG_VOID_STORAGE_TRANSFER_CHANGES               = 0x051A6, // 4.3.4 Build 15595
+    SMSG_VOID_STORAGE_CONTENTS                       = 0x075B4, // 4.3.4 Build 15595
+    SMSG_VOID_ITEM_SWAP_RESPONSE                     = 0x078A2, // 4.3.4 Build 15595
 };
 
 extern void InitOpcodeTable();
