@@ -213,7 +213,7 @@ int32 DoLowUnlearnCost(Player* player)                     //blacksmith
         return 100000;
 }
 
-void ProcessCastAction(Player* player, Creature* creature, uint32 spellId, uint32 triggeredSpellId, int32 cost)
+void ProcessCastAction(Player* player, Creature* creature, uint32 spellId, uint32 triggeredSpellId, int64 cost)
 {
     if (!(spellId && player->HasSpell(spellId)) && player->HasEnoughMoney(cost))
     {
@@ -349,7 +349,7 @@ void ProfessionUnlearnSpells(Player* player, uint32 type)
     }
 }
 
-void ProcessUnlearnAction(Player* player, Creature* creature, uint32 spellId, uint32 alternativeSpellId, int32 cost)
+void ProcessUnlearnAction(Player* player, Creature* creature, uint32 spellId, uint32 alternativeSpellId, int64 cost)
 {
     if (EquippedOk(player, spellId))
     {

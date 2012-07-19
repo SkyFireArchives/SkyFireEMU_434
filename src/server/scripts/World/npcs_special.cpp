@@ -1266,8 +1266,9 @@ public:
         return true;
     }
 
-    bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint32 action)
+    bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint32 action, uint64 cost)
     {
+        cost = 10000000;
         player->PlayerTalkClass->ClearMenus();
         switch (action)
         {
@@ -1285,7 +1286,7 @@ public:
             case GOSSIP_OPTION_LEARNDUALSPEC:
                 if (player->GetSpecsCount() == 1 && !(player->getLevel() < sWorld->getIntConfig(CONFIG_MIN_DUALSPEC_LEVEL)))
                 {
-                    if (!player->HasEnoughMoney(10000000))
+                    if (!player->HasEnoughMoney(cost))
                     {
                         player->SendBuyError(BUY_ERR_NOT_ENOUGHT_MONEY, 0, 0, 0);
                         player->PlayerTalkClass->SendCloseGossip();
@@ -2667,7 +2668,7 @@ public:
 ## npc_experience
 ######*/
 
-#define EXP_COST                100000 //10 00 00 copper (10golds)
+int64 EXP_COST =               100000; //10 00 00 copper (10golds)
 #define GOSSIP_TEXT_EXP         14736
 #define GOSSIP_XP_OFF           "I no longer wish to gain experience."
 #define GOSSIP_XP_ON            "I wish to start gaining experience again."
