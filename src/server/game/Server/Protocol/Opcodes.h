@@ -122,7 +122,7 @@ enum Opcodes
     CMSG_CHANNEL_MODERATOR                           = 0x02944, // 4.3.4 Build 15595
     CMSG_CHANNEL_MUTE                                = 0x02554, // 4.3.4 Build 15595
     CMSG_CHANNEL_OWNER                               = 0x03D44, // 4.3.4 Build 15595
-    CMSG_CHANNEL_PASSWORD                            = 0x09558, // 4.3.4 Build 15595
+    CMSG_CHANNEL_PASSWORD                            = 0x02556, // 4.3.4 Build 15595
     CMSG_CHANNEL_ROSTER_INFO                         = 0x03546, // 4.3.4 Build 15595
     CMSG_CHANNEL_SET_OWNER                           = 0x03556, // 4.3.4 Build 15595
     CMSG_CHANNEL_UNBAN                               = 0x02D46, // 4.3.4 Build 15595
@@ -301,7 +301,7 @@ enum Opcodes
     CMSG_OFFER_PETITION                              = 0x04817, // 4.3.4 Build 15595
     CMSG_OPENING_CINEMATIC                           = 0x00000, // Unknown
     CMSG_OPEN_ITEM                                   = 0x06A34, // 4.3.4 Build 15595
-    CMSG_OPT_OUT_OF_LOOT                             = 0x00000, // Unknown
+    CMSG_OPT_OUT_OF_LOOT                             = 0x06235, // 4.3.4 Build 15595
     CMSG_PAGE_TEXT_QUERY                             = 0x00000, // Unknown
     CMSG_PETITION_BUY                                = 0x04E05, // 4.3.4 Build 15595
     CMSG_PETITION_QUERY                              = 0x04424, // 4.3.4 Build 15595
@@ -718,7 +718,7 @@ enum Opcodes
     SMSG_CHAT_RESTRICTED                             = 0x06536, // 4.3.4 Build 15595
     SMSG_CHAT_WRONG_FACTION                          = 0x06724, // 4.3.4 Build 15595
     SMSG_CHECK_FOR_BOTS                              = 0x00000, // Unknown
-    SMSG_CLEAR_COOLDOWN                              = 0x00000, // Unknown
+    SMSG_CLEAR_COOLDOWN                              = 0x059B4, // 4.3.4 Build 15595
     SMSG_CLEAR_TARGET                                = 0x04B26, // 4.3.4 Build 15595
     SMSG_CLIENTCACHE_VERSION                         = 0x02734, // 4.3.4 Build 15595
     SMSG_CLIENT_CONTROL_UPDATE                       = 0x02837, // 4.3.4 Build 15595
@@ -829,7 +829,7 @@ enum Opcodes
     SMSG_GUILD_PERMISSIONS_QUERY_RESULTS             = 0x034A3, // 4.3.4 Build 15595
     SMSG_GUILD_QUERY_RESPONSE                        = 0x00E06, // 4.3.4 Build 15595
     SMSG_GUILD_RANK                                  = 0x030B4, // 4.3.4 Build 15595
-    SMSG_GUILD_RANKS_UPDATE                          = 0x00000, // Unknown
+    SMSG_GUILD_RANKS_UPDATE                          = 0x05DA0, // 4.3.4 Build 15595
     SMSG_GUILD_REPUTATION_WEEKLY_CAP                 = 0x030B7, // 4.3.4 Build 15595
     SMSG_GUILD_REWARDS_LIST                          = 0x01DB0, // 4.3.4 Build 15595
     SMSG_GUILD_ROSTER                                = 0x03DA3, // 4.3.4 Build 15595
