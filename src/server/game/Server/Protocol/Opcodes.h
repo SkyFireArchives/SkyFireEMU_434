@@ -697,7 +697,7 @@ enum Opcodes
     SMSG_BUY_ITEM                                    = 0x00F26, // 4.3.4 Build 15595
     SMSG_CALENDAR_COMMAND_RESULT                     = 0x06F36, // 4.3.4 Build 15595
     SMSG_CALENDAR_SEND_CALENDAR                      = 0x00000, // Unknown
-    SMSG_CALENDAR_SEND_NUM_PENDING                   = 0x00000, // Unknown
+    SMSG_CALENDAR_SEND_NUM_PENDING                   = 0x00C17, // 4.3.4 Build 15595
     SMSG_CAMERA_SHAKE                                = 0x04214, // 4.3.4 Build 15595
     SMSG_CANCEL_AUTO_REPEAT                          = 0x06436, // 4.3.4 Build 15595
     SMSG_CANCEL_COMBAT                               = 0x04F04, // 4.3.4 Build 15595
