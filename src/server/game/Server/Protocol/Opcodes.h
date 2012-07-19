@@ -1064,7 +1064,7 @@ enum Opcodes
     SMSG_SPELL_GO                                    = 0x06E16, // 4.3.4 Build 15595
     SMSG_SPELL_START                                 = 0x06415, // 4.3.4 Build 15595
     SMSG_SPELL_UPDATE_CHAIN_TARGETS                  = 0x06006, // 4.3.4 Build 15595
-    SMSG_SPIRIT_HEALER_CONFIRM                       = 0x00000, // Unknown
+    SMSG_SPIRIT_HEALER_CONFIRM                       = 0x04917, // 4.3.4 Build 15595
     SMSG_STABLE_RESULT                               = 0x02204, // 4.3.4 Build 15595
     SMSG_STANDSTATE_UPDATE                           = 0x06F04, // 4.3.4 Build 15595
     SMSG_START_MIRROR_TIMER                          = 0x06824, // 4.3.4 Build 15595
