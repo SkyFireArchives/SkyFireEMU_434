@@ -203,7 +203,7 @@ enum Opcodes
     CMSG_GROUP_SWAP_SUB_GROUP                        = 0x00034, // 4.3.4 Build 15595
     CMSG_GROUP_UNINVITE                              = 0x00000, // Unknown
     CMSG_GROUP_UNINVITE_GUID                         = 0x00000, // Unknown
-    CMSG_GUILDFINDER_JOIN                            = 0x00000, // Unknown
+    CMSG_GUILDFINDER_JOIN                            = 0x068C5, // 4.3.4 Build 15595
     CMSG_GUILD_ACCEPT                                = 0x02531, // 4.3.4 Build 15595
     CMSG_GUILD_BANKER_ACTIVATE                       = 0x02E37, // 4.3.4 Build 15595
     CMSG_GUILD_BANK_BUY_TAB                          = 0x00000, // Unknown
@@ -811,6 +811,10 @@ enum Opcodes
     SMSG_GROUP_LIST                                  = 0x04C24, // 4.3.4 Build 15595
     SMSG_GROUP_SET_LEADER                            = 0x00526, // 4.3.4 Build 15595
     SMSG_GROUP_UNINVITE                              = 0x00000, // Unknown
+    SMSG_GUILDFINDER_BROWSE_UPDATED                  = 0x01DA3, // 4.3.4 Build 15595
+    SMSG_GUILDFINDER_MEMBERSHIP_LIST_UPDATED         = 0x01CA5, // 4.3.4 Build 15595
+    SMSG_GUILDFINDER_POST_UPDATED                    = 0x035B7, // 4.3.4 Build 15595
+    SMSG_GUILDFINDER_RECRUIT_LIST_UPDATED            = 0x01CB2, // 4.3.4 Build 15595
     SMSG_GUILDFINDER_SEARCH_RESULT                   = 0x00000, // Unknown
     SMSG_GUILD_ACHIEVEMENT_DATA                      = 0x054B7, // 4.3.4 Build 15595
     SMSG_GUILD_BANK_LIST                             = 0x078A5, // 4.3.4 Build 15595
