@@ -90,7 +90,7 @@ enum Opcodes
     CMSG_BUYBACK_ITEM                                = 0x06C17, // 4.3.4 Build 15595
     CMSG_BUY_BANK_SLOT                               = 0x00425, // 4.3.4 Build 15595
     CMSG_BUY_ITEM                                    = 0x00736, // 4.3.4 Build 15595
-    CMSG_CALENDAR_ADD_EVENT                          = 0x00000, // Unknown
+    CMSG_CALENDAR_ADD_EVENT                          = 0x00726, // Unknown
     CMSG_CALENDAR_ARENA_TEAM                         = 0x00000, // Unknown
     CMSG_CALENDAR_CONTEXT_EVENT_SIGNUP               = 0x00000, // Unknown
     CMSG_CALENDAR_COPY_EVENT                         = 0x00000, // Unknown

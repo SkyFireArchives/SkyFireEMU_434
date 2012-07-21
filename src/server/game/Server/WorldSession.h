@@ -752,7 +752,7 @@ class WorldSession
         void HandleTutorialClear(WorldPacket& recv_data);
         void HandleTutorialReset(WorldPacket& recv_data);
 
-        //Pet
+        // Pet
         void HandlePetAction(WorldPacket& recv_data);
         void HandlePetStopAttack(WorldPacket& recv_data);
         void HandlePetActionHelper(Unit* pet, uint64 guid1, uint16 spellid, uint16 flag, uint64 guid2);
@@ -775,7 +775,7 @@ class WorldSession
         void HandleTotemDestroyed(WorldPacket& recv_data);
         void HandleDismissCritter(WorldPacket& recv_data);
 
-        //Battleground
+        // Battleground
         void HandleBattlemasterHelloOpcode(WorldPacket& recv_data);
         void HandleBattlemasterJoinOpcode(WorldPacket& recv_data);
         void HandleBattlegroundPlayerPositionsOpcode(WorldPacket& recv_data);
@@ -917,6 +917,7 @@ class WorldSession
         void HandleRequestHotfix(WorldPacket& recvPacket);
         void HandleViolenceLevel(WorldPacket& recvPacket);
         int32 HandleEnableNagleAlgorithm();
+        void HandleObjectUpdateFailed(WorldPacket& recvPacket);
 
     private:
         void InitializeQueryCallbackParameters();

@@ -1766,14 +1766,14 @@ void WorldSession::HandleRequestHotfix(WorldPacket& recvPacket)
     ObjectGuid* guids = new ObjectGuid[count];
     for (uint32 i = 0; i < count; ++i)
     {
-        guids[i][0] = recvPacket.ReadBit();
-        guids[i][4] = recvPacket.ReadBit();
-        guids[i][7] = recvPacket.ReadBit();
-        guids[i][2] = recvPacket.ReadBit();
-        guids[i][5] = recvPacket.ReadBit();
-        guids[i][3] = recvPacket.ReadBit();
-        guids[i][6] = recvPacket.ReadBit();
-        guids[i][1] = recvPacket.ReadBit();
+        recvPacket.ReadByteMask(guids[i][0]);
+        recvPacket.ReadByteMask(guids[i][4]);
+        recvPacket.ReadByteMask(guids[i][7]);
+        recvPacket.ReadByteMask(guids[i][2]);
+        recvPacket.ReadByteMask(guids[i][5]);
+        recvPacket.ReadByteMask(guids[i][3]);
+        recvPacket.ReadByteMask(guids[i][6]);
+        recvPacket.ReadByteMask(guids[i][1]);
     }
 
     uint32 entry;
@@ -1811,4 +1811,29 @@ void WorldSession::HandleViolenceLevel(WorldPacket& recvPacket)
     recvPacket >> violenceLevel;
 
     // do something?
+}
+
+void WorldSession::HandleObjectUpdateFailed(WorldPacket& recvPacket)
+{
+     ObjectGuid guid;
+     recvPacket.ReadByteMask(guid[6]);
+     recvPacket.ReadByteMask(guid[7]);
+     recvPacket.ReadByteMask(guid[4]);
+     recvPacket.ReadByteMask(guid[0]);
+     recvPacket.ReadByteMask(guid[1]);
+     recvPacket.ReadByteMask(guid[5]);
+     recvPacket.ReadByteMask(guid[3]);
+     recvPacket.ReadByteMask(guid[2]);
+
+     recvPacket.ReadByteSeq(guid[6]);
+     recvPacket.ReadByteSeq(guid[7]);
+     recvPacket.ReadByteSeq(guid[2]);
+     recvPacket.ReadByteSeq(guid[3]);
+     recvPacket.ReadByteSeq(guid[1]);
+     recvPacket.ReadByteSeq(guid[4]);
+     recvPacket.ReadByteSeq(guid[0]);
+     recvPacket.ReadByteSeq(guid[5]);
+
+     WorldObject* obj = ObjectAccessor::GetWorldObject(*GetPlayer(), guid);
+     sLog->outError("Object update failed for object "UI64FMTD" (%s) for player %s (%u)", uint64(guid), obj ? obj->GetName() : "object-not-found", GetPlayerName(), GetGuidLow());
 }
