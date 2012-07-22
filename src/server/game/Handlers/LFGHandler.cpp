@@ -112,17 +112,36 @@ void WorldSession::HandleLfgProposalResultOpcode(WorldPacket& recv_data)
 
 void WorldSession::HandleLfgSetRolesOpcode(WorldPacket& recv_data)
 {
-    uint8 roles;
+    uint32 roles;
     recv_data >> roles;                                    // Player Group Roles
-    uint64 guid = GetPlayer()->GetGUID();
+
+    ObjectGuid guid;
+    recv_data.ReadByteMask(guid[2]);
+    recv_data.ReadByteMask(guid[6]);
+    recv_data.ReadByteMask(guid[3]);
+    recv_data.ReadByteMask(guid[7]);
+    recv_data.ReadByteMask(guid[5]);
+    recv_data.ReadByteMask(guid[1]);
+    recv_data.ReadByteMask(guid[0]);
+    recv_data.ReadByteMask(guid[4]);
+    
+    recv_data.ReadByteSeq(guid[6]);
+    recv_data.ReadByteSeq(guid[4]);
+    recv_data.ReadByteSeq(guid[1]);
+    recv_data.ReadByteSeq(guid[3]);
+    recv_data.ReadByteSeq(guid[0]);
+    recv_data.ReadByteSeq(guid[5]);
+    recv_data.ReadByteSeq(guid[2]);
+    recv_data.ReadByteSeq(guid[7]);
+    
     Group* grp = GetPlayer()->GetGroup();
     if (!grp)
     {
-        sLog->outDebug(LOG_FILTER_NETWORKIO, "CMSG_LFG_SET_ROLES [" UI64FMTD "] Not in group", guid);
+        sLog->outDebug(LOG_FILTER_NETWORKIO, "CMSG_LFG_SET_ROLES [" UI64FMTD "] Not in group", uint64(guid));
         return;
     }
     uint64 gguid = grp->GetGUID();
-    sLog->outDebug(LOG_FILTER_NETWORKIO, "CMSG_LFG_SET_ROLES: Group [" UI64FMTD "], Player [" UI64FMTD "], Roles: %u", gguid, guid, roles);
+    sLog->outDebug(LOG_FILTER_NETWORKIO, "CMSG_LFG_SET_ROLES: Group [" UI64FMTD "], Player [" UI64FMTD "], Roles: %u", gguid, uint64(guid), roles);
     sLFGMgr->UpdateRoleCheck(gguid, guid, roles);
 }
 

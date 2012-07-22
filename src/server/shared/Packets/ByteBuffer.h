@@ -667,6 +667,16 @@ class ByteBuffer
             append(packGUID, size);
         }
 
+        void appendSpecialString(std::string string)
+        {
+            append(string.c_str(), string.length());
+        }
+
+        void appendSpecialString(char* string)
+        {
+            append(string, strlen(string));
+        }
+
         void put(size_t pos, const uint8 *src, size_t cnt)
         {
             if (pos + cnt > size())

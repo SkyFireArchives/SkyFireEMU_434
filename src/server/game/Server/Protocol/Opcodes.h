@@ -192,15 +192,14 @@ enum Opcodes
     CMSG_GOSSIP_HELLO                                = 0x04525, // 4.3.4 Build 15595
     CMSG_GOSSIP_SELECT_OPTION                        = 0x00216, // 4.3.4 Build 15595
     CMSG_GRANT_LEVEL                                 = 0x00000, // Unknown
-    CMSG_GROUP_ACCEPT                                = 0x00000, // Unknown
+    CMSG_GROUP_INVITE_RESPONSE                       = 0x00410, // 4.3.4 Build 15595
     CMSG_GROUP_ASSISTANT_LEADER                      = 0x06025, // 4.3.4 Build 15595
     CMSG_GROUP_CANCEL                                = 0x04D25, // 4.3.4 Build 15595
     CMSG_GROUP_CHANGE_SUB_GROUP                      = 0x04124, // 4.3.4 Build 15595
-    CMSG_GROUP_DECLINE                               = 0x00000, // Unknown
     CMSG_GROUP_DISBAND                               = 0x02804, // 4.3.4 Build 15595
     CMSG_GROUP_INVITE                                = 0x00513, // 4.3.4 Build 15595
     CMSG_GROUP_RAID_CONVERT                          = 0x06E27, // 4.3.4 Build 15595
-    CMSG_GROUP_SET_LEADER                            = 0x00526, // 4.3.4 Build 15595
+    CMSG_GROUP_SET_LEADER                            = 0x04C17, // 4.3.4 Build 15595
     CMSG_GROUP_SWAP_SUB_GROUP                        = 0x00034, // 4.3.4 Build 15595
     CMSG_GROUP_UNINVITE                              = 0x00000, // Unknown
     CMSG_GROUP_UNINVITE_GUID                         = 0x02E07, // 4.3.4 Build 15595
@@ -617,7 +616,8 @@ enum Opcodes
     MSG_RAID_READY_CHECK                             = 0x02304, // 4.3.4 Build 15595
     MSG_RAID_READY_CHECK_CONFIRM                     = 0x04F05, // 4.3.4 Build 15595
     MSG_RAID_READY_CHECK_FINISHED                    = 0x02E15, // 4.3.4 Build 15595
-    MSG_RAID_TARGET_UPDATE                           = 0x00000, // Unknown
+    MSG_RAID_ROLE_CHECK                              = 0x00430, // 4.3.4 Build 15595
+    MSG_RAID_TARGET_UPDATE                           = 0x02C36, // 4.3.4 Build 15595
     MSG_RANDOM_ROLL                                  = 0x00905, // 4.3.4 Build 15595
     MSG_SAVE_GUILD_EMBLEM                            = 0x02404, // 4.3.4 Build 15595
     MSG_SET_DUNGEON_DIFFICULTY                       = 0x04925, // 4.3.4 Build 15595
