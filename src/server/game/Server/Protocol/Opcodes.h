@@ -207,7 +207,7 @@ enum Opcodes
     CMSG_GUILD_ACCEPT                                = 0x02531, // 4.3.4 Build 15595
     CMSG_GUILD_BANKER_ACTIVATE                       = 0x02E37, // 4.3.4 Build 15595
     CMSG_GUILD_BANK_BUY_TAB                          = 0x00000, // Unknown
-    CMSG_GUILD_BANK_DEPOSIT_MONEY                    = 0x00000, // Unknown
+    CMSG_GUILD_BANK_DEPOSIT_MONEY                    = 0x00707, // 4.3.4 Build 15595
     CMSG_GUILD_BANK_NOTE                             = 0x00000, // Unknown
     CMSG_GUILD_BANK_QUERY_TAB                        = 0x02E35, // 4.3.4 Build 15595
     CMSG_GUILD_BANK_REM_MONEY_WITHDRAW_QUERY         = 0x01225, // 4.3.4 Build 15595
@@ -263,10 +263,11 @@ enum Opcodes
     CMSG_LOOT_MONEY                                  = 0x06227, // 4.3.4 Build 15595
     CMSG_LOOT_RELEASE                                = 0x02007, // 4.3.4 Build 15595
     CMSG_LOOT_ROLL                                   = 0x06934, // 4.3.4 Build 15595
+    CMSG_MAIL_SEND                                   = 0x00523, // 4.3.4 Build 15595
     CMSG_MAIL_CREATE_TEXT_ITEM                       = 0x00B14, // 4.3.4 Build 15595
     CMSG_MAIL_DELETE                                 = 0x06104, // 4.3.4 Build 15595
-    CMSG_MAIL_MARK_AS_READ                           = 0x00000, // Unknown
-    CMSG_MAIL_RETURN_TO_SENDER                       = 0x00000, // Unknown
+    CMSG_MAIL_MARK_AS_READ                           = 0x00C07, // 4.3.4 Build 15595
+    CMSG_MAIL_RETURN_TO_SENDER                       = 0x00816, // 4.3.4 Build 15595
     CMSG_MAIL_TAKE_ITEM                              = 0x02B06, // 4.3.4 Build 15595
     CMSG_MAIL_TAKE_MONEY                             = 0x04034, // 4.3.4 Build 15595
     CMSG_MEETINGSTONE_INFO                           = 0x00000, // Unknown
@@ -414,7 +415,7 @@ enum Opcodes
     CMSG_SOCKET_GEMS                                 = 0x02F04, // 4.3.4 Build 15595
     CMSG_SPELLCLICK                                  = 0x00805, // 4.3.4 Build 15595
     CMSG_SPIRIT_HEALER_ACTIVATE                      = 0x02E26, // 4.3.4 Build 15595
-    CMSG_SPLIT_ITEM                                  = 0x00000, // Unknown
+    CMSG_SPLIT_ITEM                                  = 0x00F17, // 4.3.4 Build 15595
     CMSG_STANDSTATECHANGE                            = 0x00535, // 4.3.4 Build 15595
     CMSG_START_QUEST                                 = 0x00000, // Unknown
     CMSG_STOP_DANCE                                  = 0x02907, // 4.3.4 Build 15595
@@ -467,7 +468,7 @@ enum Opcodes
     MSG_GM_BIND_OTHER                                = 0x00000, // Unknown
     MSG_GM_SHOWLABEL                                 = 0x00000, // Unknown
     MSG_GM_SUMMON                                    = 0x00000, // Unknown
-    MSG_GUILD_BANK_LOG_QUERY                         = 0x030B2, // 4.3.4 Build 15595
+    MSG_GUILD_BANK_LOG_QUERY                         = 0x03224, // 4.3.4 Build 15595
     MSG_GUILD_BANK_MONEY_WITHDRAWN                   = 0x00000, // Unknown
     MSG_GUILD_BANK_REM_MONEY_WITHDRAW_QUERY          = 0x01225, // 4.3.4 Build 15595
     MSG_GUILD_EVENT_LOG_QUERY                        = 0x010B2, // 4.3.4 Build 15595

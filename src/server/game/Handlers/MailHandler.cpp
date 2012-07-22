@@ -33,22 +33,76 @@
 
 void WorldSession::HandleSendMail(WorldPacket & recv_data)
 {
-    uint64 mailbox, unk3;
+    sLog->outString("Recieved CMSG_MAIL_SEND opcode");
+    uint64 money, COD;
     std::string receiver, subject, body;
-    uint32 unk1, unk2, money, COD;
-    uint8 unk4;
-    recv_data >> mailbox;
-    recv_data >> receiver;
+    uint32 unk1, unk2;
+    
+    uint16 bodyLength, subjectLength, recieverLength, items_count;
 
-    recv_data >> subject;
+    recv_data >> unk1 >> unk2;
+    recv_data >> COD >> money;
+    
+    bodyLength = recv_data.ReadBits(12);
+    subjectLength = recv_data.ReadBits(9);
+    items_count = recv_data.ReadBits(5);
 
-    recv_data >> body;
+    ObjectGuid itemGUIDs[items_count], mailbox;
+        
+    recv_data.ReadByteMask(mailbox[0]);
+    
+    for (uint8 i = 0; i < items_count; ++i)
+    {
+        recv_data.ReadByteMask(itemGUIDs[i][2]);
+        recv_data.ReadByteMask(itemGUIDs[i][6]);
+        recv_data.ReadByteMask(itemGUIDs[i][3]);
+        recv_data.ReadByteMask(itemGUIDs[i][7]);
+        recv_data.ReadByteMask(itemGUIDs[i][1]);
+        recv_data.ReadByteMask(itemGUIDs[i][0]);
+        recv_data.ReadByteMask(itemGUIDs[i][4]);
+        recv_data.ReadByteMask(itemGUIDs[i][5]);
+    }
 
-    recv_data >> unk1;                                      // stationery?
-    recv_data >> unk2;                                      // 0x00000000
+    recv_data.ReadByteMask(mailbox[3]);
+    recv_data.ReadByteMask(mailbox[4]);
 
-    uint8 items_count;
-    recv_data >> items_count;                               // attached items count
+    recieverLength = recv_data.ReadBits(7);
+
+    recv_data.ReadByteMask(mailbox[2]);
+    recv_data.ReadByteMask(mailbox[6]);
+    recv_data.ReadByteMask(mailbox[1]);
+    recv_data.ReadByteMask(mailbox[7]);
+    recv_data.ReadByteMask(mailbox[5]);
+    
+    recv_data.ReadByteSeq(mailbox[4]);
+
+    for (uint8 i = 0; i < items_count; ++i)
+    {
+        recv_data.ReadByteSeq(itemGUIDs[i][6]);
+        recv_data.ReadByteSeq(itemGUIDs[i][1]);
+        recv_data.ReadByteSeq(itemGUIDs[i][7]);
+        recv_data.ReadByteSeq(itemGUIDs[i][2]);
+        recv_data.read_skip<uint8>();
+        recv_data.ReadByteSeq(itemGUIDs[i][3]);
+        recv_data.ReadByteSeq(itemGUIDs[i][0]);
+        recv_data.ReadByteSeq(itemGUIDs[i][4]);
+        recv_data.ReadByteSeq(itemGUIDs[i][5]);
+    }
+    
+    recv_data.ReadByteSeq(mailbox[7]);
+    recv_data.ReadByteSeq(mailbox[3]);
+    recv_data.ReadByteSeq(mailbox[6]);
+    recv_data.ReadByteSeq(mailbox[5]);
+
+    subject = recv_data.ReadString(subjectLength);
+
+    receiver = recv_data.ReadString(recieverLength);
+
+    recv_data.ReadByteSeq(mailbox[2]);
+    recv_data.ReadByteSeq(mailbox[0]);
+
+    body = recv_data.ReadString(bodyLength);
+    recv_data.ReadByteSeq(mailbox[1]);
 
     if (items_count > MAX_MAIL_ITEMS)                       // client limit
     {
@@ -56,20 +110,6 @@ void WorldSession::HandleSendMail(WorldPacket & recv_data)
         recv_data.rfinish();                   // set to end to avoid warnings spam
         return;
     }
-
-    uint64 itemGUIDs[MAX_MAIL_ITEMS];
-
-    for (uint8 i = 0; i < items_count; ++i)
-    {
-        recv_data.read_skip<uint8>();                       // item slot in mail, not used
-        recv_data >> itemGUIDs[i];
-    }
-
-    recv_data >> money >> COD;                              // money and cod
-    recv_data >> unk3;                                      // const 0
-    recv_data >> unk4;                                      // const 0
-
-    // packet read complete, now do check
 
     if (!GetPlayer()->GetGameObjectIfCanInteractWith(mailbox, GAMEOBJECT_TYPE_MAILBOX))
         return;
