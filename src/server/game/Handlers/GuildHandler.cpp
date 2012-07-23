@@ -614,3 +614,17 @@ void WorldSession::HandleGuildQueryXPOpcode(WorldPacket& recv_data)
     playerGuid = BitConverter::ToUInt64(bytes);
     */
 }
+
+void WorldSession::HandleGFOpen(WorldPacket& recv_data)
+{
+}
+
+void WorldSession::HandleGFBrowseGuilds(WorldPacket& recv_data)
+{
+    recv_data.hexlike();
+}
+
+void WorldSession::HandleGFJoin(WorldPacket& recv_data)
+{
+    recv_data.hexlike();
+}

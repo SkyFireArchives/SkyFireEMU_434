@@ -311,9 +311,6 @@ class spell_dru_swift_flight_passive : public SpellScriptLoader
 
             void CalculateAmount(AuraEffect const* /*aurEff*/, int32 & amount, bool & /*canBeRecalculated*/)
             {
-                if (Player* caster = GetCaster()->ToPlayer())
-                    if (caster->Has310Flyer(false))
-                        amount = 310;
             }
 
             void Register()

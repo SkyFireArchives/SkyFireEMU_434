@@ -203,7 +203,9 @@ enum Opcodes
     CMSG_GROUP_SWAP_SUB_GROUP                        = 0x00034, // 4.3.4 Build 15595
     CMSG_GROUP_UNINVITE                              = 0x00000, // Unknown
     CMSG_GROUP_UNINVITE_GUID                         = 0x02E07, // 4.3.4 Build 15595
+    CMSG_GUILDFINDER_BROWSE_GUILDS                   = 0x00548, // 4.3.4 Build 15595
     CMSG_GUILDFINDER_JOIN                            = 0x068C5, // 4.3.4 Build 15595
+    CMSG_GUILDFINDER_OPEN                            = 0x01230, // 4.3.4 Build 15595
     CMSG_GUILD_ACCEPT                                = 0x02531, // 4.3.4 Build 15595
     CMSG_GUILD_BANKER_ACTIVATE                       = 0x02E37, // 4.3.4 Build 15595
     CMSG_GUILD_BANK_BUY_TAB                          = 0x00000, // Unknown
@@ -237,7 +239,7 @@ enum Opcodes
     CMSG_INSTANCE_LOCK_WARNING_RESPONSE              = 0x06234, // 4.3.4 Build 15595
     CMSG_ITEM_REFUND                                 = 0x06134, // 4.3.4 Build 15595
     CMSG_ITEM_REFUND_INFO                            = 0x02206, // 4.3.4 Build 15595
-    CMSG_ITEM_TEXT_QUERY                             = 0x00000, // Unknown
+    CMSG_ITEM_TEXT_QUERY                             = 0x02406, // 4.3.4 Build 15595
     CMSG_JOIN_CHANNEL                                = 0x00156, // 4.3.4 Build 15595
     CMSG_KEEP_ALIVE                                  = 0x00015, // 4.3.4 Build 15595
     CMSG_LEARN_PREVIEW_TALENTS                       = 0x02415, // 4.3.4 Build 15595
@@ -471,7 +473,7 @@ enum Opcodes
     MSG_GUILD_BANK_LOG_QUERY                         = 0x03224, // 4.3.4 Build 15595
     MSG_GUILD_BANK_MONEY_WITHDRAWN                   = 0x00000, // Unknown
     MSG_GUILD_BANK_REM_MONEY_WITHDRAW_QUERY          = 0x01225, // 4.3.4 Build 15595
-    MSG_GUILD_EVENT_LOG_QUERY                        = 0x010B2, // 4.3.4 Build 15595
+    MSG_GUILD_EVENT_LOG_QUERY                        = 0x01220, // 4.3.4 Build 15595
     MSG_GUILD_PERMISSIONS                            = 0x03022, // 4.3.4 Build 15595
     MSG_INSPECT_ARENA_TEAMS                          = 0x02704, // 4.3.4 Build 15595
     MSG_LIST_STABLED_PETS                            = 0x00834, // 4.3.4 Build 15595
