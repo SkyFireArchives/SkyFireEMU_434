@@ -1561,7 +1561,7 @@ void WorldSession::HandleReforgeItem(WorldPacket& recv_data)
 
     uint32 money = item->GetTemplate()->SellPrice;
 
-    if(!GetPlayer()->HasEnoughMoney((int32)money))
+    if(!GetPlayer()->HasEnoughMoney((int64)money))
         return; // Cheating?
 
     GetPlayer()->ModifyMoney(-int32(money));
