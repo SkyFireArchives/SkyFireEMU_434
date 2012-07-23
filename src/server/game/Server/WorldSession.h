@@ -298,6 +298,7 @@ class WorldSession
         void SendTrainerList(uint64 guid, const std::string& strTitle);
         void SendListInventory(uint64 guid);
         void SendShowBank(uint64 guid);
+        void SendShowReforge(uint64 guid);
         void SendTabardVendorActivate(uint64 guid);
         void SendSpiritResurrect();
         void SendBindPoint(Creature* npc);
@@ -914,6 +915,7 @@ class WorldSession
         void HandleEjectPassenger(WorldPacket& data);
         void HandleEnterPlayerVehicle(WorldPacket& data);
         void HandleUpdateProjectilePosition(WorldPacket& recvPacket);
+        void HandleReforgeItem(WorldPacket& recv_data);
         void HandleRequestHotfix(WorldPacket& recvPacket);
         void HandleViolenceLevel(WorldPacket& recvPacket);
         int32 HandleEnableNagleAlgorithm();

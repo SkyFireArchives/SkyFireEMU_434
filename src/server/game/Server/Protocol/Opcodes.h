@@ -457,6 +457,7 @@ enum Opcodes
     CMSG_WORLD_TELEPORT                              = 0x03330, // 4.3.4 Build 15595
     CMSG_WRAP_ITEM                                   = 0x00000, // Unknown
     CMSG_ZONEUPDATE                                  = 0x04F37, // 4.3.4 Build 15595
+    CMSG_REFORGE_ITEM                                = 0x0331A, // 4.3.4 Build 15595
     // MSG
     MSG_AUCTION_HELLO                                = 0x02307, // 4.3.4 Build 15595
     MSG_BATTLEGROUND_PLAYER_POSITIONS                = 0x00000, // Unknown
@@ -1135,6 +1136,7 @@ enum Opcodes
     SMSG_VOID_STORAGE_TRANSFER_CHANGES               = 0x051A6, // 4.3.4 Build 15595
     SMSG_VOID_STORAGE_CONTENTS                       = 0x075B4, // 4.3.4 Build 15595
     SMSG_VOID_ITEM_SWAP_RESPONSE                     = 0x078A2, // 4.3.4 Build 15595
+    SMSG_REFORGE_RESULT                              = 0x058A4, // 4.3.4 Build 15595
 };
 
 extern void InitOpcodeTable();
