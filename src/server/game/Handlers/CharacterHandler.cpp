@@ -2010,7 +2010,7 @@ void WorldSession::HandleCharSetPosition(WorldPacket& recv_data)
 
     ObjectGuid* guids;
     if (charactersCount)
-        guid = new ObjectGuid[charactersCount];
+        guids = new ObjectGuid[charactersCount];
 
     for (uint8 i = 0; i < charactersCount; ++i)
     {

@@ -994,7 +994,7 @@ public:
         if (handler->HasLowerSecurity(target, 0))
             return false;
 
-        int64 addmoney = atoi((char*)args);
+        int32 addmoney = atoi((char*)args);
 
         uint64 moneyuser = target->GetMoney();
 
@@ -1016,6 +1016,7 @@ public:
                 if (newmoney > MAX_MONEY_AMOUNT)
                     newmoney = MAX_MONEY_AMOUNT;
 
+                handler->PSendSysMessage(LANG_YOU_TAKE_MONEY, abs(addmoney), handler->GetNameLink(target).c_str());
                 handler->PSendSysMessage(LANG_YOU_TAKE_MONEY, abs(addmoney), handler->GetNameLink(target).c_str());
                 if (handler->needReportToTarget(target))
                     (ChatHandler(target)).PSendSysMessage(LANG_YOURS_MONEY_TAKEN, handler->GetNameLink().c_str(), abs(addmoney));
