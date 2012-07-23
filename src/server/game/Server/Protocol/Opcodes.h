@@ -459,6 +459,7 @@ enum Opcodes
     CMSG_WRAP_ITEM                                   = 0x00000, // Unknown
     CMSG_ZONEUPDATE                                  = 0x04F37, // 4.3.4 Build 15595
     CMSG_REFORGE_ITEM                                = 0x0331A, // 4.3.4 Build 15595
+    CMSG_TRANSMOGRIFY_ITEMS                          = 0x03B0E, // 4.3.4 Build 15595
     // MSG
     MSG_AUCTION_HELLO                                = 0x02307, // 4.3.4 Build 15595
     MSG_BATTLEGROUND_PLAYER_POSITIONS                = 0x00000, // Unknown
