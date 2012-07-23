@@ -1415,5 +1415,8 @@ void InitOpcodes()
      DEFINE_OPCODE_HANDLER(MSG_GET_CALENDAR,                             STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(CMSG_SET_CHARACTER_POSITION,                  STATUS_AUTHED,   PROCESS_INPLACE,       &WorldSession::HandleCharSetPosition           );
      DEFINE_OPCODE_HANDLER(CMSG_REFORGE_ITEM,                            STATUS_LOGGEDIN, PROCESS_INPLACE,       &WorldSession::HandleReforgeItem               );
+     DEFINE_OPCODE_HANDLER(CMSG_GUILDFINDER_BROWSE_GUILDS,               STATUS_LOGGEDIN, PROCESS_INPLACE,       &WorldSession::HandleGFBrowseGuilds            );
+     DEFINE_OPCODE_HANDLER(CMSG_GUILDFINDER_JOIN,                        STATUS_LOGGEDIN, PROCESS_INPLACE,       &WorldSession::HandleGFJoin                    );
+     DEFINE_OPCODE_HANDLER(CMSG_GUILDFINDER_OPEN,                        STATUS_LOGGEDIN, PROCESS_INPLACE,       &WorldSession::HandleGFOpen                    );
 #undef DEFINE_OPCODE_HANDLER
 };

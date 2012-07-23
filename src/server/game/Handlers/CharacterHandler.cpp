@@ -2008,8 +2008,9 @@ void WorldSession::HandleCharSetPosition(WorldPacket& recv_data)
 {
     uint32 charactersCount = recv_data.ReadBits(10);
 
-    ObjectGuid guids[charactersCount];
-    uint8 positions[charactersCount];
+    ObjectGuid* guids;
+    if (charactersCount)
+        guid = new ObjectGuid[charactersCount];
 
     for (uint8 i = 0; i < charactersCount; ++i)
     {
@@ -2033,12 +2034,14 @@ void WorldSession::HandleCharSetPosition(WorldPacket& recv_data)
         recv_data.ReadByteSeq(guids[i][0]);
         recv_data.ReadByteSeq(guids[i][3]);
 
-        positions[i] = recv_data.ReadUInt8() / 10;
+        uint8 position = recv_data.ReadUInt8() / 10;
 
         recv_data.ReadByteSeq(guids[i][2]);
         recv_data.ReadByteSeq(guids[i][7]);
 
-        trans->PAppend("UPDATE characters SET slot = '%u' WHERE guid = '%u'", positions[i], uint64(guids[i]));
+        trans->PAppend("UPDATE characters SET slot = '%u' WHERE guid = '%u'", position, uint64(guids[i]));
     }
+    if (charactersCount)
+        delete guids;
     CharacterDatabase.CommitTransaction(trans);
 }

@@ -4449,17 +4449,14 @@ void Spell::EffectScriptEffect(SpellEffIndex effIndex)
                                 unitTarget->CastSpell(unitTarget, 75620, true);
                         }break;
                     case 300:
+                    {
+                        if (canFly)
                         {
-                            if (canFly)
-                            {
-                                if (unitTarget->ToPlayer()->Has310Flyer(false))
-                                    unitTarget->CastSpell(unitTarget, 76153, true);
-                                else
-                                    unitTarget->CastSpell(unitTarget, 75618, true);
-                            }
-                            else
-                                unitTarget->CastSpell(unitTarget, 75620, true);
-                        }break;
+                            unitTarget->CastSpell(unitTarget, 75618, true);
+                        }
+                        else
+                            unitTarget->CastSpell(unitTarget, 75620, true);
+                    }break;
                     }
                     return;
                 }
@@ -4476,10 +4473,7 @@ void Spell::EffectScriptEffect(SpellEffIndex effIndex)
                     {
                         if (skillval >= 300)
                         {
-                            if (unitTarget->ToPlayer()->Has310Flyer(false))
-                                unitTarget->CastSpell(unitTarget, 76154, true);
-                            else
-                                unitTarget->CastSpell(unitTarget, 75972, true);
+                            unitTarget->CastSpell(unitTarget, 75972, true);
                         }
                         else
                             unitTarget->CastSpell(unitTarget, 75957, true);

@@ -830,6 +830,11 @@ class WorldSession
         void SendLfgOfferContinue(uint32 dungeonEntry);
         void SendLfgTeleportError(uint8 err);
 
+        // Guild Finder
+        void HandleGFOpen(WorldPacket& recv_data);
+        void HandleGFBrowseGuilds(WorldPacket& recv_data);
+        void HandleGFJoin(WorldPacket& recv_data);
+
         // Arena Team
         void HandleInspectArenaTeamsOpcode(WorldPacket& recv_data);
         void HandleArenaTeamQueryOpcode(WorldPacket& recv_data);

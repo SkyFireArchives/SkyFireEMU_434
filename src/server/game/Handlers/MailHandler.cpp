@@ -47,7 +47,11 @@ void WorldSession::HandleSendMail(WorldPacket & recv_data)
     subjectLength = recv_data.ReadBits(9);
     items_count = recv_data.ReadBits(5);
 
-    ObjectGuid itemGUIDs[items_count], mailbox;
+    ObjectGuid* itemGUIDs;
+    if (items_count)
+        itemGUIDs = new ObjectGuid[items_count];
+
+    ObjectGuid mailbox;
         
     recv_data.ReadByteMask(mailbox[0]);
     
@@ -108,20 +112,31 @@ void WorldSession::HandleSendMail(WorldPacket & recv_data)
     {
         GetPlayer()->SendMailResult(0, MAIL_SEND, MAIL_ERR_TOO_MANY_ATTACHMENTS);
         recv_data.rfinish();                   // set to end to avoid warnings spam
+        delete itemGUIDs;
         return;
     }
 
     if (!GetPlayer()->GetGameObjectIfCanInteractWith(mailbox, GAMEOBJECT_TYPE_MAILBOX))
+    {
+        if (items_count)
+            delete itemGUIDs;
         return;
+    }
 
     if (receiver.empty())
+    {
+        if (items_count)
+            delete itemGUIDs;
         return;
+    }
 
     Player* player = _player;
 
     if (player->getLevel() < sWorld->getIntConfig(CONFIG_MAIL_LEVEL_REQ))
     {
         SendNotification(GetSkyfireString(LANG_MAIL_SENDER_REQ), sWorld->getIntConfig(CONFIG_MAIL_LEVEL_REQ));
+        if (items_count)
+            delete itemGUIDs;
         return;
     }
 
@@ -134,6 +149,8 @@ void WorldSession::HandleSendMail(WorldPacket & recv_data)
         sLog->outDetail("Player %u is sending mail to %s (GUID: not existed!) with subject %s and body %s includes %u items, %u copper and %u COD copper with unk1 = %u, unk2 = %u",
             player->GetGUIDLow(), receiver.c_str(), subject.c_str(), body.c_str(), items_count, money, COD, unk1, unk2);
         player->SendMailResult(0, MAIL_SEND, MAIL_ERR_RECIPIENT_NOT_FOUND);
+        if (items_count)
+            delete itemGUIDs;
         return;
     }
 
@@ -142,6 +159,8 @@ void WorldSession::HandleSendMail(WorldPacket & recv_data)
     if (player->GetGUID() == rc)
     {
         player->SendMailResult(0, MAIL_SEND, MAIL_ERR_CANNOT_SEND_TO_SELF);
+        if (items_count)
+            delete itemGUIDs;
         return;
     }
 
@@ -152,6 +171,8 @@ void WorldSession::HandleSendMail(WorldPacket & recv_data)
     if (!player->HasEnoughMoney(reqmoney))
     {
         player->SendMailResult(0, MAIL_SEND, MAIL_ERR_NOT_ENOUGH_MONEY);
+        if (items_count)
+            delete itemGUIDs;
         return;
     }
 
@@ -185,6 +206,8 @@ void WorldSession::HandleSendMail(WorldPacket & recv_data)
     if (mails_count > 100)
     {
         player->SendMailResult(0, MAIL_SEND, MAIL_ERR_RECIPIENT_CAP_REACHED);
+        if (items_count)
+            delete itemGUIDs;
         return;
     }
     // test the receiver's Faction... or all items are account bound
@@ -206,12 +229,16 @@ void WorldSession::HandleSendMail(WorldPacket & recv_data)
     if (!accountBound && !sWorld->getBoolConfig(CONFIG_ALLOW_TWO_SIDE_INTERACTION_MAIL) && player->GetTeam() != rc_team && AccountMgr::IsPlayerAccount(GetSecurity()))
     {
         player->SendMailResult(0, MAIL_SEND, MAIL_ERR_NOT_YOUR_TEAM);
+        if (items_count)
+            delete itemGUIDs;
         return;
     }
 
     if (receiveLevel < sWorld->getIntConfig(CONFIG_MAIL_LEVEL_REQ))
     {
         SendNotification(GetSkyfireString(LANG_MAIL_RECEIVER_REQ), sWorld->getIntConfig(CONFIG_MAIL_LEVEL_REQ));
+        if (items_count)
+            delete itemGUIDs;
         return;
     }
 
@@ -226,6 +253,8 @@ void WorldSession::HandleSendMail(WorldPacket & recv_data)
         if (!itemGUIDs[i])
         {
             player->SendMailResult(0, MAIL_SEND, MAIL_ERR_MAIL_ATTACHMENT_INVALID);
+            if (items_count)
+                delete itemGUIDs;
             return;
         }
 
@@ -235,36 +264,48 @@ void WorldSession::HandleSendMail(WorldPacket & recv_data)
         if (!item)
         {
             player->SendMailResult(0, MAIL_SEND, MAIL_ERR_MAIL_ATTACHMENT_INVALID);
+            if (items_count)
+                delete itemGUIDs;
             return;
         }
 
         if (!item->CanBeTraded(true))
         {
             player->SendMailResult(0, MAIL_SEND, MAIL_ERR_EQUIP_ERROR, EQUIP_ERR_MAIL_BOUND_ITEM);
+            if (items_count)
+                delete itemGUIDs;
             return;
         }
 
         if (item->IsBoundAccountWide() && item->IsSoulBound() && player->GetSession()->GetAccountId() != rc_account)
         {
             player->SendMailResult(0, MAIL_SEND, MAIL_ERR_EQUIP_ERROR, EQUIP_ERR_ARTEFACTS_ONLY_FOR_OWN_CHARACTERS);
+            if (items_count)
+                delete itemGUIDs;
             return;
         }
 
         if (item->GetTemplate()->Flags & ITEM_PROTO_FLAG_CONJURED || item->GetUInt32Value(ITEM_FIELD_DURATION))
         {
             player->SendMailResult(0, MAIL_SEND, MAIL_ERR_EQUIP_ERROR, EQUIP_ERR_MAIL_BOUND_ITEM);
+            if (items_count)
+                delete itemGUIDs;
             return;
         }
 
         if (COD && item->HasFlag(ITEM_FIELD_FLAGS, ITEM_FLAG_WRAPPED))
         {
             player->SendMailResult(0, MAIL_SEND, MAIL_ERR_CANT_SEND_WRAPPED_COD);
+            if (items_count)
+                delete itemGUIDs;
             return;
         }
 
         if (item->IsNotEmptyBag())
         {
             player->SendMailResult(0, MAIL_SEND, MAIL_ERR_EQUIP_ERROR, EQUIP_ERR_CAN_ONLY_DO_WITH_EMPTY_BAGS);
+            if (items_count)
+                delete itemGUIDs;
             return;
         }
 
@@ -327,6 +368,8 @@ void WorldSession::HandleSendMail(WorldPacket & recv_data)
 
     player->SaveInventoryAndGoldToDB(trans);
     CharacterDatabase.CommitTransaction(trans);
+    if (items_count)
+        delete itemGUIDs;
 }
 
 //called when mail is read
