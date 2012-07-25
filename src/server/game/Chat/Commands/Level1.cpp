@@ -100,9 +100,10 @@ bool ChatHandler::HandleNotifyCommand(const char* args)
     std::string str = GetSkyfireString(LANG_GLOBAL_NOTIFY);
     str += args;
 
-    WorldPacket data(SMSG_NOTIFICATION, (str.size()+1));
-    data << str;
-    sWorld->SendGlobalMessage(&data);
+    WorldPacket data(SMSG_NOTIFICATION, 2 + str.length());
+    data.WriteBits(str.length(), 13);
+    data.FlushBits();
+    data.append(str.c_str(), str.length());
 
     return true;
 }
@@ -116,9 +117,10 @@ bool ChatHandler::HandleGMNotifyCommand(const char* args)
     std::string str = GetSkyfireString(LANG_GM_NOTIFY);
     str += args;
 
-    WorldPacket data(SMSG_NOTIFICATION, (str.size()+1));
-    data << str;
-    sWorld->SendGlobalGMMessage(&data);
+    WorldPacket data(SMSG_NOTIFICATION, 2 + str.length());
+    data.WriteBits(str.length(), 13);
+    data.FlushBits();
+    data.append(str.c_str(), str.length());
 
     return true;
 }
