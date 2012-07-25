@@ -1130,7 +1130,7 @@ enum Opcodes
     SMSG_VOICE_SESSION_ROSTER_UPDATE                 = 0x02A17, // 4.3.4 Build 15595
     SMSG_VOICE_SET_TALKER_MUTED                      = 0x06E35, // 4.3.4 Build 15595
     SMSG_WARDEN_DATA                                 = 0x031A0, // 4.3.4 Build 15595
-    SMSG_WEATHER                                     = 0x06917, // 4.3.4 Build 15595
+    SMSG_WEATHER                                     = 0x02904, // 4.3.4 Build 15595
     SMSG_WEEKLY_SPELL_USAGE                          = 0x039B7, // 4.3.4 Build 15595
     SMSG_WHO                                         = 0x06907, // 4.3.4 Build 15595
     SMSG_WHOIS                                       = 0x06917, // 4.3.4 Build 15595

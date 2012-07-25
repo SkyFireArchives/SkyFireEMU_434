@@ -190,32 +190,36 @@ void WorldSession::HandleMoveWorldportAckOpcode()
     GetPlayer()->ProcessDelayedOperations();
 }
 
-void WorldSession::HandleMoveTeleportAck(WorldPacket& recv_data)
+void WorldSession::HandleMoveTeleportAck(WorldPacket& recvPacket)
 {
     sLog->outDebug(LOG_FILTER_NETWORKIO, "MSG_MOVE_TELEPORT_ACK");
 
+    ObjectGuid guid;
     uint32 flags, time;
-    recv_data >> flags >> time;
+    recvPacket >> flags >> time;
 
-    BitStream mask = recv_data.ReadBitStream(8);
-    ByteBuffer bytes(8, true);
+    guid[5] = recvPacket.ReadBit();
+    guid[0] = recvPacket.ReadBit();
+    guid[1] = recvPacket.ReadBit();
+    guid[6] = recvPacket.ReadBit();
+    guid[3] = recvPacket.ReadBit();
+    guid[7] = recvPacket.ReadBit();
+    guid[2] = recvPacket.ReadBit();
+    guid[4] = recvPacket.ReadBit();
 
-    if (mask[7]) bytes[4] = recv_data.ReadUInt8() ^ 1;
-    if (mask[6]) bytes[2] = recv_data.ReadUInt8() ^ 1;
-    if (mask[5]) bytes[7] = recv_data.ReadUInt8() ^ 1;
-    if (mask[3]) bytes[6] = recv_data.ReadUInt8() ^ 1;
-    if (mask[0]) bytes[5] = recv_data.ReadUInt8() ^ 1;
-    if (mask[2]) bytes[1] = recv_data.ReadUInt8() ^ 1;
-    if (mask[4]) bytes[3] = recv_data.ReadUInt8() ^ 1;
-    if (mask[1]) bytes[0] = recv_data.ReadUInt8() ^ 1;
+    recvPacket.ReadByteSeq(guid[4]);
+    recvPacket.ReadByteSeq(guid[2]);
+    recvPacket.ReadByteSeq(guid[7]);
+    recvPacket.ReadByteSeq(guid[6]);
+    recvPacket.ReadByteSeq(guid[5]);
+    recvPacket.ReadByteSeq(guid[1]);
+    recvPacket.ReadByteSeq(guid[3]);
+    recvPacket.ReadByteSeq(guid[0]);
 
-    uint64 guid = BitConverter::ToUInt64(bytes);
-
-    sLog->outStaticDebug("Guid " UI64FMTD, guid);
+    sLog->outStaticDebug("Guid " UI64FMTD, uint64(guid));
     sLog->outStaticDebug("Flags %u, time %u", flags, time/IN_MILLISECONDS);
 
-    Unit* mover = _player->m_mover;
-    Player* plMover = mover->GetTypeId() == TYPEID_PLAYER ? (Player*)mover : NULL;
+    Player* plMover = _player->m_mover->ToPlayer();
 
     if (!plMover || !plMover->IsBeingTeleportedNear())
         return;

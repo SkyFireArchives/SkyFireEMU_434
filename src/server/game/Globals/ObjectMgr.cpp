@@ -2382,8 +2382,8 @@ void ObjectMgr::LoadItemTemplates()
         itemTemplate.ItemLimitCategory = sparse->ItemLimitCategory;
         itemTemplate.HolidayId = sparse->HolidayId;
         itemTemplate.StatScalingFactor = sparse->StatScalingFactor;
-        itemTemplate.Field130 = sparse->Field130;
-        itemTemplate.Field131 = sparse->Field131;
+        itemTemplate.CurrencySubstitutionId = sparse->CurrencySubstitutionId;
+        itemTemplate.CurrencySubstitutionCount = sparse->CurrencySubstitutionCount;
         itemTemplate.ScriptId = 0;
         itemTemplate.FoodType = 0;
         itemTemplate.MinMoneyLoot = 0;
@@ -2427,7 +2427,7 @@ void ObjectMgr::LoadItemTemplates()
     //                                        117            118              119            120              121            122              123
                                              "SocketColor_1, SocketContent_1, SocketColor_2, SocketContent_2, SocketColor_3, SocketContent_3, SocketBonus, "
     //                                        124            125                  126       127                128        129                130       131
-                                             "GemProperties, ArmorDamageModifier, Duration, ItemLimitCategory, HolidayId, StatScalingFactor, Field130, Field131 "
+                                             "GemProperties, ArmorDamageModifier, Duration, ItemLimitCategory, HolidayId, StatScalingFactor, CurrencySubstitutionId, CurrencySubstitutionCount "
                                              "FROM item_template");
 
     if (result)
@@ -2532,8 +2532,8 @@ void ObjectMgr::LoadItemTemplates()
             itemTemplate.ItemLimitCategory = fields[127].GetUInt32();
             itemTemplate.HolidayId = fields[128].GetUInt32();
             itemTemplate.StatScalingFactor = fields[129].GetFloat();
-            itemTemplate.Field130 = fields[130].GetInt32();
-            itemTemplate.Field131 = fields[131].GetInt32();
+            itemTemplate.CurrencySubstitutionId = fields[130].GetInt32();
+            itemTemplate.CurrencySubstitutionCount = fields[131].GetInt32();
             itemTemplate.ScriptId = 0;
             itemTemplate.FoodType = 0;
             itemTemplate.MinMoneyLoot = 0;
