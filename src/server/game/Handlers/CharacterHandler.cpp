@@ -202,12 +202,6 @@ bool LoginQueryHolder::Initialize()
     return res;
 }
 
-struct charEnumInfo
-{
-    uint8 nameLenghts;
-    bool firstLogin;
-};
-
 void WorldSession::HandleCharEnum(PreparedQueryResult result)
 {
     uint32 charCount = 0;
