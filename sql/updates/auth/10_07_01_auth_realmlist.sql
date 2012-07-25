@@ -1,2 +1,2 @@
 ALTER TABLE `realmlist`
-ADD COLUMN `flags` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' AFTER `icon`;
+ADD COLUMN `flag` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' AFTER `icon`;
