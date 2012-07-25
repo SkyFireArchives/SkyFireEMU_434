@@ -1094,22 +1094,27 @@ void WorldSession::HandleMoveTimeSkippedOpcode(WorldPacket & recv_data)
 {
     sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: Received MSG_MOVE_TIME_SKIPPED");
 
-    BitStream mask = recv_data.ReadBitStream(8);
-
+    ObjectGuid guid;
     uint32 time;
     recv_data >> time;
 
-    ByteBuffer bytes(8, true);
-    recv_data.ReadXorByte(mask[3], bytes[7]);
-    recv_data.ReadXorByte(mask[1], bytes[1]);
-    recv_data.ReadXorByte(mask[7], bytes[2]);
-    recv_data.ReadXorByte(mask[6], bytes[4]);
-    recv_data.ReadXorByte(mask[2], bytes[3]);
-    recv_data.ReadXorByte(mask[4], bytes[6]);
-    recv_data.ReadXorByte(mask[5], bytes[0]);
-    recv_data.ReadXorByte(mask[0], bytes[5]);
+    guid[5] = recv_data.ReadBit();
+    guid[1] = recv_data.ReadBit();
+    guid[3] = recv_data.ReadBit();
+    guid[7] = recv_data.ReadBit();
+    guid[6] = recv_data.ReadBit();
+    guid[0] = recv_data.ReadBit();
+    guid[4] = recv_data.ReadBit();
+    guid[2] = recv_data.ReadBit();
 
-    uint64 guid = BitConverter::ToUInt64(bytes);
+    recv_data.ReadByteSeq(guid[7]);
+    recv_data.ReadByteSeq(guid[1]);
+    recv_data.ReadByteSeq(guid[2]);
+    recv_data.ReadByteSeq(guid[4]);
+    recv_data.ReadByteSeq(guid[3]);
+    recv_data.ReadByteSeq(guid[6]);
+    recv_data.ReadByteSeq(guid[0]);
+    recv_data.ReadByteSeq(guid[5]);
 
     //TODO!
 
