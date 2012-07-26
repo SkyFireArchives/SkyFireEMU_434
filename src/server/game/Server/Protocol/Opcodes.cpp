@@ -967,8 +967,8 @@ void InitOpcodes()
      DEFINE_OPCODE_HANDLER(MSG_MOVE_FORCE_FLIGHT_SPEED_CHANGE_ACK,       STATUS_LOGGEDIN, PROCESS_THREADSAFE,   &WorldSession::HandleForceSpeedChangeAck       );
      DEFINE_OPCODE_HANDLER(MSG_MOVE_SET_FLIGHT_BACK_SPEED,               STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_ServerSide               );
      DEFINE_OPCODE_HANDLER(MSG_MOVE_FORCE_FLIGHT_BACK_SPEED_CHANGE_ACK,  STATUS_LOGGEDIN, PROCESS_THREADSAFE,   &WorldSession::HandleForceSpeedChangeAck       );
-     //DEFINE_OPCODE_HANDLER(SMSG_SPLINE_SET_FLIGHT_SPEED,                 STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_ServerSide               );
-     //DEFINE_OPCODE_HANDLER(SMSG_SPLINE_SET_FLIGHT_BACK_SPEED,            STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_ServerSide               );
+     DEFINE_OPCODE_HANDLER(MSG_MOVE_SPLINE_SET_FLIGHT_SPEED,             STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_ServerSide               );
+     DEFINE_OPCODE_HANDLER(MSG_MOVE_SPLINE_SET_FLIGHT_BACK_SPEED,        STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_ServerSide               );
      //DEFINE_OPCODE_HANDLER(CMSG_MAELSTROM_INVALIDATE_CACHE,              STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(SMSG_FLIGHT_SPLINE_SYNC,                      STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_ServerSide               );
      DEFINE_OPCODE_HANDLER(CMSG_SET_TAXI_BENCHMARK_MODE,                 STATUS_AUTHED,   PROCESS_THREADUNSAFE, &WorldSession::HandleSetTaxiBenchmarkOpcode    );
