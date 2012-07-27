@@ -12824,18 +12824,6 @@ void Unit::SetSpeed(UnitMoveType mtype, float rate, bool forced)
                 sLog->outError("Unit::SetSpeed: Unsupported move type (%d), data not sent to client.", mtype);
                 return;
         }
-
-        /*data.append(GetPackGUID());
-        data << uint32(0);                                  // movement flags
-        data << uint16(0);                                  // unk flags
-        data << uint32(getMSTime());
-        data << float(GetPositionX());
-        data << float(GetPositionY());
-        data << float(GetPositionZ());
-        data << float(GetOrientation());
-        data << uint32(0);                                  // fall time
-        data << float(GetSpeed(mtype));*/
-
         SendMessageToSet(&data, true);
     }
     else
@@ -12855,25 +12843,25 @@ void Unit::SetSpeed(UnitMoveType mtype, float rate, bool forced)
         {
             case MOVE_WALK:
                 data.Initialize(MSG_MOVE_SET_WALK_SPEED, 1 + 8 + 4 + 4 );
-                data.WriteBit(bytes[6]);
-                data.WriteBit(bytes[5]);
-                data.WriteBit(bytes[7]);
-                data.WriteBit(bytes[0]);
-                data.WriteBit(bytes[2]);
-                data.WriteBit(bytes[4]);
-                data.WriteBit(bytes[1]);
-                data.WriteBit(bytes[3]);
-
-                data.WriteByteSeq(bytes[3]);
-                data.WriteByteSeq(bytes[1]);
-                data << float(GetSpeed(mtype));
+                data.WriteByteMask(bytes[0]);
+                data.WriteByteMask(bytes[4]);
+                data.WriteByteMask(bytes[5]);
+                data.WriteByteMask(bytes[2]);
+                data.WriteByteMask(bytes[3]);
+                data.WriteByteMask(bytes[1]);
+                data.WriteByteMask(bytes[6]);
+                data.WriteByteMask(bytes[7]);
+                data.FlushBits();
                 data.WriteByteSeq(bytes[6]);
-                data.WriteByteSeq(bytes[4]);
-                data.WriteByteSeq(bytes[7]);
-                data.WriteByteSeq(bytes[2]);
+                data.WriteByteSeq(bytes[1]);
                 data.WriteByteSeq(bytes[5]);
+                data << float(GetSpeed(mtype));
+                data.WriteByteSeq(bytes[2]);
                 data << uint32(0);
+                data.WriteByteSeq(bytes[4]);
                 data.WriteByteSeq(bytes[0]);
+                data.WriteByteSeq(bytes[7]);
+                data.WriteByteSeq(bytes[3]);
                 break;
             case MOVE_RUN:
                 data.Initialize(MSG_MOVE_SET_RUN_SPEED, 1 + 8 + 4 + 4 );
