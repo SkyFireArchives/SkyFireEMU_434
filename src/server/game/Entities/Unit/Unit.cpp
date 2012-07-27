@@ -12738,24 +12738,24 @@ void Unit::SetSpeed(UnitMoveType mtype, float rate, bool forced)
                 break;
             case MOVE_TURN_RATE:
                 data.Initialize(MSG_MOVE_SPLINE_SET_TURN_RATE, 1 + 8 + 4);
-                data.WriteBit(bytes[2]);
-                data.WriteBit(bytes[4]);
-                data.WriteBit(bytes[6]);
-                data.WriteBit(bytes[1]);
-                data.WriteBit(bytes[3]);
-                data.WriteBit(bytes[5]);
-                data.WriteBit(bytes[7]);
                 data.WriteBit(bytes[0]);
+                data.WriteBit(bytes[4]);
+                data.WriteBit(bytes[5]);
+                data.WriteBit(bytes[1]);
+                data.WriteBit(bytes[6]);
+                data.WriteBit(bytes[3]);
+                data.WriteBit(bytes[7]);
+                data.WriteBit(bytes[2]);
                 data.FlushBits();
-                data << float(GetSpeed(mtype));
-                data.WriteByteSeq(bytes[1]);
-                data.WriteByteSeq(bytes[5]);
-                data.WriteByteSeq(bytes[3]);
                 data.WriteByteSeq(bytes[2]);
-                data.WriteByteSeq(bytes[7]);
                 data.WriteByteSeq(bytes[4]);
-                data.WriteByteSeq(bytes[6]);
+                data.WriteByteSeq(bytes[7]);
                 data.WriteByteSeq(bytes[0]);
+                data << float(GetSpeed(mtype));
+                data.WriteByteSeq(bytes[5]);
+                data.WriteByteSeq(bytes[1]);
+                data.WriteByteSeq(bytes[6]);
+                data.WriteByteSeq(bytes[3]);
                 break;
             case MOVE_FLIGHT:
                 data.Initialize(MSG_MOVE_SPLINE_SET_FLIGHT_SPEED, 1 + 8 + 4);
