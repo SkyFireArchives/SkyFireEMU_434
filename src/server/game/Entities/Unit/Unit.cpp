@@ -12909,25 +12909,25 @@ void Unit::SetSpeed(UnitMoveType mtype, float rate, bool forced)
                 break;
             case MOVE_SWIM:
                 data.Initialize(MSG_MOVE_SET_SWIM_SPEED, 1 + 8 + 4 + 4 );
-                data.WriteBit(bytes[7]);
-                data.WriteBit(bytes[2]);
-                data.WriteBit(bytes[3]);
-                data.WriteBit(bytes[4]);
-                data.WriteBit(bytes[5]);
-                data.WriteBit(bytes[6]);
-                data.WriteBit(bytes[1]);
-                data.WriteBit(bytes[0]);
-
-                data.WriteByteSeq(bytes[6]);
-                data.WriteByteSeq(bytes[4]);
-                data.WriteByteSeq(bytes[7]);
+                data.WriteByteMask(bytes[5]);
+                data.WriteByteMask(bytes[4]);
+                data.WriteByteMask(bytes[7]);
+                data.WriteByteMask(bytes[3]);
+                data.WriteByteMask(bytes[2]);
+                data.WriteByteMask(bytes[0]);
+                data.WriteByteMask(bytes[1]);
+                data.WriteByteMask(bytes[6]);
+                data.FlushBits();
                 data.WriteByteSeq(bytes[0]);
-                data << float(GetSpeed(mtype));
+                data << uint32(0);
+                data.WriteByteSeq(bytes[6]);
                 data.WriteByteSeq(bytes[3]);
-                data.WriteByteSeq(bytes[1]);
                 data.WriteByteSeq(bytes[5]);
                 data.WriteByteSeq(bytes[2]);
-                data << uint32(0);
+                data << float(GetSpeed(mtype));
+                data.WriteByteSeq(bytes[1]);
+                data.WriteByteSeq(bytes[7]);
+                data.WriteByteSeq(bytes[4]);
                 break;
             case MOVE_SWIM_BACK:
                 data.Initialize(MSG_MOVE_SET_SWIM_BACK_SPEED, 1 + 8 + 4 + 4 );
