@@ -7862,7 +7862,7 @@ bool ObjectMgr::LoadSkyfireStrings(char const* table, int32 min_value, int32 max
     {
 
         if (min_value == MIN_SKYFIRE_STRING_ID)              // error only in case internal strings
-            sLog->outErrorDb(">> Loaded 0 trinity strings. DB table `%s` is empty. Cannot continue.", table);
+            sLog->outErrorDb(">> Loaded 0 SkyFire strings. DB table `%s` is empty. Cannot continue.", table);
         else
             sLog->outString(">> Loaded 0 string templates. DB table `%s` is empty.", table);
         sLog->outString();
@@ -7904,7 +7904,7 @@ bool ObjectMgr::LoadSkyfireStrings(char const* table, int32 min_value, int32 max
     } while (result->NextRow());
 
     if (min_value == MIN_SKYFIRE_STRING_ID)
-        sLog->outString(">> Loaded %u Trinity strings from table %s in %u ms", count, table, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> Loaded %u SkyFire strings from table %s in %u ms", count, table, GetMSTimeDiffToNow(oldMSTime));
     else
         sLog->outString(">> Loaded %u string templates from %s in %u ms", count, table, GetMSTimeDiffToNow(oldMSTime));
 
@@ -7925,7 +7925,7 @@ const char *ObjectMgr::GetSkyfireString(int32 entry, LocaleConstant locale_idx) 
     if (entry > 0)
         sLog->outErrorDb("Entry %i not found in `skyfire_string` table.", entry);
     else
-        sLog->outErrorDb("Trinity string entry %i not found in DB.", entry);
+        sLog->outErrorDb("SkyFire string entry %i not found in DB.", entry);
     return "<error>";
 }
 
@@ -8797,7 +8797,7 @@ bool LoadSkyfireStrings(char const* table, int32 start_value, int32 end_value)
     // start/end reversed for negative values
     if (start_value > MAX_DB_SCRIPT_STRING_ID || end_value >= start_value)
     {
-        sLog->outErrorDb("Table '%s' load attempted with range (%d - %d) reserved by Trinity, strings not loaded.", table, start_value, end_value+1);
+        sLog->outErrorDb("Table '%s' load attempted with range (%d - %d) reserved by SkyFire, strings not loaded.", table, start_value, end_value+1);
         return false;
     }
 

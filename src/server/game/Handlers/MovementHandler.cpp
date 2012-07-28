@@ -787,7 +787,7 @@ void WorldSession::ReadMovementInfo(WorldPacket& data, MovementInfo* mi)
 
     //! Anti-cheat checks. Please keep them in seperate if() blocks to maintain a clear overview.
     //! Might be subject to latency, so just remove improper flags.
-    #ifdef TRINITY_DEBUG
+    #ifdef SKYFIRE_DEBUG
     #define REMOVE_VIOLATING_FLAGS(check, maskToRemove) \
     { \
         if (check) \

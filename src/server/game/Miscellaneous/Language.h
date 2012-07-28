@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
  * Copyright (C) 2011-2012 Project SkyFire <http://www.projectskyfire.org/>
+ * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
  * Copyright (C) 2005-2012 MaNGOS <http://getmangos.com/>
  *
  * This program is free software; you can redistribute it and/or modify it
@@ -919,7 +919,7 @@ enum TrinityStrings
     LANG_COMMAND_TICKETPENDING          = 2027,
     LANG_COMMAND_TICKETRESET            = 2028,
 
-    // Trinity strings                    5000-9999
+    // SkyFire strings                    5000-9999
     LANG_COMMAND_FREEZE                 = 5000,
     LANG_COMMAND_FREEZE_ERROR           = 5001,
     LANG_COMMAND_FREEZE_WRONG           = 5002,
@@ -953,7 +953,7 @@ enum TrinityStrings
     LANG_COMMAND_LOOKUP_MAX_RESULTS     = 5029,
     LANG_FLEE                           = 5030,
     LANG_NPCINFO_AIINFO                 = 5031,
-    // Room for more Trinity strings      5032-9999
+    // Room for more SkyFire strings      5032-9999
 
     // Level requirement notifications
     LANG_SAY_REQ                        = 6604,

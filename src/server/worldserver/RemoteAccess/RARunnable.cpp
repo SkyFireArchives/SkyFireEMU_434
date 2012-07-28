@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
  * Copyright (C) 2011-2012 Project SkyFire <http://www.projectskyfire.org/>
+ * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
  * Copyright (C) 2005-2012 MaNGOS <http://getmangos.com/>
  *
  * This program is free software; you can redistribute it and/or modify it
@@ -69,11 +69,11 @@ void RARunnable::run()
 
     if (acceptor.open(listen_addr, m_Reactor) == -1)
     {
-        sLog->outError("Trinity RA can not bind to port %d on %s", raport, stringip.c_str());
+        sLog->outError("SkyFire RA can not bind to port %d on %s", raport, stringip.c_str());
         return;
     }
 
-    sLog->outString("Starting Trinity RA on port %d on %s", raport, stringip.c_str());
+    sLog->outString("Starting SkyFire RA on port %d on %s", raport, stringip.c_str());
 
     while (!World::IsStopped())
     {
@@ -84,5 +84,5 @@ void RARunnable::run()
             break;
     }
 
-    sLog->outStaticDebug("Trinity RA thread exiting");
+    sLog->outStaticDebug("SkyFire RA thread exiting");
 }

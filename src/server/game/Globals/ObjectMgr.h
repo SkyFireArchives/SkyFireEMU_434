@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
  * Copyright (C) 2011-2012 Project SkyFire <http://www.projectskyfire.org/>
+ * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
  * Copyright (C) 2005-2012 MaNGOS <http://getmangos.com/>
  *
  * This program is free software; you can redistribute it and/or modify it
@@ -370,7 +370,7 @@ typedef UNORDERED_MAP<uint32/*(mapid, spawnMode) pair*/, CellObjectGuidsMap> Map
 
 typedef UNORDERED_MAP<uint64/*(instance, guid) pair*/, time_t> RespawnTimes;
 
-// Trinity string ranges
+// SkyFire string ranges
 #define MIN_SKYFIRE_STRING_ID           1                    // 'skyfire_string'
 #define MAX_SKYFIRE_STRING_ID           2000000000
 #define MIN_DB_SCRIPT_STRING_ID        MAX_SKYFIRE_STRING_ID // 'db_script_string'
@@ -378,7 +378,7 @@ typedef UNORDERED_MAP<uint64/*(instance, guid) pair*/, time_t> RespawnTimes;
 #define MIN_CREATURE_AI_TEXT_STRING_ID (-1)                 // 'creature_ai_texts'
 #define MAX_CREATURE_AI_TEXT_STRING_ID (-1000000)
 
-// Trinity Trainer Reference start range
+// SkyFire Trainer Reference start range
 #define SKYFIRE_TRAINER_START_REF      200000
 
 struct TrinityStringLocale

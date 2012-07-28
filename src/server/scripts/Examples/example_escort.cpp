@@ -223,10 +223,10 @@ class example_escort : public CreatureScript
                         pEscortAI->Start(false, true, player->GetGUID());
                     break;
                 default:
-                    return false;                                   // nothing defined      -> trinity core handling
+                    return false;                                   // nothing defined      -> SkyFire core handling
             }
 
-            return true;                                            // no default handling  -> prevent trinity core handling
+            return true;                                            // no default handling  -> prevent SkyFire core handling
         }
 };
 

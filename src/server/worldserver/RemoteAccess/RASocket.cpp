@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
  * Copyright (C) 2011-2012 Project SkyFire <http://www.projectskyfire.org/>
+ * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
  * Copyright (C) 2005-2012 MaNGOS <http://getmangos.com/>
  *
  * This program is free software; you can redistribute it and/or modify it
@@ -353,7 +353,7 @@ int RASocket::svc(void)
     for (;;)
     {
         // show prompt
-        const char* tc_prompt = "TC> ";
+        const char* tc_prompt = "SF> ";
         if (size_t(peer().send(tc_prompt, strlen(tc_prompt))) != strlen(tc_prompt))
             return -1;
 
