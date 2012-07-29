@@ -434,9 +434,9 @@ void WorldSession::SendItemSparseDb2Reply(uint32 entry)
     buff << int32(proto->Duration);
     buff << uint32(proto->ItemLimitCategory);
     buff << uint32(proto->HolidayId);
-    buff << float(proto->StatScalingFactor);    // StatScalingFactor
+    buff << float(proto->StatScalingFactor);                  // StatScalingFactor
     buff << uint32(proto->CurrencySubstitutionId);            // archaeology unk
-    buff << uint32(proto->CurrencySubstitutionCount);            // archaeology findinds count
+    buff << uint32(proto->CurrencySubstitutionCount);         // archaeology findinds count
 
     data << uint32(buff.size());
     data.append(buff);

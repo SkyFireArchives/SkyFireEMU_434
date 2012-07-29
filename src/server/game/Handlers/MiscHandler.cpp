@@ -1820,25 +1820,25 @@ void WorldSession::HandleViolenceLevel(WorldPacket& recvPacket)
 
 void WorldSession::HandleObjectUpdateFailed(WorldPacket& recvPacket)
 {
-     ObjectGuid guid;
-     recvPacket.ReadByteMask(guid[6]);
-     recvPacket.ReadByteMask(guid[7]);
-     recvPacket.ReadByteMask(guid[4]);
-     recvPacket.ReadByteMask(guid[0]);
-     recvPacket.ReadByteMask(guid[1]);
-     recvPacket.ReadByteMask(guid[5]);
-     recvPacket.ReadByteMask(guid[3]);
-     recvPacket.ReadByteMask(guid[2]);
+    ObjectGuid guid;
+    guid[6] = recvPacket.ReadBit();
+    guid[7] = recvPacket.ReadBit();
+    guid[4] = recvPacket.ReadBit();
+    guid[0] = recvPacket.ReadBit();
+    guid[1] = recvPacket.ReadBit();
+    guid[5] = recvPacket.ReadBit();
+    guid[3] = recvPacket.ReadBit();
+    guid[2] = recvPacket.ReadBit();
 
-     recvPacket.ReadByteSeq(guid[6]);
-     recvPacket.ReadByteSeq(guid[7]);
-     recvPacket.ReadByteSeq(guid[2]);
-     recvPacket.ReadByteSeq(guid[3]);
-     recvPacket.ReadByteSeq(guid[1]);
-     recvPacket.ReadByteSeq(guid[4]);
-     recvPacket.ReadByteSeq(guid[0]);
-     recvPacket.ReadByteSeq(guid[5]);
+    recvPacket.ReadByteSeq(guid[6]);
+    recvPacket.ReadByteSeq(guid[7]);
+    recvPacket.ReadByteSeq(guid[2]);
+    recvPacket.ReadByteSeq(guid[3]);
+    recvPacket.ReadByteSeq(guid[1]);
+    recvPacket.ReadByteSeq(guid[4]);
+    recvPacket.ReadByteSeq(guid[0]);
+    recvPacket.ReadByteSeq(guid[5]);
 
-     WorldObject* obj = ObjectAccessor::GetWorldObject(*GetPlayer(), guid);
-     sLog->outError("Object update failed for object "UI64FMTD" (%s) for player %s (%u)", uint64(guid), obj ? obj->GetName() : "object-not-found", GetPlayerName(), GetGuidLow());
+    WorldObject* obj = ObjectAccessor::GetWorldObject(*GetPlayer(), guid);
+    sLog->outError("Object update failed for object "UI64FMTD" (%s) for player %s (%u)", uint64(guid), obj ? obj->GetName() : "object-not-found", GetPlayerName(), GetGuidLow());
 }
