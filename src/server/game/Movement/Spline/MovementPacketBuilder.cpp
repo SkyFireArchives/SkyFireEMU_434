@@ -180,7 +180,7 @@ namespace Movement
     void PacketBuilder::WriteCreate(MoveSpline const& moveSpline, ByteBuffer& data)
     {
         data.WriteBits(uint8(moveSpline.spline.mode()), 2);
-        data.WriteBit(moveSpline.splineflags & (MoveSplineFlag::Parabolic | MoveSplineFlag::Animation));
+        data.WriteBit(moveSpline.splineflags & (MoveSplineFlag::Trajectory | MoveSplineFlag::Animation));
         data.WriteBits(moveSpline.getPath().size(), 22);
         switch (moveSpline.splineflags & MoveSplineFlag::Mask_Final_Facing)
         {
@@ -209,7 +209,7 @@ namespace Movement
                 break;
         }
 
-        data.WriteBit((moveSpline.splineflags & MoveSplineFlag::Parabolic) && moveSpline.effect_start_time < moveSpline.Duration());
+        data.WriteBit((moveSpline.splineflags & MoveSplineFlag::Trajectory) && moveSpline.effect_start_time < moveSpline.Duration());
         data.WriteBits(moveSpline.splineflags.raw(), 25);
     }
 
@@ -217,7 +217,7 @@ namespace Movement
     {
         MoveSplineFlag splineFlags = moveSpline.splineflags;
 
-        if ((splineFlags & MoveSplineFlag::Parabolic) && moveSpline.effect_start_time < moveSpline.Duration())
+        if ((splineFlags & MoveSplineFlag::Trajectory) && moveSpline.effect_start_time < moveSpline.Duration())
             data << moveSpline.vertical_acceleration;   // added in 3.1
 
         data << moveSpline.timePassed();
@@ -256,7 +256,7 @@ namespace Movement
 
         data << float(1.f);                             // splineInfo.duration_mod_next; added in 3.1
         data << moveSpline.Duration();
-        if (splineFlags & (MoveSplineFlag::Parabolic | MoveSplineFlag::Animation))
+        if (splineFlags & (MoveSplineFlag::Trajectory | MoveSplineFlag::Animation))
             data << moveSpline.effect_start_time;       // added in 3.1
 
         data << float(1.f);                             // splineInfo.duration_mod; added in 3.1
