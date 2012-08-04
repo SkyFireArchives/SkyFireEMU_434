@@ -525,7 +525,7 @@ class WorldSession
         void HandleMoveWorldportAckOpcode();                // for server-side calls
 
         void HandleMovementOpcodes(WorldPacket& recvPacket);
-        void HandleSetActiveMoverOpcode(WorldPacket& recv_data);
+        void HandleSetActiveMoverOpcode(WorldPacket& recvPacket);
         void HandleMoveNotActiveMover(WorldPacket& recv_data);
         void HandleDismissControlledVehicle(WorldPacket& recv_data);
         void HandleRequestVehicleExit(WorldPacket& recv_data);
