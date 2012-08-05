@@ -1171,7 +1171,7 @@ void InitOpcodes()
      //DEFINE_OPCODE_HANDLER(CMSG_LOAD_DANCES,                             STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(CMSG_STOP_DANCE,                              STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(SMSG_STOP_DANCE,                              STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_ServerSide               );
-     //DEFINE_OPCODE_HANDLER(CMSG_SYNC_DANCE,                              STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_NULL                     );
+     DEFINE_OPCODE_HANDLER(CMSG_SYNC_DANCE,                              STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(CMSG_DANCE_QUERY,                             STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(SMSG_DANCE_QUERY_RESPONSE,                    STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_ServerSide               );
      DEFINE_OPCODE_HANDLER(SMSG_INVALIDATE_DANCE,                        STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_ServerSide               );
@@ -1239,7 +1239,7 @@ void InitOpcodes()
      DEFINE_OPCODE_HANDLER(SMSG_AUCTION_LIST_PENDING_SALES,              STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_ServerSide               );
      DEFINE_OPCODE_HANDLER(SMSG_MODIFY_COOLDOWN,                         STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_ServerSide               );
      DEFINE_OPCODE_HANDLER(SMSG_PET_UPDATE_COMBO_POINTS,                 STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_ServerSide               );
-     //DEFINE_OPCODE_HANDLER(CMSG_ENABLETAXI,                              STATUS_LOGGEDIN, PROCESS_THREADSAFE,   &WorldSession::HandleTaxiQueryAvailableNodes   );
+     DEFINE_OPCODE_HANDLER(CMSG_ENABLETAXI,                              STATUS_LOGGEDIN, PROCESS_THREADSAFE,   &WorldSession::HandleTaxiQueryAvailableNodes   );
      DEFINE_OPCODE_HANDLER(SMSG_PRE_RESURRECT,                           STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_ServerSide               );
      DEFINE_OPCODE_HANDLER(SMSG_AURA_UPDATE_ALL,                         STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_ServerSide               );
      DEFINE_OPCODE_HANDLER(SMSG_AURA_UPDATE,                             STATUS_NEVER,    PROCESS_INPLACE,      &WorldSession::Handle_ServerSide               );
@@ -1387,7 +1387,7 @@ void InitOpcodes()
      DEFINE_OPCODE_HANDLER(SMSG_RANDOMIZE_CHAR_NAME,                     STATUS_AUTHED,   PROCESS_THREADUNSAFE,  &WorldSession::Handle_ServerSide               );
      DEFINE_OPCODE_HANDLER(SMSG_PLAYER_MOVE,                             STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_ServerSide               );
      DEFINE_OPCODE_HANDLER(CMSG_REQUEST_HOTFIX,                          STATUS_AUTHED,   PROCESS_INPLACE,       &WorldSession::HandleRequestHotfix             );
-     //DEFINE_OPCODE_HANDLER(SMSG_HOTFIX_INFO,                             STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_ServerSide               );
+     DEFINE_OPCODE_HANDLER(SMSG_HOTFIX_INFO,                             STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_ServerSide               );
      DEFINE_OPCODE_HANDLER(CMSG_BATTLEFIELD_REQUEST_SCORE_DATA,          STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );
      DEFINE_OPCODE_HANDLER(SMSG_MEETINGSTONE_SETQUEUE,                   STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_ServerSide               );
      DEFINE_OPCODE_HANDLER(CMSG_REGISTER_ADDON_PREFIXES,                 STATUS_NEVER,    PROCESS_INPLACE,       &WorldSession::Handle_NULL                     );

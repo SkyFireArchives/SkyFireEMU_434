@@ -910,13 +910,13 @@ void WorldSession::HandlePlayerLogin(LoginQueryHolder* holder)
     }
 
     data.Initialize(SMSG_LEARNED_DANCE_MOVES, 4+4);
-    data << uint32(0);
-    data << uint32(0);
+    data << uint64(0);
     SendPacket(&data);
 
     data.Initialize(SMSG_HOTFIX_INFO);
     HotfixData const& hotfix = sObjectMgr->GetHotfixData();
-    data << uint32(hotfix.size());
+    data.WriteBits(hotfix.size(), 22);
+    data.FlushBits();
     for (uint32 i = 0; i < hotfix.size(); ++i)
     {
         data << uint32(hotfix[i].Type);

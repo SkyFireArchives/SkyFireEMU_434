@@ -152,7 +152,7 @@ enum Opcodes
     CMSG_CONTACT_LIST                                = 0x04534, // 4.3.4 Build 15595
     CMSG_CORPSE_MAP_POSITION_QUERY                   = 0x06205, // 4.3.4 Build 15595
     CMSG_CREATURE_QUERY                              = 0x02706, // 4.3.4 Build 15595
-    CMSG_DANCE_QUERY                                 = 0x00000, // Unknown
+    CMSG_DANCE_QUERY                                 = 0x04E07, // 4.3.4 Build 15595
     CMSG_DECLINE_CHANNEL_INVITE                      = 0x00000, // Unknown
     CMSG_DEL_FRIEND                                  = 0x06A15, // 4.3.4 Build 15595
     CMSG_DEL_IGNORE                                  = 0x04727, // 4.3.4 Build 15595
@@ -163,6 +163,7 @@ enum Opcodes
     CMSG_DUNGEON_FINDER_GET_SYSTEM_INFO              = 0x00412, // 4.3.4 Build 15595
     CMSG_EJECT_PASSENGER                             = 0x06927, // 4.3.4 Build 15595
     CMSG_EMOTE                                       = 0x04C26, // 4.3.4 Build 15595
+    CMSG_ENABLETAXI                                  = 0x00C16, // 4.3.4 Build 15595
     CMSG_ENABLE_NAGLE                                = 0x04449, // 4.3.4 Build 15595
     CMSG_EQUIPMENT_SET_DELETE                        = 0x04D07, // 4.3.4 Build 15595
     CMSG_EQUIPMENT_SET_SAVE                          = 0x04F27, // 4.3.4 Build 15595
@@ -283,7 +284,7 @@ enum Opcodes
     CMSG_MESSAGECHAT_BATTLEGROUND_LEADER             = 0x00000, // Unknown
     CMSG_MESSAGECHAT_CHANNEL                         = 0x01D44, // 4.3.4 Build 15595
     CMSG_MESSAGECHAT_DND                             = 0x02946, // 4.3.4 Build 15595
-    CMSG_MESSAGECHAT_EMOTE                           = 0x02E24, // 4.3.4 Build 15595
+    CMSG_MESSAGECHAT_EMOTE                           = 0x01156, // 4.3.4 Build 15595
     CMSG_MESSAGECHAT_GUILD                           = 0x03956, // 4.3.4 Build 15595
     CMSG_MESSAGECHAT_OFFICER                         = 0x01946, // 4.3.4 Build 15595
     CMSG_MESSAGECHAT_PARTY                           = 0x01D46, // 4.3.4 Build 15595
@@ -328,7 +329,7 @@ enum Opcodes
     CMSG_PLAYER_LOGIN                                = 0x005B1, // 4.3.4 Build 15595
     CMSG_PLAYER_LOGOUT                               = 0x00000, // Unknown
     CMSG_PLAYER_VEHICLE_ENTER                        = 0x00000, // Unknown
-    CMSG_PLAY_DANCE                                  = 0x00000, // Unknown
+    CMSG_PLAY_DANCE                                  = 0x06914, // 4.3.4 Build 15595
     CMSG_PUSHQUESTTOPARTY                            = 0x04B14, // 4.3.4 Build 15595
     CMSG_QUERY_BATTLEFIELD_STATE                     = 0x07202, // 4.3.4 Build 15595
     CMSG_QUERY_GUILD_MAX_XP                          = 0x00000, // Unknown
@@ -427,6 +428,7 @@ enum Opcodes
     CMSG_SUSPEND_TOKEN                               = 0x0046D, // 4.3.4 Build 15595
     CMSG_SWAP_INV_ITEM                               = 0x02614, // 4.3.4 Build 15595
     CMSG_SWAP_ITEM                                   = 0x06326, // 4.3.4 Build 15595
+    CMSG_SYNC_DANCE                                  = 0x00036, // 4.3.4 Build 15595
     CMSG_TAXICLEARALLNODES                           = 0x00000, // Unknown
     CMSG_TAXIENABLEALLNODES                          = 0x00000, // Unknown
     CMSG_TAXINODE_STATUS_QUERY                       = 0x02F25, // 4.3.4 Build 15595
