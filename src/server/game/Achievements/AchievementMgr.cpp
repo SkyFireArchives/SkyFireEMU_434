@@ -1956,10 +1956,14 @@ void AchievementMgr::CompletedAchievement(AchievementEntry const* achievement)
 
 void AchievementMgr::SendAllAchievementData() const
 {
-    WorldPacket data(SMSG_ALL_ACHIEVEMENT_DATA, m_completedAchievements.size()*8+4+m_criteriaProgress.size()*38+4);
+    uint32 criterias = m_criteriaProgress.size();
+    uint32 achievements = m_completedAchievements.size();
+    // 2 is flag count, 8 is bits in byte
+    uint32 flagBytesCount = uint32(ceil(float(criterias) * 2.0f / 8.0f));
+    // since we don't know the exact size of the packed GUIDs this is just an approximation from 406 
+    WorldPacket data(SMSG_ALL_ACHIEVEMENT_DATA, 4 + criterias * (8 + 4 + 4 + 8) + 8 + 4 + achievements * (4 + 4 + 4) + flagBytesCount);
+
     BuildAllDataPacket(&data);
-    if (data.size() > 0x1000)
-        data.Compress(SMSG_COMPRESSED_ACHIEVEMENT_DATA);
 
     GetPlayer()->GetSession()->SendPacket(&data);
 }

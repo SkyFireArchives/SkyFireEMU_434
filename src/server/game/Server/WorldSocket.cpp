@@ -713,28 +713,40 @@ int WorldSocket::ProcessIncoming(WorldPacket* new_pct)
             }
             default:
             {
-                ACE_GUARD_RETURN(LockType, Guard, m_SessionLock, -1);
-                if (!opcodeTable[Opcodes(opcode)])
+                ACE_GUARD_RETURN (LockType, Guard, m_SessionLock, -1);
+                /*if (!opcodeTable[uint32(opcode)])
                 {
-                    sLog->outError("Opcode with no defined handler received from client: %u", new_pct->GetOpcode());
+                    //sLog->outError("Opcode with no defined handler received from client: %u", new_pct->GetOpcode());
+                    sLog->outString("SESSION: Received opcode 0x%.4X (%s)", new_pct->GetOpcode(), LookupOpcodeName(new_pct->GetOpcode()));
                     return 0;
-                }
+                }*/
                 if (m_Session != NULL)
                 {
                     // Our Idle timer will reset on any non PING opcodes.
                     // Catches people idling on the login screen and any lingering ingame connections.
                     m_Session->ResetTimeOutTime();
 
-                    // OK, give the packet to WorldSession
+                    // OK , give the packet to WorldSession
                     aptr.release();
                     // WARNINIG here we call it with locks held.
                     // Its possible to cause deadlock if QueuePacket calls back
-                    m_Session->QueuePacket(new_pct);
+                    m_Session->QueuePacket (new_pct);
                     return 0;
                 }
                 else
                 {
-                    sLog->outError("WorldSocket::ProcessIncoming: Client not authed opcode = %u", uint32(opcode));
+                    if(opcode == 0)
+                    {
+                        // 4.1 plaintext init message BS
+                        std::string msg;
+                        (*new_pct) >> msg;
+                        if(!msg.empty() && msg.compare(std::string("D OF WARCRAFT CONNECTION - CLIENT TO SERVER")) == 0)
+                        {
+                            // just ignore
+                            return 0;
+                        }
+                    }
+                    sLog->outError ("WorldSocket::ProcessIncoming: Client not authed opcode = %u", uint32(opcode));
                     return -1;
                 }
             }

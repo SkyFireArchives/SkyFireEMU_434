@@ -1778,7 +1778,7 @@ MovementStatusElements MovementStartPitchUpSequence[] =
     MSEEnd,
 };
 
-MovementStatusElements* GetMovementStatusElementsSequence(Opcodes opcode)
+MovementStatusElements* GetMovementStatusElementsSequence(uint32 opcode)
 {
     switch (opcode)
     {

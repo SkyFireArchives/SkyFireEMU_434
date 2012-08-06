@@ -23,6 +23,16 @@
 */
 
 #include "WorldSocketMgr.h"
+#include "Log.h"
+#include "Common.h"
+#include "Config.h"
+#include "DatabaseEnv.h"
+#include "WorldSocket.h"
+#include "WorldSocketAcceptor.h"
+#include "ScriptMgr.h"
+#include "Opcodes.h"
+
+#include <set>
 
 #include <ace/ACE.h>
 #include <ace/Log_Msg.h>
@@ -36,16 +46,6 @@
 #include <ace/os_include/netinet/os_tcp.h>
 #include <ace/os_include/sys/os_types.h>
 #include <ace/os_include/sys/os_socket.h>
-
-#include <set>
-
-#include "Log.h"
-#include "Common.h"
-#include "Config.h"
-#include "DatabaseEnv.h"
-#include "WorldSocket.h"
-#include "WorldSocketAcceptor.h"
-#include "ScriptMgr.h"
 
 /**
 * This is a helper class to WorldSocketMgr, that manages
@@ -220,6 +220,7 @@ WorldSocketMgr::WorldSocketMgr() :
     m_UseNoDelay(true),
     m_Acceptor (0)
 {
+    InitOpcodeTable();
 }
 
 WorldSocketMgr::~WorldSocketMgr()

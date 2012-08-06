@@ -21,10 +21,17 @@
 /// @{
 /// \file
 
+// Note: this include need for be sure have full definition of class WorldSession
+//       if this class definition not complete then VS for x64 release use different size for
+//       struct OpcodeHandler in this header and Opcode.cpp and get totally wrong data from
+//       table opcodeTable in source when Opcode.h included but WorldSession.h not included
 #ifndef _OPCODES_H
 #define _OPCODES_H
 
 #include "Common.h"
+#include "WorldSession.h"
+
+#define OPCODE_NOT_FOUND 0x10000
 
 /// List of Opcodes
 enum Opcodes
@@ -1141,6 +1148,7 @@ enum Opcodes
     SMSG_VOID_STORAGE_CONTENTS                       = 0x075B4, // 4.3.4 Build 15595
     SMSG_VOID_ITEM_SWAP_RESPONSE                     = 0x078A2, // 4.3.4 Build 15595
     SMSG_REFORGE_RESULT                              = 0x058A4, // 4.3.4 Build 15595
+    NUM_MSG_TYPES                                    = 0x102B8  // last unknown opcode + 1.
 };
 
 extern void InitOpcodeTable();
@@ -1165,33 +1173,22 @@ enum PacketProcessing
 
 class WorldPacket;
 
-typedef void(WorldSession::*pOpcodeHandler)(WorldPacket& recvPacket);
-
 struct OpcodeHandler
 {
-    OpcodeHandler() {}
-    OpcodeHandler(const char* _name, SessionStatus _status, PacketProcessing _processing, pOpcodeHandler _handler)
-        : name(_name), status(_status), packetProcessing(_processing), handler(_handler) {}
-
     char const* name;
     SessionStatus status;
     PacketProcessing packetProcessing;
-    pOpcodeHandler handler;
+    void (WorldSession::*handler)(WorldPacket& recvPacket);
 };
 
-extern OpcodeHandler* opcodeTable[NUM_OPCODE_HANDLERS];
-void InitOpcodes();
+extern OpcodeHandler opcodeTable[NUM_MSG_TYPES];
 
 /// Lookup opcode name for human understandable logging
-inline const char* LookupOpcodeName(Opcodes id)
+inline const char* LookupOpcodeName(uint32 id)
 {
-    if (id < NUM_OPCODE_HANDLERS)
-    {
-        OpcodeHandler* handler = opcodeTable[uint32(id)];
-        return handler ? handler->name : "UNKNOWN OPCODE";
-    }
-    else
-        return "UNKNOWN OPCODE";
+    if (id >= NUM_MSG_TYPES)
+        return "Received unknown opcode, it's more than max!";
+    return opcodeTable[id].name;
 }
 #endif
 /// @}
