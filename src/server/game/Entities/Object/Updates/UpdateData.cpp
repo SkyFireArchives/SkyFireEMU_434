@@ -52,9 +52,10 @@ bool UpdateData::BuildPacket(WorldPacket* packet)
     packet->Initialize(SMSG_UPDATE_OBJECT, 2 + 4 + (m_outOfRangeGUIDs.empty() ? 0 : 1 + 4 + 9 * m_outOfRangeGUIDs.size()) + m_data.wpos());
 
     *packet << uint16(m_map);
-    *packet << uint32(!m_outOfRangeGUIDs.empty() ? m_blockCount + 1 : m_blockCount);
+    *packet << uint32(m_blockCount);
 
-    if (!m_outOfRangeGUIDs.empty())
+    //No missing NPC's on the next grid. (NPC's on the login grid still have the problem)
+   /* if (!m_outOfRangeGUIDs.empty())
     {
         *packet << uint8(UPDATETYPE_OUT_OF_RANGE_OBJECTS);
         *packet << uint32(m_outOfRangeGUIDs.size());
@@ -64,6 +65,7 @@ bool UpdateData::BuildPacket(WorldPacket* packet)
             packet->appendPackGUID(*i);
         }
     }
+    */
 
     packet->append(m_data);
 
