@@ -1,8 +1,14 @@
+THIS IS NO LONGER IN DEVELOPMENT. PLEASE USE TRINITY
+https://github.com/TrinityCore/TrinityCore/commits/4.3.4/
+SkyFire was never intended to replace Trinity. It was just a
+small group of people that wanted to learn about emulation and
+game mechanics. When SkyFire was started Trinity had no interest 
+in Cataclysm. Now that they have decided to support it I have 
+decided it's time to stop the develeopment of 4.3.4 and focus 
+on other interests. We will still support our 4.0.6a version for
+now.
+
 = SkyFireEMU 4.3.4 Beta -- General information =
-
-<<<<<<<<<<<<<<<<<<<<NO SUPPORT>>>>>>>>>>>>>>>>>>>>
-
-          Database will be released soon.
 
 Copyright (C) SkyFireEMU  (http://www.projectskyfire.org)
 Copyright (C) Cactus      (http://www.cactusemu.com)
